@@ -53,6 +53,15 @@ def test_true_positives() -> None:
         "telegram bot token": "bot " + "7654321098:AAG" + "b" * 32,
         "google api key": "AIza" + "SyD8xYz1234567890abcdefghijklmnop",
         "npm token": "npm_" + "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8",
+        # OAuth access/refresh tokens are JWTs; they match no prefix pattern.
+        "jwt oauth token": "access_token: " + (
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9."
+            "eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4ifQ."
+            "dozjgNryP4J3jVmNHl0w5N_XgL0n3I9PlFUP0THsR8U"),
+        "jwt inside json": '{"connectors_token": {"access_token": "' + (
+            "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9."
+            "eyJleHAiOjE3OTIyNjczNzEsImlhdCI6MTc5MjE4MDk3MX0."
+            "abc123DEF456ghi789JKL012mno345PQR678stu") + '"}}',
     }
     for label, text in cases.items():
         hits, _ = ghstore.scan_text(text)
@@ -97,6 +106,10 @@ def test_exclusions() -> None:
         "cron/.tick.lock", "cache/foo.json", "backups/x.zip",
         ".skills_prompt_snapshot.json", "skills/.usage.json.lock",
         "telegram_update_receipts_123.json", "state/gateway.heartbeat",
+        # Found by `audit` on a live home: OAuth JWTs and portal identity.
+        "shared/nous_auth.json", "shared/nous_auth.lock",
+        "install_id", ".initialized", "channel_directory.json",
+        "processes.json", "models_dev_cache.etag",
     ]
     must_keep = [
         "config.yaml", "SOUL.md", "memories/notes.md",

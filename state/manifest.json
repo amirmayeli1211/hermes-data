@@ -1364,11 +1364,11 @@
       "size": 1670
     },
     "tool/tests/test_ghstore.py": {
-      "sha256": "4d6ebe8ce6f83072713582e24c19949cb2dadc567413efb35b522b1f0e454619",
-      "size": 10125
+      "sha256": "0c84c45a343efac6d55835436fbced3f93717da18d95bd6da6b37a9dff04c2fc",
+      "size": 10925
     }
   },
-  "generated_at": "2026-10-17T19:29:47.544615Z",
+  "generated_at": "2026-10-17T19:31:12.928845Z",
   "host": "bd1e2d36e25d",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -1378,5 +1378,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 3028105
+  "total_bytes": 3028905
 }
