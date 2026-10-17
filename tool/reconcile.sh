@@ -1,0 +1,48 @@
+# ghstore cron entrypoint — scheduled push + verify + drift report
+#
+# Wire this into Hermes cron (or system cron) so the repo stays current without
+# the container depending on its own disk. Output is a single short block; the
+# cron job's configured delivery target decides where it lands.
+#
+# Intended schedule: every 30 minutes.
+#   hermes cron: prompt "run /data/.hermes/ghfirst/reconcile.sh and report its output"
+#   system cron: */30 * * * * /data/.hermes/ghfirst/reconcile.sh >> /data/.hermes/logs/ghstore.log 2>&1
+
+set -u
+
+HERMES_HOME="${HERMES_HOME:-/data/.hermes}"
+TOOL="${HERMES_HOME}/ghfirst/ghstore.py"
+PY="${HERMES_PYTHON:-$(command -v python3)}"
+STAMP="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+
+if [ ! -f "$TOOL" ]; then
+    echo "ghstore reconcile $STAMP: FAILED — $TOOL missing"
+    exit 3
+fi
+
+echo "ghstore reconcile $STAMP"
+
+# 1. Push any local changes (the tool aborts on secret hits or conflicts).
+"$PY" "$TOOL" push 2>&1
+push_rc=$?
+
+case "$push_rc" in
+    0) echo "push: ok" ;;
+    4) echo "push: BLOCKED by secret gate — nothing written"; exit 4 ;;
+    5) echo "push: BLOCKED by conflict — both sides changed"; exit 5 ;;
+    10) echo "push: FAILED (network/API) — will retry next tick"; exit 10 ;;
+    *) echo "push: unexpected exit $push_rc"; exit "$push_rc" ;;
+esac
+
+# 2. Independently verify the committed tree indexes every file we hold.
+"$PY" "$TOOL" verify 2>&1
+verify_rc=$?
+if [ "$verify_rc" -ne 0 ]; then
+    echo "verify: FAILED (exit $verify_rc) — repository integrity problem"
+    exit "$verify_rc"
+fi
+echo "verify: ok"
+
+# 3. Report drift so silent divergence surfaces instead of hiding.
+"$PY" "$TOOL" status 2>&1 | tail -6
+exit 0

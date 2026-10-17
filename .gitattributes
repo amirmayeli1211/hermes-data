@@ -1,0 +1,4 @@
+# Keep every synced artifact byte-exact: line-ending translation or diff
+# normalization would silently change sha256 values the manifest verifies.
+* -text -diff
+state/manifest.json -text

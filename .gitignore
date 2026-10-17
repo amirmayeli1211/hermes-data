@@ -1,0 +1,40 @@
+# hermes-data is written by its own tool (tool/ghstore.py), not by hand-edited
+# git. This ignore file exists so that a manual clone + `git add -A` can never
+# commit a credential or runtime churn. Keep it in sync with the tool's
+# EXCLUDE_NAME_PATTERNS / EXCLUDE_REL_PREFIXES.
+
+# --- credentials: never ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+auth.json
+credentials*.json
+.op.env
+
+# --- live state / databases: not Git-suitable ---
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+state/manifest.json
+
+# --- runtime churn ---
+*.lock
+*.pid
+*.sock
+*.tmp
+*.ghfirst-tmp
+*.log
+**/__pycache__/
+*.pyc
+.cache/
+
+# --- local-only tool bookkeeping ---
+.ghfirst/
