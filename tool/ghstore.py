@@ -59,6 +59,10 @@ BACKOFF_CAP = 60.0
 HTTP_TIMEOUT = 45
 MAX_FILE_BYTES = 4 * 1024 * 1024
 
+# Guard rails for deletion, which is the one irreversible operation here.
+DELETION_RATIO_LIMIT = 0.10   # >10% of tracked files disappearing needs --allow-deletions
+DELETION_ABS_LIMIT = 25
+
 
 # --------------------------------------------------------------------------
 # paths
@@ -939,9 +943,31 @@ def cmd_push(args) -> int:
                          "type": "blob", "sha": manifest_sha})
 
     # Deletions: repo paths we no longer carry.
-    for path in remote_blobs:
-        if path not in outgoing and path != "state/manifest.json":
-            tree_entries.append({"path": path, "mode": "100644", "type": "blob", "sha": None})
+    #
+    # A push is computed from the LOCAL tree, so a half-populated or wrong
+    # HERMES_HOME looks exactly like "the user deleted 330 files" and would
+    # silently wipe the repository. Deletion is therefore gated: a large or
+    # majority-ratio deletion is refused unless explicitly authorized.
+    deletions = [path for path in remote_blobs
+                 if path not in outgoing and path != "state/manifest.json"]
+    if deletions and not args.allow_deletions:
+        tracked = len(remote_blobs) or 1
+        ratio = len(deletions) / tracked
+        if len(deletions) > DELETION_ABS_LIMIT or ratio > DELETION_RATIO_LIMIT:
+            print(f"ABORTED: this push would delete {len(deletions)} of {tracked} "
+                  f"tracked files ({ratio:.0%}). That usually means the wrong "
+                  f"HERMES_HOME or an unmounted volume, not a real deletion.")
+            for path in sorted(deletions)[:20]:
+                print(f"  - would delete {path}")
+            if len(deletions) > 20:
+                print(f"  ... and {len(deletions) - 20} more")
+            print(f"Verify HERMES_HOME={home} holds the full state, then re-run with "
+                  f"--allow-deletions to confirm the removal is intentional.")
+            return 6
+        print(f"note: deleting {len(deletions)} tracked file(s) "
+              f"({ratio:.1%} of {tracked})")
+    for path in deletions:
+        tree_entries.append({"path": path, "mode": "100644", "type": "blob", "sha": None})
 
     new_tree = gh.create_tree(tree_entries, tree_sha)
     message = args.message or f"sync: {len(outgoing)} files from {socket.gethostname()}"
@@ -1153,6 +1179,9 @@ def build_parser() -> argparse.ArgumentParser:
                    help="overwrite remote changes and skip the conflict gate")
     p.add_argument("--strict-scan", action="store_true",
                    help="treat entropy warnings as blocking")
+    p.add_argument("--allow-deletions", action="store_true",
+                   help="permit a large deletion (default: refuse, to protect "
+                        "against a wrong/mounted-out HERMES_HOME wiping the repo)")
     p.add_argument("--no-verify", action="store_true")
     p.set_defaults(func=cmd_push)
 
