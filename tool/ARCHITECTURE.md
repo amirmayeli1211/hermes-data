@@ -62,6 +62,8 @@ files, Telegram update receipts, `__pycache__`.
 P=/data/.hermes/ghfirst/ghstore.py
 python3 $P doctor          # credential, repo, permissions, scope, secret scan
 python3 $P plan            # exact path mapping; no network writes
+python3 $P audit           # classify EVERY local file; fails on any it cannot
+                           # place in one of: in-repo / excluded-by-rule
 python3 $P status          # three-way drift vs the repo manifest
 python3 $P push            # atomic commit of the whole tree, then read-back verify
 python3 $P verify --full   # re-download and hash every blob
@@ -72,7 +74,27 @@ python3 $P pull --dry-run
 
 Exit codes: `0` ok · `1` no credential · `4` secret gate · `5` conflict ·
 `6` integrity/deletion refusal · `7` nothing to restore · `8` partial restore ·
-`10` network/API failure.
+`9` audit found unclassified files · `10` network/API failure.
+
+## `audit` — the command that keeps this honest
+
+`push` and `status` answer "is what I track in sync?". They cannot answer the
+question that actually matters on a disposable disk: **is anything sitting on
+this container that I am not tracking at all?** `audit` walks every file under
+`HERMES_HOME` and forces each into `in-repo`, `excluded-by-rule`, or
+`UNCLASSIFIED`, exiting `9` on the third. Adding a new state file to Hermes
+therefore trips the audit until the tool is taught about it.
+
+It earned its place immediately: the first run found 12 unplaced files,
+including `shared/nous_auth.json` (live portal OAuth JWTs),
+`memories/MEMORY.md` and `memories/USER.md` (real durable state that was
+silently *not* on the sync map) and `skills/.curator_ledger.jsonl`. That
+finding also forced the JWT pattern into the secret gate — an OAuth access
+token matches no token-prefix regex, so it had been passing with only a soft
+warning.
+
+Run it after any Hermes update. `0 unclassified` is the claim this design
+rests on.
 
 ## How a push stays safe
 
