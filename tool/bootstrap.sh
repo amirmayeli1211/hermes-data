@@ -85,8 +85,9 @@ chmod 0755 "${HERMES_HOME}/ghfirst/ghstore.py"
 
 echo "[bootstrap] restoring into ${HERMES_HOME}"
 set +e
-"$PY" "${HERMES_HOME}/ghfirst/ghstore.py" pull --repo "$REPO" --branch "$BRANCH" \
-    $DRY_RUN $OVERWRITE
+# Global flags precede the subcommand: `ghstore --repo R --branch B pull`.
+"$PY" "${HERMES_HOME}/ghfirst/ghstore.py" --repo "$REPO" --branch "$BRANCH" \
+    pull $DRY_RUN $OVERWRITE
 rc=$?
 set -e
 

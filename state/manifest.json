@@ -1328,12 +1328,12 @@
       "size": 8481
     },
     "tool/bootstrap.sh": {
-      "sha256": "5406defd03d4dad7c3a120117de5e044cd75e76fc336a5a7797f5820388ee730",
-      "size": 3551
+      "sha256": "b5c3aa88d4ffa158732d0dfbf0a3e4f0bacd17f49b99d52359c42ebf199429c6",
+      "size": 3626
     },
     "tool/ghstore.py": {
-      "sha256": "3bbd61a7367093fa9bf80b43d4322b697147e9f64531849816898de38b3eaae3",
-      "size": 50433
+      "sha256": "9b01357bb888b44e36d32e5abe3ae50dd54d627cdb2415ce91c9372da9260979",
+      "size": 51383
     },
     "tool/reconcile.sh": {
       "sha256": "66dd0d65b88dc2a319bb35d44b71bcb19ee8aedd070ca1f4db8457c7942b7d89",
@@ -1344,7 +1344,7 @@
       "size": 10125
     }
   },
-  "generated_at": "2026-10-17T19:17:45.204040Z",
+  "generated_at": "2026-10-17T19:21:51.390472Z",
   "host": "bd1e2d36e25d",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -1354,5 +1354,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 3006373
+  "total_bytes": 3007398
 }

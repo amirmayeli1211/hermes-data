@@ -1154,26 +1154,41 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="ghstore",
         description="GitHub-first durable storage for Hermes state.")
-    parser.add_argument("--repo", default=os.environ.get("GHSTORE_REPO", DEFAULT_REPO))
-    parser.add_argument("--branch", default=os.environ.get("GHSTORE_BRANCH", DEFAULT_BRANCH))
-    parser.add_argument("--token", default=None,
+    # Shared global flags. They are attached to the main parser AND to every
+    # subparser so `ghstore --repo R push` and `ghstore push --repo R` both work;
+    # SUPPRESS defaults keep a subparser copy from overwriting a value already
+    # given before the subcommand.
+    common = argparse.ArgumentParser(add_help=False)
+    common.add_argument("--repo", default=argparse.SUPPRESS,
+                        help=f"target repository (default: {DEFAULT_REPO})")
+    common.add_argument("--branch", default=argparse.SUPPRESS,
+                        help=f"target branch (default: {DEFAULT_BRANCH})")
+    common.add_argument("--token", default=argparse.SUPPRESS,
                         help="Explicit token. Prefer GITHUB_TOKEN in the environment "
                              "or the credential store; passing tokens on a command "
                              "line exposes them in the process list.")
+    common.add_argument("--verbose", action="store_true", default=argparse.SUPPRESS)
+
+    parser.add_argument("--repo", default=os.environ.get("GHSTORE_REPO", DEFAULT_REPO))
+    parser.add_argument("--branch", default=os.environ.get("GHSTORE_BRANCH", DEFAULT_BRANCH))
+    parser.add_argument("--token", default=None)
     parser.add_argument("--verbose", action="store_true")
     sub = parser.add_subparsers(dest="command", required=True)
 
-    p = sub.add_parser("doctor", help="check credential, repo, permissions, sync scope")
+    p = sub.add_parser("doctor", parents=[common],
+                       help="check credential, repo, permissions, sync scope")
     p.add_argument("--strict-scan", action="store_true")
     p.set_defaults(func=cmd_doctor)
 
-    p = sub.add_parser("plan", help="show path mapping and scope; no network writes")
+    p = sub.add_parser("plan", parents=[common],
+                       help="show path mapping and scope; no network writes")
     p.set_defaults(func=cmd_plan)
 
-    p = sub.add_parser("status", help="local vs repo drift")
+    p = sub.add_parser("status", parents=[common], help="local vs repo drift")
     p.set_defaults(func=cmd_status)
 
-    p = sub.add_parser("push", help="commit the whole tree atomically, then verify")
+    p = sub.add_parser("push", parents=[common],
+                       help="commit the whole tree atomically, then verify")
     p.add_argument("--message", default=None)
     p.add_argument("--force", action="store_true",
                    help="overwrite remote changes and skip the conflict gate")
@@ -1185,12 +1200,13 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--no-verify", action="store_true")
     p.set_defaults(func=cmd_push)
 
-    p = sub.add_parser("verify", help="integrity check the committed tree")
+    p = sub.add_parser("verify", parents=[common],
+                       help="integrity check the committed tree")
     p.add_argument("--full", action="store_true", help="download and hash every blob")
     p.add_argument("--commit", default=None)
     p.set_defaults(func=cmd_verify)
 
-    p = sub.add_parser("pull", help="restore state from the repo")
+    p = sub.add_parser("pull", parents=[common], help="restore state from the repo")
     p.add_argument("--overwrite", action="store_true",
                    help="replace locally modified files")
     p.add_argument("--dry-run", action="store_true")
