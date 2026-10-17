@@ -1,0 +1,1 @@
+Name is Reza (رضا), 16 years old. Passionate about programming, computers, and building VPN panels. Communicates in Persian; wants replies warm, brief, complete, and emoji-rich — not robotic.

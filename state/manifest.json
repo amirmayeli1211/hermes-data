@@ -1,7 +1,7 @@
 {
   "commit": null,
-  "excluded_count": 3,
-  "file_count": 337,
+  "excluded_count": 9,
+  "file_count": 341,
   "files": {
     "state/SOUL.md": {
       "sha256": "3bd38ef92efb90d0fdda1bb73036185d4a4bc11079963cb0e2db71c84281e64e",
@@ -15,13 +15,25 @@
       "sha256": "3534498d1f52abff709f0aea73f38016782da53bd44003e7c2c9ea3de2741924",
       "size": 2166
     },
+    "state/memories/MEMORY.md": {
+      "sha256": "2b2b5d061392b1b03b0229c2eb63c829319fa77b62bd49025de1f7d74f9bdfac",
+      "size": 780
+    },
+    "state/memories/USER.md": {
+      "sha256": "28613550dfb774f3dcac65a0ed9d27f425a74264104e0869eb947d51d272587a",
+      "size": 196
+    },
     "state/skills/.bundled_manifest": {
       "sha256": "49a899583a852d558603d43b969fbdf788e372a70cb6ec86c73c4af08dd22049",
       "size": 2727
     },
+    "state/skills/.curator_ledger.jsonl": {
+      "sha256": "6807af9cd4333356bdcf5345e2d64636338898556e3b8f98c76f2801169c54b1",
+      "size": 878
+    },
     "state/skills/.usage.json": {
-      "sha256": "37d7daf02566eb6c4f6f48b2dcf2a4a5bcdcc5a3074c46a105fc2153ff364679",
-      "size": 472
+      "sha256": "130bd578ca4f7a2f733c17f5b5bdf3ca9f08f1b665db105af4d18bca8bed665b",
+      "size": 923
     },
     "state/skills/apple/DESCRIPTION.md": {
       "sha256": "c9537e578d68950224dbc09a425497a780e8c3956db9cb38a97b4a9e985516b3",
@@ -771,6 +783,10 @@
       "sha256": "5dbf92dc336e9b17be45c35c92a5bb307e4655e39a86617f07b7654678f92583",
       "size": 10963
     },
+    "state/skills/devops/github-first-storage/SKILL.md": {
+      "sha256": "89d664479e473209dbe9844cc0696361c1ce7aa2bd4bc4910fbba7f284d57332",
+      "size": 4663
+    },
     "state/skills/devops/sdlc-review/SKILL.md": {
       "sha256": "ce90e8a3e145cce69c62880dc85921700110879f9290952d6cec28218503155f",
       "size": 9073
@@ -1340,8 +1356,8 @@
       "size": 3626
     },
     "tool/ghstore.py": {
-      "sha256": "9b01357bb888b44e36d32e5abe3ae50dd54d627cdb2415ce91c9372da9260979",
-      "size": 51383
+      "sha256": "5de79f41d9a0fd9f6f1b7ec352689ef43f47bd29af6c95583dd4dccdeae4e992",
+      "size": 56582
     },
     "tool/reconcile.sh": {
       "sha256": "66dd0d65b88dc2a319bb35d44b71bcb19ee8aedd070ca1f4db8457c7942b7d89",
@@ -1352,7 +1368,7 @@
       "size": 10125
     }
   },
-  "generated_at": "2026-10-17T19:22:27.070887Z",
+  "generated_at": "2026-10-17T19:29:47.544615Z",
   "host": "bd1e2d36e25d",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -1362,5 +1378,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 3015938
+  "total_bytes": 3028105
 }

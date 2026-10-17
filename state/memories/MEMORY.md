@@ -1,0 +1,3 @@
+Environment: Hermes runs in a Docker container (s6-supervised) with HERMES_HOME=/data/.hermes and HOME=/data/.hermes/home. The container filesystem is ephemeral; /data is a small (434MB) persistent-looking volume. No pip/requests/jq/tmux/sqlite3 CLI — only stdlib Python 3.14, git, curl, node, npm, ffmpeg, rg. Outside the venv, only Python stdlib imports work.
+§
+Reza's GitHub-first storage: repo amirmayeli1211/hermes-data (private) is the system of record for Hermes state; /data/.hermes/ghfirst/ghstore.py (stdlib-only) does push/pull/verify/status/doctor with atomic tree commits, secret-gate, conflict-gate, deletion-gate. Credential lives in /data/.hermes/.env as GITHUB_TOKEN, never committed. Cron job 'ghstore-reconcile' runs every 30m. Docs: ghfirst/ARCHITECTURE.md.

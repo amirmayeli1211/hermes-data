@@ -141,10 +141,33 @@ EXCLUDE_NAME_PATTERNS = [
 # not caught by name alone.
 EXCLUDE_REL_PREFIXES = (
     "sessions", "logs", "runtime", "pairing", "state",
+    "shared", ".curator_backups",
     "cron/executions.db", "cron/.tick.lock", "cron/.jobs.lock",
     "cron/ticker_heartbeat", "cron/ticker_last_success",
     "cron/executions.db-wal", "cron/executions.db-shm",
     ".ghfirst",
+)
+
+# Runtime churn that is rebuildable or meaningless to Git. Every one of these
+# must have a reason, because the `audit` command fails on any file it cannot
+# classify — a silent gap is how unwanted data accumulates on the disk.
+REBUILDABLE_PREFIXES = (
+    "logs", "sessions", "runtime", "cache", "backups", "pairing",
+    "pending_messages", "installs", "image_cache", "audio_cache",
+    "plugin-update-checks", "kanban", "state", "shared", ".curator_backups",
+)
+
+# Individual runtime files that are neither synced nor caught by a prefix above.
+RUNTIME_LOCAL_FILES = (
+    "channel_directory.json",   # regenerated from gateway routing on boot
+    "processes.json",           # live process table, empty on restart
+    "install_id",               # per-install identity; a restored one would collide
+    ".initialized",             # container boot marker
+    "models_dev_cache.etag",    # HTTP cache validator, refetched
+    "models_dev_cache.json",    # vendored model catalog, re-downloaded
+    "provider_models_cache.json",
+    "gateway_state.json",
+    ".skills_prompt_snapshot.json",
 )
 
 # Credential material that lives directly under HERMES_HOME. Never in SYNC_MAP;
@@ -152,6 +175,8 @@ EXCLUDE_REL_PREFIXES = (
 SENSITIVE_LOCAL_FILES = (
     ".env", ".env.local", ".env.production", ".op.env",
     "auth.json", "credentials.json",
+    "shared/nous_auth.json",    # holds live OAuth JWTs for the Nous portal
+    "shared/nous_auth.lock",
 )
 
 SECRET_BLOCK_PATTERNS = [
@@ -169,6 +194,11 @@ SECRET_BLOCK_PATTERNS = [
     ("pypi-token", re.compile(r"(?<![A-Za-z0-9_])pypi-AgEIcHlwaS5vcmc[A-Za-z0-9_\-]{10,}")),
     ("telegram-bot-token", re.compile(r"(?<!\d)\d{8,10}:[A-Za-z0-9_\-]{35}(?![\w\-])")),
     ("private-key-block", re.compile(r"-----BEGIN [A-Z ]*PRIVATE KEY-----")),
+    # A JWT is three base64url segments. OAuth access/refresh tokens (Nous portal,
+    # Google, etc.) are JWTs and match nothing else here, so without this a live
+    # bearer token in a synced file would pass the gate with only a soft warning.
+    ("jwt-token", re.compile(
+        r"(?<![A-Za-z0-9_\-])eyJ[A-Za-z0-9_\-]{8,}\.eyJ[A-Za-z0-9_\-]{8,}\.[A-Za-z0-9_\-]{10,}")),
     ("bearer-token", re.compile(r"[Bb]earer[ \t]+(?<![A-Za-z0-9_])[A-Za-z0-9_\-\.]{30,}")),
     ("db-uri-with-password", re.compile(r"(?:postgres(?:ql)?|mysql|mongodb(?:\+srv)?|redis)://[^\s:@/]+:[^\s@/]{6,}@")),
     # `[ \t]` and not `\s`: an assignment must be on ONE line. With bare `\s` the
@@ -224,9 +254,16 @@ def _shannon(s: str) -> float:
 
 
 def is_excluded(rel: str) -> bool:
-    """True when a HERMES_HOME-relative path must never be synced."""
+    """True when a HERMES_HOME-relative path must never be synced.
+
+    Single source of truth for exclusion: `collect_local` (what gets pushed) and
+    `cmd_audit` (what gets reported) must never disagree about a path, or a file
+    could sit on the container disk while both report it handled.
+    """
     rel = rel.strip("/")
     if not rel:
+        return True
+    if rel in SENSITIVE_LOCAL_FILES or rel in RUNTIME_LOCAL_FILES:
         return True
     parts = rel.split("/")
     for p in parts[:-1]:
@@ -818,6 +855,80 @@ def cmd_doctor(args) -> int:
     return 0 if not blocking else 3
 
 
+def cmd_audit(args) -> int:
+    """Classify EVERY file under HERMES_HOME as synced / excluded / unclassified.
+
+    The point is the third bucket. A file that is neither in the repo nor covered
+    by an explicit rule is a silent gap: it survives on the container disk only,
+    and nobody notices until the container is gone. This command fails on those,
+    so the gap has to be answered rather than ignored.
+    """
+    home = hermes_home()
+    token = require_token(args.token)
+    gh = GitHub(token, args.repo, args.verbose)
+    _, _, blobs, _ = fetch_remote_state(gh, args.branch)
+    manifest = remote_manifest(gh, blobs)
+    in_repo = set((manifest or {}).get("files", {}))
+    if not in_repo:
+        print("NOTE: repo manifest is empty/unreadable — every file will look "
+              "unclassified. Push first.")
+
+    synced: list[tuple[str, str]] = []
+    excluded: list[tuple[str, str]] = []
+    unclassified: list[str] = []
+
+    for path in iter_files(home):
+        rel = path.relative_to(home).as_posix()
+        if rel.startswith(".ghfirst/"):
+            excluded.append((rel, "sync bookkeeping (local cache, by design)"))
+            continue
+        if rel.startswith("ghfirst/"):
+            repo_path = "tool/" + rel[len("ghfirst/"):]
+            if repo_path in in_repo:
+                synced.append((rel, repo_path))
+            else:
+                unclassified.append(rel)
+            continue
+        repo_path = "state/" + rel
+        if repo_path in in_repo:
+            synced.append((rel, repo_path))
+            continue
+        if is_excluded(rel):
+            excluded.append((rel, "exclusion rule"))
+            continue
+        top = rel.split("/")[0]
+        if top in REBUILDABLE_PREFIXES:
+            excluded.append((rel, "runtime/rebuildable"))
+            continue
+        unclassified.append(rel)
+
+    total = len(synced) + len(excluded) + len(unclassified)
+    print(f"HERMES_HOME: {home}")
+    print(f"repo:        {args.repo}@{args.branch}  head-manifest files={len(in_repo)}")
+    print(f"total local files: {total}")
+    print(f"  in repo            : {len(synced)}")
+    print(f"  excluded by design : {len(excluded)}")
+    print(f"  UNCLASSIFIED       : {len(unclassified)}")
+    if unclassified:
+        print("\nUNCLASSIFIED files are neither in the repo nor covered by a rule.")
+        print("Each is either (a) missing from the sync map and should be pushed,")
+        print("or (b) runtime state that needs an explicit rule in the tool:")
+        for rel in unclassified[:60]:
+            print(f"  ? {rel}")
+        if len(unclassified) > 60:
+            print(f"  ... and {len(unclassified) - 60} more")
+        if args.verbose:
+            print("\n--- excluded detail ---")
+            for rel, why in excluded:
+                print(f"  - {rel}  [{why}]")
+        return 9
+    print("\nAUDIT OK: every local file is either in GitHub or explicitly excluded.")
+    if args.verbose:
+        for rel, why in excluded:
+            print(f"  - {rel}  [{why}]")
+    return 0
+
+
 def cmd_status(args) -> int:
     home = hermes_home()
     token = require_token(args.token)
@@ -1186,6 +1297,11 @@ def build_parser() -> argparse.ArgumentParser:
 
     p = sub.add_parser("status", parents=[common], help="local vs repo drift")
     p.set_defaults(func=cmd_status)
+
+    p = sub.add_parser("audit", parents=[common],
+                       help="classify EVERY local file: in repo / excluded / "
+                            "unclassified (fails on unclassified)")
+    p.set_defaults(func=cmd_audit)
 
     p = sub.add_parser("push", parents=[common],
                        help="commit the whole tree atomically, then verify")
