@@ -31,6 +31,27 @@ churn and meaningless history. Do not commit them, and do not claim you have
 protected them — say plainly they need a real DB service. A user reading a
 green "in sync" status will assume everything is covered.
 
+## Build an `audit` command, not just `push`
+
+`push`/`status` only answer "is what I *track* in sync?". On a disposable disk
+the question that matters is "is anything here I am *not* tracking at all?"
+Add a command that walks every file under the state root and forces each into
+`in-repo` / `excluded-by-rule` / `UNCLASSIFIED`, exiting non-zero on the third
+bucket. A new state file added by an upstream release then trips the audit
+until the tool is taught about it.
+
+This is not theoretical. The first audit run on a live Hermes home found 12
+unplaced files, including:
+
+- `shared/nous_auth.json` — live OAuth JWTs (a credential, unguarded)
+- `memories/MEMORY.md`, `memories/USER.md` — genuinely durable state that was
+  *not* in the sync map, silently unprotected
+- `skills/.curator_ledger.jsonl` — skill-provenance ledger
+
+The audit must share ONE exclusion predicate with the collector. Two
+implementations drift, and a path can then sit on disk while both report it
+handled.
+
 ## Reference implementation
 
 The deployment built from this skill has a working ~1200-line engine at
@@ -71,6 +92,13 @@ cannot span lines. Conversely, a test suite full of token-shaped fixtures
 *will* trip the gate — assemble fixtures from string fragments at runtime so
 the file itself stays clean.
 
+8. **OAuth tokens are JWTs and match no prefix regex.**
+   `eyJhbGciOi....eyJzdWIi....signature` has no `sk-`/`ghp_` marker, so a live
+``access_token` in a synced file passes a prefix-only scanner with at most a
+soft entropy warning. Add an explicit `jwt-token` pattern (three base64url
+segments, first two starting `eyJ`). This gap was found only by auditing the
+live filesystem, not by review.
+
 5. **Verify by reading back, not by trusting the write.**
    After committing, fetch the tree and re-hash blobs against the manifest.
 A push that "succeeded" is not evidence the content is in the repo.
@@ -90,6 +118,7 @@ Run these before reporting success:
 
 - `doctor` — credential source, repo, push permission, scan result.
 - `plan` — exact path map; confirm nothing sensitive is listed.
+- `audit` — must report **0 unclassified**; investigate every file it names.
 - `push` then `verify --full` — hash every blob in the repo.
 - `pull` into an empty home; byte-compare against the source tree.
 - Confirm a real secret **is** blocked and the branch head does not move.
