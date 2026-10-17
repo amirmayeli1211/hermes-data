@@ -1,7 +1,7 @@
 {
   "commit": null,
   "excluded_count": 3,
-  "file_count": 335,
+  "file_count": 337,
   "files": {
     "state/SOUL.md": {
       "sha256": "3bd38ef92efb90d0fdda1bb73036185d4a4bc11079963cb0e2db71c84281e64e",
@@ -10,6 +10,10 @@
     "state/config.yaml": {
       "sha256": "e031726343277947408df3bc427d41334249c31fc27b2b60b2154ef0550aea73",
       "size": 126028
+    },
+    "state/cron/jobs.json": {
+      "sha256": "3534498d1f52abff709f0aea73f38016782da53bd44003e7c2c9ea3de2741924",
+      "size": 2166
     },
     "state/skills/.bundled_manifest": {
       "sha256": "49a899583a852d558603d43b969fbdf788e372a70cb6ec86c73c4af08dd22049",
@@ -1327,6 +1331,10 @@
       "sha256": "22b996996ae2bf252b31cfd2636231f08936729a381dce7ba8bfa4afb8ffe8c6",
       "size": 8481
     },
+    "tool/ARCHITECTURE.md": {
+      "sha256": "ec307009150eb0c8d784c4ece79822a4f52611e15c0b70cf4c8481566a1201f4",
+      "size": 6374
+    },
     "tool/bootstrap.sh": {
       "sha256": "b5c3aa88d4ffa158732d0dfbf0a3e4f0bacd17f49b99d52359c42ebf199429c6",
       "size": 3626
@@ -1344,7 +1352,7 @@
       "size": 10125
     }
   },
-  "generated_at": "2026-10-17T19:21:51.390472Z",
+  "generated_at": "2026-10-17T19:22:27.070887Z",
   "host": "bd1e2d36e25d",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -1354,5 +1362,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 3007398
+  "total_bytes": 3015938
 }
