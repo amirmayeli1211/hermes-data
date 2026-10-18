@@ -133,6 +133,9 @@ EXCLUDE_NAME_PATTERNS = [
     re.compile(r"^telegram_update_receipts_.*\.json$"),
     re.compile(r"^\.skills_prompt_snapshot\.json$"),
     re.compile(r"^state\.json$"),               # local-only sync bookkeeping
+    # Append-only per-fire cron telemetry (timings, token counts, errors).
+    # Found by `audit` on a live home; grows a line per job fire.
+    re.compile(r"^usage_audit\.jsonl$"),
     re.compile(r"\.pyc$"),
     re.compile(r"\.ghfirst-tmp$"),
 ]
