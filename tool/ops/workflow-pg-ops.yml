@@ -1,0 +1,89 @@
+name: pg-ops
+# Runs one SSH phase against the PasarGuard server.
+#
+# WHY A RUNNER AND NOT THIS SANDBOX
+#   The Hermes sandbox allows outbound traffic only on ports 80/443, so it cannot
+#   open an SSH connection to anything. A GitHub runner has unrestricted egress,
+#   so the connection happens here and the output comes back through the job log.
+#
+# SECURITY
+#   The host, user and password come from encrypted repository secrets. They are
+#   never written into this file, into git history, or onto the runner's disk beyond
+#   the lifetime of the job. The password is passed to sshpass via an environment
+#   variable (SSHPASS) rather than argv, so it does not appear in the process list.
+
+on:
+  workflow_dispatch:
+    inputs:
+      phase:
+        description: "probe | prepare | install | node | status | cleanup"
+        required: true
+        default: probe
+        type: choice
+        options: [probe, prepare, install, node, status, cleanup]
+      script_ref:
+        description: "git ref of this repo holding ops/remote.sh"
+        required: false
+        default: main
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  ssh:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - name: Checkout the ops scripts
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.script_ref }}
+
+      - name: Install sshpass
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq sshpass
+
+      - name: Show the phase about to run
+        run: echo "phase=${{ inputs.phase }}"
+
+      - name: Run the phase over SSH
+        id: run
+        env:
+          SSHPASS: ${{ secrets.PG_PASS }}
+          TARGET_HOST: ${{ secrets.PG_HOST }}
+          TARGET_USER: ${{ secrets.PG_USER }}
+        run: |
+          set -uo pipefail
+          : "${TARGET_HOST:?PG_HOST secret is not set}"
+          : "${TARGET_USER:?PG_USER secret is not set}"
+
+          # StrictHostKeyChecking=no: the host key is unknown and pinning it here
+          # would mean storing it as another secret. The password is the credential.
+          SSH_OPTS="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null \
+                    -o ConnectTimeout=25 -o ServerAliveInterval=20 -o LogLevel=ERROR"
+
+          echo "connecting to ${TARGET_HOST} as ${TARGET_USER} (port 22)"
+          # -T: no pty (the remote script is not interactive).
+          # stdin is the script itself, with the phase passed as an argument.
+          set +e
+          sshpass -e ssh $SSH_OPTS -T "${TARGET_USER}@${TARGET_HOST}" \
+            "bash -s -- '${{ inputs.phase }}'" < ops/remote.sh
+          rc=$?
+          set -e
+          echo "remote phase exit code: $rc"
+          exit $rc
+
+      - name: Summary
+        if: always()
+        run: |
+          {
+            echo "### pg-ops: \`${{ inputs.phase }}\`"
+            echo ""
+            echo "| item | value |"
+            echo "| --- | --- |"
+            echo "| phase | \`${{ inputs.phase }}\` |"
+            echo "| status | \`${{ steps.run.outcome }}\` |"
+            echo "| run | ${{ github.run_id }} |"
+          } >> "$GITHUB_STEP_SUMMARY"
