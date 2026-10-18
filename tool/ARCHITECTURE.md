@@ -56,6 +56,72 @@ lost on container deletion — see "Known limitations".
 `models_dev_cache.json`, `provider_models_cache.json`, gateway pid/lock/socket
 files, Telegram update receipts, `__pycache__`.
 
+## Disk layout — two very different filesystems
+
+| mount | size | lifetime | role |
+| --- | --- | --- | --- |
+| `/data` (ext4, `/dev/zd3792`) | **434 MB** | **persistent** | Tier 1 — durable data only. Small and precious. |
+| `/` (overlay) | 2.9 TB | **ephemeral** (lost on container replace) | Tier 2 — anything big or rebuildable. |
+
+The real risk to this deployment is not skills (3.9 MB). It is that Hermes sets
+`TMPDIR=$HERMES_HOME/cache/scratch`, which is on the **434 MB** volume.
+**Measured: a single 500 MB temp job filled `/data` to 100%.** `models_dev_cache.json`
+alone is 5.5 MB, and `state.db-wal` grows with every turn.
+
+### `offload.sh` — the fix
+
+Redirects `TMPDIR`/`TMP`/`TEMP` into `/var/tmp/hermes-offload/tmp` on the big
+disk. Verified `PASS: 200 MiB written, /data grew by 0 KiB`.
+
+```sh
+sh ghfirst/offload.sh setup     # create area, patch .env, report
+sh ghfirst/offload.sh verify    # prove writes bypass /data
+sh ghfirst/offload.sh status    # both tiers + where temp actually goes
+sh ghfirst/offload.sh clean     # drop rebuildable cargo
+```
+
+`offload-boot.sh` recreates the area and is called at the top of every
+`reconcile.sh` tick. **This matters:** `/var/tmp` is ephemeral, so after a
+container rebuild the directories are gone while `.env` still points `TMPDIR` at
+them — and Python's `tempfile` then falls back to the next candidate, which is
+`$HERMES_HOME/cache/scratch`, the very disk being protected. **A `TMPDIR`
+pointing at a missing directory is worse than no `TMPDIR` at all.** Measured:
+with `TMPDIR=/var/tmp/missing`, `tempfile.gettempdir()` returned
+`/data/.hermes/cache/scratch`.
+
+**Do not symlink `cache/scratch` to the big disk.** Tested and rejected:
+`os.replace` across filesystems fails with `EXDEV` ("Invalid cross-device
+link"), and Hermes writes state with tmp-file + `os.replace`. `TMPDIR`
+redirection is the safe lever because it is read at boot, and
+`apply_scratch_tmp_env` leaves a user-set value alone (verified).
+
+### `skill-fetch.sh` — install skills without touching `/data`
+
+Installs skills into `/var/tmp/hermes-offload/skills`, registered through
+`skills.external_dirs` (resolved at tier=3, below local skills so local wins on
+a name collision). Verified: a skill installed there loads through `skill_view`.
+
+```sh
+sh ghfirst/skill-fetch.sh add anthropics/skills   # fetch from GitHub
+sh ghfirst/skill-fetch.sh list
+sh ghfirst/skill-fetch.sh push                    # snapshot into the repo
+sh ghfirst/skill-fetch.sh doctor
+```
+
+Snapshots go to `state/skills/.offloaded/` in the repo so an offloaded skill
+survives a container rebuild; the live copy stays on the big disk. External
+dirs are scanned **one level deep**, so a skill must sit at
+`<root>/<name>/SKILL.md`, not nested under a category.
+
+## Two filesystems, three tiers of data
+
+1. **Durable and small** → `/data`, and mirrored to GitHub.
+   Config, memories, credentials, the tooling.
+2. **Big or rebuildable** → the offload area. Temp files, downloads, clones,
+   builds, offloaded skills. Everything here must be restorable from the repo.
+3. **Never written anywhere durable** → nothing. If it is worth keeping, it goes
+   to the repo.
+
 ## Commands
 
 ```sh

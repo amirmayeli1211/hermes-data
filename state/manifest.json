@@ -1436,8 +1436,8 @@
       "size": 8481
     },
     "tool/ARCHITECTURE.md": {
-      "sha256": "cf9f533c0b39bcfaeb29a4250e6617593a96543c02c4de98bc228a72dcf8d9bf",
-      "size": 7584
+      "sha256": "2a78afa645c4e715adfc83392a86058b944ab28f4354c93893d8e8786819c103",
+      "size": 10764
     },
     "tool/bootstrap.sh": {
       "sha256": "b5c3aa88d4ffa158732d0dfbf0a3e4f0bacd17f49b99d52359c42ebf199429c6",
@@ -1468,7 +1468,7 @@
       "size": 10925
     }
   },
-  "generated_at": "2026-10-18T03:41:41.217886Z",
+  "generated_at": "2026-10-18T03:43:34.805711Z",
   "host": "bd1e2d36e25d",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -1478,5 +1478,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 3118213
+  "total_bytes": 3121393
 }
