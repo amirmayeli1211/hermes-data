@@ -1,7 +1,7 @@
 {
   "commit": null,
   "excluded_count": 12,
-  "file_count": 564,
+  "file_count": 572,
   "files": {
     "state/SOUL.md": {
       "sha256": "3bd38ef92efb90d0fdda1bb73036185d4a4bc11079963cb0e2db71c84281e64e",
@@ -12,8 +12,8 @@
       "size": 126082
     },
     "state/cron/jobs.json": {
-      "sha256": "ea4048387ed2549d1a16ebc2c4df7c3dd0aab1d81d3f97b244c97824e9a13a71",
-      "size": 2769
+      "sha256": "fefceea6fd82d3ade0473d754e575dacdccca94fe66ff3ecacc1efbd000ae34f",
+      "size": 2648
     },
     "state/cron/output/ecb9785322d5/2026-10-17_19-52-27.md": {
       "sha256": "08a7bbc3047764ae80ab22f210ec7a079ae1fe08bf3fecb1b5f1e5f6690bdc73",
@@ -154,6 +154,10 @@
     "state/cron/output/ecb9785322d5/2026-10-18_12-58-45.md": {
       "sha256": "124e451f8bbd4e6dab7aea708f2c90d13b46cf271f292b6b7da6b43a51810e97",
       "size": 3609
+    },
+    "state/cron/output/ecb9785322d5/2026-10-18_13-29-42.md": {
+      "sha256": "a4f1d3b46542129a01622fdf89ebe017516e6e270a6a9b05c9717f7a7a540495",
+      "size": 3257
     },
     "state/memories/MEMORY.md": {
       "sha256": "7357ce334ce0826f6e4c22067c61cbf786c17f232b1786d2b90cfef423afd70d",
@@ -2111,6 +2115,14 @@
       "sha256": "22b996996ae2bf252b31cfd2636231f08936729a381dce7ba8bfa4afb8ffe8c6",
       "size": 8481
     },
+    "state/workspace/horror-game/APK.md": {
+      "sha256": "64721fc0f7a7b6deb613bbf9e3b06167c5f3c8eafc774ec117bface4978a0cec",
+      "size": 6188
+    },
+    "state/workspace/horror-game/README.md": {
+      "sha256": "75e3af73a993c28665c16f297a85951a97a2621de9683c7043ec93fcda21f875",
+      "size": 5310
+    },
     "state/workspace/horror-game/assets/audio/ambient_basement.mp3": {
       "sha256": "f6bceee81e05a43000a1e800dd722ba1eae6b8f599ca0ac0d56c527b0c1592a5",
       "size": 160958
@@ -2163,6 +2175,14 @@
       "sha256": "760fc6b1cf5f32fb22cc6e4fdf1f223b77d0b58e3a58ce782b9a0e7cb8a0a80a",
       "size": 23032
     },
+    "state/workspace/horror-game/dist/room13.html": {
+      "sha256": "038d6857bd64bfdaacda2be3d68d2cd46e00e2ee4f2364b4d589e68923e825b8",
+      "size": 953317
+    },
+    "state/workspace/horror-game/dist/room13.zip": {
+      "sha256": "6bcfe4a3b035b5acfcf619be27c7025cdb4d5fd247e81621830c722c8ad1987e",
+      "size": 486388
+    },
     "state/workspace/horror-game/index.html": {
       "sha256": "154878d04945ce297970b732e85312f723bf3012e80a87a6b3265d9f80348acd",
       "size": 4073
@@ -2191,9 +2211,17 @@
       "sha256": "9530cd1a04d700a6cbfeaea3dc8132588a869cbb3ac51fa9b2333a0868e8d055",
       "size": 6970
     },
+    "state/workspace/horror-game/tools/check-audio.js": {
+      "sha256": "0bbff62ebb3f2a61a1b8566c7e9cc9e5d828d6dcf225ec4d9810eb3ba106ecc1",
+      "size": 8339
+    },
     "state/workspace/horror-game/tools/generate-audio.sh": {
       "sha256": "dfcd8ac3e2d59920c9e64f8f35c08ac69277d04e78dc4413b283b6c61bb1f43a",
       "size": 7185
+    },
+    "state/workspace/horror-game/tools/package.js": {
+      "sha256": "bd60d699ef0e1e785d6782f5baf1c2dac949450d81693d2612efbeee7c07cd1a",
+      "size": 6726
     },
     "state/workspace/horror-game/tools/playtest.js": {
       "sha256": "b433b5976555246284538ebf95cab304ae1665921f6f4c41f7fff5920d72826e",
@@ -2206,6 +2234,10 @@
     "state/workspace/horror-game/tools/validate-world.js": {
       "sha256": "b79eee8aca2bcf4bb0df171bc3b0f1a9264eac2bae0404ffe3d7f79f0a7e70e9",
       "size": 4891
+    },
+    "state/workspace/horror-game/tools/verify-package.py": {
+      "sha256": "43a5d0d6b1867da93caf89f790fe2ae5ba31e7aaa9e42fa15e1b5b4b3e81b3f0",
+      "size": 5313
     },
     "tool/ARCHITECTURE.md": {
       "sha256": "8b305d41dcd3e8e60017c5c9c677cc317dc3f13ca137ebef757ba1c43898d834",
@@ -2260,7 +2292,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-18T13:29:30.014276Z",
+  "generated_at": "2026-10-18T13:58:34.192236Z",
   "host": "bd1e2d36e25d",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -2270,5 +2302,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 4850495
+  "total_bytes": 6325212
 }
