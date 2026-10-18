@@ -3,7 +3,7 @@
     {
       "id": "ecb9785322d5",
       "name": "ghstore-reconcile",
-      "prompt": "Run the GitHub-first state reconcile and report the result.\n\nExecute this exact command:\n\n    sh /data/.hermes/ghfirst/reconcile.sh\n\nIt pushes any local Hermes state changes to the GitHub repository, then verifies the committed tree's integrity, then prints drift. The credential is read from /data/.hermes/.env automatically — never print, echo, or reveal its contents or any token value.\n\nReply with a SHORT plain-text status: the commit sha pushed (if any), whether verify passed, the drift counts (local-only / remote-only / differing), and if anything failed, the exact error and the exit code. If nothing changed, say 'no changes — repo in sync'. Keep it to a few lines. Never claim success unless the command's own output said VERIFY OK.",
+      "prompt": "Run the GitHub-first state reconcile and report the result.\n\nExecute this exact command:\n\n    sh /data/.hermes/ghfirst/reconcile.sh\n\nIt pushes any Hermes state changes to the GitHub repository, verifies the committed tree, and reports drift plus /data disk pressure. The credential is read from /data/.hermes/.env automatically — never print, echo, or reveal its contents or any token value.\n\nReply with a SHORT plain-text status (a few lines maximum):\n- the commit sha pushed, or 'no changes — repo in sync'\n- whether verify passed (only claim this if the output literally said VERIFY OK)\n- drift counts (local-only / remote-only / differing)\n- the /data disk line it printed\n- if anything failed: the exact error and the exit code\n\nNever claim success unless the command's own output said VERIFY OK.",
       "skills": [],
       "skill": null,
       "model": null,
@@ -63,5 +63,5 @@
       "fire_claim": null
     }
   ],
-  "updated_at": "2026-10-18T03:37:27.860670+00:00"
+  "updated_at": "2026-10-18T03:40:10.761131+00:00"
 }
