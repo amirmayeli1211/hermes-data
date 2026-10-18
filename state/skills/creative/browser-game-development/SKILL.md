@@ -188,6 +188,11 @@ Produce two artifacts when the user asks for "the game":
    open.
 2. **A `.zip` of the source tree** — the editable project plus tools and README.
 
+**Keep generated artifacts out of the state-sync snapshot only if they are cheap to
+regenerate — otherwise ship them.** A `dist/` directory is a build product, but it
+is also the thing the user opens; commit it alongside the source rather than
+excluding it, and make the packaging step reproducible so a rebuild matches.
+
 Then **verify the artifacts programmatically**, because an inlining script fails
 quietly. Required checks:
 
