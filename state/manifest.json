@@ -1,7 +1,7 @@
 {
   "commit": null,
   "excluded_count": 6,
-  "file_count": 366,
+  "file_count": 367,
   "files": {
     "state/SOUL.md": {
       "sha256": "3bd38ef92efb90d0fdda1bb73036185d4a4bc11079963cb0e2db71c84281e64e",
@@ -12,8 +12,8 @@
       "size": 126082
     },
     "state/cron/jobs.json": {
-      "sha256": "9097a1b6576f23af796cba32d9e6d6646e2eab9e4b54b2c1c35de61741a8ab6d",
-      "size": 2648
+      "sha256": "32d24c8f0ef821be23f78e322e219ff377eec370c138ae0dedf987f05bf2c021",
+      "size": 2769
     },
     "state/cron/output/ecb9785322d5/2026-10-17_19-52-27.md": {
       "sha256": "08a7bbc3047764ae80ab22f210ec7a079ae1fe08bf3fecb1b5f1e5f6690bdc73",
@@ -1439,6 +1439,10 @@
       "sha256": "b5c3aa88d4ffa158732d0dfbf0a3e4f0bacd17f49b99d52359c42ebf199429c6",
       "size": 3626
     },
+    "tool/cred-rotate.sh": {
+      "sha256": "55dafaf30dc81edff31220524103b7fd2e9f8f79c7dccec1c025ab6760be4a38",
+      "size": 17649
+    },
     "tool/disk-guard.sh": {
       "sha256": "9759e270de6b0cab80619d3425ee37fde90e15a9f18fe36342598106822a35d1",
       "size": 9670
@@ -1468,7 +1472,7 @@
       "size": 10925
     }
   },
-  "generated_at": "2026-10-18T03:51:58.584239Z",
+  "generated_at": "2026-10-18T04:11:28.759084Z",
   "host": "bd1e2d36e25d",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -1478,5 +1482,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 3136642
+  "total_bytes": 3154412
 }
