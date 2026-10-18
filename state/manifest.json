@@ -1,7 +1,7 @@
 {
   "commit": null,
   "excluded_count": 10,
-  "file_count": 366,
+  "file_count": 365,
   "files": {
     "state/SOUL.md": {
       "sha256": "3bd38ef92efb90d0fdda1bb73036185d4a4bc11079963cb0e2db71c84281e64e",
@@ -106,10 +106,6 @@
     "state/skills/.curator_state": {
       "sha256": "f78cbcfcc28a81ce261c4d3ccba4bee023c75457836622229c25818e608c82b0",
       "size": 337
-    },
-    "state/skills/.offloaded/template/SKILL.md": {
-      "sha256": "eb685d91de039ed864fbd790cddf31684b017fd4a34ee1a55760d8d7cdbadefa",
-      "size": 140
     },
     "state/skills/.usage.json": {
       "sha256": "9c80a6db34f7d8beda9873295798cfd23a721b1cf0ea0f18f6cecf7995733fd1",
@@ -1468,7 +1464,7 @@
       "size": 10925
     }
   },
-  "generated_at": "2026-10-18T03:43:34.805711Z",
+  "generated_at": "2026-10-18T03:44:51.151433Z",
   "host": "bd1e2d36e25d",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -1478,5 +1474,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 3121393
+  "total_bytes": 3121253
 }
