@@ -130,6 +130,15 @@ turned out to be rather than silently patching both.
 
 ## Pitfalls
 
+- **`pkill -f <pattern>` matches your own command line and kills your own
+  shell.** A cleanup such as `pkill -f chrome-test` run from a shell whose command
+  string itself contains `chrome-test` terminates that shell mid-script: the call
+  returns `SIGTERM`, and every later step in the same block is silently skipped —
+  which looks like the harness hanging rather than like a kill. Kill by PID, or
+  bracket one character (`pkill -f "[c]hrome-test"`), which the regex still
+  matches while the literal command line no longer self-matches. Chain a
+  terminating `pkill -f "remote-debugging"` into a test command and the same
+  thing happens to the test.
 - **Adjacent rooms put their perimeter walls on DIFFERENT tiles.** A 1-tile door
   opens one side only and the rooms stay sealed; every door needs to be 2 tiles on
   each axis to cut through both walls. Symptom: flood-fill reports every room
@@ -198,6 +207,16 @@ Zip can be written with `zlib.deflateRawSync` and a local header + central
 **Ship the archive from disk, never from a string in the build script.** An
 inline `README = \`...\`` and the real `README.md` drifted apart, and the verifier
 caught the zip containing a document that existed nowhere in the project.
+
+**Then send the files to the user — do not only report that they exist.** Run the
+packaging step and attach the artifacts in the SAME turn that reports the tests
+passing. A turn that describes a finished game, prints a green test summary, and
+attaches nothing reads to the user as "no game" and they have to ask again. This
+is the deliverable; a status report is not. Attach with the platform's file
+mechanism (e.g. `MEDIA:/abs/path` on its own line) for both artifacts at once.
+
+The same applies mid-build: when the user asks for the file at any point, produce
+and attach it then rather than finishing the remaining polish first.
 
 Confirm the single file works over `file://` with `--allow-file-access-from-files`
 and no sibling files available, then play it: start, move, reach an ending.

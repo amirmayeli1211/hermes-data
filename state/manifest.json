@@ -1,18 +1,18 @@
 {
   "commit": null,
-  "excluded_count": 12,
-  "file_count": 575,
+  "excluded_count": 13,
+  "file_count": 579,
   "files": {
     "state/SOUL.md": {
       "sha256": "3bd38ef92efb90d0fdda1bb73036185d4a4bc11079963cb0e2db71c84281e64e",
       "size": 668
     },
     "state/config.yaml": {
-      "sha256": "d7b1f94201122ae870a9aa1a2f1ac1e70f9867801f1d63e793a4e15a10fbfea1",
-      "size": 126082
+      "sha256": "79f65ab72dc9d398dca6e73df2213230d75732530b22a5b371ba4d37013a2a7f",
+      "size": 126110
     },
     "state/cron/jobs.json": {
-      "sha256": "5e6040d1c5af56748ebb459c67f6117be32ee28fac00a6288d19ea68cfbe2f45",
+      "sha256": "669b4e931956e4f714afd2a30b06492c5f1a7c5a2bb56bd1276a2583824223f3",
       "size": 2769
     },
     "state/cron/output/ecb9785322d5/2026-10-17_19-52-27.md": {
@@ -171,6 +171,10 @@
       "sha256": "6b9197cd5cc78c9d6163345f411b77f328084d14fabea9edaa9365752f56ce82",
       "size": 3616
     },
+    "state/cron/output/ecb9785322d5/2026-10-18_15-33-41.md": {
+      "sha256": "5e65d68573fab842f9e586e5482be225fe28426a13209b4261d42b1f4d2f7640",
+      "size": 3708
+    },
     "state/memories/MEMORY.md": {
       "sha256": "7357ce334ce0826f6e4c22067c61cbf786c17f232b1786d2b90cfef423afd70d",
       "size": 1751
@@ -188,8 +192,8 @@
       "size": 2727
     },
     "state/skills/.curator_ledger.jsonl": {
-      "sha256": "f968f2b8478843533e9db420dcf4682ed044f2bcc912a8458e6dd3f14eae69c9",
-      "size": 19439
+      "sha256": "c8f85442c1323c3e1c6e59ec1375e6e3917cad51fad5883b98b9f5c891d0cb19",
+      "size": 20499
     },
     "state/skills/.curator_state": {
       "sha256": "f78cbcfcc28a81ce261c4d3ccba4bee023c75457836622229c25818e608c82b0",
@@ -792,7 +796,7 @@
       "size": 7688
     },
     "state/skills/.usage.json": {
-      "sha256": "ff602e800a9d8db9ff101ea1a173c8ccfe317ba19bc6fa5ac459571b09c0f474",
+      "sha256": "9a6e0688dfa7fe294c37178889dab32cce0c53cf14c6295e98e2291e19004ad3",
       "size": 3993
     },
     "state/skills/apple/DESCRIPTION.md": {
@@ -1164,8 +1168,8 @@
       "size": 596
     },
     "state/skills/creative/browser-game-development/SKILL.md": {
-      "sha256": "c852c4f034453147c9811fb650cdea96d8e4ba364e96868b4f3af1142f19dc3e",
-      "size": 12104
+      "sha256": "e9f3e8b82c30b2bb36592c886550d0aa406e7a10e3a6d70e8bb298d8e2895c43",
+      "size": 13396
     },
     "state/skills/creative/browser-game-development/references/headless-verification.md": {
       "sha256": "e67c7d2a02fb3723841b19425cab04a35e10afbeb98fdff1c4632f2eabdbe190",
@@ -2287,6 +2291,18 @@
       "sha256": "f4653b4bee5572919baa87ec660c897f392220ec2741cbefbe4e3cdc7a9755dc",
       "size": 7447
     },
+    "tool/ops/pg-ops.py": {
+      "sha256": "c76c631b1a90543b04b122fcd92502b8b046cc08a5c5dd7353116b37ebb6f7d1",
+      "size": 9695
+    },
+    "tool/ops/remote.sh": {
+      "sha256": "1c5c6c3e89fa6299fe4b7203f6aaf6c933893e97bff1c46ee3cdec9f270fd64e",
+      "size": 10833
+    },
+    "tool/ops/workflow-pg-ops.yml": {
+      "sha256": "79efbc2c0874c981ce947e35d563c41e1babd171ef2540a0cf1c8dbd26d8414f",
+      "size": 3157
+    },
     "tool/reconcile.sh": {
       "sha256": "ec725dc3c90ed9c5ad85f73d7612b51d5705bdb29be2c2076b81f362970259c2",
       "size": 3125
@@ -2304,7 +2320,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-18T15:33:29.129469Z",
+  "generated_at": "2026-10-18T16:04:29.163102Z",
   "host": "bd1e2d36e25d",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -2314,5 +2330,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 6340692
+  "total_bytes": 6370465
 }
