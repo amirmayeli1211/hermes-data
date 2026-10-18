@@ -1,7 +1,7 @@
 {
   "commit": null,
   "excluded_count": 11,
-  "file_count": 554,
+  "file_count": 559,
   "files": {
     "state/SOUL.md": {
       "sha256": "3bd38ef92efb90d0fdda1bb73036185d4a4bc11079963cb0e2db71c84281e64e",
@@ -12,7 +12,7 @@
       "size": 126082
     },
     "state/cron/jobs.json": {
-      "sha256": "235454797bf0f40dca9fc1e670aa26e61d828105fc519fcfa539dbab262cdbd3",
+      "sha256": "5ab655ed32f80385127d64585c837d6207f784091860760ed7199b9e3323b307",
       "size": 2769
     },
     "state/cron/output/ecb9785322d5/2026-10-17_19-52-27.md": {
@@ -142,6 +142,10 @@
     "state/cron/output/ecb9785322d5/2026-10-18_11-25-40.md": {
       "sha256": "09596a1038bc1fd3e5c28d5a8c52ffa2c0919a4de172c719d338a58fdc3f76f8",
       "size": 2767
+    },
+    "state/cron/output/ecb9785322d5/2026-10-18_11-56-48.md": {
+      "sha256": "6354ab1d24ec95c8204eb377e3184763bcdc9eee0024caeae48f3f9adb868d3b",
+      "size": 4568
     },
     "state/memories/MEMORY.md": {
       "sha256": "7357ce334ce0826f6e4c22067c61cbf786c17f232b1786d2b90cfef423afd70d",
@@ -2147,9 +2151,17 @@
       "sha256": "01634cf75baa082eaa5b64febfb22c90b4b62b768a29c84b0f4784bdda3f3b0f",
       "size": 5705
     },
+    "state/workspace/horror-game/js/game.js": {
+      "sha256": "72540d6f5c70c2347f1d147f4c1ca6c8337a6ed3343d6e1c4eb2f770fe7a24e1",
+      "size": 34485
+    },
     "state/workspace/horror-game/js/sprites.js": {
       "sha256": "f5aba5d63d44fcead84a493effb3dde08447187801d03bec6ec99b5a09d88232",
       "size": 14219
+    },
+    "state/workspace/horror-game/js/story.js": {
+      "sha256": "5b5f6fad41da4789ea7b44ce151097e443ebdd4b20a0fa54906dd4f206d7df28",
+      "size": 20498
     },
     "state/workspace/horror-game/js/world.js": {
       "sha256": "22895f9fe39467b8193880f2b075d0d04a4086b0aa581f9692b94808cfb7f235",
@@ -2162,6 +2174,14 @@
     "state/workspace/horror-game/tools/generate-audio.sh": {
       "sha256": "dfcd8ac3e2d59920c9e64f8f35c08ac69277d04e78dc4413b283b6c61bb1f43a",
       "size": 7185
+    },
+    "state/workspace/horror-game/tools/playtest.js": {
+      "sha256": "2d078516b6ba4dfbfb966434bc1a58071331277d8e77fdb5029d43eac9b76ee2",
+      "size": 20742
+    },
+    "state/workspace/horror-game/tools/validate-story.js": {
+      "sha256": "655ca03e6e64256ae4a155024a29ff6cdf6964891065dcaf1317f91f610588fe",
+      "size": 6655
     },
     "state/workspace/horror-game/tools/validate-world.js": {
       "sha256": "b79eee8aca2bcf4bb0df171bc3b0f1a9264eac2bae0404ffe3d7f79f0a7e70e9",
@@ -2220,7 +2240,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-18T11:56:28.999574Z",
+  "generated_at": "2026-10-18T12:27:29.418186Z",
   "host": "bd1e2d36e25d",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -2230,5 +2250,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 4722571
+  "total_bytes": 4809519
 }
