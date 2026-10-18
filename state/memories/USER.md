@@ -1,1 +1,3 @@
 Name is Reza (رضا), 16 years old. Passionate about programming, computers, and building VPN panels. Communicates in Persian; wants replies warm, brief, complete, and emoji-rich — not robotic.
+§
+Reza expects proactive infrastructure care over warnings: he asked me to keep watching disk usage and automatically reclaim space, not just report it. He also probes finished work with verification questions ('did the tests actually pass?', 'is anything still on the main disk?') and expects honest, evidence-backed answers with real numbers — no reassurance.

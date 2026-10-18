@@ -1,6 +1,6 @@
 {
   "commit": null,
-  "excluded_count": 7,
+  "excluded_count": 8,
   "file_count": 382,
   "files": {
     "state/SOUL.md": {
@@ -12,8 +12,8 @@
       "size": 126082
     },
     "state/cron/jobs.json": {
-      "sha256": "063667f2335fc7dc77d6813d5f6f6f904f3bcb69ba338e93a1379018aa45413a",
-      "size": 2648
+      "sha256": "7b110e9539044b3cafc0bde9b08bffbd03a6b751df23c9f286581b87407b6f22",
+      "size": 2769
     },
     "state/cron/output/ecb9785322d5/2026-10-17_19-52-27.md": {
       "sha256": "08a7bbc3047764ae80ab22f210ec7a079ae1fe08bf3fecb1b5f1e5f6690bdc73",
@@ -140,12 +140,12 @@
       "size": 2679
     },
     "state/memories/MEMORY.md": {
-      "sha256": "3cccdd4acfdfadaaefa5c9cf6b0ce7449100c6910d0576009216eeb18ae47332",
-      "size": 1129
+      "sha256": "7357ce334ce0826f6e4c22067c61cbf786c17f232b1786d2b90cfef423afd70d",
+      "size": 1751
     },
     "state/memories/USER.md": {
-      "sha256": "28613550dfb774f3dcac65a0ed9d27f425a74264104e0869eb947d51d272587a",
-      "size": 196
+      "sha256": "0263164630c1edae6fb33025afcf5361729290aed01ce61a0cbe30c4b804cbc8",
+      "size": 561
     },
     "state/scripts/ghstore-reconcile.sh": {
       "sha256": "190e354590267b3a7073c1af9b0f56206bfec99c5b2981dd5c87d049b8770100",
@@ -1532,7 +1532,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-18T11:19:56.821935Z",
+  "generated_at": "2026-10-18T11:25:28.856585Z",
   "host": "bd1e2d36e25d",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -1542,5 +1542,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 3198036
+  "total_bytes": 3199144
 }
