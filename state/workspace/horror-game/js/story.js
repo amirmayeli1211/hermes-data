@@ -488,20 +488,29 @@ function validateStory() {
 
   if (!STORY.nodes[STORY.start]) problems.push(`start node '${STORY.start}' does not exist`);
 
-  // Reachability: every node must be reachable from start, or it is dead content
-  // the player can never see (a common authoring mistake in branching scripts).
+  // Reachability from every entry point. The graph is NOT one chain from `start`:
+  // each interactable object names its own entry node, so validating from `start`
+  // alone reports ~30 false "unreachable" failures. OBJECTS is available because
+  // world.js loads before story.js.
+  const roots = new Set([STORY.start]);
+  try {
+    if (typeof OBJECTS !== 'undefined') for (const o of OBJECTS) if (o.story) roots.add(o.story);
+  } catch (e) { /* OBJECTS not loaded — fall back to the single root */ }
+
   const seen = new Set();
-  const stack = [STORY.start];
+  const stack = [...roots];
   while (stack.length) {
     const id = stack.pop();
-    if (seen.has(id)) continue;
+    if (!id || seen.has(id)) continue;
     seen.add(id);
     const n = STORY.nodes[id];
     if (!n) continue;
     if (n.next) stack.push(n.next);
     if (n.choices) for (const c of n.choices) if (c.to) stack.push(c.to);
   }
-  for (const id of ids) if (!seen.has(id)) problems.push(`node '${id}' is unreachable from start`);
+  for (const id of ids) {
+    if (!seen.has(id)) problems.push(`node '${id}' is unreachable from every entry point`);
+  }
 
   // Every ending declared in ENDINGS must be produced by some node.
   const produced = new Set(ids.map((i) => STORY.nodes[i].ending).filter(Boolean));

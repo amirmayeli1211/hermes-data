@@ -75,9 +75,13 @@ function cdpConnect(wsUrl) {
     const handlers = new Map();
     let nextId = 1;
 
-    function send(method, params) {
+    function send(method, params, sessionId) {
       const id = nextId++;
-      const payload = JSON.stringify({ id, method, params: params || {} });
+      // sessionId goes at the TOP LEVEL of the CDP message, not inside params.
+      // Putting it in params (the obvious-looking mistake) makes the browser
+      // answer -32601 "'X' wasn't found" for every call.
+      const payload = JSON.stringify(sessionId ? { id, method, params: params || {}, sessionId }
+                                               : { id, method, params: params || {} });
       const data = Buffer.from(payload);
       const len = data.length;
       let header;
@@ -176,13 +180,8 @@ async function main() {
   const attached = await cdp.send('Target.attachToTarget', { targetId: page.targetId, flatten: true });
   const sessionId = attached.sessionId;
 
-  // Wrap send to target the page session.
-  const send = (method, params) => cdp.send(method, Object.assign({}, params, {}));
-  const sendS = async (method, params) => {
-    const id = Math.floor(Math.random() * 1e9);
-    // Use the flat session: append sessionId to the params object per CDP spec.
-    return cdp.send(method, Object.assign({ sessionId }, params || {}));
-  };
+  // Every page-level command carries the flat session id.
+  const sendS = (method, params) => cdp.send(method, params || {}, sessionId);
 
   const logs = [];
   const pageErrors = [];
@@ -347,27 +346,55 @@ async function main() {
   check('inventory closes', await evalJs('Game.state') === 'play');
 
   console.log('\n=== endings ===');
+  /* Walking to an ending takes more than one step: choosing a finale option jumps
+     to an ending node, and that node still has 8-9 lines to page through before
+     `finishNode` fires. A first version of this test advanced once and reported
+     all three endings as null — the game was fine, the test was wrong. So: choose,
+     then advance until the state leaves `dialogue`, with a bounded loop. */
   const endings = await evalJs(`(() => {
     const out = {};
     for (const key of ['ending_answer','ending_ritual','ending_flee']) {
       Game.state = 'play';
+      hide('endScreen');
+      Game.endInfo = null;
       Game.inventory = [{id:'tape',name:'نوار',kind:'item',text:''}];
       Game.flags = {knows_ritual: true};
       startDialogue('finale');
-      const n = STORY.nodes.finale;
-      Dlg.lineIndex = n.lines.length - 1;
-      advanceDialogue();                      // reveals choices
-      const wanted = n.choices.findIndex(c => c.to === key);
+      Dlg.lineIndex = STORY.nodes.finale.lines.length - 1;
+      advanceDialogue();                       // reveals the choices
       const visible = Dlg.choices.map(c => c.to);
       const idx = visible.indexOf(key);
-      if (idx >= 0) chooseDialogue(idx);
-      out[key] = Game.endInfo ? Game.endInfo.ending : null;
+      if (idx < 0) { out[key] = 'choice-not-visible'; continue; }
+      chooseDialogue(idx);
+      let guard = 0;
+      while (Game.state === 'dialogue' && guard++ < 40) advanceDialogue();
+      out[key] = Game.endInfo ? Game.endInfo.ending : ('state=' + Game.state);
     }
     return out;
   })()`);
   check('finale choice "answer" reaches the bad ending', endings.ending_answer === 'bad', JSON.stringify(endings));
   check('finale choice "ritual" reaches the best ending', endings.ending_ritual === 'best', JSON.stringify(endings));
   check('finale choice "flee" reaches the flee ending', endings.ending_flee === 'flee', JSON.stringify(endings));
+
+  // The end screen must actually be SHOWN, not just the state flipped — a bug
+  // where the overlay never appears is invisible in a state-only assertion.
+  const endShown = await evalJs(`(() => {
+    Game.state='play'; hide('endScreen'); Game.endInfo=null;
+    Game.inventory=[{id:'tape'}]; Game.flags={knows_ritual:true};
+    startDialogue('finale');
+    Dlg.lineIndex = STORY.nodes.finale.lines.length - 1;
+    advanceDialogue();
+    chooseDialogue(Dlg.choices.map(c=>c.to).indexOf('ending_flee'));
+    let g=0; while(Game.state==='dialogue' && g++<40) advanceDialogue();
+    return {
+      visible: !document.getElementById('endScreen').classList.contains('hidden'),
+      title: document.getElementById('endTitle').textContent,
+      text: document.getElementById('endText').textContent,
+    };
+  })()`);
+  check('end screen overlay is shown at an ending', endShown.visible === true, JSON.stringify(endShown));
+  check('end screen shows the ending title and text',
+    (endShown.title || '').length > 2 && (endShown.text || '').length > 2, JSON.stringify(endShown));
 
   const ritualGated = await evalJs(`(() => {
     Game.inventory = []; Game.flags = {};

@@ -1,7 +1,7 @@
 {
   "commit": null,
-  "excluded_count": 11,
-  "file_count": 559,
+  "excluded_count": 12,
+  "file_count": 563,
   "files": {
     "state/SOUL.md": {
       "sha256": "3bd38ef92efb90d0fdda1bb73036185d4a4bc11079963cb0e2db71c84281e64e",
@@ -12,7 +12,7 @@
       "size": 126082
     },
     "state/cron/jobs.json": {
-      "sha256": "5ab655ed32f80385127d64585c837d6207f784091860760ed7199b9e3323b307",
+      "sha256": "b014da72c7bf324112dccdf2f83abb3665801be82581f593ce194fa7ed731c65",
       "size": 2769
     },
     "state/cron/output/ecb9785322d5/2026-10-17_19-52-27.md": {
@@ -147,6 +147,10 @@
       "sha256": "6354ab1d24ec95c8204eb377e3184763bcdc9eee0024caeae48f3f9adb868d3b",
       "size": 4568
     },
+    "state/cron/output/ecb9785322d5/2026-10-18_12-27-44.md": {
+      "sha256": "f4e8ddfa15b27c834216d44f85460aaca479edb2513fdd0fc833dece65ed60ec",
+      "size": 3267
+    },
     "state/memories/MEMORY.md": {
       "sha256": "7357ce334ce0826f6e4c22067c61cbf786c17f232b1786d2b90cfef423afd70d",
       "size": 1751
@@ -164,8 +168,8 @@
       "size": 2727
     },
     "state/skills/.curator_ledger.jsonl": {
-      "sha256": "4fcc9947cccc7291e9ff2e7b23bd60d8049ff29eaf3fbfec665dde3000300c6b",
-      "size": 15545
+      "sha256": "6cf33ad1bf9d65b8ab87190dd53d058895291494cb5df29f1b6fe3c286842a3a",
+      "size": 18379
     },
     "state/skills/.curator_state": {
       "sha256": "f78cbcfcc28a81ce261c4d3ccba4bee023c75457836622229c25818e608c82b0",
@@ -768,8 +772,8 @@
       "size": 7688
     },
     "state/skills/.usage.json": {
-      "sha256": "8df36c71e0579050f74f73c316bba803a43d65c626b50fa52090e4a3ca1db129",
-      "size": 3478
+      "sha256": "a4cd4654aaf9f7db8593aa0461de571e8544d018955ea3def5ba187f4a781458",
+      "size": 3993
     },
     "state/skills/apple/DESCRIPTION.md": {
       "sha256": "c9537e578d68950224dbc09a425497a780e8c3956db9cb38a97b4a9e985516b3",
@@ -1138,6 +1142,18 @@
     "state/skills/creative/baoyu-infographic/references/styles/ui-wireframe.md": {
       "sha256": "9a27502ab6bba76ad042cfa08834053f9e563c76cc8ffb46456cd3db2a6523a3",
       "size": 596
+    },
+    "state/skills/creative/browser-game-development/SKILL.md": {
+      "sha256": "b999cef27109784402544c9bb996e0c110e088cb3840936135a615bd640da553",
+      "size": 9555
+    },
+    "state/skills/creative/browser-game-development/references/headless-verification.md": {
+      "sha256": "e67c7d2a02fb3723841b19425cab04a35e10afbeb98fdff1c4632f2eabdbe190",
+      "size": 7300
+    },
+    "state/skills/creative/browser-game-development/scripts/cdp-playtest.js": {
+      "sha256": "10e732dbc447e059d02d6c571147e008874690932249730dc5e112c8409d129c",
+      "size": 10864
     },
     "state/skills/creative/claude-design/SKILL.md": {
       "sha256": "1582b0d49e48bdf937b2f555098484e0979cdfa285c6cc9fa329ba8e416d347a",
@@ -1520,8 +1536,8 @@
       "size": 10963
     },
     "state/skills/devops/github-first-storage/SKILL.md": {
-      "sha256": "2db22a02ac040561f0c7e82a09872a97ac74d6376026d1df43fc00d6fc1bb13b",
-      "size": 14759
+      "sha256": "b6b49470c8a7cfae520d7a48c617a0f9bcf70a50778255be526814caf467774b",
+      "size": 15696
     },
     "state/skills/devops/github-first-storage/references/disk-tiers.md": {
       "sha256": "6e5eaa40e0ef43594215778be1e2c28aecb32eeb3ca98ca37ba01ea17122f045",
@@ -2160,8 +2176,8 @@
       "size": 14219
     },
     "state/workspace/horror-game/js/story.js": {
-      "sha256": "5b5f6fad41da4789ea7b44ce151097e443ebdd4b20a0fa54906dd4f206d7df28",
-      "size": 20498
+      "sha256": "d76f5da1f6d1a6a5c056aa2d9ac20278e9a5ff52374e248d826fd73bc928ef8d",
+      "size": 20869
     },
     "state/workspace/horror-game/js/world.js": {
       "sha256": "22895f9fe39467b8193880f2b075d0d04a4086b0aa581f9692b94808cfb7f235",
@@ -2176,8 +2192,8 @@
       "size": 7185
     },
     "state/workspace/horror-game/tools/playtest.js": {
-      "sha256": "2d078516b6ba4dfbfb966434bc1a58071331277d8e77fdb5029d43eac9b76ee2",
-      "size": 20742
+      "sha256": "b433b5976555246284538ebf95cab304ae1665921f6f4c41f7fff5920d72826e",
+      "size": 22466
     },
     "state/workspace/horror-game/tools/validate-story.js": {
       "sha256": "655ca03e6e64256ae4a155024a29ff6cdf6964891065dcaf1317f91f610588fe",
@@ -2240,7 +2256,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-18T12:27:29.418186Z",
+  "generated_at": "2026-10-18T12:58:29.520575Z",
   "host": "bd1e2d36e25d",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -2250,5 +2266,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 4809519
+  "total_bytes": 4846886
 }

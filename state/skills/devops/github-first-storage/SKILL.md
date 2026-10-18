@@ -179,6 +179,18 @@ base64url segments, the first two starting `eyJ`). A prefix-only scanner
 under-reports credential-shaped content; the gap surfaces only by auditing the
 live filesystem, not by review.
 
+9. **Deny-list the SIDECARS of credential files, not just the files.**
+   `cp auth.json auth.json.bak` produces a file holding live tokens whose name is
+   not on any deny list, so it is collected and pushed. Add the whole backup
+   family — `.bak`, `.bak.<n>`, `.old`, `.orig`, `.save`, `.swp`, trailing `~` —
+   to both the exclusion predicate AND the `.gitignore`, so a manual `git add -A`
+   in a clone cannot commit one either. A credential-rotation tool must also deny
+   its own artifacts (`*.pre-rotate.*`): the backup it makes before swapping a
+   token is itself a credential file. Pin this with a regression test, and prove
+   it end to end by creating the sidecar and confirming it is absent from the
+   push set — the collector and the auditor are separate code paths and only the
+   test proves they agree.
+
 ## Disk tiers: not every writable path is equal
 
 A disposable container usually has TWO filesystems with opposite properties,
@@ -272,5 +284,7 @@ Run these before reporting success:
 - Confirm an unchanged tree makes **no** commit.
 - Audit the final tree: search every blob for the live token and for
   exclusion-rule violations.
+- Create a credential sidecar (`cp auth.json auth.json.bak`) and confirm the push
+  set does not contain it.
 - `disk-guard.sh check` (or equivalent) — confirm the reclaim plan, then run it
   under real disk pressure and re-hash the protected files afterwards.
