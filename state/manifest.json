@@ -1,7 +1,7 @@
 {
   "commit": null,
   "excluded_count": 7,
-  "file_count": 383,
+  "file_count": 382,
   "files": {
     "state/SOUL.md": {
       "sha256": "3bd38ef92efb90d0fdda1bb73036185d4a4bc11079963cb0e2db71c84281e64e",
@@ -162,10 +162,6 @@
     "state/skills/.curator_state": {
       "sha256": "f78cbcfcc28a81ce261c4d3ccba4bee023c75457836622229c25818e608c82b0",
       "size": 337
-    },
-    "state/skills/.offloaded/template/SKILL.md": {
-      "sha256": "eb685d91de039ed864fbd790cddf31684b017fd4a34ee1a55760d8d7cdbadefa",
-      "size": 140
     },
     "state/skills/.usage.json": {
       "sha256": "66792b617dde80b1b894fbde5200b2a48563bd8500a6608c2d8843de33954a53",
@@ -1512,8 +1508,8 @@
       "size": 57462
     },
     "tool/offload-boot.sh": {
-      "sha256": "95cdad769aa9cacb6c87279558520e9767de96083751d3da1d464eabfcab299c",
-      "size": 2213
+      "sha256": "ddd02652306044684cc0de7240403045f2febb58ccedc3c1b7f7c0671ca35f98",
+      "size": 3586
     },
     "tool/offload.sh": {
       "sha256": "f4653b4bee5572919baa87ec660c897f392220ec2741cbefbe4e3cdc7a9755dc",
@@ -1536,7 +1532,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-18T11:15:29.277476Z",
+  "generated_at": "2026-10-18T11:17:42.112222Z",
   "host": "bd1e2d36e25d",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -1546,5 +1542,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 3192137
+  "total_bytes": 3193370
 }

@@ -44,6 +44,34 @@ fi
 # also prunes its own scratch on a 24h idle rule, which does not apply here.
 find "$OFFLOAD_ROOT/tmp" -mindepth 1 -mmin +1440 -exec rm -rf {} + 2>/dev/null || true
 
+# --- rehydrate offloaded skills -------------------------------------------
+#
+# The live copies of offloaded skills live HERE, on the ephemeral volume. Their
+# durable snapshot is in the repo at state/skills/.offloaded/, which a restore
+# writes to $HERMES_HOME/skills/.offloaded/ — a staging directory, NOT a path the
+# agent scans. Without this step a container rebuild leaves every offloaded skill
+# restored-but-invisible: present on the small disk, absent from skill_view.
+#
+# Verified before/after: a restored skill appeared only under
+# $HERMES_HOME/skills/.offloaded/ and was missing from the live external dir.
+STAGE="${HERMES_HOME}/skills/.offloaded"
+if [ -d "$STAGE" ]; then
+    added=0
+    for d in "$STAGE"/*/; do
+        [ -f "${d}SKILL.md" ] || continue
+        name="$(basename "$d")"
+        # Only copy when absent or changed, so a live edit is not silently reverted
+        # on every tick. Compare the SKILL.md, which is what defines the skill.
+        if [ ! -f "$OFFLOAD_ROOT/skills/$name/SKILL.md" ] || \
+           ! cmp -s "${d}SKILL.md" "$OFFLOAD_ROOT/skills/$name/SKILL.md"; then
+            rm -rf "$OFFLOAD_ROOT/skills/$name"
+            cp -R "$d" "$OFFLOAD_ROOT/skills/$name"
+            added=$((added + 1))
+        fi
+    done
+    [ "$added" -gt 0 ] && printf 'offload-boot: rehydrated %s skill(s) from the repo snapshot\n' "$added"
+fi
+
 used="$(df -h /data | tail -1 | awk '{print $5}')"
 printf 'offload-boot: %s ready; /data at %s used\n' "$OFFLOAD_ROOT" "$used"
 exit 0
