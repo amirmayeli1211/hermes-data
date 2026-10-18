@@ -1,7 +1,7 @@
 {
   "commit": null,
   "excluded_count": 10,
-  "file_count": 363,
+  "file_count": 366,
   "files": {
     "state/SOUL.md": {
       "sha256": "3bd38ef92efb90d0fdda1bb73036185d4a4bc11079963cb0e2db71c84281e64e",
@@ -12,8 +12,8 @@
       "size": 126082
     },
     "state/cron/jobs.json": {
-      "sha256": "1c5f82f94221e126b700c94125d44d5f983f2ee356329640221b07bfe5162c9a",
-      "size": 2824
+      "sha256": "9097a1b6576f23af796cba32d9e6d6646e2eab9e4b54b2c1c35de61741a8ab6d",
+      "size": 2648
     },
     "state/cron/output/ecb9785322d5/2026-10-17_19-52-27.md": {
       "sha256": "08a7bbc3047764ae80ab22f210ec7a079ae1fe08bf3fecb1b5f1e5f6690bdc73",
@@ -79,6 +79,10 @@
       "sha256": "e6e4cf663342f0b18f8df9e1af053dc35d21e7dc5673f632741b430bdf1b003e",
       "size": 2451
     },
+    "state/cron/output/ecb9785322d5/2026-10-18_03-40-57.md": {
+      "sha256": "d8c031b42de6ff270441460387639ae14fa7d57f9dc6aeba8663b4d320a23f70",
+      "size": 1289
+    },
     "state/memories/MEMORY.md": {
       "sha256": "3c0c92c1acce07b303ed54f7441c40a52f96daeff7505ac7c23b71e12a15c9bd",
       "size": 877
@@ -102,6 +106,10 @@
     "state/skills/.curator_state": {
       "sha256": "f78cbcfcc28a81ce261c4d3ccba4bee023c75457836622229c25818e608c82b0",
       "size": 337
+    },
+    "state/skills/.offloaded/template/SKILL.md": {
+      "sha256": "eb685d91de039ed864fbd790cddf31684b017fd4a34ee1a55760d8d7cdbadefa",
+      "size": 140
     },
     "state/skills/.usage.json": {
       "sha256": "9c80a6db34f7d8beda9873295798cfd23a721b1cf0ea0f18f6cecf7995733fd1",
@@ -1451,12 +1459,16 @@
       "sha256": "3f526b629b160942ca8b6fb608656ec477ac928920bc9c233f5465847058642d",
       "size": 2960
     },
+    "tool/skill-fetch.sh": {
+      "sha256": "01ce7a02fd622b6e9028b0c1dba04a7cd58f2693b950682f7b3f373bf7709cac",
+      "size": 10722
+    },
     "tool/tests/test_ghstore.py": {
       "sha256": "0c84c45a343efac6d55835436fbced3f93717da18d95bd6da6b37a9dff04c2fc",
       "size": 10925
     }
   },
-  "generated_at": "2026-10-18T03:40:48.287203Z",
+  "generated_at": "2026-10-18T03:41:20.345515Z",
   "host": "bd1e2d36e25d",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -1466,5 +1478,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 3106056
+  "total_bytes": 3118031
 }

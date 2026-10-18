@@ -23,24 +23,24 @@
       "schedule_display": "every 30m",
       "repeat": {
         "times": null,
-        "completed": 16
+        "completed": 17
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-10-17T19:22:22.768176+00:00",
-      "next_run_at": "2026-10-18T04:10:46.723454+00:00",
-      "last_run_at": "2026-10-18T03:37:27.860483+00:00",
-      "last_status": "error",
-      "last_error": "RuntimeError: HTTP 401: Missing Authentication header",
+      "next_run_at": "2026-10-18T04:10:57.707889+00:00",
+      "last_run_at": "2026-10-18T03:40:57.707889+00:00",
+      "last_status": "ok",
+      "last_error": null,
       "last_delivery_error": null,
       "last_delivery_unverified": null,
       "last_failure": {
         "at": "2026-10-18T03:37:27.860483+00:00",
         "detail": "RuntimeError: HTTP 401: Missing Authentication header"
       },
-      "failure_streak": 16,
+      "failure_streak": 0,
       "deliver": "local",
       "origin": {
         "platform": "telegram",
@@ -60,11 +60,8 @@
         "lateness_seconds": 59.5,
         "kind": "on_time"
       },
-      "fire_claim": {
-        "at": "2026-10-18T03:40:46.766795+00:00",
-        "by": "bd1e2d36e25d:181:85f92b8619824bab80d00cb39ca118f8"
-      }
+      "fire_claim": null
     }
   ],
-  "updated_at": "2026-10-18T03:40:46.770474+00:00"
+  "updated_at": "2026-10-18T03:40:57.708136+00:00"
 }
