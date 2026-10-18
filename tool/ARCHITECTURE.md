@@ -100,6 +100,63 @@ Two mistakes found by testing, both fixed in the script:
 2. **The reclaim label said KiB for a MiB-scale delta.** `df -P` reports 1024-byte
    blocks, so `delta/1024` is MiB; a 290 MiB reclaim was reported as "290 KiB".
 
+## Credential rotation — the one step that needs a browser
+
+`cred-rotate.sh` handles everything around token rotation. The creation itself
+**cannot** be automated: GitHub exposes no API for creating or rotating a PAT
+(neither classic nor fine-grained), and this tool will never type a password.
+So the flow is: one manual click in the browser, then this does the rest.
+
+```sh
+sh ghfirst/cred-rotate.sh audit                 # what exists, where it leaks, its scopes
+sh ghfirst/cred-rotate.sh check-token <new>     # validate BEFORE adopting; writes nothing
+sh ghfirst/cred-rotate.sh adopt <new>           # validate, back up, swap atomically, verify
+sh ghfirst/cred-rotate.sh scrub                 # redact an exposed token from non-store files
+sh ghfirst/cred-rotate.sh verify
+```
+
+`adopt` validates first and **rolls back** if the new token fails verification, so
+a bad candidate can never leave the deployment without working credentials.
+Verified: three separate bad candidates (fake token, empty string, adopt attempt)
+all exited `4` and left `.env` byte-identical.
+
+### The exposure this was built for
+
+A classic token arrived in a chat message. `audit` found it in three places:
+
+| location | why | risk |
+| --- | --- | --- |
+| `.env` (mode 600) | the credential store | correct — this is where it belongs |
+| `state.db` + `-wal` | the session transcript containing the message | full token in plaintext in chat history |
+| `cache/documents/doc_*.txt` | the staged attachment the message arrived as | full token in plaintext |
+
+Its scopes were `admin:enterprise, admin:org, admin:org_hook, audit_log,
+codespace, copilot, delete:packages, delete_repo, user, workflow,
+write:packages, write:network_configurations` plus `repo`. That is a token which
+can **delete repositories and change organization settings** — nowhere near the
+minimum for "store state in one private repo".
+
+**Scrubbing is damage limitation, not a fix.** The token was transmitted through
+Telegram and stored in plaintext beyond this machine; only revocation makes that
+exposure inert. Order matters: rotate, then revoke, then scrub.
+
+`scrub` was verified on a **copy** of the live database rather than in place:
+69 occurrences → 0, `integrity_check = ok`, 17 sessions and 435 messages still
+intact. It checkpoints the WAL first, backs up before writing, walks every TEXT
+column of every table, and re-scans afterwards to prove the value is gone from
+everywhere except the store.
+
+### Creating the replacement
+
+GitHub → Settings → Developer settings → Personal access tokens →
+**Fine-grained tokens** → Generate new token:
+
+- Repository access: **Only select repositories** → `amirmayeli1211/hermes-data`
+- Permissions: **Contents = Read and write** (Metadata: Read-only is automatic)
+
+That is sufficient. `check-token` prints the exact excess if a candidate is
+over-privileged, and still exits `0` — usable, but it says to do better.
+
 ## Disk layout — two very different filesystems
 
 | mount | size | lifetime | role |
