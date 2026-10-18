@@ -1,7 +1,7 @@
 {
   "commit": null,
   "excluded_count": 7,
-  "file_count": 369,
+  "file_count": 370,
   "files": {
     "state/SOUL.md": {
       "sha256": "3bd38ef92efb90d0fdda1bb73036185d4a4bc11079963cb0e2db71c84281e64e",
@@ -1456,8 +1456,8 @@
       "size": 9670
     },
     "tool/ghstore.py": {
-      "sha256": "ba49bad405954fe7a70ae3b0fda986ff61164f3e717c92095a8edb6a35a6bfdd",
-      "size": 56764
+      "sha256": "329cd29479d3a45da3c992544aacb9a641e022d3a4c5595e08ebdf9985a42d4b",
+      "size": 57462
     },
     "tool/offload-boot.sh": {
       "sha256": "95cdad769aa9cacb6c87279558520e9767de96083751d3da1d464eabfcab299c",
@@ -1478,9 +1478,13 @@
     "tool/tests/test_ghstore.py": {
       "sha256": "0c84c45a343efac6d55835436fbced3f93717da18d95bd6da6b37a9dff04c2fc",
       "size": 10925
+    },
+    "tool/tests/test_sidecars.py": {
+      "sha256": "2dc8162fdd8788dd357b459277c2bb0c3740877c10a8310439c915eee1d07487",
+      "size": 2400
     }
   },
-  "generated_at": "2026-10-18T04:56:19.667465Z",
+  "generated_at": "2026-10-18T04:57:06.968834Z",
   "host": "bd1e2d36e25d",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -1490,5 +1494,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 3162885
+  "total_bytes": 3165983
 }

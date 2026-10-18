@@ -7,6 +7,15 @@
 .env
 .env.*
 !.env.example
+# Sidecars of credential/state files. A careless `cp auth.json auth.json.bak`
+# would otherwise be committed — the .bak suffix is not a deny-listed name.
+*.bak
+*.bak.*
+*.old
+*.orig
+*.save
+*.swp
+*~
 *.pem
 *.key
 *.p12

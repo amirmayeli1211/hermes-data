@@ -138,6 +138,17 @@ EXCLUDE_NAME_PATTERNS = [
     re.compile(r"^usage_audit\.jsonl$"),
     re.compile(r"\.pyc$"),
     re.compile(r"\.ghfirst-tmp$"),
+    # Backups and sidecars of credential/state files. A careless `cp auth.json
+    # auth.json.bak` would otherwise be committed: the .bak suffix is not in the
+    # deny list, and the file it copies holds live tokens.
+    re.compile(r"\.bak$"),
+    re.compile(r"\.bak\.[0-9]+$"),
+    re.compile(r"\.old$"),
+    re.compile(r"\.orig$"),
+    re.compile(r"\.save$"),
+    re.compile(r"\.swp$"),
+    re.compile(r"~$"),                          # editor backups (file~)
+    re.compile(r"\.pre-rotate\."),
 ]
 
 # Individual paths under HERMES_HOME that are runtime-only even though they are
@@ -654,6 +665,15 @@ GITIGNORE = """\
 .env
 .env.*
 !.env.example
+# Sidecars of credential/state files. A careless `cp auth.json auth.json.bak`
+# would otherwise be committed — the .bak suffix is not a deny-listed name.
+*.bak
+*.bak.*
+*.old
+*.orig
+*.save
+*.swp
+*~
 *.pem
 *.key
 *.p12
