@@ -114,8 +114,58 @@ func time_until_next_beat(pos: float) -> float:
 # Drive timing from the audio playback clock, which is steadier than frame delta.
 ```
 
+## When there are no assets: synthesize them
+
+Downloaded sound packs carry unclear licensing and unknown provenance, and a game
+needs sounds tuned to its own pacing. Most effects a game actually requires —
+ambient beds, footsteps, doors, heartbeats, stingers, UI clicks — are a few
+seconds of noise and oscillators, which `ffmpeg` generates with no asset
+pipeline, no licence question, and full reproducibility from one script.
+
+```sh
+# A low drone: two sines a fifth apart (the beating makes it unsettling) over brown noise.
+ffmpeg -f lavfi -i "sine=frequency=55:duration=20" \
+       -f lavfi -i "sine=frequency=82.5:duration=20" \
+       -f lavfi -i "anoisesrc=color=brown:duration=20:amplitude=0.25" \
+       -filter_complex "[0:a][1:a][2:a]amix=inputs=3:duration=shortest,\
+lowpass=f=320,tremolo=f=0.12:d=0.45,afade=t=in:d=2,afade=t=out:st=18:d=2" \
+       -ac 1 -ar 22050 -b:a 80k -y ambient_drone.mp3
+```
+
+The building blocks, and what each one is for:
+
+| Element | ffmpeg source | Use |
+| --- | --- | --- |
+| Pitch / tone | `sine=frequency=N:duration=S` | drones, chimes, thumps, keys |
+| Noise bed | `anoisesrc=color=brown\|pink\|white` | wind, room tone, static, footsteps |
+| Beating | two sines a few Hz apart, `amix`ed | unease; a static drone reads as calm |
+| Syllables | `tremolo` at 0.5-9 Hz on bandpassed pink noise | whispered speech without TTS |
+| Decay envelope | `aeval='val(0)*exp(-K*t)':c=same` | turns a sine into a physical thump |
+| Space | `aecho=in:out:delay:decay` | the echo is what reads as a large room |
+
+Encode effects as mono 22.05 kHz MP3: tiny, and the low fidelity suits a pixel
+aesthetic. A full horror set of 13 effects is around 650 KB.
+
+**Repeated sounds need variation or they sound mechanical.** Generate two or
+three variants of anything fired often (footsteps especially), differing in a
+filter cutoff and a body frequency, and rotate them at playback. Do not ship one
+footstep.
+
+**Keep effects short and stings bounded.** A scare sting that runs long masks the
+dialogue it is meant to punctuate.
+
 ## Pitfalls
 
+- **Assuming audio will start on its own.** Every browser and mobile WebView
+  blocks playback until a user gesture, and a rejected `play()` promise becomes an
+  unhandled rejection that can break the game loop. Gate all sound behind one
+  unlock on the first real interaction, queue anything requested before it, and
+  attach `.catch()` to every `play()`.
+- **One `Audio` element per sound.** Rapid repeats cut each other off, so a
+  second footstep truncates the first. Keep a small pool per sound and pick a
+  free element, restarting on the oldest only when all are busy.
+- **Letting a missing audio file throw.** Attach an `error` listener that ignores
+  it, and degrade to silence. A 404 on one effect must never stop the game.
 - **Treating slider values as dB.** Volume is logarithmic; map `0..1` through
   `linear_to_db` (and back with `db_to_linear`). A linear slider on raw amplitude
   feels like it does nothing until the very bottom.
@@ -136,6 +186,9 @@ func time_until_next_beat(pos: float) -> float:
 
 - `references/adaptive-music.md` — vertical layering vs horizontal re-sequencing,
   transition timing (bars/quantize), stingers, intensity mapping, and crossfades.
+- `references/synthesized-audio.md` — the full ffmpeg recipe set: ambient beds,
+  footsteps, doors, heartbeats, whispers, stingers, and the playback-side pooling
+  and unlock code.
 
 ## Related skills
 

@@ -48,8 +48,17 @@ abilities the metrics come from, that's the engine movement skill + `input-syste
    straight line.
 6. **Gate with intent.** Use locks/keys, abilities, and one-way drops to control
    order and pacing; guide with light, lines, and landmarks rather than walls.
-7. **Playtest and iterate.** Watch real players: where do they get lost, stuck,
+7. **Validate the level as executable data, before playing it.** Write a script
+   that loads the same level data the game loads and proves it is solvable. Do
+   not eyeball a map for reachability — an unreachable room or a key stored
+   behind its own lock makes the game unfinishable, and it is invisible in the
+   editor. The algorithm and its failure modes are in
+   `references/level-validation.md`.
+8. **Playtest and iterate.** Watch real players: where do they get lost, stuck,
    bored, or killed unfairly? Fix the blockout; only dress when it plays well.
+
+Steps 7 and 8 are not interchangeable: the script catches *impossible* levels
+(unreachable, soft-locked, body cannot fit), playtesting catches *unfun* ones.
 
 ## Patterns
 
@@ -105,12 +114,50 @@ const ROOMS := {
 # proves the critical path isn't soft-locked.
 ```
 
+### 4. Two floods prove two different things
+
+Run the flood fill **twice** over the tile grid, changing only what counts as
+passable. Collapsing them into one check loses the distinction that matters:
+
+```js
+const PASSABLE = (t) => t === '.' || t === 'd';   // 'd' open door, 'D' locked
+
+// Flood A — geometry connectivity. Locked doors count as passable, so a failure
+// here means the map is physically severed (a doorway is not cutting through).
+const reachAll = flood((t) => PASSABLE(t) || t === 'D');
+
+// Flood B — progression order. Locked doors BLOCK, so a key that fails here is
+// stored behind the door it opens. That is the soft-lock check.
+const reachOpen = flood(PASSABLE);
+
+// A key is safe only if its CONTAINER is in flood B's reachable set.
+```
+
+Flood A failing and flood B passing means "sealed room". Flood A passing and
+flood B failing means "soft-locked key". Reporting which one fired is most of the
+diagnosis.
+
 ## Pitfalls
 
+- **A one-tile doorway between two adjacent rooms seals both of them.** Drawing
+  each room as a hollow box gives *every* room its own perimeter wall, so
+  side-by-side rooms have TWO wall tiles between them. A 1-tile door punches
+  through one and leaves the other intact — the rooms stay unreachable and the
+  editor shows a perfectly normal-looking doorway. Size every doorway to cover
+  the full wall thickness on its axis (2 tiles for tile-grid rooms that abut),
+  and assert it in the validator rather than trusting the placement.
 - **Dressing before it plays.** Detailing a blockout you haven't validated wastes
   the most expensive work on a layout you'll change. Greybox and test first.
 - **Geometry that ignores metrics**: gaps the jump can't clear, ledges below
   reach, corridors narrower than the camera needs. Size everything in player units.
+- **A doorway narrower than the player's body.** On a grid, an opening must be
+  wide/tall enough for the collision box to pass with slack. A 12x16 px body in a
+  16 px corridor clips on corner rounding. Check every opening against the body
+  size in the same automated pass.
+- **Carving doors over floor instead of only over walls.** A door definition that
+  unconditionally writes its tile is a silent bug: it also cuts passages through
+  room *interiors*, creating routes the design never intended. Make door carving
+  conditional on the tile actually being a wall.
 - **Flat pacing.** Wall-to-wall combat (or wall-to-wall calm) numbs the player.
   Alternate tension and rest; place a breather and a save before the climax.
 - **Testing a mechanic before teaching it.** Players meet a hazard for the first
@@ -129,6 +176,9 @@ const ROOMS := {
 - `references/pacing-and-flow.md` — the difficulty/tension curve in depth,
   teaching-loop design (introduce→develop→twist→test), readability and guidance
   techniques, 2D vs 3D layout considerations, and a blockout review checklist.
+- `references/level-validation.md` — the executable validation pass: the two
+  flood fills, door-thickness and body-fit asserts, object/room membership, and
+  how to run the level data headlessly in a test harness.
 
 ## Related skills
 

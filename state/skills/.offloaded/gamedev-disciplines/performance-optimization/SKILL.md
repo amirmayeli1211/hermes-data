@@ -124,6 +124,51 @@ void Update() {
 // Godot/GDScript: avoid building new arrays/dictionaries every frame in _process; reuse them.
 ```
 
+### 6. Bake generated art once, blit thereafter (canvas 2D)
+
+Procedurally-defined art — sprites drawn from character grids, palettes, or shape
+math — is the worst case for per-frame draw cost if you rasterise it every frame.
+Drawing a 16x16 sprite as 256 `fillRect` calls, hundreds of tiles per frame, blows
+the budget on draw submission alone:
+
+```js
+// WRONG — per-pixel fillRect inside the render loop.
+function drawSprite(g, rows, x, y) {
+  for (let row = 0; row < rows.length; row++)
+    for (let col = 0; col < rows[row].length; col++)
+      if (rows[row][col] !== '.') { g.fillStyle = PAL[rows[row][col]];
+                                    g.fillRect(x + col, y + row, 1, 1); }
+}
+
+// RIGHT — rasterise each sprite to an offscreen canvas ONCE, then drawImage.
+const CACHE = {};
+function bake(rows, name) {
+  const c = document.createElement('canvas');
+  c.width = rows[0].length; c.height = rows.length;
+  const g = c.getContext('2d');
+  for (let y = 0; y < rows.length; y++)
+    for (let x = 0; x < rows[y].length; x++) {
+      const ch = rows[y][x];
+      if (ch === '.' || !PAL[ch]) continue;
+      g.fillStyle = PAL[ch];
+      g.fillRect(x, y, 1, 1);
+    }
+  CACHE[name] = c;
+}
+
+function drawSprite(g, name, x, y) {
+  const c = CACHE[name];
+  if (c) g.drawImage(c, Math.round(x), Math.round(y));   // one call, not hundreds
+}
+```
+
+One `drawImage` per sprite instead of one per pixel turns the whole art set into
+a pre-render pass at load. The same idea covers tinted variants: bake a second
+copy with a flat colour rather than tinting at draw time.
+
+Also set `image-rendering: pixelated` on the canvas so the browser does not
+smooth the upscale — otherwise the pixel art is both slower *and* blurry.
+
 ## Pitfalls
 
 - **Optimizing without profiling.** The intuitive culprit is usually wrong. Measure first, every
@@ -143,6 +188,10 @@ void Update() {
 - **Overdraw** from stacked transparents/particles/full-screen effects re-shading pixels.
 - **No budgets.** Without per-subsystem ms and asset ceilings, performance silently regresses;
   enforce them in your build/CI checks.
+- **Per-pixel drawing instead of blitting.** Rasterising procedural art with `fillRect` in the
+  render loop costs one draw submit per pixel. Bake each sprite to an offscreen canvas once and
+  `drawImage` it. This is invisible in a profile of the *logic* — the cost sits in draw
+  submission, so it does not show up as a script hotspot.
 - **Optimizing too early.** Don't contort a prototype for performance before it's fun or measured.
 
 ## References

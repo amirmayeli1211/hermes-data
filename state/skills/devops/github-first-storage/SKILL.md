@@ -220,8 +220,39 @@ hook allowlist, and fails visibly.
 `external_dirs` — read-only, lower precedence than the local dir, and newly
 created skills still land in the state root.
 - Report three buckets explicitly: protected, excluded-by-rule, and NOT covered.
-A user shown a green status believes everything is in it, and the uncovered
-bucket is the entire point.
+  A user shown a green status believes everything is in it, and the uncovered
+  bucket is the entire point.
+
+### Syncing content that lives off-volume
+
+- **Mirror the offloaded tree verbatim; never assume its depth.** A sync that
+  expects `<offload>/<name>/SKILL.md` stages ZERO items from a category layout
+  (`<offload>/<cat>/<name>/SKILL.md`) and can print "staged 0" without failing,
+  producing a silently empty snapshot. Delete-then-copy the whole tree, and
+  **refuse to stage when the count is 0** so an empty mirror is an error, not a
+  no-op.
+- **Restore direction is a separate path from install direction.** Install writes
+  the off-volume copy; the repo gets a staging snapshot; a rebuild restores to
+  staging — which the application does NOT scan. Rehydrate staging → live in the
+  same periodic job that recreates the offload directories, and `cmp`-guard the
+  copy so a live edit is not reverted every tick.
+- **Do not hand-patch vendored third-party content.** An installer that
+  `rm -rf`s then re-copies a directory destroys local edits, and a live→staging
+  mirror overwrites them from the other side. Keep your own lessons in skills you
+  own; if a vendored file must be corrected, correct it in the upstream install
+  step so a re-install reproduces it.
+
+### Sizing an install before downloading it
+
+Measure a remote repo without cloning it: `GET /repos/{r}/git/trees/{branch}?recursive=1`
+returns every blob with a `size`, so summing them gives the checkout size and
+per-directory sums show where the weight is. Then **filter to what this machine
+can actually run.** Of a 2.84 MB skill pack, 1.87 MB was a docs banner PNG and
+another 122 KB targeted engines with no runtime present (no engine binary, no
+SDK, no display) — installing those would make the skill index claim capability
+the machine does not have. State the skipped parts and the reason in the install
+output, and record a size budget with an explicit stop-and-ask threshold before
+downloading anything large.
 
 Support files: `references/disk-tiers.md` — measurement recipes, the EXDEV
 probe, temp-dir precedence, and the `external_dirs` details.

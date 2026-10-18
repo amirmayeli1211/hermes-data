@@ -1,7 +1,7 @@
 {
   "commit": null,
-  "excluded_count": 8,
-  "file_count": 532,
+  "excluded_count": 11,
+  "file_count": 554,
   "files": {
     "state/SOUL.md": {
       "sha256": "3bd38ef92efb90d0fdda1bb73036185d4a4bc11079963cb0e2db71c84281e64e",
@@ -12,8 +12,8 @@
       "size": 126082
     },
     "state/cron/jobs.json": {
-      "sha256": "5ce7ef5faf1e315c0e8242028380db4b6f19f4dac0961bc6c8f8ec5a2f6176e4",
-      "size": 2648
+      "sha256": "235454797bf0f40dca9fc1e670aa26e61d828105fc519fcfa539dbab262cdbd3",
+      "size": 2769
     },
     "state/cron/output/ecb9785322d5/2026-10-17_19-52-27.md": {
       "sha256": "08a7bbc3047764ae80ab22f210ec7a079ae1fe08bf3fecb1b5f1e5f6690bdc73",
@@ -160,8 +160,8 @@
       "size": 2727
     },
     "state/skills/.curator_ledger.jsonl": {
-      "sha256": "0a3ee4aabf49e4c6a630a1c6d80163d4a68aed612e873a73873084f57c0936dc",
-      "size": 9755
+      "sha256": "4fcc9947cccc7291e9ff2e7b23bd60d8049ff29eaf3fbfec665dde3000300c6b",
+      "size": 15545
     },
     "state/skills/.curator_state": {
       "sha256": "f78cbcfcc28a81ce261c4d3ccba4bee023c75457836622229c25818e608c82b0",
@@ -196,12 +196,16 @@
       "size": 7528
     },
     "state/skills/.offloaded/gamedev-disciplines/audio-design/SKILL.md": {
-      "sha256": "4d8418660c0423164a0319d4429a196ee0ec86b4f05f764bae1a212f73e287e1",
-      "size": 6811
+      "sha256": "cedbcb99da5cb378855e4c1a039a46286da8f5bc1b9875b887da86dcf7778096",
+      "size": 9778
     },
     "state/skills/.offloaded/gamedev-disciplines/audio-design/references/adaptive-music.md": {
       "sha256": "ca6fd287054294004acd85d9acd773d7b52c327911116c9c02344bab5e61df13",
       "size": 4041
+    },
+    "state/skills/.offloaded/gamedev-disciplines/audio-design/references/synthesized-audio.md": {
+      "sha256": "abeb7644964107b728a9813e50fbe850f0cbd506c582cf58c99ec83684a91037",
+      "size": 6932
     },
     "state/skills/.offloaded/gamedev-disciplines/camera-systems/SKILL.md": {
       "sha256": "cec5e9ef16aaf8d42a7b86e3b17678d57920ab7692bbbfe710a34ac0d09b32c7",
@@ -304,16 +308,20 @@
       "size": 4130
     },
     "state/skills/.offloaded/gamedev-disciplines/level-design/SKILL.md": {
-      "sha256": "f1656cb00b9af8dc625a9655448b410b37ce6f1e523048a5abf09fda25cbfd32",
-      "size": 7081
+      "sha256": "7e7f699302df834e1f017bf57e0b297d5618e0c7eed4756e7c0df39bb1ce8754",
+      "size": 9909
+    },
+    "state/skills/.offloaded/gamedev-disciplines/level-design/references/level-validation.md": {
+      "sha256": "286eeb3d8a8715cf893b47e6d797fbcaceda1aef39df5a27fef25eca4d6e4404",
+      "size": 5676
     },
     "state/skills/.offloaded/gamedev-disciplines/level-design/references/pacing-and-flow.md": {
       "sha256": "e8e3940f585e376f353aefea009befe8199a1871f99d34d7b2340cb35cb61872",
       "size": 4500
     },
     "state/skills/.offloaded/gamedev-disciplines/performance-optimization/SKILL.md": {
-      "sha256": "ddfc68c927f9a482d78cc0e103edb2e2711bc876a5965ff53eabd9a7d308dfab",
-      "size": 9008
+      "sha256": "920073757f92e6a512d2443fcf159a51d505eaa7e5857861819c73a42e38b302",
+      "size": 11070
     },
     "state/skills/.offloaded/gamedev-disciplines/performance-optimization/references/profiling-and-budgets.md": {
       "sha256": "fb161af3797b364c5a9032dc3836bc25f05762508f2831f6a19a6aa416811dd8",
@@ -756,8 +764,8 @@
       "size": 7688
     },
     "state/skills/.usage.json": {
-      "sha256": "a204999e3b2102b85a1ac8a39a8082be99048bd5f14b8f89c77255d16fc06790",
-      "size": 1015
+      "sha256": "8df36c71e0579050f74f73c316bba803a43d65c626b50fa52090e4a3ca1db129",
+      "size": 3478
     },
     "state/skills/apple/DESCRIPTION.md": {
       "sha256": "c9537e578d68950224dbc09a425497a780e8c3956db9cb38a97b4a9e985516b3",
@@ -1508,8 +1516,8 @@
       "size": 10963
     },
     "state/skills/devops/github-first-storage/SKILL.md": {
-      "sha256": "1f5b5d0d018ba63b4b7661110d0868e7ae7b8cce4b5de3381e94aa9c192fb3b4",
-      "size": 12857
+      "sha256": "2db22a02ac040561f0c7e82a09872a97ac74d6376026d1df43fc00d6fc1bb13b",
+      "size": 14759
     },
     "state/skills/devops/github-first-storage/references/disk-tiers.md": {
       "sha256": "6e5eaa40e0ef43594215778be1e2c28aecb32eeb3ca98ca37ba01ea17122f045",
@@ -2079,6 +2087,86 @@
       "sha256": "22b996996ae2bf252b31cfd2636231f08936729a381dce7ba8bfa4afb8ffe8c6",
       "size": 8481
     },
+    "state/workspace/horror-game/assets/audio/ambient_basement.mp3": {
+      "sha256": "f6bceee81e05a43000a1e800dd722ba1eae6b8f599ca0ac0d56c527b0c1592a5",
+      "size": 160958
+    },
+    "state/workspace/horror-game/assets/audio/ambient_drone.mp3": {
+      "sha256": "6b3c62697e23cdb7f4db2346133358376cc2844fe6a95f6b931a40e8810738c7",
+      "size": 200926
+    },
+    "state/workspace/horror-game/assets/audio/ambient_wind.mp3": {
+      "sha256": "b783e4a1d85ac0790e57a2783072392e4bf17325842edb5b7f9f7f97bc4c7c19",
+      "size": 151032
+    },
+    "state/workspace/horror-game/assets/audio/door.mp3": {
+      "sha256": "f44671a094aff18eced03b5e2aa45658eb81703016a17142d1ae0d61180ca9ab",
+      "size": 14934
+    },
+    "state/workspace/horror-game/assets/audio/drip.mp3": {
+      "sha256": "37e3b4e1b3409faa2943ca5ee9a0af77ea5ca684340d875483b82f3c40220cf6",
+      "size": 5269
+    },
+    "state/workspace/horror-game/assets/audio/footstep_1.mp3": {
+      "sha256": "d44e2e37face620f6a596c5bca293ce69dd00340b1419dc8fe6fc33f24e2dc89",
+      "size": 3179
+    },
+    "state/workspace/horror-game/assets/audio/footstep_2.mp3": {
+      "sha256": "202c9cec8e277b22dd81328804377d668b3ff9131d4745450d0c6362bc8abd7f",
+      "size": 3179
+    },
+    "state/workspace/horror-game/assets/audio/heartbeat.mp3": {
+      "sha256": "c41bd2da1b6b697b21bca33af25c64a2aaff77811d059d668e6d03933f65f43e",
+      "size": 14150
+    },
+    "state/workspace/horror-game/assets/audio/pickup.mp3": {
+      "sha256": "bc1f2876e1ef9f9f40cf0ed47e1ad93d9490839eab905919ef0966cb939d6be0",
+      "size": 12844
+    },
+    "state/workspace/horror-game/assets/audio/static.mp3": {
+      "sha256": "47811368fc1dc38e62a52841b033c836be8ac1de78aaa1f92aa23db0945bbf80",
+      "size": 30869
+    },
+    "state/workspace/horror-game/assets/audio/sting.mp3": {
+      "sha256": "ae80b32264732e4af0caf02ab7ac2f4756b0035d5c940bdf876a61b8ad4a3e17",
+      "size": 17024
+    },
+    "state/workspace/horror-game/assets/audio/ui_click.mp3": {
+      "sha256": "536f9a2e0efe4e480b55610aa0fc16b2536da2c59179b704038a54fc513ebcc4",
+      "size": 1873
+    },
+    "state/workspace/horror-game/assets/audio/whisper.mp3": {
+      "sha256": "760fc6b1cf5f32fb22cc6e4fdf1f223b77d0b58e3a58ce782b9a0e7cb8a0a80a",
+      "size": 23032
+    },
+    "state/workspace/horror-game/index.html": {
+      "sha256": "154878d04945ce297970b732e85312f723bf3012e80a87a6b3265d9f80348acd",
+      "size": 4073
+    },
+    "state/workspace/horror-game/js/audio.js": {
+      "sha256": "01634cf75baa082eaa5b64febfb22c90b4b62b768a29c84b0f4784bdda3f3b0f",
+      "size": 5705
+    },
+    "state/workspace/horror-game/js/sprites.js": {
+      "sha256": "f5aba5d63d44fcead84a493effb3dde08447187801d03bec6ec99b5a09d88232",
+      "size": 14219
+    },
+    "state/workspace/horror-game/js/world.js": {
+      "sha256": "22895f9fe39467b8193880f2b075d0d04a4086b0aa581f9692b94808cfb7f235",
+      "size": 14824
+    },
+    "state/workspace/horror-game/style.css": {
+      "sha256": "9530cd1a04d700a6cbfeaea3dc8132588a869cbb3ac51fa9b2333a0868e8d055",
+      "size": 6970
+    },
+    "state/workspace/horror-game/tools/generate-audio.sh": {
+      "sha256": "dfcd8ac3e2d59920c9e64f8f35c08ac69277d04e78dc4413b283b6c61bb1f43a",
+      "size": 7185
+    },
+    "state/workspace/horror-game/tools/validate-world.js": {
+      "sha256": "b79eee8aca2bcf4bb0df171bc3b0f1a9264eac2bae0404ffe3d7f79f0a7e70e9",
+      "size": 4891
+    },
     "tool/ARCHITECTURE.md": {
       "sha256": "8b305d41dcd3e8e60017c5c9c677cc317dc3f13ca137ebef757ba1c43898d834",
       "size": 17163
@@ -2132,7 +2220,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-18T11:38:04.679220Z",
+  "generated_at": "2026-10-18T11:56:28.999574Z",
   "host": "bd1e2d36e25d",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -2142,5 +2230,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 3994694
+  "total_bytes": 4722571
 }
