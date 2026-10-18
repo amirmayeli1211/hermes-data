@@ -1,7 +1,7 @@
 {
   "commit": null,
   "excluded_count": 7,
-  "file_count": 381,
+  "file_count": 383,
   "files": {
     "state/SOUL.md": {
       "sha256": "3bd38ef92efb90d0fdda1bb73036185d4a4bc11079963cb0e2db71c84281e64e",
@@ -12,8 +12,8 @@
       "size": 126082
     },
     "state/cron/jobs.json": {
-      "sha256": "5679f1fa8bb62dd06c2ea8686a4191fa6f989c2122b94d05428c8ba0d502098e",
-      "size": 2769
+      "sha256": "063667f2335fc7dc77d6813d5f6f6f904f3bcb69ba338e93a1379018aa45413a",
+      "size": 2648
     },
     "state/cron/output/ecb9785322d5/2026-10-17_19-52-27.md": {
       "sha256": "08a7bbc3047764ae80ab22f210ec7a079ae1fe08bf3fecb1b5f1e5f6690bdc73",
@@ -135,6 +135,10 @@
       "sha256": "f8b8c9cbf565b78682d0bac3134373f470c886dccbc304a000d2ae0a2a1324e6",
       "size": 2587
     },
+    "state/cron/output/ecb9785322d5/2026-10-18_10-54-39.md": {
+      "sha256": "274c5f123f84d2bdea355e410e5068031227e256509acaee7d2455a9dbda0d2a",
+      "size": 2679
+    },
     "state/memories/MEMORY.md": {
       "sha256": "3cccdd4acfdfadaaefa5c9cf6b0ce7449100c6910d0576009216eeb18ae47332",
       "size": 1129
@@ -158,6 +162,10 @@
     "state/skills/.curator_state": {
       "sha256": "f78cbcfcc28a81ce261c4d3ccba4bee023c75457836622229c25818e608c82b0",
       "size": 337
+    },
+    "state/skills/.offloaded/template/SKILL.md": {
+      "sha256": "eb685d91de039ed864fbd790cddf31684b017fd4a34ee1a55760d8d7cdbadefa",
+      "size": 140
     },
     "state/skills/.usage.json": {
       "sha256": "66792b617dde80b1b894fbde5200b2a48563bd8500a6608c2d8843de33954a53",
@@ -1528,7 +1536,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-18T10:54:28.804863Z",
+  "generated_at": "2026-10-18T11:15:29.277476Z",
   "host": "bd1e2d36e25d",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -1538,5 +1546,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 3189439
+  "total_bytes": 3192137
 }
