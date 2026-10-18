@@ -156,6 +156,8 @@ EXCLUDE_NAME_PATTERNS = [
 EXCLUDE_REL_PREFIXES = (
     "sessions", "logs", "runtime", "pairing", "state",
     "shared", ".curator_backups",
+    # Subprocess HOME: browser caches, fontconfig, NSS key database.
+    "home", "pending",
     "cron/executions.db", "cron/.tick.lock", "cron/.jobs.lock",
     "cron/ticker_heartbeat", "cron/ticker_last_success",
     "cron/executions.db-wal", "cron/executions.db-shm",
@@ -169,6 +171,15 @@ REBUILDABLE_PREFIXES = (
     "logs", "sessions", "runtime", "cache", "backups", "pairing",
     "pending_messages", "installs", "image_cache", "audio_cache",
     "plugin-update-checks", "kanban", "state", "shared", ".curator_backups",
+    # HERMES_HOME/home is the subprocess HOME for terminal tools. Running a
+    # browser for the test suite fills it with fontconfig caches, a chromium
+    # profile and an NSS key database — all regenerated on demand, and the key
+    # database can hold client certificates, so it must never be committed.
+    "home",
+    # pending/ is the background-review queue: transient memory operations that
+    # Hermes applies itself. Committing a snapshot of it would risk re-applying
+    # an operation on restore.
+    "pending",
 )
 
 # Individual runtime files that are neither synced nor caught by a prefix above.
