@@ -209,10 +209,31 @@ sh ghfirst/skill-fetch.sh push                    # snapshot into the repo
 sh ghfirst/skill-fetch.sh doctor
 ```
 
-Snapshots go to `state/skills/.offloaded/` in the repo so an offloaded skill
-survives a container rebuild; the live copy stays on the big disk. External
-dirs are scanned **one level deep**, so a skill must sit at
+External dirs are scanned **one level deep**, so a skill must sit at
 `<root>/<name>/SKILL.md`, not nested under a category.
+
+#### Three different places, and what "installed" means in each
+
+Worth stating plainly, because "the big disk" and "the repo" are not the same
+thing and conflating them hides a real failure mode:
+
+| place | size | lifetime | role |
+| --- | --- | --- | --- |
+| `/var/tmp/hermes-offload/skills` | 2.9 TB | **ephemeral** | the live copy the agent scans |
+| `/data/.hermes/skills/.offloaded/` | 434 MB | persistent | staging snapshot that gets pushed |
+| `github.com/.../hermes-data` → `state/skills/.offloaded/` | remote | **permanent** | the durable copy |
+
+Install puts the live copy on the big disk (so `/data` is not consumed). `push`
+copies it into staging, which the normal repo sync then commits. On a rebuild the
+repo copy is restored — and it lands in **staging**, not in the live external dir.
+
+**`offload-boot.sh` closes that gap** by copying staging → the live external dir
+on every reconcile tick. Without it, a rebuilt container leaves every offloaded
+skill restored-but-invisible: the files are present on the small disk and
+`skill_view` cannot find them. Verified end to end — wiped the live dir, restored
+from the repo, ran `offload-boot.sh`, and `skill_view(template)` returned
+`success = true` again. The copy is `cmp`-guarded so a live edit is not silently
+reverted each tick.
 
 ## Two filesystems, three tiers of data
 

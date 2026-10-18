@@ -156,15 +156,15 @@
       "size": 2727
     },
     "state/skills/.curator_ledger.jsonl": {
-      "sha256": "b55b912a0f301ae637e6507011e8d2eef3a7aa3cdf93f69dcda11697e5152d68",
-      "size": 8146
+      "sha256": "fe01e189cde777fabbf0ecd728c698596454fb052111505af621996752b13f1e",
+      "size": 9170
     },
     "state/skills/.curator_state": {
       "sha256": "f78cbcfcc28a81ce261c4d3ccba4bee023c75457836622229c25818e608c82b0",
       "size": 337
     },
     "state/skills/.usage.json": {
-      "sha256": "66792b617dde80b1b894fbde5200b2a48563bd8500a6608c2d8843de33954a53",
+      "sha256": "98e3f5d4c5658f05770bd13efcc3867f83c15d31d5663a4efe6486fa69ab6074",
       "size": 1015
     },
     "state/skills/apple/DESCRIPTION.md": {
@@ -1488,8 +1488,8 @@
       "size": 8481
     },
     "tool/ARCHITECTURE.md": {
-      "sha256": "f7539db44500e8e2cb928c5c65af9ef3079a37869a521cd76ee521b05d8ee162",
-      "size": 16004
+      "sha256": "8b305d41dcd3e8e60017c5c9c677cc317dc3f13ca137ebef757ba1c43898d834",
+      "size": 17163
     },
     "tool/bootstrap.sh": {
       "sha256": "b5c3aa88d4ffa158732d0dfbf0a3e4f0bacd17f49b99d52359c42ebf199429c6",
@@ -1532,7 +1532,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-18T11:17:42.112222Z",
+  "generated_at": "2026-10-18T11:19:07.595162Z",
   "host": "bd1e2d36e25d",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -1542,5 +1542,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 3193370
+  "total_bytes": 3195553
 }
