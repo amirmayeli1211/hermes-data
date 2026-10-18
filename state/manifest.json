@@ -1,7 +1,7 @@
 {
   "commit": null,
-  "excluded_count": 10,
-  "file_count": 365,
+  "excluded_count": 3,
+  "file_count": 366,
   "files": {
     "state/SOUL.md": {
       "sha256": "3bd38ef92efb90d0fdda1bb73036185d4a4bc11079963cb0e2db71c84281e64e",
@@ -1439,6 +1439,10 @@
       "sha256": "b5c3aa88d4ffa158732d0dfbf0a3e4f0bacd17f49b99d52359c42ebf199429c6",
       "size": 3626
     },
+    "tool/disk-guard.sh": {
+      "sha256": "9759e270de6b0cab80619d3425ee37fde90e15a9f18fe36342598106822a35d1",
+      "size": 9670
+    },
     "tool/ghstore.py": {
       "sha256": "ba49bad405954fe7a70ae3b0fda986ff61164f3e717c92095a8edb6a35a6bfdd",
       "size": 56764
@@ -1452,8 +1456,8 @@
       "size": 7447
     },
     "tool/reconcile.sh": {
-      "sha256": "3f526b629b160942ca8b6fb608656ec477ac928920bc9c233f5465847058642d",
-      "size": 2960
+      "sha256": "ec725dc3c90ed9c5ad85f73d7612b51d5705bdb29be2c2076b81f362970259c2",
+      "size": 3125
     },
     "tool/skill-fetch.sh": {
       "sha256": "01ce7a02fd622b6e9028b0c1dba04a7cd58f2693b950682f7b3f373bf7709cac",
@@ -1464,7 +1468,7 @@
       "size": 10925
     }
   },
-  "generated_at": "2026-10-18T03:44:51.151433Z",
+  "generated_at": "2026-10-18T03:50:39.828923Z",
   "host": "bd1e2d36e25d",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -1474,5 +1478,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 3121253
+  "total_bytes": 3131088
 }

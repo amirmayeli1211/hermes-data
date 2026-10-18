@@ -34,15 +34,20 @@ fi
 
 # 0b. Disk watchdog on the SMALL persistent volume. It is 434 MB; a runaway temp
 #     file or a log spiral can exhaust it, and a full /data takes the gateway
-#     down with it. Warn loudly in the cron output before that happens.
-DATA_PCT="$(df -P /data | tail -1 | awk '{print $5}' | tr -d '%')"
-DATA_FREE="$(df -h /data | tail -1 | awk '{print $4}')"
-if [ "${DATA_PCT:-0}" -ge 85 ]; then
-    echo "DISK WARNING: /data is ${DATA_PCT}% full (${DATA_FREE} free)."
-    echo "  find the culprit:  du -sh ${HERMES_HOME}/* | sort -rh | head"
-    echo "  drop rebuildable cargo:  sh ${HERMES_HOME}/ghfirst/offload.sh clean"
+#     down with it. This RECLAIMS space (not just warns): tier 1 always, and
+#     escalating tiers as usage rises. Protected at every level: .env, auth.json,
+#     config.yaml, SOUL.md, memories/, skills/, state.db, ghfirst/.
+GUARD="${HERMES_HOME}/ghfirst/disk-guard.sh"
+if [ -f "$GUARD" ]; then
+    sh "$GUARD" clean 2>&1
+    guard_rc=$?
+    if [ "$guard_rc" -ge 2 ]; then
+        echo "DISK: still critical after cleanup — real data needs a bigger volume"
+    fi
 else
-    echo "disk: /data ${DATA_PCT}% used (${DATA_FREE} free)"
+    DATA_PCT="$(df -P /data | tail -1 | awk '{print $5}' | tr -d '%')"
+    DATA_FREE="$(df -h /data | tail -1 | awk '{print $4}')"
+    echo "disk: /data ${DATA_PCT}% used (${DATA_FREE} free) — disk-guard.sh missing"
 fi
 
 # 1. Push any local changes (the tool aborts on secret hits or conflicts).
