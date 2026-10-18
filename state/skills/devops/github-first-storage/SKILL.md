@@ -92,25 +92,74 @@ cannot span lines. Conversely, a test suite full of token-shaped fixtures
 *will* trip the gate — assemble fixtures from string fragments at runtime so
 the file itself stays clean.
 
-8. **OAuth tokens are JWTs and match no prefix regex.**
-   `eyJhbGciOi....eyJzdWIi....signature` has no `sk-`/`ghp_` marker, so a live
-``access_token` in a synced file passes a prefix-only scanner with at most a
-soft entropy warning. Add an explicit `jwt-token` pattern (three base64url
-segments, first two starting `eyJ`). This gap was found only by auditing the
-live filesystem, not by review.
-
 5. **Verify by reading back, not by trusting the write.**
    After committing, fetch the tree and re-hash blobs against the manifest.
 A push that "succeeded" is not evidence the content is in the repo.
 
 6. **Prove recovery, don't assume it.**
    Restore into an empty directory and compare file-by-file byte hashes
-against the live tree. Report the count (`331 identical, 0 differing`) and
-name which files were excluded, so the gap is visible.
+against the live tree. Report how many matched and name which files were
+excluded, so the gap is visible rather than implied.
 
 7. **Store credentials in the app's credential store, never the repo.**
    Read `GITHUB_TOKEN` from the environment or the `.env` store; when absent,
 print an explicit error. Never invent, prompt for, or hardcode a token.
+
+8. **OAuth tokens are JWTs and match no prefix regex.**
+   `eyJhbGciOi....eyJzdWIi....signature` carries no `sk-`/`ghp_` marker, so a
+live OAuth `access_token` in a synced file passes a prefix-only scanner with
+at most a soft entropy warning. Add an explicit `jwt-token` pattern (three
+base64url segments, the first two starting `eyJ`). A prefix-only scanner
+under-reports credential-shaped content; the gap surfaces only by auditing the
+live filesystem, not by review.
+
+## Disk tiers: not every writable path is equal
+
+A disposable container usually has TWO filesystems with opposite properties,
+and nothing about a path tells you which is which:
+
+| path | typical size | lifetime | use for |
+| --- | --- | --- | --- |
+| the state root (`$HERMES_HOME`, often a mounted volume) | small — hundreds of MB | survives redeploy | durable, irreplaceable, small |
+| the container overlay (`/`, `/var/tmp`) | huge — TBs | gone on recreate | temp, downloads, clones, builds, working copies |
+
+Measure both before writing anything large: `df -h <path>` plus
+`findmnt -T <path> -o SOURCE,FSTYPE`. Sibling-looking paths often land on
+different volumes, and the tool-level details are in
+`references/disk-tiers.md`.
+
+**Assume the small persistent disk is what actually breaks.** On a live
+deployment, all skills together were under 4 MB while a single 500 MB temp job
+written into `TMPDIR` took the persistent volume to 100%. Run
+`du -sh <dir>/* | sort -rh` before optimising anything: the directory the user
+suspects is frequently not the one that fills the disk, and saying so plainly
+is more useful than acting on the guess.
+
+Rules that follow from this:
+
+- Point `TMPDIR`/`TMP`/`TEMP` at the big ephemeral disk, and **recreate that
+directory on boot**. A `TMPDIR` naming a MISSING directory is worse than an
+unset one: `tempfile` silently falls through to the next candidate, which is
+normally the small disk. It looks configured while writing to the volume you
+were guarding.
+- Never symlink a temp or scratch directory across filesystems. `os.replace`
+between devices raises `EXDEV` ("Invalid cross-device link"), which breaks
+every atomic write that stages a temp file and renames it into place.
+- Put a disk-watermark check in the periodic job and report the fill level, so
+the small volume is visible before it takes the service down.
+- Recreate offload directories at the START of anything that writes temp files.
+A periodic reconcile job is a good host: it already runs on a timer, needs no
+hook allowlist, and fails visibly.
+- Skills can live outside the state root when the loader supports
+`external_dirs` — read-only, lower precedence than the local dir, and newly
+created skills still land in the state root.
+- Report three buckets explicitly: protected, excluded-by-rule, and NOT covered.
+A user shown a green status believes everything is in it, and the uncovered
+bucket is the entire point.
+
+Support files: `references/disk-tiers.md` — measurement recipes, the EXDEV
+probe, temp-dir precedence, and the `external_dirs` details.
+`scripts/disk-tier-check.sh` — re-runnable tier, fallback, and watermark check.
 
 ## Verification checklist
 

@@ -22,6 +22,29 @@ fi
 
 echo "ghstore reconcile $STAMP"
 
+# 0. Recreate the offload area. /var/tmp is on the ephemeral overlay, so after a
+#    container restart the offload directories are gone while .env still points
+#    TMPDIR at them — and a TMPDIR that does not exist makes Python fall back to
+#    $HERMES_HOME/cache/scratch, i.e. the small persistent disk we are guarding.
+#    Running this first every tick keeps that fallback from ever being reachable.
+if [ -f "${HERMES_HOME}/ghfirst/offload-boot.sh" ]; then
+    sh "${HERMES_HOME}/ghfirst/offload-boot.sh" 2>&1 || \
+        echo "offload-boot: failed (temp may fall back to the small disk)"
+fi
+
+# 0b. Disk watchdog on the SMALL persistent volume. It is 434 MB; a runaway temp
+#     file or a log spiral can exhaust it, and a full /data takes the gateway
+#     down with it. Warn loudly in the cron output before that happens.
+DATA_PCT="$(df -P /data | tail -1 | awk '{print $5}' | tr -d '%')"
+DATA_FREE="$(df -h /data | tail -1 | awk '{print $4}')"
+if [ "${DATA_PCT:-0}" -ge 85 ]; then
+    echo "DISK WARNING: /data is ${DATA_PCT}% full (${DATA_FREE} free)."
+    echo "  find the culprit:  du -sh ${HERMES_HOME}/* | sort -rh | head"
+    echo "  drop rebuildable cargo:  sh ${HERMES_HOME}/ghfirst/offload.sh clean"
+else
+    echo "disk: /data ${DATA_PCT}% used (${DATA_FREE} free)"
+fi
+
 # 1. Push any local changes (the tool aborts on secret hits or conflicts).
 "$PY" "$TOOL" push 2>&1
 push_rc=$?

@@ -1162,6 +1162,8 @@ skills:
 # =============================================================================
 # Agent Behavior
 # =============================================================================
+  external_dirs:
+    - /var/tmp/hermes-offload/skills
 agent:
   # Maximum tool-calling iterations per conversation (default: 500)
   # Higher = more room for complex tasks, but costs more tokens

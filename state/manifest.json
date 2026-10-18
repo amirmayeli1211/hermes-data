@@ -1,19 +1,83 @@
 {
   "commit": null,
-  "excluded_count": 9,
-  "file_count": 341,
+  "excluded_count": 10,
+  "file_count": 362,
   "files": {
     "state/SOUL.md": {
       "sha256": "3bd38ef92efb90d0fdda1bb73036185d4a4bc11079963cb0e2db71c84281e64e",
       "size": 668
     },
     "state/config.yaml": {
-      "sha256": "e031726343277947408df3bc427d41334249c31fc27b2b60b2154ef0550aea73",
-      "size": 126028
+      "sha256": "d7b1f94201122ae870a9aa1a2f1ac1e70f9867801f1d63e793a4e15a10fbfea1",
+      "size": 126082
     },
     "state/cron/jobs.json": {
-      "sha256": "3534498d1f52abff709f0aea73f38016782da53bd44003e7c2c9ea3de2741924",
-      "size": 2166
+      "sha256": "f62539d45e82495fbd67f29b256b37a11b7a6af212e64de41baca64266105f3d",
+      "size": 2622
+    },
+    "state/cron/output/ecb9785322d5/2026-10-17_19-52-27.md": {
+      "sha256": "08a7bbc3047764ae80ab22f210ec7a079ae1fe08bf3fecb1b5f1e5f6690bdc73",
+      "size": 2451
+    },
+    "state/cron/output/ecb9785322d5/2026-10-17_20-23-28.md": {
+      "sha256": "891331000b7f5ce12e112c3bb147307f67ca1131ee478702e4969eb58d85dd48",
+      "size": 2451
+    },
+    "state/cron/output/ecb9785322d5/2026-10-17_20-54-27.md": {
+      "sha256": "717c16d6e0c9538f5a3dec2aa78ecd336bc79a808be928076f3c93559e506c7b",
+      "size": 2451
+    },
+    "state/cron/output/ecb9785322d5/2026-10-17_21-25-27.md": {
+      "sha256": "d66beec15760626d59ac266a9fbbfcc33faf6a0c2ed132b77f490103a42f1b4f",
+      "size": 2451
+    },
+    "state/cron/output/ecb9785322d5/2026-10-17_21-56-27.md": {
+      "sha256": "8ef68b4909e62becf50aa2e247b40375a1a60c9ea2a4e2ff891293baa3ecbcba",
+      "size": 2451
+    },
+    "state/cron/output/ecb9785322d5/2026-10-17_22-27-27.md": {
+      "sha256": "59d6ff0d46b3a516e9452c63cf779dcac05d803a2df01794b19962c248a3a628",
+      "size": 2451
+    },
+    "state/cron/output/ecb9785322d5/2026-10-17_22-58-27.md": {
+      "sha256": "58c1612df0bf6c575634f9ff9b55210d1d1a4b3ed5983e3d701d28c1257f5879",
+      "size": 2451
+    },
+    "state/cron/output/ecb9785322d5/2026-10-17_23-29-27.md": {
+      "sha256": "00bd09a68dfdd335b8a52796e0211ab32b7d03d7611f45edeae43f0a632b05ff",
+      "size": 2451
+    },
+    "state/cron/output/ecb9785322d5/2026-10-18_00-00-27.md": {
+      "sha256": "1729ebc891f1849258636ce643f0057569c0ae3a988f3a6b943faa3b466a5190",
+      "size": 2451
+    },
+    "state/cron/output/ecb9785322d5/2026-10-18_00-31-28.md": {
+      "sha256": "fe7efd92118d88701b8e95a2fed946d22450f3c72ab1e477b2208b8ac7735c40",
+      "size": 2451
+    },
+    "state/cron/output/ecb9785322d5/2026-10-18_01-02-27.md": {
+      "sha256": "878975db6b911195c2449a008c828668af9323e9ef49bb64c839b3962ef0fa62",
+      "size": 2451
+    },
+    "state/cron/output/ecb9785322d5/2026-10-18_01-33-27.md": {
+      "sha256": "b06d993f4139b0e8d1a6c1707a07cc82f59b91e7e8168b8c4920b2cbf34a5da0",
+      "size": 2451
+    },
+    "state/cron/output/ecb9785322d5/2026-10-18_02-04-27.md": {
+      "sha256": "93063d291ec0b89bfde18fdbda03592910f35766c23c1f41405db3e5466c238f",
+      "size": 2451
+    },
+    "state/cron/output/ecb9785322d5/2026-10-18_02-35-27.md": {
+      "sha256": "98862b483f4d49a25e8ea24c9a80c2c0c292ee746667704b8425ed5eb70fae7c",
+      "size": 2451
+    },
+    "state/cron/output/ecb9785322d5/2026-10-18_03-06-27.md": {
+      "sha256": "dcba46f7bea8d4ce47d05090718f3d4c3349d4f7d9d1aaad7aaa7f845becbe07",
+      "size": 2451
+    },
+    "state/cron/output/ecb9785322d5/2026-10-18_03-37-27.md": {
+      "sha256": "e6e4cf663342f0b18f8df9e1af053dc35d21e7dc5673f632741b430bdf1b003e",
+      "size": 2451
     },
     "state/memories/MEMORY.md": {
       "sha256": "3c0c92c1acce07b303ed54f7441c40a52f96daeff7505ac7c23b71e12a15c9bd",
@@ -28,12 +92,16 @@
       "size": 2727
     },
     "state/skills/.curator_ledger.jsonl": {
-      "sha256": "107588545513e228174707c0a919cda2bea645c0698625b3dcedfa3a2f2de768",
-      "size": 2414
+      "sha256": "22a498ae50ef4fd074f41575b36615b6f7c894fe1474f7985367bf85449942c1",
+      "size": 6610
+    },
+    "state/skills/.curator_state": {
+      "sha256": "f78cbcfcc28a81ce261c4d3ccba4bee023c75457836622229c25818e608c82b0",
+      "size": 337
     },
     "state/skills/.usage.json": {
-      "sha256": "ef89fb8861039e73f135a8546304f7ff0b367e8cce24287150549863b4bc4c15",
-      "size": 923
+      "sha256": "9c80a6db34f7d8beda9873295798cfd23a721b1cf0ea0f18f6cecf7995733fd1",
+      "size": 1015
     },
     "state/skills/apple/DESCRIPTION.md": {
       "sha256": "c9537e578d68950224dbc09a425497a780e8c3956db9cb38a97b4a9e985516b3",
@@ -132,8 +200,8 @@
       "size": 6887
     },
     "state/skills/autonomous-ai-agents/hermes-agent/references/troubleshooting.md": {
-      "sha256": "70045d9a3dd4f8ff4001b3a7ccfa7f967c130ce89877ee5f052c87752fcd5f5b",
-      "size": 3767
+      "sha256": "74e06481c9c91dfb99975fc87f14b9e97638095364720783cbf0406a8ffcfd07",
+      "size": 5470
     },
     "state/skills/autonomous-ai-agents/hermes-agent/references/tui-widgets.md": {
       "sha256": "20e21aabb757a9d3c7d895db8f05a3782fe8b28feef3768ac5550c8860b4a3db",
@@ -784,8 +852,16 @@
       "size": 10963
     },
     "state/skills/devops/github-first-storage/SKILL.md": {
-      "sha256": "4d2b3bb599a8278c130f573d9a8484334fcc897fe4038635aafeaaff2a93201c",
-      "size": 6127
+      "sha256": "e004baa93215fa63896816333b58399a2cc818061a92ca3e608d3b98bff0e865",
+      "size": 8850
+    },
+    "state/skills/devops/github-first-storage/references/disk-tiers.md": {
+      "sha256": "42b794c7126941bc642f66cca005f311c9166b373a253591f13255906c446925",
+      "size": 6562
+    },
+    "state/skills/devops/github-first-storage/scripts/disk-tier-check.sh": {
+      "sha256": "eac2ed833b0e48ccff5afb7edebb02afce5989364e17d1920774509c953884db",
+      "size": 6062
     },
     "state/skills/devops/sdlc-review/SKILL.md": {
       "sha256": "ce90e8a3e145cce69c62880dc85921700110879f9290952d6cec28218503155f",
@@ -1359,16 +1435,24 @@
       "sha256": "5de79f41d9a0fd9f6f1b7ec352689ef43f47bd29af6c95583dd4dccdeae4e992",
       "size": 56582
     },
+    "tool/offload-boot.sh": {
+      "sha256": "95cdad769aa9cacb6c87279558520e9767de96083751d3da1d464eabfcab299c",
+      "size": 2213
+    },
+    "tool/offload.sh": {
+      "sha256": "f4653b4bee5572919baa87ec660c897f392220ec2741cbefbe4e3cdc7a9755dc",
+      "size": 7447
+    },
     "tool/reconcile.sh": {
-      "sha256": "66dd0d65b88dc2a319bb35d44b71bcb19ee8aedd070ca1f4db8457c7942b7d89",
-      "size": 1670
+      "sha256": "3f526b629b160942ca8b6fb608656ec477ac928920bc9c233f5465847058642d",
+      "size": 2960
     },
     "tool/tests/test_ghstore.py": {
       "sha256": "0c84c45a343efac6d55835436fbced3f93717da18d95bd6da6b37a9dff04c2fc",
       "size": 10925
     }
   },
-  "generated_at": "2026-10-17T19:35:11.180752Z",
+  "generated_at": "2026-10-18T03:39:09.157390Z",
   "host": "bd1e2d36e25d",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -1378,5 +1462,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 3033212
+  "total_bytes": 3105563
 }
