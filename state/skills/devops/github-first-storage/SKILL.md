@@ -31,6 +31,44 @@ churn and meaningless history. Do not commit them, and do not claim you have
 protected them — say plainly they need a real DB service. A user reading a
 green "in sync" status will assume everything is covered.
 
+## Keep the small disk from filling (if the state volume is tiny)
+
+Check `df -h` on the state volume before declaring victory. A container often
+has a large ephemeral overlay (`/`, gigabytes) and a small persistent volume
+(`/data`, hundreds of MB). When the persistent one fills, the app cannot write,
+crashes, and there is no graceful degradation — so a monitoring warning is not
+enough. Build a script that RECLAIMS, escalating only as far as needed:
+
+- **tier 1, always:** SQLite `PRAGMA wal_checkpoint(TRUNCATE)` (lossless and
+  often the biggest single win — the WAL grows with every turn), orphaned temp
+  files, `__pycache__`, oversized logs truncated.
+- **tier 2, at ~75%:** vendored caches re-downloaded on demand (model catalogs
+  are easily 5 MB+).
+- **tier 3, at ~88%:** old backup archives (keep the newest two), rotated logs,
+  aged run output.
+- **Never touch, at any threshold:** credentials, config, memories, skills, the
+  session database, and the tooling itself.
+
+Wire it to the top of the scheduled reconcile so it runs unattended, and verify
+with real pressure — fill the disk, run it, confirm the reclamation AND confirm
+every protected file still hashes the same afterwards.
+
+Two traps:
+
+1. **Do not delete `*.lock` files.** They are 0 bytes, so removal frees nothing,
+   while deleting one a live process still holds invites a race between two
+   writers. A first version of this script deleted them and reclaimed 0 KiB.
+2. **`df -P` reports 1024-byte blocks**, so `delta/1024` is MiB, not KiB. The same
+   first version printed "reclaimed 290 KiB" for a 290 MiB win.
+
+Also redirect the temp dir to the large volume, and make the directory that
+receives it get recreated on boot. **A temp variable pointing at a missing
+directory is worse than leaving it unset:** Python's `tempfile` then falls back
+to the next candidate — which is the small disk. Measured: with
+`TMPDIR=/var/tmp/missing`, `tempfile.gettempdir()` returned the small-volume
+scratch path. Recreate the directory in the scheduled job rather than relying on
+it surviving.
+
 ## Build an `audit` command, not just `push`
 
 `push`/`status` only answer "is what I *track* in sync?". On a disposable disk
@@ -175,3 +213,5 @@ Run these before reporting success:
 - Confirm an unchanged tree makes **no** commit.
 - Audit the final tree: search every blob for the live token and for
   exclusion-rule violations.
+- `disk-guard.sh check` (or equivalent) — confirm the reclaim plan, then run it
+  under real disk pressure and re-hash the protected files afterwards.

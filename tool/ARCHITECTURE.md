@@ -56,6 +56,50 @@ lost on container deletion — see "Known limitations".
 `models_dev_cache.json`, `provider_models_cache.json`, gateway pid/lock/socket
 files, Telegram update receipts, `__pycache__`.
 
+### `disk-guard.sh` — automatic reclamation (the important one)
+
+**When `/data` fills, the gateway cannot write, crashes, and the agent stops
+responding entirely.** There is no graceful degradation, so a warning is not
+enough — this reclaims, escalating only as far as needed.
+
+Wired into the top of every `reconcile.sh` tick (every 30 minutes), so it runs
+without anyone remembering to.
+
+```sh
+sh ghfirst/disk-guard.sh check          # report + what it WOULD do; changes nothing
+sh ghfirst/disk-guard.sh clean          # reclaim what the current level needs
+sh ghfirst/disk-guard.sh clean --force  # all tiers regardless of usage
+```
+
+Thresholds: `<75%` tier 1 only · `>=75%` tiers 1-2 · `>=88%` all three tiers.
+Override with `HERMES_DISK_WARN_PCT` / `HERMES_DISK_CRIT_PCT`.
+
+| tier | what | cost of losing it |
+| --- | --- | --- |
+| 1 (<75%) | SQLite WAL checkpoint, orphaned temp >2h, `__pycache__`, oversized logs truncated to 2 MB | none — garbage |
+| 2 (>=75%) | `models_dev_cache.json` (5.6 MB), `provider_models_cache.json`, tool-discovery cache | a few seconds to re-download |
+| 3 (>=88%) | backup zips (newest 2 kept), cron output >7d, logs >3d, sessions mirror >3d, generated media >7d | history, not state |
+
+**Never touched at any threshold:** `.env`, `auth.json`, `config.yaml`,
+`SOUL.md`, `memories/`, `skills/`, `state.db`, `ghfirst/`, `kanban.db`,
+`shared/`, `plans/`, `cron/jobs.json`.
+
+Verified end-to-end with real disk pressure:
+
+- filled `/data` to 72%, aged the junk, `clean` → **290 MiB reclaimed, back to 3%**
+- forced CRITICAL: escalation ran all three tiers, reclaimed 100 MiB, **kept the
+  newest backup**, and all 7 protected files hashed identical afterwards
+- `state.db` after WAL checkpoint: `integrity_check = ok`, 17 sessions and 388
+  messages still readable. The checkpoint is lossless — it is the only operation
+  this script ever performs on that database, and it never deletes it.
+
+Two mistakes found by testing, both fixed in the script:
+
+1. **Lock files are no longer deleted.** They are 0 bytes, so removal frees
+   nothing while deleting a held lock invites a race between two writers.
+2. **The reclaim label said KiB for a MiB-scale delta.** `df -P` reports 1024-byte
+   blocks, so `delta/1024` is MiB; a 290 MiB reclaim was reported as "290 KiB".
+
 ## Disk layout — two very different filesystems
 
 | mount | size | lifetime | role |
