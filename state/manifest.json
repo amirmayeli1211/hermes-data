@@ -156,15 +156,15 @@
       "size": 2727
     },
     "state/skills/.curator_ledger.jsonl": {
-      "sha256": "fe01e189cde777fabbf0ecd728c698596454fb052111505af621996752b13f1e",
-      "size": 9170
+      "sha256": "0a3ee4aabf49e4c6a630a1c6d80163d4a68aed612e873a73873084f57c0936dc",
+      "size": 9755
     },
     "state/skills/.curator_state": {
       "sha256": "f78cbcfcc28a81ce261c4d3ccba4bee023c75457836622229c25818e608c82b0",
       "size": 337
     },
     "state/skills/.usage.json": {
-      "sha256": "98e3f5d4c5658f05770bd13efcc3867f83c15d31d5663a4efe6486fa69ab6074",
+      "sha256": "a204999e3b2102b85a1ac8a39a8082be99048bd5f14b8f89c77255d16fc06790",
       "size": 1015
     },
     "state/skills/apple/DESCRIPTION.md": {
@@ -920,8 +920,8 @@
       "size": 12857
     },
     "state/skills/devops/github-first-storage/references/disk-tiers.md": {
-      "sha256": "42b794c7126941bc642f66cca005f311c9166b373a253591f13255906c446925",
-      "size": 6562
+      "sha256": "6e5eaa40e0ef43594215778be1e2c28aecb32eeb3ca98ca37ba01ea17122f045",
+      "size": 8460
     },
     "state/skills/devops/github-first-storage/scripts/disk-tier-check.sh": {
       "sha256": "eac2ed833b0e48ccff5afb7edebb02afce5989364e17d1920774509c953884db",
@@ -1532,7 +1532,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-18T11:19:07.595162Z",
+  "generated_at": "2026-10-18T11:19:56.821935Z",
   "host": "bd1e2d36e25d",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -1542,5 +1542,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 3195553
+  "total_bytes": 3198036
 }

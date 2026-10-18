@@ -139,7 +139,50 @@ Verified behaviour:
   so a missing external dir degrades to "skill just isn't there" — acceptable
   for an ephemeral cache, unacceptable for required content.
 - Because the external dir is ephemeral, its contents must be restorable from
-the repo; re-pull them at boot, or they are simply absent after a recreate.
+  the repo; re-pull them at boot, or they are simply absent after a recreate.
+
+### Off-volume content has THREE locations, and the middle one is the trap
+
+"The big disk" and "the repository" are not the same thing. Conflating them
+hides the failure that actually happens:
+
+| place | lifetime | role |
+| --- | --- | --- |
+| the large mount (e.g. `<offload>/skills`) | ephemeral | live copy the application reads |
+| a staging dir inside the small state root (e.g. `<state-root>/skills/.offloaded`) | persistent | snapshot the repo sync picks up |
+| the repo (e.g. `state/skills/.offloaded/`) | permanent | the durable copy |
+
+Install writes the live copy off-volume. Push copies it into staging. **On a
+rebuild the repo copy restores to staging — which is not a path the application
+scans.** The content is then restored and simultaneously invisible: the files are
+present on disk and the loader cannot find them.
+
+Close it in the same periodic job that recreates the offload directories:
+
+```sh
+STAGE="<state-root>/skills/.offloaded"
+if [ -d "$STAGE" ]; then
+    for d in "$STAGE"/*/; do
+        [ -f "${d}SKILL.md" ] || continue
+        name="$(basename "$d")"
+        # cmp-guard so a live edit is not silently reverted on every tick.
+        if [ ! -f "$OFFLOAD/skills/$name/SKILL.md" ] || \
+           ! cmp -s "${d}SKILL.md" "$OFFLOAD/skills/$name/SKILL.md"; then
+            rm -rf "$OFFLOAD/skills/$name"
+            cp -R "$d" "$OFFLOAD/skills/$name"
+        fi
+    done
+fi
+```
+
+The guard matters: without it every tick overwrites a live edit, and the
+application's own writes to the offloaded item are lost on a schedule.
+
+Verify the whole loop, not just the install. Found only by testing: wipe the live
+dir, restore from the repo, run the job, and confirm the loader's own API can
+read the item again (`skill_view <name>` returning success, not just the file
+existing). Checking the file path alone would have passed while the loader still
+reported it missing.
 
 ## 7. Watermark the small volume
 
