@@ -12,8 +12,8 @@
       "size": 126082
     },
     "state/cron/jobs.json": {
-      "sha256": "410f89adf21ed3d94eaeb29f0934fac312cabf874e702e4d664ce74980405472",
-      "size": 2648
+      "sha256": "90c35bad492371be18485f004d3b8217b7bcd2dd73ce07131aaf2dca13924886",
+      "size": 2769
     },
     "state/cron/output/ecb9785322d5/2026-10-17_19-52-27.md": {
       "sha256": "08a7bbc3047764ae80ab22f210ec7a079ae1fe08bf3fecb1b5f1e5f6690bdc73",
@@ -168,8 +168,8 @@
       "size": 1751
     },
     "state/memories/USER.md": {
-      "sha256": "0263164630c1edae6fb33025afcf5361729290aed01ce61a0cbe30c4b804cbc8",
-      "size": 561
+      "sha256": "4f557f775eab76bb622b76eac76bde2c3646b6b5ed5a7a6aec52a5959e165711",
+      "size": 1084
     },
     "state/scripts/ghstore-reconcile.sh": {
       "sha256": "190e354590267b3a7073c1af9b0f56206bfec99c5b2981dd5c87d049b8770100",
@@ -180,8 +180,8 @@
       "size": 2727
     },
     "state/skills/.curator_ledger.jsonl": {
-      "sha256": "6cf33ad1bf9d65b8ab87190dd53d058895291494cb5df29f1b6fe3c286842a3a",
-      "size": 18379
+      "sha256": "f968f2b8478843533e9db420dcf4682ed044f2bcc912a8458e6dd3f14eae69c9",
+      "size": 19439
     },
     "state/skills/.curator_state": {
       "sha256": "f78cbcfcc28a81ce261c4d3ccba4bee023c75457836622229c25818e608c82b0",
@@ -784,7 +784,7 @@
       "size": 7688
     },
     "state/skills/.usage.json": {
-      "sha256": "a4cd4654aaf9f7db8593aa0461de571e8544d018955ea3def5ba187f4a781458",
+      "sha256": "ff602e800a9d8db9ff101ea1a173c8ccfe317ba19bc6fa5ac459571b09c0f474",
       "size": 3993
     },
     "state/skills/apple/DESCRIPTION.md": {
@@ -1156,8 +1156,8 @@
       "size": 596
     },
     "state/skills/creative/browser-game-development/SKILL.md": {
-      "sha256": "b999cef27109784402544c9bb996e0c110e088cb3840936135a615bd640da553",
-      "size": 9555
+      "sha256": "c852c4f034453147c9811fb650cdea96d8e4ba364e96868b4f3af1142f19dc3e",
+      "size": 12104
     },
     "state/skills/creative/browser-game-development/references/headless-verification.md": {
       "sha256": "e67c7d2a02fb3723841b19425cab04a35e10afbeb98fdff1c4632f2eabdbe190",
@@ -2296,7 +2296,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-18T14:01:21.747679Z",
+  "generated_at": "2026-10-18T14:31:29.182246Z",
   "host": "bd1e2d36e25d",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -2306,5 +2306,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 6329202
+  "total_bytes": 6333455
 }

@@ -145,6 +145,19 @@ except the spawn as unreachable.
 - **In CDP, `sessionId` goes at the TOP LEVEL of the message**, not inside
   `params`. Putting it in `params` makes every call fail with `-32601 "'X' wasn't
   found"`.
+- **`Runtime.evaluate` needs `awaitPromise: true` for any promise-returning
+  expression**, or the result serialises as a Promise object and you get the
+  string `"[object Object]"` instead of the value. This hides real assertions:
+  an audio-decode check reported failure only because the flag was missing.
+- **Extract a full data URI when testing an inlined asset, not a prefix.** A
+  200-char slice of an embedded mp3 is a truncated file that decodes as `error`.
+  Scan to the closing quote (`while (!/['"\s]/.test(t[j])) j++`) and take the
+  whole thing.
+- **Distinguish the codec question from the packaging question.** When an
+  embedded asset fails to decode, decode a data URI built *fresh* from the source
+  file in the same browser. If the fresh one decodes and the embedded one does
+  not, packaging is at fault; if neither decodes, the browser build lacks the
+  codec — do not "fix" the game for a codec problem.
 - **An ending is not one step away.** Choosing a finale option jumps to an ending
   node that still has many lines to page through. A test that advances once and
   reads the ending reports `null` — the game is fine, the test is wrong. Loop
@@ -155,6 +168,39 @@ except the spawn as unreachable.
   at device resolution defeats pixel art and costs frames for nothing.
 - **Text inside the canvas needs explicit RTL placement.** `ctx.textAlign='right'`
   with an RTL font stack; do not assume the DOM `dir` attribute reaches canvas.
+
+## Packaging the deliverable
+
+Produce two artifacts when the user asks for "the game":
+
+1. **One self-contained `.html`** — inline the CSS, every JS module, and each
+   audio file as a `data:audio/mpeg;base64,` URI. It then plays by double-clicking
+   with no server, no sibling folder, and no network. This is what people actually
+   open.
+2. **A `.zip` of the source tree** — the editable project plus tools and README.
+
+Then **verify the artifacts programmatically**, because an inlining script fails
+quietly. Required checks:
+
+- Every embedded data URI decodes to bytes **identical** to its source file
+  (compare by length then equality, not by trusting the script).
+- No relative asset path survives, and no external `<script src>` / `<link href>`
+  remains.
+- The single file contains every module and every story node (assert on marker
+  strings such as `const STORY =` and each ending node id).
+- The zip opens, is not corrupt, contains every expected file, and each archived
+  entry matches the file on disk.
+
+Zip can be written with `zlib.deflateRawSync` and a local header + central
+ directory by hand; there is no `zip` binary in a minimal image. Fix the DOS date
+ field so repeated builds are byte-identical.
+
+**Ship the archive from disk, never from a string in the build script.** An
+inline `README = \`...\`` and the real `README.md` drifted apart, and the verifier
+caught the zip containing a document that existed nowhere in the project.
+
+Confirm the single file works over `file://` with `--allow-file-access-from-files`
+and no sibling files available, then play it: start, move, reach an ending.
 
 ## Packaging as an APK
 
