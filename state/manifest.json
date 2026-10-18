@@ -1,6 +1,6 @@
 {
   "commit": null,
-  "excluded_count": 6,
+  "excluded_count": 7,
   "file_count": 369,
   "files": {
     "state/SOUL.md": {
@@ -92,8 +92,8 @@
       "size": 1575
     },
     "state/memories/MEMORY.md": {
-      "sha256": "3c0c92c1acce07b303ed54f7441c40a52f96daeff7505ac7c23b71e12a15c9bd",
-      "size": 877
+      "sha256": "3cccdd4acfdfadaaefa5c9cf6b0ce7449100c6910d0576009216eeb18ae47332",
+      "size": 1129
     },
     "state/memories/USER.md": {
       "sha256": "28613550dfb774f3dcac65a0ed9d27f425a74264104e0869eb947d51d272587a",
@@ -108,15 +108,15 @@
       "size": 2727
     },
     "state/skills/.curator_ledger.jsonl": {
-      "sha256": "f4d9effdc5320e46111d8279a5ce0a95a3093c090404a063edb63837a57c2b92",
-      "size": 7634
+      "sha256": "b55b912a0f301ae637e6507011e8d2eef3a7aa3cdf93f69dcda11697e5152d68",
+      "size": 8146
     },
     "state/skills/.curator_state": {
       "sha256": "f78cbcfcc28a81ce261c4d3ccba4bee023c75457836622229c25818e608c82b0",
       "size": 337
     },
     "state/skills/.usage.json": {
-      "sha256": "a58eca843c66ffdda8ae08c16534cb8758c16f0b3573960dd7d8f015ae9eb25f",
+      "sha256": "66792b617dde80b1b894fbde5200b2a48563bd8500a6608c2d8843de33954a53",
       "size": 1015
     },
     "state/skills/apple/DESCRIPTION.md": {
@@ -868,8 +868,8 @@
       "size": 10963
     },
     "state/skills/devops/github-first-storage/SKILL.md": {
-      "sha256": "e0657be6ca52437bc4d541370ddbce346f9b211e86956dc5b0b14349e7eb55d4",
-      "size": 11073
+      "sha256": "1f5b5d0d018ba63b4b7661110d0868e7ae7b8cce4b5de3381e94aa9c192fb3b4",
+      "size": 12857
     },
     "state/skills/devops/github-first-storage/references/disk-tiers.md": {
       "sha256": "42b794c7126941bc642f66cca005f311c9166b373a253591f13255906c446925",
@@ -1480,7 +1480,7 @@
       "size": 10925
     }
   },
-  "generated_at": "2026-10-18T04:55:05.544138Z",
+  "generated_at": "2026-10-18T04:56:19.667465Z",
   "host": "bd1e2d36e25d",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -1490,5 +1490,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 3160337
+  "total_bytes": 3162885
 }

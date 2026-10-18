@@ -31,6 +31,34 @@ churn and meaningless history. Do not commit them, and do not claim you have
 protected them — say plainly they need a real DB service. A user reading a
 green "in sync" status will assume everything is covered.
 
+## Rotating a leaked credential
+
+GitHub exposes **no API** for creating or rotating a personal access token —
+classic or fine-grained. It is a browser-only flow, so do not promise to do it
+end to end. What can be automated, and should be:
+
+1. **Audit exposure.** Search every file under the state root for the token
+   value and report each hit by category — the credential store (correct), the
+   session database (the transcript containing the message), staged
+   attachments, logs. A token pasted into chat lands in all of these; the chat
+   transcript is the one people forget. Its scope list is the real damage
+   report: a state-storage token should need only `Contents: Read and write` on
+   one repo, so `delete_repo`/`admin:org`/`workflow` mean it is over-privileged.
+2. **Validate before adopting.** Call the API with the *candidate* token to
+   confirm it authenticates, can see the target repo, and has push permission.
+   Write nothing until it passes, and roll back the swap if post-swap
+   verification fails. A bad candidate must never leave the deployment without
+   working credentials — verify that by testing with fake and empty tokens and
+   confirming the credential store is byte-identical afterwards.
+3. **Say that scrubbing is not a fix.** A credential that left the machine was
+   transmitted and stored in plaintext elsewhere; only revocation makes that
+   exposure inert. Order: rotate, then revoke, then scrub the local copies.
+
+Scrubbing a live SQLite store: checkpoint the WAL first, back up, then walk
+**every TEXT column of every table** with `UPDATE ... REPLACE(...)`, and re-scan
+afterwards to prove the value is gone. Prove it on a COPY of the database before
+touching the live one, and confirm `integrity_check` plus row counts afterwards.
+
 ## Keep the small disk from filling (if the state volume is tiny)
 
 Check `df -h` on the state volume before declaring victory. A container often
