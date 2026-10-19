@@ -17,20 +17,34 @@
 #   not "unlink it".
 #
 # WHAT COUNTS AS PARKED
-#   $OFFLOAD_ROOT/archive/<project>/   — outside external_dirs, outside skills/
+#   $HERMES_HOME/archive/<project>/   — on the PERSISTENT volume, outside external_dirs,
+#                                       outside skills/, and in ghstore's SYNC_MAP as
+#                                       state/archive (so it is also in the repo backup).
 #
 # Usage:
 #   sh archive.sh list                 what is parked, with sizes
 #   sh archive.sh park <project>       move a project out of the active scan
 #   sh archive.sh restore <project>    put it back into the active scan
-#   sh archive.sh verify                prove the catalogue no longer lists them
-#   sh archive.sh doctor                show every scan path the loader uses
+#   sh archive.sh migrate              move a legacy off-volume archive onto the volume
+#   sh archive.sh verify               prove the catalogue no longer lists them
+#   sh archive.sh doctor               show every scan path the loader uses
+#
+# WHY THE ARCHIVE MOVED OFF /var/tmp
+#   Parking used to land in <offload-root>/archive on the ephemeral overlay, which is
+#   erased when the container is recreated — so "park it, never delete it" would have
+#   deleted it on the next deploy, silently. Parked bytes go on the state volume, and
+#   ghstore syncs them so they survive container loss twice over.
 
 set -uo pipefail
 
 HERMES_HOME="${HERMES_HOME:-/data/.hermes}"
 OFFLOAD_ROOT="${HERMES_OFFLOAD_ROOT:-/var/tmp/hermes-offload}"
-ARCHIVE="${OFFLOAD_ROOT}/archive"
+# Parked bytes belong on the PERSISTENT volume, not the ephemeral overlay: /var/tmp
+# is wiped when the container is recreated, which would turn "park it, don't delete
+# it" into a silent deletion. $HERMES_HOME/archive is also in ghstore's SYNC_MAP,
+# so parked projects survive container loss through the repo as well.
+ARCHIVE="${HERMES_ARCHIVE_ROOT:-$HERMES_HOME/archive}"
+LEGACY_ARCHIVE="${OFFLOAD_ROOT}/archive"
 SKILLS_LIVE="${OFFLOAD_ROOT}/skills"
 STAGE="${HERMES_HOME}/skills/.offloaded"
 VPY="${HERMES_PYTHON:-/opt/hermes/.venv/bin/python}"
@@ -88,6 +102,11 @@ cmd_list() {
         done
     fi
     [ "$m" -gt 0 ] || info "(nothing parked)"
+
+    if [ -d "$LEGACY_ARCHIVE" ] && [ "$LEGACY_ARCHIVE" != "$ARCHIVE" ]; then
+        warn "legacy archive on the EPHEMERAL disk: $LEGACY_ARCHIVE (survives nothing)"
+        warn "migrate it: sh archive.sh migrate"
+    fi
 
     say "disk"
     df -h /data | tail -1 | awk '{print "  /data   "$3" used, "$4" free ("$5")"}'
@@ -175,14 +194,22 @@ cmd_verify() {
     fi
 
     say "loader's live catalogue"
-    "$VPY" - "$HERMES_HOME" <<'PY' 2>/dev/null || warn "could not query the loader"
+    # Parked names are DERIVED from the archive, never hardcoded: a hand-kept list
+    # stops covering a project the moment a new one is parked, and verify would
+    # then pass while that project sits inside a scan path.
+    "$VPY" - "$HERMES_HOME" "$ARCHIVE" "$LEGACY_ARCHIVE" "$SKILLS_LIVE" "$STAGE" <<'PY' 2>/dev/null || warn "could not query the loader"
 import os, sys, pathlib
-home = sys.argv[1]; os.environ['HERMES_HOME'] = home
+home, archive, legacy, live, stage = sys.argv[1:6]
+os.environ['HERMES_HOME'] = home
 sys.path.insert(0, '/opt/hermes')
 try:
     import agent.skill_utils as su
 except Exception as e:
     print(f"  (loader import failed: {e})"); raise SystemExit(0)
+parked = set()
+for root in (archive, legacy):
+    if os.path.isdir(root):
+        parked |= {p.parent.name for p in pathlib.Path(root).rglob('SKILL.md')}
 names = []
 for tier, d in su.get_skill_search_roots():
     if not d.is_dir():
@@ -190,13 +217,47 @@ for tier, d in su.get_skill_search_roots():
     found = [p.parent.name for p in d.rglob('SKILL.md')]
     print(f"  tier={tier}  {d}  -> {len(found)} skill(s)")
     names += found
-parked = {'level-design','dialogue-systems','godot-tiles','godot-gdscript',
-          'platformer','roguelike','pygame-core','phaser-core'}
 hits = sorted(parked & set(names))
+print(f"  parked skill names: {len(parked)}")
 print(f"  parked names visible to the loader: {hits if hits else 'NONE'}")
 PY
 
+    if [ -d "$LEGACY_ARCHIVE" ] && [ "$LEGACY_ARCHIVE" != "$ARCHIVE" ]; then
+        warn "legacy archive still on the ephemeral disk: $LEGACY_ARCHIVE"
+        bad=1
+    fi
+
     [ "$bad" -eq 0 ] || exit 1
+}
+
+cmd_migrate() {
+    [ -d "$LEGACY_ARCHIVE" ] || { ok "no legacy archive at $LEGACY_ARCHIVE"; return 0; }
+    [ "$LEGACY_ARCHIVE" = "$ARCHIVE" ] && { ok "archive already on the persistent disk"; return 0; }
+
+    mkdir -p "$ARCHIVE"
+    local before after moved=0
+    before=$(find "$LEGACY_ARCHIVE" -type f 2>/dev/null | wc -l | tr -d ' ')
+    for d in "$LEGACY_ARCHIVE"/*/; do
+        [ -d "$d" ] || continue
+        local base
+        base=$(basename "$d")
+        if [ -e "$ARCHIVE/$base" ]; then
+            warn "$base already exists at $ARCHIVE — merging"
+            cp -a "$d". "$ARCHIVE/$base"/ || die "copy failed for $base"
+            rm -rf "$d"
+        else
+            mv "$d" "$ARCHIVE/$base" || die "move failed for $base"
+        fi
+        info "migrated $base"
+        moved=$((moved + 1))
+    done
+    after=$(find "$ARCHIVE" -type f 2>/dev/null | wc -l | tr -d ' ')
+    [ "$moved" -gt 0 ] || die "nothing migrated (archive held no project directories)"
+    [ "$after" -ge "$before" ] || die "file count dropped ($before -> $after) — investigate before removing anything"
+    # Remove the now-empty legacy root only when it is genuinely empty.
+    rmdir "$LEGACY_ARCHIVE" 2>/dev/null || warn "$LEGACY_ARCHIVE not empty — inspect remaining files"
+    ok "migrated $moved project(s); $before files -> $after on the persistent disk"
+    info "now in ghstore's SYNC_MAP as state/archive — survives container loss in the repo too"
 }
 
 cmd_doctor() {
@@ -212,21 +273,29 @@ cmd_doctor() {
     say "skills.external_dirs in config"
     grep -A3 "^  external_dirs:" "$HERMES_HOME/config.yaml" 2>/dev/null | sed 's/^/  /' || info "(not set)"
 
-    say "archive root"
-    if [ -d "$ARCHIVE" ]; then
-        du -sh "$ARCHIVE" 2>/dev/null | sed 's/^/  /'
-        ls "$ARCHIVE" 2>/dev/null | sed 's/^/    /'
-    else
-        info "$ARCHIVE does not exist yet"
-    fi
+    say "archive roots"
+    for p in "$ARCHIVE" "$LEGACY_ARCHIVE"; do
+        if [ -d "$p" ]; then
+            printf '  %s\n' "$p"
+            du -sh "$p" 2>/dev/null | sed 's/^/    /'
+            ls "$p" 2>/dev/null | sed 's/^/      /'
+        else
+            info "$p (absent)"
+        fi
+    done
+    case "$ARCHIVE" in
+        "$HERMES_HOME"/*) ok "archive is on the persistent volume and in SYNC_MAP" ;;
+        *) warn "archive is OUTSIDE \$HERMES_HOME — it is not backed up and may sit on the ephemeral disk" ;;
+    esac
 }
 
 case "${1:-list}" in
     list|ls) cmd_list ;;
     park)    shift; cmd_park "${1:-}" ;;
     restore) shift; cmd_restore "${1:-}" ;;
+    migrate) cmd_migrate ;;
     verify)  cmd_verify ;;
     doctor)  cmd_doctor ;;
     -h|--help) sed -n '2,30p' "$0" ;;
-    *) die "unknown command: $1 (try: list, park, restore, verify, doctor)" ;;
+    *) die "unknown command: $1 (try: list, park, restore, migrate, verify, doctor)" ;;
 esac

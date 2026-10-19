@@ -932,7 +932,7 @@
       "size": 337
     },
     "state/skills/.usage.json": {
-      "sha256": "a6d5f4f943eb6cb57d8aae6b61e49b33ddac830408f79628265dca3628ae49dc",
+      "sha256": "a207220e711637c6f1b55b2ef6817c08c22e13381c9f3d3e870a67c625df21a1",
       "size": 4501
     },
     "state/skills/apple/DESCRIPTION.md": {
@@ -2284,8 +2284,8 @@
       "size": 17163
     },
     "tool/archive.sh": {
-      "sha256": "fae8032fa5c583c2fcdfcb2dcb3cf9ff2763b64c900a983e5eb2a639cea5f929",
-      "size": 8763
+      "sha256": "b564c3f6a966db3ee080ca5b4609b189cb8be629ac47fd0d6a19e627bc56a2fb",
+      "size": 12351
     },
     "tool/bootstrap.sh": {
       "sha256": "b5c3aa88d4ffa158732d0dfbf0a3e4f0bacd17f49b99d52359c42ebf199429c6",
@@ -2300,8 +2300,8 @@
       "size": 9670
     },
     "tool/ghstore.py": {
-      "sha256": "62cf6d99cc6edb01693cead084d3e82e071ac1ac25d9268d71d892df356d29f9",
-      "size": 58266
+      "sha256": "f71454fb5887ce6c7dc8c1e5e036e2fe92164e67f90da6d4c09c939aeca594ce",
+      "size": 59102
     },
     "tool/offload-boot.sh": {
       "sha256": "ddd02652306044684cc0de7240403045f2febb58ccedc3c1b7f7c0671ca35f98",
@@ -2328,7 +2328,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-19T17:10:27.162671Z",
+  "generated_at": "2026-10-19T17:17:58.006223Z",
   "host": "bd1e2d36e25d",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -2338,5 +2338,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 6505836
+  "total_bytes": 6510260
 }

@@ -69,15 +69,15 @@
     "created_by": "learn",
     "first_seen_at": null,
     "last_patched_at": "2026-10-18T16:35:01.488969+00:00",
-    "last_reused_patch_generation": 20,
-    "last_used_at": "2026-10-18T16:33:25.591653+00:00",
-    "last_viewed_at": "2026-10-18T16:33:25.582703+00:00",
+    "last_reused_patch_generation": 26,
+    "last_used_at": "2026-10-19T17:13:45.812987+00:00",
+    "last_viewed_at": "2026-10-19T17:13:45.809147+00:00",
     "patch_count": 26,
     "patch_generation": 26,
     "pinned": false,
     "state": "active",
-    "use_count": 6,
-    "view_count": 6
+    "use_count": 7,
+    "view_count": 7
   },
   "hermes-agent": {
     "archived_at": null,

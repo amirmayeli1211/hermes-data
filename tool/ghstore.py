@@ -1021,8 +1021,24 @@ def cmd_push(args) -> int:
     gh = GitHub(token, args.repo, args.verbose)
     files, excluded, skipped = collect_local(home)
     blocking, warnings = gate_secrets(files, args.strict_scan)
-    for warn in warnings:
-        print(f"  [scan-warning] {warn['path']}: {', '.join(warn['kinds'])}")
+    # Entropy warnings are advisory, and a busy home produces dozens of them; a
+    # wall of notices buried the one line that mattered in the cron alert. Summarise
+    # by default and list them in full only when asked.
+    if warnings:
+        kinds: dict[str, int] = {}
+        for warn in warnings:
+            for kind in warn["kinds"]:
+                kinds[kind] = kinds.get(kind, 0) + 1
+        summary = ", ".join(f"{k}={v}" for k, v in sorted(kinds.items()))
+        print(f"scan warnings: {len(warnings)} file(s) ({summary})")
+        if args.verbose:
+            for warn in warnings:
+                print(f"  [scan-warning] {warn['path']}: {', '.join(warn['kinds'])}")
+        else:
+            for warn in warnings[:5]:
+                print(f"  [scan-warning] {warn['path']}: {', '.join(warn['kinds'])}")
+            if len(warnings) > 5:
+                print(f"  ... and {len(warnings) - 5} more (re-run with --verbose)")
     if blocking:
         print("\nABORTED: the secret gate found credential-shaped content. Nothing was pushed.")
         for item in blocking:
