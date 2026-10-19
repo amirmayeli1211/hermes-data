@@ -160,6 +160,12 @@ tier3() {
 
     reclaim "generated media >7d" find "${HERMES_HOME}/audio_cache" "${HERMES_HOME}/image_cache" \
         -type f -mtime +7 -delete 2>/dev/null
+
+    # NOTE: $HERMES_HOME/archive is deliberately absent from every tier. Parked
+    # projects are the user's finished work, held by explicit instruction instead of
+    # being deleted, so no disk pressure may reclaim them — they are protected at
+    # every threshold the same way .env and memories/ are. If the disk is genuinely
+    # too small, the correct outcome is to say so, not to evict the archive.
 }
 
 # --- safety guard ---------------------------------------------------------

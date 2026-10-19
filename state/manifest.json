@@ -2296,8 +2296,8 @@
       "size": 17649
     },
     "tool/disk-guard.sh": {
-      "sha256": "9759e270de6b0cab80619d3425ee37fde90e15a9f18fe36342598106822a35d1",
-      "size": 9670
+      "sha256": "c44a7110a06ff0853d9e34c78c6299b5db8e495ffcd556c72efd7ce3d7a4c2e5",
+      "size": 10081
     },
     "tool/ghstore.py": {
       "sha256": "f71454fb5887ce6c7dc8c1e5e036e2fe92164e67f90da6d4c09c939aeca594ce",
@@ -2328,7 +2328,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-19T17:31:41.503270Z",
+  "generated_at": "2026-10-19T17:32:40.387250Z",
   "host": "bd1e2d36e25d",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -2338,5 +2338,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 6507537
+  "total_bytes": 6507948
 }
