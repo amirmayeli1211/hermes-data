@@ -141,6 +141,49 @@ from the backup — precisely inverting the intent. Add the new small files thro
 the Contents API (`PUT /repos/{r}/contents/{path}`) instead, and re-check the
 project's file count in the repo afterwards.
 
+### Park ON the state volume, and put the archive in the sync map
+
+The archive must not live on the ephemeral overlay. Parking moved bytes to
+`<offload-root>/archive` on `/var/tmp`, which is erased when the container is
+recreated — so "park it, never delete it" deletes it on the next deploy, silently
+and exactly once, long after the command that looked successful. Keep parked bytes
+under `$HERMES_HOME/archive/` AND add that path to the sync map, so a parked
+project survives container loss twice over (volume + repo). Add a `migrate`
+command that moves a legacy off-volume archive across and refuses when the file
+count drops. Keep the archive in the disk-guard's protected set at every tier: it
+is the user's finished work, held by instruction, so no watermark may evict it.
+
+### `cp -R src dst` with `dst` already existing nests a level
+
+Fold live mirrors into the canonical parked tree by copying to a NEW path and then
+swapping: `cp -R "$src" "$dst.tmp" && rm -rf "$dst" && mv "$dst.tmp" "$dst"`.
+Measured: `cp -R live/gamedev-godot archived/gamedev-godot` with the destination
+already present produced `archived/gamedev-godot/gamedev-godot/` and silently
+doubled 32 files, while the command exited 0 and the top-level file count looked
+plausible. The swap also means a failed copy cannot destroy the copy already in
+the archive, and the source is removed only after the new one lands.
+
+### A restore must rehydrate, and a round trip must be byte-checked
+
+Restoring into a staging directory that the loader does not scan leaves the project
+"restored" on disk and invisible to the agent — run the rehydrate step in the same
+command, not only in the boot job. Two measured traps in that path:
+
+- Enumerate the archive with `find`, never `"$dir"/*`: the only payload may be a
+  DOT-directory (`.offloaded`), which a plain glob misses entirely (the shell tool
+  `search_files` with `target='files'` and a glob is the portable alternative), so
+  restore reported "nothing to restore" while 60 skills sat in the archive.
+- Mirror by top-level entry, not by `$STAGE/*/SKILL.md`: the staged tree is
+  category/nested-skill/SKILL.md, so a one-level glob matches no SKILL.md and
+  reports "rehydrated 0" while the catalogue stays empty.
+
+Give park TWO PASSES: move the canonical sources first, fold the live mirrors in
+second. Folding first compares against staging still on the small disk, and the
+canonical move then clobbers whatever was just folded in. Prove the whole thing by
+hashing the archive before and after a park → restore → park round trip and
+comparing: 183 files stayed byte-identical, which is the only evidence that
+neither direction duplicated or lost data.
+
 To recover a repo after a mistaken deletion, commit the PRE-deletion tree on top
 of the current head (`POST /git/commits` with `parents=[current_head]`). That is a
 revert: history stays linear, the mistake stays visible, and nothing is forced.
@@ -164,7 +207,12 @@ unplaced files, including:
 
 The audit must share ONE exclusion predicate with the collector. Two
 implementations drift, and a path can then sit on disk while both report it
-handled.
+handled. That drift is not hypothetical: the collector keeps only the newest N
+files under `cron/output/`, and the audit — sharing `is_excluded` but not the
+rotation rule — reported every rotated-out file as UNCLASSIFIED (10 false
+failures until the spot-fix). Any rule the collector applies AFTER the exclusion
+check needs a matching branch in the audit, or the audit cries wolf and the real
+gap stops being visible.
 
 ## Reference implementation
 
@@ -329,6 +377,14 @@ probe, temp-dir precedence, and the `external_dirs` details.
 `references/project-retirement.md` — parking a finished project out of every scan
 path, the loader query that proves it, and recovering from a mistaken deletion.
 `scripts/disk-tier-check.sh` — re-runnable tier, fallback, and watermark check.
+
+## Reporting a huge backlog of advisory warnings
+
+A secret scanner that reports entropy warnings per file produces a wall of output
+on a busy home (measured: 46 lines from one push). Delivered verbatim by a cron
+job, that wall buries the one line that matters. Summarise by count and kind and
+list the first few, keeping the full list behind a `--verbose` flag. Keep the
+BLOCKING list unconditional: warnings are advisory, secret hits are not.
 
 ## Verification checklist
 
