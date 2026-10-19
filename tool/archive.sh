@@ -119,29 +119,74 @@ cmd_park() {
     sources_for "$project" >/dev/null 2>&1 || die "unknown project: $project"
 
     mkdir -p "$ARCHIVE/$project"
-    local moved=0 missing=0
-    # Collect the source list first, then iterate a here-doc. Process substitution
-    # (`< <(...)`) is a bashism that dash rejects with "redirection unexpected",
-    # and this script is also invoked as `sh archive.sh`.
-    local list
-    list=$(sources_for "$project")
-    local oldifs="$IFS"
-    IFS='
-'
-    for src in $list; do
-        [ -n "$src" ] || continue
-        if [ ! -e "$src" ]; then missing=$((missing + 1)); continue; fi
-        local base
-        base=$(basename "$src")
-        rm -rf "$ARCHIVE/$project/$base"
-        mv "$src" "$ARCHIVE/$project/$base"
-        info "parked $(basename "$src")"
-        moved=$((moved + 1))
-    done
-    IFS="$oldifs"
+    local moved=0 missing=0 folded=0
 
-    [ "$moved" -gt 0 ] || die "nothing found to park for '$project' (already parked?)"
+    # TWO PASSES, and the order matters for correctness, not tidiness.
+    # Pass 1 moves the canonical sources (including the $STAGE staging tree) into
+    # the archive. Pass 2 folds the live mirrors under $SKILLS_LIVE INTO that
+    # archived staging tree. Folding first would compare against staging that is
+    # still on the small disk, and the pass-1 move of $STAGE would then clobber any
+    # live edit that had just been folded in.
+    local list pass
+    list=$(sources_for "$project")
+    for pass in 1 2; do
+        local oldifs="$IFS"
+        IFS='
+'
+        for src in $list; do
+            [ -n "$src" ] || continue
+            case "$pass:$src" in
+                1:"$SKILLS_LIVE"/*) continue ;;          # pass 2 handles live mirrors
+                2:*) case "$src" in "$SKILLS_LIVE"/*) ;; *) continue ;; esac ;;
+            esac
+            if [ ! -e "$src" ]; then [ "$pass" = 1 ] && missing=$((missing + 1)); continue; fi
+            local base
+            base=$(basename "$src")
+
+            if [ "$pass" = 2 ]; then
+                # Live mirror of a staged category. Staging is canonical; if the live
+                # copy differs it carries a real edit (offload-boot only copies
+                # staging -> live), so the live version wins and says so.
+                local cname stagecat
+                cname="$base"
+                stagecat="$ARCHIVE/$project/$(basename "$STAGE")/$cname"
+                if [ -d "$stagecat" ] && diff -r -q "$src" "$stagecat" >/dev/null 2>&1; then
+                    rm -rf "$src"
+                    info "dropped duplicate live copy of $cname (archive already holds it)"
+                    folded=$((folded + 1))
+                else
+                    # Stage the copy under a NEW name, then swap it in. `cp -R src dst`
+                    # with dst already existing copies INTO it: measured, that nested
+                    # gamedev-godot/gamedev-godot/ and silently doubled 32 files. The
+                    # swap also means a failed copy never destroys the archive copy,
+                    # and the live source is only removed after the new copy lands.
+                    local tmp="$stagecat.fold-new"
+                    rm -rf "$tmp"
+                    if mkdir -p "$(dirname "$stagecat")" && cp -R "$src" "$tmp" && [ -d "$tmp" ]; then
+                        rm -rf "$stagecat"
+                        mv "$tmp" "$stagecat"
+                        rm -rf "$src"
+                        warn "live copy of $cname differed from the staged version — kept the live one"
+                        folded=$((folded + 1))
+                    else
+                        rm -rf "$tmp"
+                        warn "could not fold $cname into staging — live copy left in place"
+                    fi
+                fi
+                continue
+            fi
+
+            rm -rf "$ARCHIVE/$project/$base"
+            mv "$src" "$ARCHIVE/$project/$base"
+            info "parked $base"
+            moved=$((moved + 1))
+        done
+        IFS="$oldifs"
+    done
+
+    [ "$((moved + folded))" -gt 0 ] || die "nothing found to park for '$project' (already parked?)"
     ok "moved $moved path(s) into $ARCHIVE/$project"
+    [ "$folded" -gt 0 ] && info "live copies folded into the canonical staging tree"
     [ "$missing" -gt 0 ] && info "$missing source path(s) were already absent"
     info "bytes are intact and the repo backup is untouched"
 }
