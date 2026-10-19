@@ -933,6 +933,14 @@ def cmd_audit(args) -> int:
         if is_excluded(rel):
             excluded.append((rel, "exclusion rule"))
             continue
+        # The collector keeps only the newest N files under cron/output, so an older
+        # one is absent from the repo by rule and not a gap. Without this branch the
+        # audit reported every rotated-out file as UNCLASSIFIED (measured: 10 false
+        # failures) — the collector and the auditor MUST share one predicate or they
+        # disagree about the same path.
+        if rel.startswith("cron/output/"):
+            excluded.append((rel, "cron-output rotation (newest kept)"))
+            continue
         top = rel.split("/")[0]
         if top in REBUILDABLE_PREFIXES:
             excluded.append((rel, "runtime/rebuildable"))
