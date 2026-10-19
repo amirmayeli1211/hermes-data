@@ -103,6 +103,9 @@ SYNC_MAP = [
     ("skins", "state/skins"),
     ("scripts", "state/scripts"),
     ("workspace", "state/workspace"),
+    # Parked projects (archive.sh): finished work whose bytes must survive a
+    # container loss while staying out of the skill loader's scan paths.
+    ("archive", "state/archive"),
     ("cron/jobs.json", "state/cron/jobs.json"),
     ("cron/output", "state/cron/output"),
 ]

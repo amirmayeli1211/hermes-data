@@ -97,6 +97,54 @@ to the next candidate — which is the small disk. Measured: with
 scratch path. Recreate the directory in the scheduled job rather than relying on
 it surviving.
 
+## Retiring a project: park it, never delete it
+
+When a user says a project is finished, or asks you to "forget" it, "clear it from
+your mind", or "remove it from the active set", they are describing a change in
+SCOPE — what you should be attending to — not requesting that bytes be unlinked.
+Deleting is irreversible and the user's own data usually outlives the task.
+**Park the content: move it somewhere no scan reaches, and say where it went.**
+
+If a "remove / clean / forget" instruction could plausibly mean either, ASK.
+One line of confirmation costs seconds; a mistaken deletion costs an apology, a
+restore, and the user's trust in every later instruction.
+
+### Park outside EVERY scan path, not just the obvious one
+
+A skill loader does not have one directory, it has several. Hermes scans:
+
+- `$HERMES_HOME/skills/` **recursively**
+- every entry in `skills.external_dirs`
+- dot-directories inside the skills root as well — a staged copy under
+  `skills/.offloaded/` is still INSIDE the recursive scan
+
+Measured consequence: a staging directory holding 60 retired skills kept all 60
+active because it sat inside the skills root. "Parked" is only true when the
+destination is outside every path above — use `<offload-root>/archive/<project>/`.
+
+### Build a command surface, and make `verify` ask the LOADER
+
+```
+archive.sh list | park <project> | restore <project> | verify | doctor
+```
+
+`verify` is load-bearing: it asserts nothing parked sits inside a scan path AND
+queries the loader's own root list to show the parked names are absent. A move
+that leaves a scanned copy behind looks successful and changes nothing, so the
+check must interrogate the loader rather than walk the filesystem.
+
+### A push after parking will DELETE the parked project from the repo
+
+A push computes its tree from LOCAL state, so a project parked locally but still
+present in the repo reads as "the user deleted it" and the push removes all of it
+from the backup — precisely inverting the intent. Add the new small files through
+the Contents API (`PUT /repos/{r}/contents/{path}`) instead, and re-check the
+project's file count in the repo afterwards.
+
+To recover a repo after a mistaken deletion, commit the PRE-deletion tree on top
+of the current head (`POST /git/commits` with `parents=[current_head]`). That is a
+revert: history stays linear, the mistake stays visible, and nothing is forced.
+
 ## Build an `audit` command, not just `push`
 
 `push`/`status` only answer "is what I *track* in sync?". On a disposable disk
@@ -146,7 +194,10 @@ parser with `default=argparse.SUPPRESS` to each subparser, so both
    A wrong or unmounted state directory looks identical to "the user deleted
 everything". Gate deletions: refuse when a push would remove more than ~10%
 or >25 tracked files, unless explicitly overridden. This failure was observed
-live — it wiped 330 files — before the guard existed.
+live — it wiped 330 files — before the guard existed. The same trap fires when
+content is deliberately parked out of the local view but is still in the repo: the
+guard will stop the wipe, and the correct follow-up is a targeted Contents-API add
+rather than an override.
 
 4. **Secret scanners need placeholder awareness in both directions.**
    Naive token regexes reject documentation: a hyphenated filename
@@ -190,6 +241,13 @@ live filesystem, not by review.
    it end to end by creating the sidecar and confirming it is absent from the
    push set — the collector and the auditor are separate code paths and only the
    test proves they agree.
+
+10. **Verify shell scripts with BOTH `bash -n` and `sh -n`.**
+    A shebang saying `bash` does not protect a script that gets invoked as
+    `sh tool.sh` — under dash a process substitution (`done < <(cmd)`) dies with
+    "Syntax error: redirection unexpected" at runtime, not at write time. Avoid
+    bashisms (process substitution, arrays, `[[ ]]`) in any script a workflow, a
+    cron wrapper, or another script may call, and syntax-check with both shells.
 
 ## Disk tiers: not every writable path is equal
 
@@ -268,6 +326,8 @@ downloading anything large.
 
 Support files: `references/disk-tiers.md` — measurement recipes, the EXDEV
 probe, temp-dir precedence, and the `external_dirs` details.
+`references/project-retirement.md` — parking a finished project out of every scan
+path, the loader query that proves it, and recovering from a mistaken deletion.
 `scripts/disk-tier-check.sh` — re-runnable tier, fallback, and watermark check.
 
 ## Verification checklist
@@ -288,3 +348,8 @@ Run these before reporting success:
   set does not contain it.
 - `disk-guard.sh check` (or equivalent) — confirm the reclaim plan, then run it
   under real disk pressure and re-hash the protected files afterwards.
+- Parking: run `archive.sh verify` and confirm the loader reports **0** parked
+  skills in its live catalogue, then `restore` and `park` again to prove the round
+  trip in both directions.
+- After parking, confirm the repo still contains the parked project's files — a
+  normal push would have removed them.

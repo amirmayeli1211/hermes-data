@@ -116,13 +116,23 @@ update loop. Two layers, both in `references/headless-verification.md`:
 
 `scripts/cdp-playtest.js` is a working dependency-free harness for layer 2.
 
-### 6. Report progress while building, not only at the end
+### 6. Work to the end of the agreed scope, then report once
 
-A game build is a long chain of tool calls across many turns. Emitting no text
-while working reads as stuck, and the user will interrupt to ask what happened.
-Emit one short line per turn about what just changed and what is next, then carry
-on — do not narrate every command, and do not pause for permission between steps
-once the scope is agreed.
+A game build is a long chain of tool calls. **Do not yield the turn between tool
+batches to deliver a fragment of narration.** The user cannot act on "I am
+building now", so a mid-task pause reads as the work stalling and they interrupt
+to ask what happened — which costs more turns than continuing would have. Batch
+many tool calls into one turn and keep going.
+
+Two things genuinely warrant ending a turn early, and only these:
+
+- **A decision only the user can make** (scope, tone, which engine).
+- **A blocker that ends the work** — say plainly that it failed, what the output
+  said, and what you need. Never dress a failed step as done.
+
+When the user asks for the artifact at any point, produce and attach it in that
+same turn instead of finishing the remaining polish first — but otherwise finish,
+then report.
 
 When a test fails, establish which side is wrong before fixing it: a failing
 assertion is frequently a bug in the TEST, not the game. Say plainly which one it
@@ -187,6 +197,11 @@ Produce two artifacts when the user asks for "the game":
    with no server, no sibling folder, and no network. This is what people actually
    open.
 2. **A `.zip` of the source tree** — the editable project plus tools and README.
+
+**Keep generated artifacts out of the state-sync snapshot only if they are cheap to
+regenerate — otherwise ship them.** A `dist/` directory is a build product, but it
+is also the thing the user opens; commit it alongside the source rather than
+excluding it, and make the packaging step reproducible so a rebuild matches.
 
 Then **verify the artifacts programmatically**, because an inlining script fails
 quietly. Required checks:

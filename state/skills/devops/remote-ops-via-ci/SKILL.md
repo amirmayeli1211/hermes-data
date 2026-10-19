@@ -187,6 +187,13 @@ takes seconds to a minute, so poll rather than assuming failure to dispatch.
   whether `systemctl` can manage anything; a container with `tini` as PID 1 has
   `systemctl` installed and unusable, so systemd-based installers report success and
   leave nothing running.
+- **A distribution upgrade can land a version the installer has never seen.**
+  A brand-new OS release is not "just a newer Ubuntu" — a compose-based installer
+  may refuse it, or install cleanly and fail at runtime. Read `PRETTY_NAME` in the
+  probe and prefer a release the project lists as supported.
+- **Read the installer's own argument parser before trusting its `--help` or the
+  docs.** Download the script and grep the option's validation branch; a documented
+  flag was found to reject the very value it documents.
 
 ## Networks behind filtering (registry and mirror handling)
 
@@ -210,11 +217,39 @@ chosen mirror and the pull result so a later failure can be attributed.
 
 ## Reporting
 
-A remote deploy is a long chain of phases across many turns. Emit one short line
-per turn about which phase just changed and what is next, then continue — silence
-while working reads as stuck and the user will interrupt to ask what happened.
-Report the phase result as the remote output reported it, and never describe a
-phase as done when its own output said otherwise.
+A remote deploy is a long chain of phases across many turns. Serve the user-visible
+report at the END, when the work is finished — and in the meantime keep working
+rather than yielding the turn to deliver a fragment.
+
+**Finish the task, then report once. A half-answer between tool batches is not
+progress the user can use.** They cannot act on "I am mid-way through phase 2", so
+they read the pause as the work stalling and interrupt to ask what happened — which
+costs more turns than continuing would have. Chaining many tool calls in one turn is
+cheap; stopping to narrate each step is what makes a long job feel broken.
+
+Two things are genuinely worth an early turn, and only these:
+
+- **A decision the user must make** (which host, which backend, whether to
+  proceed after a cost or scope finding).
+- **A blocker that ends the work** — say plainly that it failed, what the output
+  said, and what you need. Do not dress a failed phase as done.
+
+For a phase that runs for minutes, dispatch it and keep going; its result lands in
+the conversation when it finishes. Never hold a turn open on a slow phase just to
+have something to say.
+
+## Wording a claim you did not finish verifying
+
+A long deploy accumulates partial results, and the temptation is to describe the
+intended end state. Report only what a command's own output showed, and label the
+rest:
+
+- Say **"the installer exited 1 with `<exact message>`"**, not "the install had an
+  issue".
+- Keep a short "verified by running it" vs "read from the source" vs "from the
+docs" split in the reference file, and update it when a phase is re-run.
+- A phase whose output you have not read yet is **unknown**, not done — and
+  "unknown" is a fine thing to report.
 
 Support file: `references/pasarguard-deploy.md` — the panel+node deploy recipe for
 this pattern, including the installer flag that rejects its own default.
