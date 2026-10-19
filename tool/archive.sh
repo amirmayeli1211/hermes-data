@@ -152,13 +152,24 @@ cmd_restore() {
     local dir="$ARCHIVE/$project"
     [ -d "$dir" ] || die "not parked: $project"
 
-    local n=0
-    for d in "$dir"/*/ "$dir"/*; do
+    local n=0 staged=0
+    # Enumerate with `find`, not a `"$dir"/*` glob: the gamedev project's only
+    # payload is the DOT-directory `.offloaded`, which a plain glob never matches —
+    # so a glob-based restore reported "nothing to restore" while 60 parked skills
+    # sat in the archive. Verify with an entry count, not with trust.
+    local entries
+    entries=$(find "$dir" -mindepth 1 -maxdepth 1 | sort)
+    # Newline-separated so an entry containing a space survives; every expansion in
+    # the loop body is quoted, so the temporary IFS changes nothing else.
+    local oldifs="$IFS"
+    IFS='
+'
+    for d in $entries; do
         [ -e "$d" ] || continue
         local base dest
         base=$(basename "$d")
         case "$base" in
-            .offloaded)    dest="$STAGE" ;;
+            .offloaded)    dest="$STAGE" ; staged=1 ;;
             gamedev-*)     dest="$SKILLS_LIVE/$base" ;;
             horror-game)   dest="$HERMES_HOME/workspace/$base" ;;
             ops)           dest="$HERMES_HOME/ghfirst/$base" ;;
@@ -170,8 +181,41 @@ cmd_restore() {
         info "restored $base -> $dest"
         n=$((n + 1))
     done
+    IFS="$oldifs"
     [ "$n" -gt 0 ] || die "nothing to restore in $project"
     ok "restored $n item(s)"
+
+    # A restore into the staging dir is not visible to the agent: staging is
+    # deliberately outside every scan path. Rehydrate it into the live external dir
+    # in the same command (offload-boot does the same on each tick), otherwise
+    # "restored" is true on disk and false in skill_view.
+    #
+    # Mirror by TOP-LEVEL ENTRY, not by `$STAGE/*/SKILL.md`: the staged tree is
+    # category/nested-skill/SKILL.md, so a one-level glob matches no SKILL.md at all
+    # and reports "rehydrated 0" while the catalogue stays empty. The loader scans
+    # the external dir recursively, so a whole-subtree copy is the correct unit.
+    if [ "$staged" -eq 1 ] && [ -d "$STAGE" ]; then
+        mkdir -p "$SKILLS_LIVE"
+        local r=0
+        for d in "$STAGE"/*/; do
+            [ -d "$d" ] || continue
+            local name
+            name=$(basename "$d")
+            rm -rf "$SKILLS_LIVE/$name"
+            cp -R "$d" "$SKILLS_LIVE/$name"
+            r=$((r + 1))
+        done
+        # Drop live categories the staging area no longer holds, so a re-park does
+        # not leave a stale visible copy behind.
+        for d in "$SKILLS_LIVE"/*/; do
+            [ -d "$d" ] || continue
+            local name
+            name=$(basename "$d")
+            [ -e "$STAGE/$name" ] || rm -rf "$d"
+        done
+        ok "rehydrated $r categor$( [ "$r" = 1 ] && echo y || echo ies ) into $SKILLS_LIVE (live to the loader)"
+        sh "$0" verify
+    fi
 }
 
 # Prove the active catalogue no longer contains the parked project. This is the

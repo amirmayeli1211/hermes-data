@@ -1,7 +1,7 @@
 {
   "commit": null,
   "excluded_count": 24,
-  "file_count": 581,
+  "file_count": 729,
   "files": {
     "state/SOUL.md": {
       "sha256": "3bd38ef92efb90d0fdda1bb73036185d4a4bc11079963cb0e2db71c84281e64e",
@@ -603,6 +603,598 @@
       "sha256": "a0a5afed4deef5e478ea6ea25d32b51bd2fadcee60f0ddb67fca0cfc557568d2",
       "size": 7688
     },
+    "state/archive/gamedev-skills/gamedev-disciplines/README.md": {
+      "sha256": "77d8f31df7b00f1377ed0fe7d43d466f83901b43dc6468192db1cb714b6c76a2",
+      "size": 712
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/ai-behavior-trees-utility-ai/SKILL.md": {
+      "sha256": "185960eddb169cb81490e0d01efb9240663b8a465ca34ec34e0f015a727f06e4",
+      "size": 8255
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/ai-behavior-trees-utility-ai/references/behavior-tree-core.md": {
+      "sha256": "df96b3faf1b7107240ed9c5f3bed793733dd9bdd25c05577abb7a69edd95521b",
+      "size": 14586
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/ai-behavior-trees-utility-ai/references/best-practices-and-pitfalls.md": {
+      "sha256": "8ff83984ad998bc949d7524bae38c4d5b1acec34ff24587fdc9a9e9952c23c53",
+      "size": 5836
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/ai-behavior-trees-utility-ai/references/practical-examples.md": {
+      "sha256": "9be856be9e5375fa218e927125dfca3f4f1c7b2ecd9089e5fa8b86d76b07cf1e",
+      "size": 7836
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/ai-behavior-trees-utility-ai/references/utility-ai-system.md": {
+      "sha256": "a414ecd074e467d598664cde01305be054387fd3dc3e0045525ea3673d33309b",
+      "size": 7528
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/audio-design/SKILL.md": {
+      "sha256": "cedbcb99da5cb378855e4c1a039a46286da8f5bc1b9875b887da86dcf7778096",
+      "size": 9778
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/audio-design/references/adaptive-music.md": {
+      "sha256": "ca6fd287054294004acd85d9acd773d7b52c327911116c9c02344bab5e61df13",
+      "size": 4041
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/audio-design/references/synthesized-audio.md": {
+      "sha256": "abeb7644964107b728a9813e50fbe850f0cbd506c582cf58c99ec83684a91037",
+      "size": 6932
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/camera-systems/SKILL.md": {
+      "sha256": "cec5e9ef16aaf8d42a7b86e3b17678d57920ab7692bbbfe710a34ac0d09b32c7",
+      "size": 8530
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/camera-systems/references/follow-and-framing.md": {
+      "sha256": "daf21e0079ed86580f670c3f503a4dd835511534dc0dcecda9750b6eda3ceeec",
+      "size": 4827
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/create-game-assets/SKILL.md": {
+      "sha256": "c178cde20316f7d326f2a853a76522b375b325346b5b8797ef52aa98740aff18",
+      "size": 7979
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/create-game-assets/agents/openai.yaml": {
+      "sha256": "b5ff9e75ab8a845324d28745aa97af0a3cd4fccc56067a6494947e12e40f1990",
+      "size": 231
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/create-game-assets/assets/art-direction-brief.md": {
+      "sha256": "6d5dc4f9f5fcb24300bab9ce7dbd56d5c948ba41da3cca2d3b3d235fee5fb72c",
+      "size": 858
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/create-game-assets/assets/asset-manifest.json": {
+      "sha256": "6cce05638c11b80eb5c8f776cf187f479a2579f1a1729b0970b1cc8e5fab4c8e",
+      "size": 969
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/create-game-assets/references/art-direction.md": {
+      "sha256": "19b2ccb827eae0c6c4cd3648ab7febb82e44706bef8515f2e8912de23dec0a5c",
+      "size": 3876
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/create-game-assets/references/provenance.md": {
+      "sha256": "2c2b30c69dec5c006c91ecbf506fce2ae3f857b5cc82bda9a10ddb5b769c7586",
+      "size": 2198
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/create-game-assets/references/raster-pipeline.md": {
+      "sha256": "834ecaeb35e61fc50ed5fbd518942f767f0717d1ab641822234a1f9cbe5eeb6f",
+      "size": 3909
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/create-game-assets/references/three-d-pipeline.md": {
+      "sha256": "8278baa203b7cd560d9fc5688c33489a9c478275c1795def119b7e024b27d03e",
+      "size": 3146
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/create-game-assets/scripts/asset_report.py": {
+      "sha256": "93e364f095261b44f6fd0345f7132019af1af93e81ebd84d91fe2a5049918203",
+      "size": 4702
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/create-game-assets/scripts/build_preview_sheet.py": {
+      "sha256": "002a550a7b5fac6d8815078a72afc249dd828c40d975b2323223fc770118c64b",
+      "size": 3353
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/create-game-assets/scripts/requirements.txt": {
+      "sha256": "1954ca940740c612a12e7abf0a307b7394715964d66dc8037d503fdd5c1b6424",
+      "size": 15
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/dialogue-systems/SKILL.md": {
+      "sha256": "1ffcc673e7309c196ccab90676ca128a48b087f4f3ce3d2bcd03c4a988958bd1",
+      "size": 7402
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/dialogue-systems/references/ink-and-yarn.md": {
+      "sha256": "aa3e2b6037b8e772d01b07ae9cbf7c44b0adc96b953a4faa2ea035b963866338",
+      "size": 4725
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/dialogue-systems/references/runner.md": {
+      "sha256": "e03929dcab2ab514f29ed97847334360edd795ea0387d6bf2597a3a6c502744d",
+      "size": 5092
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/game-ai/SKILL.md": {
+      "sha256": "ef23a6440743b3583d1072c92f6b0b45f3d11df33b3b77db53bce8b82c2f8940",
+      "size": 7999
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/game-ai/references/behavior-trees.md": {
+      "sha256": "2b69a6ae71a1034c049889fb4b0ccbc8697db9ad9f177f07c1053379cb0ef1fc",
+      "size": 4944
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/game-ai/references/pathfinding.md": {
+      "sha256": "3f1ce44462b4d1789245758b72d0b20e8053df458df1f743455dcd5d7319bba3",
+      "size": 4900
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/game-feel/SKILL.md": {
+      "sha256": "68fc818ad939151be2db9e358e4295a71830c19d61f3aff849f1599307f39f9d",
+      "size": 8985
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/game-feel/references/feedback-recipes.md": {
+      "sha256": "c1d0c4d9480bf4cd729ca99f2b36ebc1f3f264a873b408f2145898841e5d6685",
+      "size": 5543
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/game-ui-ux/SKILL.md": {
+      "sha256": "8a094c84a377503aa8f4c40df676d1c6b6fc07d36ff95554ce06467f1614397e",
+      "size": 8436
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/game-ui-ux/references/layout-and-flow.md": {
+      "sha256": "000d944db77155ebf97fde035a3d4fbe69ef0ae348e9dbcaff48c5ea134d7d69",
+      "size": 5413
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/input-systems/SKILL.md": {
+      "sha256": "4cb79ad13d54b5b7412efc978d8c5bc3dab529182feb531f304d7d75879f2308",
+      "size": 7665
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/input-systems/references/buffering-and-accessibility.md": {
+      "sha256": "4ddc70151a9d72fdc7e0a310f242834ab55c2f7f1133f44e4a51ecda95b4f563",
+      "size": 4130
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/level-design/SKILL.md": {
+      "sha256": "7e7f699302df834e1f017bf57e0b297d5618e0c7eed4756e7c0df39bb1ce8754",
+      "size": 9909
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/level-design/references/level-validation.md": {
+      "sha256": "286eeb3d8a8715cf893b47e6d797fbcaceda1aef39df5a27fef25eca4d6e4404",
+      "size": 5676
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/level-design/references/pacing-and-flow.md": {
+      "sha256": "e8e3940f585e376f353aefea009befe8199a1871f99d34d7b2340cb35cb61872",
+      "size": 4500
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/performance-optimization/SKILL.md": {
+      "sha256": "920073757f92e6a512d2443fcf159a51d505eaa7e5857861819c73a42e38b302",
+      "size": 11070
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/performance-optimization/references/profiling-and-budgets.md": {
+      "sha256": "fb161af3797b364c5a9032dc3836bc25f05762508f2831f6a19a6aa416811dd8",
+      "size": 5826
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/physics-tuning/SKILL.md": {
+      "sha256": "faa9a50d465c16d0060af8c8e20533efb829e07616ec01de4cbdb8d536a7d986",
+      "size": 7552
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/physics-tuning/references/timestep-and-ccd.md": {
+      "sha256": "8091f77b848fa2e9e0eaa267f7b3ad06c1af6e8af5965d6d9c1a66076f9380ef",
+      "size": 4453
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/procedural-gen/SKILL.md": {
+      "sha256": "709ccd2dd1e02177f45ccc903bb11d20d3c57365761fb2c9a784880e7b2c9270",
+      "size": 7165
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/procedural-gen/references/dungeon-generation.md": {
+      "sha256": "e743e7fa562b93eec3793acc76b40e276a385215844ca2783c0ca572225c9e51",
+      "size": 4585
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/procedural-gen/references/noise.md": {
+      "sha256": "067b4430cfc5121ac2f94e071492c910692fd10a295cedec0f25ae212fee769e",
+      "size": 4154
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/save-systems/SKILL.md": {
+      "sha256": "bf9184965b3eb4bc0b20be00681d08ef1af63fd85ca5b7afb7453ca09e80e490",
+      "size": 7337
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/save-systems/references/versioning-and-migration.md": {
+      "sha256": "a0127a2443049a801f01f950ec6f0581ca3d74f6b20e309af4e5095b162175ae",
+      "size": 4068
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/shader-programming/SKILL.md": {
+      "sha256": "e89558b15691c891e12cece81d4bafd4d61159bd4de2ae580ac109aecadca7ad",
+      "size": 6833
+    },
+    "state/archive/gamedev-skills/gamedev-disciplines/shader-programming/references/effects.md": {
+      "sha256": "bf0665485e8b12d42d4bd6cfe5d1ebd93fbcef315b703e4657f0d40a23224975",
+      "size": 5110
+    },
+    "state/archive/gamedev-skills/gamedev-genres/README.md": {
+      "sha256": "62b53e4887fef459609a8ea8879c3e2bf33dc09872ed96e74950513e4ec1e679",
+      "size": 491
+    },
+    "state/archive/gamedev-skills/gamedev-genres/card-game/SKILL.md": {
+      "sha256": "1d972929333201a552087505cb26386569c844f092a51fd0dfe073f69d0e8556",
+      "size": 6519
+    },
+    "state/archive/gamedev-skills/gamedev-genres/card-game/references/effect-resolution.md": {
+      "sha256": "62185a36e4221b8fdc605b734d66b6464765bc2fdb13c53ca6dc3a8ca528d4f9",
+      "size": 4720
+    },
+    "state/archive/gamedev-skills/gamedev-genres/fps-shooter/SKILL.md": {
+      "sha256": "b4772d548c9f8645c099d32014ba4c5eda11b09495881a8c257b419149ed4bff",
+      "size": 6170
+    },
+    "state/archive/gamedev-skills/gamedev-genres/fps-shooter/references/shooting-and-feel.md": {
+      "sha256": "22e17ddc59995918de3134b5bd4159400f815f18f8a2eb8f67bc5cd72a2bf698",
+      "size": 4479
+    },
+    "state/archive/gamedev-skills/gamedev-genres/platformer/SKILL.md": {
+      "sha256": "ffa6800e26702c371543ebafc721593ba7d19eb9864b6e28dec3c3155b15f1a7",
+      "size": 6765
+    },
+    "state/archive/gamedev-skills/gamedev-genres/platformer/references/feel-tuning.md": {
+      "sha256": "6235edcda24b8447d19269138e5e6406af490991dc96172d140166f2698bb061",
+      "size": 5106
+    },
+    "state/archive/gamedev-skills/gamedev-genres/puzzle/SKILL.md": {
+      "sha256": "a2f40c5c684b0d0f09d0b1db1cfcb04ca7e4e6e8bca946022f8318f5fbc44b4c",
+      "size": 7001
+    },
+    "state/archive/gamedev-skills/gamedev-genres/puzzle/references/board-and-resolution.md": {
+      "sha256": "111151fe725f98b2c679f708c7dff11f0eb4d08189a0c41b02782e9a7c37a3d7",
+      "size": 5157
+    },
+    "state/archive/gamedev-skills/gamedev-genres/roguelike/SKILL.md": {
+      "sha256": "05dc641b7360ade29331f87262aedf2e1d9449812c95cad24decee652450b6ca",
+      "size": 7271
+    },
+    "state/archive/gamedev-skills/gamedev-genres/roguelike/references/generation-fov-loot.md": {
+      "sha256": "795f66262d5260bf2222c62924b34cac810c05875b8cb0c7d65f5321e7597935",
+      "size": 4956
+    },
+    "state/archive/gamedev-skills/gamedev-genres/rpg/SKILL.md": {
+      "sha256": "f33ea8698049050be589c50c532e06adeab52fbeacff81eafb909f230a38745b",
+      "size": 6363
+    },
+    "state/archive/gamedev-skills/gamedev-genres/rpg/references/stats-combat-quests.md": {
+      "sha256": "3b5b7504ffe2fe23fb73c12e225b7422faedb5e9a7abae69d2c98344f224d066",
+      "size": 4500
+    },
+    "state/archive/gamedev-skills/gamedev-genres/survival-crafting/SKILL.md": {
+      "sha256": "cbf1981c1a446ba7e3edbc18b3ff92e11d872386f889f9316bab0deb240df5bb",
+      "size": 7417
+    },
+    "state/archive/gamedev-skills/gamedev-genres/survival-crafting/references/needs-and-crafting.md": {
+      "sha256": "c944e77ed6c2f7ba2e2c3213228b5387ea15a672092f46d98c44666f0945bb3b",
+      "size": 5090
+    },
+    "state/archive/gamedev-skills/gamedev-genres/tower-defense/SKILL.md": {
+      "sha256": "27f35ea5defd81bbb81d61984b4394a11c2c6f7ce141ca8e70b7f55e97485e25",
+      "size": 6664
+    },
+    "state/archive/gamedev-skills/gamedev-genres/tower-defense/references/balancing.md": {
+      "sha256": "75e775207bcc9bd90a5ca1d4e8253e25e9c57bb01eead960462a88ef08a46461",
+      "size": 4970
+    },
+    "state/archive/gamedev-skills/gamedev-genres/visual-novel/SKILL.md": {
+      "sha256": "081f25d30ca70219e54496a4b19f3d8568488e3e32d51af6b743ca4d67a6cf03",
+      "size": 6765
+    },
+    "state/archive/gamedev-skills/gamedev-genres/visual-novel/references/script-and-flow.md": {
+      "sha256": "0b30fcf3f047363194cb95facf668ae3dd6f330124e2f1cd960d9f48605a5df1",
+      "size": 4527
+    },
+    "state/archive/gamedev-skills/gamedev-godot/README.md": {
+      "sha256": "7ceb712f10d119f40747b3856889103d9deb45adfd77cfb34683e55c4b781f91",
+      "size": 426
+    },
+    "state/archive/gamedev-skills/gamedev-godot/godot-2d-movement/SKILL.md": {
+      "sha256": "e8089e2a10ef2e836d6a1c858a716697a23f1060b6243e50b526da27fc653fb4",
+      "size": 6011
+    },
+    "state/archive/gamedev-skills/gamedev-godot/godot-2d-movement/references/controller-recipes.md": {
+      "sha256": "d6418b2c84f45263e01df3410f65c57100249d9aef2ca47fc760fd24fff402da",
+      "size": 3241
+    },
+    "state/archive/gamedev-skills/gamedev-godot/godot-3d-essentials/SKILL.md": {
+      "sha256": "e2358689bf656964f3a388baf1c224dc3be2b8de460db8ac8bb1e5bf0b0a4fe8",
+      "size": 5705
+    },
+    "state/archive/gamedev-skills/gamedev-godot/godot-3d-essentials/references/scene-and-environment.md": {
+      "sha256": "b4de6267588f540baa7e4fa149fd4653ace4324e1b17b7655d0f6551a735b428",
+      "size": 3877
+    },
+    "state/archive/gamedev-skills/gamedev-godot/godot-animation/SKILL.md": {
+      "sha256": "9d32ef721eaa227494180b6ffb0208624a76e93217a2e39c2286eb0b5701e8e5",
+      "size": 5432
+    },
+    "state/archive/gamedev-skills/gamedev-godot/godot-animation/references/animation-tree-and-tween.md": {
+      "sha256": "455ef0e15357428f250035fd5b0c587500b9d565f3bbcc33f95f378a986380a6",
+      "size": 4138
+    },
+    "state/archive/gamedev-skills/gamedev-godot/godot-audio/SKILL.md": {
+      "sha256": "b75829c3c47539f4e1fa2b623ebfce6fa4f5eef2ddc950d00265c27cfae2e0db",
+      "size": 5240
+    },
+    "state/archive/gamedev-skills/gamedev-godot/godot-audio/references/buses-and-effects.md": {
+      "sha256": "da6a33ae46b21f3526e74c5e383781e02f1f6ca0bd755475b21e14f124a52526",
+      "size": 3590
+    },
+    "state/archive/gamedev-skills/gamedev-godot/godot-csharp/SKILL.md": {
+      "sha256": "c6d30a274621c63ab20ce2153807fd173987d1eccd06acfbe6a8a9f26a28c819",
+      "size": 6670
+    },
+    "state/archive/gamedev-skills/gamedev-godot/godot-csharp/references/csharp-setup-and-interop.md": {
+      "sha256": "086f7bc8549d61ae96190643e9a574f666fd7ed3b04eb18ec10430f89984211d",
+      "size": 3912
+    },
+    "state/archive/gamedev-skills/gamedev-godot/godot-export/SKILL.md": {
+      "sha256": "e97f0a889b8e06934aced7fdcee667d5bb848e33bc44d500c92f580e60295305",
+      "size": 5591
+    },
+    "state/archive/gamedev-skills/gamedev-godot/godot-export/references/presets-and-cli.md": {
+      "sha256": "ddb73ed10a107d806e883a1d13c6a78377226223d57b536201dda9c97505ae62",
+      "size": 3902
+    },
+    "state/archive/gamedev-skills/gamedev-godot/godot-gdscript-headless-testing/SKILL.md": {
+      "sha256": "556b63c125cd01864411a07a7d9c067b5b5df26db9cd60c745edf871edabb47e",
+      "size": 9194
+    },
+    "state/archive/gamedev-skills/gamedev-godot/godot-gdscript/SKILL.md": {
+      "sha256": "b2625f5651fc9373e057ea47b5e2372319c4ed027fffc958f8a91d25cdea5a39",
+      "size": 5291
+    },
+    "state/archive/gamedev-skills/gamedev-godot/godot-gdscript/references/annotations-and-typing.md": {
+      "sha256": "f1cea898e0346be3fac816093b577b30ef0f112d83cc2c1472c44d4a936700b3",
+      "size": 3354
+    },
+    "state/archive/gamedev-skills/gamedev-godot/godot-multiplayer/SKILL.md": {
+      "sha256": "43b2f2725ab1f0565dfc132a203de75fc99f6e722f2a0dad78ca5026f0fdae44",
+      "size": 6472
+    },
+    "state/archive/gamedev-skills/gamedev-godot/godot-multiplayer/references/replication-and-rpc.md": {
+      "sha256": "51e58312b2532f5bbb8223e0bc1e1a5bdc145f6b3140c393a263cdbdc323b34c",
+      "size": 4573
+    },
+    "state/archive/gamedev-skills/gamedev-godot/godot-nodes-scenes/SKILL.md": {
+      "sha256": "27beea0d3994e6bc502f9dc3fb6089afcdc083e41790a4cf6a7d32314e079e3d",
+      "size": 5511
+    },
+    "state/archive/gamedev-skills/gamedev-godot/godot-nodes-scenes/references/tree-and-instancing.md": {
+      "sha256": "be3c86180bd18dd46bfdfd7a47317bdb50fc6942cfc3e3d7342b4d0f7834b7a4",
+      "size": 3010
+    },
+    "state/archive/gamedev-skills/gamedev-godot/godot-physics/SKILL.md": {
+      "sha256": "53310957617465653c838309851bad09b12a051e6aeef2a2b307f11d9e75062b",
+      "size": 8292
+    },
+    "state/archive/gamedev-skills/gamedev-godot/godot-physics/references/bodies-and-queries.md": {
+      "sha256": "64f6bdd613b92607cfbf0d3be0b88172d2e6c5b9cfd353706740833fd1343160",
+      "size": 3963
+    },
+    "state/archive/gamedev-skills/gamedev-godot/godot-resources/SKILL.md": {
+      "sha256": "c44678e5ce98171d21fb6899f8e7e3983f5599a98e45b3c24bb80a19468e44ab",
+      "size": 4993
+    },
+    "state/archive/gamedev-skills/gamedev-godot/godot-resources/references/resource-patterns.md": {
+      "sha256": "f0474f71c843c4c9cfd05609129984a4facf3444a764b2c71f24f066a51dbbb9",
+      "size": 3272
+    },
+    "state/archive/gamedev-skills/gamedev-godot/godot-shaders/SKILL.md": {
+      "sha256": "15bf46f7b0af586f026c1bb58beaeba2579009b70398f43859b7ab286a45e63e",
+      "size": 5527
+    },
+    "state/archive/gamedev-skills/gamedev-godot/godot-shaders/references/shading-language.md": {
+      "sha256": "582b146d8d47b61d80eb8def8e48923d87ef1c7964542f0a12e9e05645c517e9",
+      "size": 3992
+    },
+    "state/archive/gamedev-skills/gamedev-godot/godot-signals-groups/SKILL.md": {
+      "sha256": "bf1ff3e6b84b63da7ee1749d296722d416f9bb6436b6c2ee9418d33fbfc135c0",
+      "size": 5053
+    },
+    "state/archive/gamedev-skills/gamedev-godot/godot-signals-groups/references/signal-patterns.md": {
+      "sha256": "837c192a07fbd0239ed30a68570ef6a1782f6ad03fe7298c7cbe580b34fb3c17",
+      "size": 3502
+    },
+    "state/archive/gamedev-skills/gamedev-godot/godot-tilemap/SKILL.md": {
+      "sha256": "2b29349a728e0b708b5090d99372892597bfe37df6d071211ca8fb1cd15c46d5",
+      "size": 5755
+    },
+    "state/archive/gamedev-skills/gamedev-godot/godot-tilemap/references/tileset-and-terrains.md": {
+      "sha256": "c2486c7bacdd3f099d981f50b1aa881a7647bb14112b343370f76e1753d12ed8",
+      "size": 4094
+    },
+    "state/archive/gamedev-skills/gamedev-godot/godot-ui-control/SKILL.md": {
+      "sha256": "9ac89920e74bbf8d939b4d565e350d53b07c9afbe0970345c97d4122f590cfd5",
+      "size": 5782
+    },
+    "state/archive/gamedev-skills/gamedev-godot/godot-ui-control/references/layout-and-theming.md": {
+      "sha256": "2b5a7d64f00709640385adda215aa3f9a839c2d461c53c886ba9c320723a9f3d",
+      "size": 4107
+    },
+    "state/archive/gamedev-skills/gamedev-other-engines/README.md": {
+      "sha256": "f06a4636b7584d48639cc348224f7efc7e8aac8928f72d9bf9377ab9d2ab72b0",
+      "size": 442
+    },
+    "state/archive/gamedev-skills/gamedev-other-engines/bevy-ecs/SKILL.md": {
+      "sha256": "ef127cdf6cc71f730fdc39b237983e95519de8db1e90ab18d5f929a55d0f1d76",
+      "size": 9905
+    },
+    "state/archive/gamedev-skills/gamedev-other-engines/bevy-ecs/references/queries-and-scheduling.md": {
+      "sha256": "99661ce4b4c8247ba14cefecfe09c1bf0726c37068db99177e46ee0612d2ac3d",
+      "size": 11322
+    },
+    "state/archive/gamedev-skills/gamedev-other-engines/love2d-core/SKILL.md": {
+      "sha256": "874fed1fd611024df5c69aeb2ae4798d2923ea61d76c3e196029195cbcf10ee1",
+      "size": 6352
+    },
+    "state/archive/gamedev-skills/gamedev-other-engines/love2d-core/references/state-stack.md": {
+      "sha256": "848e3d1957e3ab6e83bd403323aec21b4516ce761d552813f7ebce3c76d8fbd6",
+      "size": 4640
+    },
+    "state/archive/gamedev-skills/gamedev-other-engines/pygame-core/SKILL.md": {
+      "sha256": "e92c9a139faff1d2fe7e62f3a470f87be43e5942b0a89ac041dd1856402068d9",
+      "size": 7210
+    },
+    "state/archive/gamedev-skills/gamedev-other-engines/pygame-core/references/sprites-and-collision.md": {
+      "sha256": "3d3233ea2bfa6e646426b038b20288841b3f657c9961f587ca5a355b75a1152c",
+      "size": 4232
+    },
+    "state/archive/gamedev-skills/gamedev-other-engines/roblox-characters/SKILL.md": {
+      "sha256": "f3eb428069a2d0c099cfd7fc7454ea1ece3a56cca296d5758925886adeb7a92f",
+      "size": 8638
+    },
+    "state/archive/gamedev-skills/gamedev-other-engines/roblox-characters/agents/openai.yaml": {
+      "sha256": "d206f4538baeb195e01d29cc53ea712948e6820c3c6539f7f2e2cce6656b8885",
+      "size": 209
+    },
+    "state/archive/gamedev-skills/gamedev-other-engines/roblox-characters/references/lifecycle-and-animation.md": {
+      "sha256": "ecee2fe0dc55245ef94861d68852bbdb5c7de09eb2cb2c60e5e37295c3cfbed0",
+      "size": 2623
+    },
+    "state/archive/gamedev-skills/gamedev-other-engines/roblox-datastores/SKILL.md": {
+      "sha256": "b64a11db8cee8b03c59a86ee197a152c4b0a368148db1fdf474bd10eb6890c52",
+      "size": 7730
+    },
+    "state/archive/gamedev-skills/gamedev-other-engines/roblox-datastores/references/sessions-and-limits.md": {
+      "sha256": "0fd8bbd8ae9369adb48e2a2ee864fbe29c8ef9ff90e5dfdd22ccd88851c18d84",
+      "size": 5492
+    },
+    "state/archive/gamedev-skills/gamedev-other-engines/roblox-luau/SKILL.md": {
+      "sha256": "6cefbf1ae6a57876a814bf94b9966b5a0afed1e80e192745e532c536e0ae3271",
+      "size": 8841
+    },
+    "state/archive/gamedev-skills/gamedev-other-engines/roblox-luau/references/client-server.md": {
+      "sha256": "cbb013ca65789073687cb2ded9fb4045b5dc4a92af9afd1d535dcb2a46327c05",
+      "size": 4768
+    },
+    "state/archive/gamedev-skills/gamedev-other-engines/roblox-networking/SKILL.md": {
+      "sha256": "4bf929dab25bde30851ddb1eb1831ee881c1491a871248c45351a513fa453849",
+      "size": 9313
+    },
+    "state/archive/gamedev-skills/gamedev-other-engines/roblox-networking/agents/openai.yaml": {
+      "sha256": "b3f530519ed19704b115584ded1842ca430fef1650fa873694c4d9cfc7e29401",
+      "size": 206
+    },
+    "state/archive/gamedev-skills/gamedev-other-engines/roblox-networking/references/validation-and-testing.md": {
+      "sha256": "b76848087b7adf6b68da7feb01a522515f909bd062cf9247cf44aafaab93225b",
+      "size": 3289
+    },
+    "state/archive/gamedev-skills/gamedev-other-engines/roblox-physics/SKILL.md": {
+      "sha256": "b91d88793183b61eb80b60baa07f42c504fbbc21de344f372e85eb448e9f3044",
+      "size": 8050
+    },
+    "state/archive/gamedev-skills/gamedev-other-engines/roblox-physics/agents/openai.yaml": {
+      "sha256": "55b06a72b4e88c5ec5a4c9d7c3a9684849b6362545d97c8703e79a22120500bf",
+      "size": 199
+    },
+    "state/archive/gamedev-skills/gamedev-other-engines/roblox-physics/references/queries-and-ownership.md": {
+      "sha256": "67eca1dd85cc27b3443f409c10458c7157e9bb9428378126f8a784e875b66408",
+      "size": 3073
+    },
+    "state/archive/gamedev-skills/gamedev-other-engines/roblox-studio-workflow/SKILL.md": {
+      "sha256": "77aa202a728504301413ee98b766d4ae42f91baa7b4d429d319e98dc99f97a4d",
+      "size": 10265
+    },
+    "state/archive/gamedev-skills/gamedev-other-engines/roblox-studio-workflow/agents/openai.yaml": {
+      "sha256": "34f2fe7716ef36610d0a577e05bdcfb36cbaaa25da23a159ee9c02a2d248c7d3",
+      "size": 222
+    },
+    "state/archive/gamedev-skills/gamedev-other-engines/roblox-studio-workflow/references/studio-verification.md": {
+      "sha256": "ddf0c896eedc6c351ec9f6e5293db20c7e7b3053342101a5eda344b890bbd5e0",
+      "size": 3542
+    },
+    "state/archive/gamedev-skills/gamedev-other-engines/roblox-ui/SKILL.md": {
+      "sha256": "c03198cd4283325073d5b07d8655f4eaa1933e3e2b1c69fb75945dd09ee8baea",
+      "size": 11717
+    },
+    "state/archive/gamedev-skills/gamedev-other-engines/roblox-ui/agents/openai.yaml": {
+      "sha256": "4c67a26a3054126e21db6fb6f893135944a8ca0fac9d619506e867b989073ded",
+      "size": 190
+    },
+    "state/archive/gamedev-skills/gamedev-other-engines/roblox-ui/assets/inventory-quality-test.model.json": {
+      "sha256": "8f503559cc63a6620cf0fcf3fcf8ab434a5cabde90367c85d7dc50ed748ee11c",
+      "size": 12050
+    },
+    "state/archive/gamedev-skills/gamedev-other-engines/roblox-ui/assets/inventory-quality-test.project.json": {
+      "sha256": "ab2388eefb502d3e9e165aadc55aba09841940c757ad6d06048e4a8fcdfa0348",
+      "size": 229
+    },
+    "state/archive/gamedev-skills/gamedev-other-engines/roblox-ui/references/input-navigation.md": {
+      "sha256": "ab8f0d12eb1586c84b686ca02bf46f829880b2f87ec4e52cbd30c7213ab19dcb",
+      "size": 4628
+    },
+    "state/archive/gamedev-skills/gamedev-other-engines/roblox-ui/references/responsive-layout.md": {
+      "sha256": "8fb38261a9cb00d996cba524bdd9af203f854259f455765aeb1de58d88048ddb",
+      "size": 6748
+    },
+    "state/archive/gamedev-skills/gamedev-web-engines/README.md": {
+      "sha256": "979a6f7d63950dc879404457faab428d7be395902e133089ab729292878a940d",
+      "size": 416
+    },
+    "state/archive/gamedev-skills/gamedev-web-engines/phaser-arcade-physics/SKILL.md": {
+      "sha256": "4b7186f03c236bbe83dfd8f24467cc4429ff47cb870e04ef939320165b6bcd04",
+      "size": 7012
+    },
+    "state/archive/gamedev-skills/gamedev-web-engines/phaser-arcade-physics/references/bodies-and-collision.md": {
+      "sha256": "3ea38f74ac01e0c9f872407acd219104e1a729cb5a14b95498cc5b1aaa145b05",
+      "size": 4881
+    },
+    "state/archive/gamedev-skills/gamedev-web-engines/phaser-core/SKILL.md": {
+      "sha256": "101c9382dd8a68f2573ef83d978bd19432f61512c5aa83e8c2a5cf7e7e3e38b4",
+      "size": 7281
+    },
+    "state/archive/gamedev-skills/gamedev-web-engines/phaser-core/references/scene-flow.md": {
+      "sha256": "355c1553a116351d7088e4f15b2dd08976e2241f576dcef50a61f92d4540d143",
+      "size": 3713
+    },
+    "state/archive/gamedev-skills/gamedev-web-engines/pixijs-rendering/SKILL.md": {
+      "sha256": "5c22e69830fd718ffc5bfca72489127099e271899a485e5d38ca7cd8ab658c85",
+      "size": 9291
+    },
+    "state/archive/gamedev-skills/gamedev-web-engines/pixijs-rendering/references/assets-and-display.md": {
+      "sha256": "af9077d168ecd7123c948783daa1844f3fbb5c69bdf508f2e5a03864880c91a1",
+      "size": 5583
+    },
+    "state/archive/gamedev-skills/gamedev-web-engines/threejs-gltf-loading/SKILL.md": {
+      "sha256": "d37a50198d95ee3d4e50b04014e86222df5ba177daec20b1e7ed01890cead2e2",
+      "size": 7133
+    },
+    "state/archive/gamedev-skills/gamedev-web-engines/threejs-gltf-loading/references/loaders-and-animation.md": {
+      "sha256": "50e962527c3ec186882f3b4d9a5ecac2f121d9d3ff6756dd336241cafa5cc0a4",
+      "size": 4580
+    },
+    "state/archive/gamedev-skills/gamedev-web-engines/threejs-materials-lighting/SKILL.md": {
+      "sha256": "5377a67ebd8058574ca1fe7bc82ced3c5b98380f3d860ef146b0727a3b6ad2af",
+      "size": 7289
+    },
+    "state/archive/gamedev-skills/gamedev-web-engines/threejs-materials-lighting/references/materials-lights-table.md": {
+      "sha256": "1d89f5b007206d34b221ee5062d110c08ddd41fcef16f48e5aaf11ffcba08f85",
+      "size": 4952
+    },
+    "state/archive/gamedev-skills/gamedev-web-engines/threejs-scene-setup/SKILL.md": {
+      "sha256": "8b7ef10fd2daa356182ac74f8c51cfb166345750df919c4195c36cfa00e1c80b",
+      "size": 6862
+    },
+    "state/archive/gamedev-skills/gamedev-web-engines/threejs-scene-setup/references/scene-graph.md": {
+      "sha256": "9799dac6fb092c91bc3897336e8407063d6dc6bf7f21cf00c4e609ad223319c4",
+      "size": 4134
+    },
+    "state/archive/gamedev-skills/gamedev-workflows/README.md": {
+      "sha256": "c45660b16032d7eba3c04b183782563888a61c7973ea54b56767389e5022b946",
+      "size": 481
+    },
+    "state/archive/gamedev-skills/gamedev-workflows/game-jam/SKILL.md": {
+      "sha256": "5d47346146fb777ac7a1541283e95cecd4b01d65e16505cfd01eb6a714a5bd31",
+      "size": 6510
+    },
+    "state/archive/gamedev-skills/gamedev-workflows/itch-publish/SKILL.md": {
+      "sha256": "bcee8af7090e732b8168a5f3ac79493203d0688a038faafa509f9c468020dc3f",
+      "size": 6908
+    },
+    "state/archive/gamedev-skills/gamedev-workflows/itch-publish/references/butler-ci.md": {
+      "sha256": "4da37faa452595ef7915c9f99ff513fd16b900c6cdb28c19f7111290b4106e4f",
+      "size": 5534
+    },
+    "state/archive/gamedev-skills/gamedev-workflows/prototype-fast/SKILL.md": {
+      "sha256": "02491395c621833d2252f7a33a96aa11f26eb48523fea167c68272fb3c785ba1",
+      "size": 6024
+    },
+    "state/archive/gamedev-skills/gamedev-workflows/steam-publish/SKILL.md": {
+      "sha256": "39ae5448175ec1a65af60874872a7b120b6c906ca3c146588c2a1aaf13948771",
+      "size": 9349
+    },
+    "state/archive/gamedev-skills/gamedev-workflows/steam-publish/references/steampipe-build-scripts.md": {
+      "sha256": "a0a5afed4deef5e478ea6ea25d32b51bd2fadcee60f0ddb67fca0cfc557568d2",
+      "size": 7688
+    },
     "state/archive/room13-game/horror-game/APK.md": {
       "sha256": "64721fc0f7a7b6deb613bbf9e3b06167c5f3c8eafc774ec117bface4978a0cec",
       "size": 6188
@@ -744,12 +1336,8 @@
       "size": 126110
     },
     "state/cron/jobs.json": {
-      "sha256": "36c1e9c80bf1a29d70abec26dfceb51d64c4157f3fac000ce2b9efaa16fc650b",
-      "size": 12529
-    },
-    "state/cron/output/ecb9785322d5/2026-10-18_20-43-29.md": {
-      "sha256": "de22b697131660b8f0fc063e490c3da8ad66ba6c64c123a60e53234892b9528a",
-      "size": 4145
+      "sha256": "a3080d067c1b26e5e85f3a108ecc92f8437e48265b225f7ddb3770c4b90fc5dc",
+      "size": 7518
     },
     "state/cron/output/ecb9785322d5/2026-10-18_21-14-29.md": {
       "sha256": "bd582e933adc042fbd754c3baf7e4bd0ec52fe927e9a04b2c1ac8c270d3c49dd",
@@ -906,6 +1494,10 @@
     "state/cron/output/ecb9785322d5/2026-10-19_16-52-29.md": {
       "sha256": "6bf67951ea3ea9b7f25acf087311d08856d2850b010a3028f81f5a8955d04acc",
       "size": 4973
+    },
+    "state/cron/output/ecb9785322d5/2026-10-19_17-19-36.md": {
+      "sha256": "9987c9d6d61ae55202258b5bcbfa93f7aeff1829d2c37fb04f398ab6c7b4ca27",
+      "size": 1729
     },
     "state/memories/MEMORY.md": {
       "sha256": "7357ce334ce0826f6e4c22067c61cbf786c17f232b1786d2b90cfef423afd70d",
@@ -2284,8 +2876,8 @@
       "size": 17163
     },
     "tool/archive.sh": {
-      "sha256": "b564c3f6a966db3ee080ca5b4609b189cb8be629ac47fd0d6a19e627bc56a2fb",
-      "size": 12351
+      "sha256": "dc17de854408c06030a92d562375aeae8a4b5e76add07f9afb94a9f31a1d3867",
+      "size": 14420
     },
     "tool/bootstrap.sh": {
       "sha256": "b5c3aa88d4ffa158732d0dfbf0a3e4f0bacd17f49b99d52359c42ebf199429c6",
@@ -2328,7 +2920,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-19T17:19:23.168058Z",
+  "generated_at": "2026-10-19T17:24:10.819928Z",
   "host": "bd1e2d36e25d",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -2338,5 +2930,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 6510416
+  "total_bytes": 7308776
 }
