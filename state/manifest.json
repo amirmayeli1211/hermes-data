@@ -1,8 +1,16 @@
 {
   "commit": null,
-  "excluded_count": 5,
-  "file_count": 581,
+  "excluded_count": 6,
+  "file_count": 583,
   "files": {
+    "projects/README.md": {
+      "sha256": "3d342e460991acfd867b966da08bbc740d16a954a0a32eb00824108259a75273",
+      "size": 236
+    },
+    "projects/ticket-bot/.keep": {
+      "sha256": "2f73349cfc4630255319c6c8dfc1b46a8996ace9d14d8e07563b165915918ec2",
+      "size": 12
+    },
     "state/SOUL.md": {
       "sha256": "3bd38ef92efb90d0fdda1bb73036185d4a4bc11079963cb0e2db71c84281e64e",
       "size": 668
@@ -744,12 +752,8 @@
       "size": 126289
     },
     "state/cron/jobs.json": {
-      "sha256": "9cc8f66b2a70ed960225b62ba1075dabfdb462bacd9217c199aac33d9068c139",
-      "size": 7640
-    },
-    "state/cron/output/ecb9785322d5/2026-10-19_09-07-29.md": {
-      "sha256": "80533b86ad67bcfe13a649eeb7fe83f8c665ab9e6aa86562667987b7c455ed1f",
-      "size": 4973
+      "sha256": "e1f62cf166f5e87bd2cc63865f745af50a4af7e50aac527942eaacb5110c3fd4",
+      "size": 7519
     },
     "state/cron/output/ecb9785322d5/2026-10-19_09-38-29.md": {
       "sha256": "4cb22e6eb7f0ccbfa4bb23b4437db72317da22074fc1f5941e700945238be74e",
@@ -906,6 +910,10 @@
     "state/cron/output/ecb9785322d5/2026-10-20_10-16-08.md": {
       "sha256": "c446caa3cdb1b3f792d834d5ac67484ed42261bc1dfe675668c724509d71d1fd",
       "size": 1943
+    },
+    "state/cron/output/ecb9785322d5/2026-10-20_10-47-04.md": {
+      "sha256": "55bb8be3436715e3d0aa8003d39f17d05304a61ff510e2583b0399691f9a1123",
+      "size": 1728
     },
     "state/memories/MEMORY.md": {
       "sha256": "1ef34dc833b3568de1eb383d57872683c4c7b8d2060377369d074951091de859",
@@ -2300,8 +2308,8 @@
       "size": 10081
     },
     "tool/ghstore.py": {
-      "sha256": "9a7afebbf42eb74c2f026dec73e86d5d9e036d27ffc1be61755ebd624c2155c3",
-      "size": 60889
+      "sha256": "6b26d15f942db18b82c714442b399d5f6602234b02172653215f20a6a26ea0a9",
+      "size": 61153
     },
     "tool/offload-boot.sh": {
       "sha256": "62b37d2a990d78c54bd12beaa3ac8632a7e2e615097a0a5b7ccbdf09bb4ef812",
@@ -2328,7 +2336,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-20T10:46:47.993612Z",
+  "generated_at": "2026-10-20T10:48:34.432590Z",
   "host": "43dc92631849",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -2338,5 +2346,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 6445759
+  "total_bytes": 6442905
 }

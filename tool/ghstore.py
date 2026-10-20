@@ -106,6 +106,10 @@ SYNC_MAP = [
     # Parked projects (archive.sh): finished work whose bytes must survive a
     # container loss while staying out of the skill loader's scan paths.
     ("archive", "state/archive"),
+    # Real software projects (not Hermes skills): source of every product Reza
+    # builds here. Mapped to a top-level `projects/` tree so product code stays
+    # separate from Hermes runtime state; one directory per project, flat.
+    ("projects", "projects"),
     ("cron/jobs.json", "state/cron/jobs.json"),
     ("cron/output", "state/cron/output"),
 ]
