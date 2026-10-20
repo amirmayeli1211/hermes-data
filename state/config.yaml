@@ -2386,6 +2386,7 @@ platforms:
       name: 𝑹𝑬𝒁𝑨
       user_id: '7025776524'
 command_allowlist:
+  - invisible or bidirectional Unicode control character (possible obfuscation)
   - recursive delete
   - script execution via -e/-c flag
   - script execution via heredoc
