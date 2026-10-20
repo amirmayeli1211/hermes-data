@@ -92,6 +92,12 @@ def cache_file() -> Path:
 # --------------------------------------------------------------------------
 
 # (local path relative to HERMES_HOME, repo path). Dirs are walked recursively.
+# Top-level directories in the repository that hold restorable content. Used
+# wherever the tool must recognise "a path this repo owns" (verify read-back,
+# manifest cross-check, drift). `projects/` was added for product source code;
+# forgetting it here made `push` commit successfully and then crash in verify.
+REPO_ROOTS = ("state/", "tool/", "projects/")
+
 SYNC_MAP = [
     ("config.yaml", "state/config.yaml"),
     ("SOUL.md", "state/SOUL.md"),
@@ -817,7 +823,7 @@ def fetch_remote_state(gh: GitHub, branch: str, initialize: bool = False):
     tree_sha = commit["tree"]["sha"]
     tree = gh.get_tree(tree_sha, recursive=True)
     blobs = {e["path"]: e["sha"] for e in tree.get("tree", [])
-             if e["type"] == "blob" and (e["path"].startswith("state/") or e["path"].startswith("tool/"))}
+             if e["type"] == "blob" and e["path"].startswith(REPO_ROOTS)}
     return commit_sha, tree_sha, blobs, [commit_sha]
 
 
@@ -1339,6 +1345,8 @@ def cmd_pull(args) -> int:
 def _dest_for(home: Path, repo_path: str) -> Path | None:
     if repo_path.startswith("state/"):
         return home / repo_path[len("state/"):]
+    if repo_path.startswith("projects/"):
+        return home / repo_path
     if repo_path.startswith("tool/"):
         return tool_dir() / repo_path[len("tool/"):]
     return None

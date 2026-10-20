@@ -2308,8 +2308,8 @@
       "size": 10081
     },
     "tool/ghstore.py": {
-      "sha256": "6b26d15f942db18b82c714442b399d5f6602234b02172653215f20a6a26ea0a9",
-      "size": 61153
+      "sha256": "fd181b314827cefa391848a258c3c0ef12ff640d934bb7f7dccb17b619a0f3cd",
+      "size": 61554
     },
     "tool/offload-boot.sh": {
       "sha256": "62b37d2a990d78c54bd12beaa3ac8632a7e2e615097a0a5b7ccbdf09bb4ef812",
@@ -2336,7 +2336,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-20T10:48:34.432590Z",
+  "generated_at": "2026-10-20T10:49:17.708185Z",
   "host": "43dc92631849",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -2346,5 +2346,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 6442905
+  "total_bytes": 6443306
 }
