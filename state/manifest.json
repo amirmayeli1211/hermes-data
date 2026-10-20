@@ -1,7 +1,7 @@
 {
   "commit": null,
   "excluded_count": 18,
-  "file_count": 590,
+  "file_count": 592,
   "files": {
     "projects/README.md": {
       "sha256": "3d342e460991acfd867b966da08bbc740d16a954a0a32eb00824108259a75273",
@@ -930,6 +930,14 @@
     "state/cron/output/ecb9785322d5/2026-10-20_16-59-00.md": {
       "sha256": "e144d5594629ffe2537a237f27c7da13948139f9bbba3cc0e1e8c8dd539e4e9a",
       "size": 1643
+    },
+    "state/lsp/package-lock.json": {
+      "sha256": "71041d784c03be589fa39281e05fc59180171486f386349a6bc18fd06f8aca39",
+      "size": 1135
+    },
+    "state/lsp/package.json": {
+      "sha256": "bc4c758a8460b814ed84426cc48f8ae6d374218bc7d84b52aa0cd6144b9d5063",
+      "size": 54
     },
     "state/memories/MEMORY.md": {
       "sha256": "1ef34dc833b3568de1eb383d57872683c4c7b8d2060377369d074951091de859",
@@ -2336,8 +2344,8 @@
       "size": 10081
     },
     "tool/ghstore.py": {
-      "sha256": "40af52cdfc9630d7506ed097fd1a17fd8308b2adedd8b945755c59ef6ac0fe1f",
-      "size": 67029
+      "sha256": "84fff4480a0d5742a7c41bc0388c3d7ff9665ee43cee60b147c685212896a3d1",
+      "size": 67462
     },
     "tool/offload-boot.sh": {
       "sha256": "c6f95de1c66930fd3894644704518611a3b17a7f9f2a26a4fb9541cd1016ff91",
@@ -2364,7 +2372,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-20T17:17:44.812018Z",
+  "generated_at": "2026-10-20T17:19:31.963224Z",
   "host": "43dc92631849",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -2374,5 +2382,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 6477121
+  "total_bytes": 6478743
 }

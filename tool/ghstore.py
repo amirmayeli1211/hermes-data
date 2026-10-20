@@ -127,6 +127,12 @@ SYNC_MAP = [
     ("projects", "projects"),
     ("cron/jobs.json", "state/cron/jobs.json"),
     ("cron/output", "state/cron/output"),
+    # The language-server tree itself (38 MB of npm node_modules) lives on the
+    # EPHEMERAL disk, reached through a symlink — see offload-boot.sh. Its two
+    # manifest files are small and ARE the recipe that rebuilds the tree, so
+    # they are synced: the bytes go to the big disk, the recipe goes to the repo.
+    ("lsp/package.json", "state/lsp/package.json"),
+    ("lsp/package-lock.json", "state/lsp/package-lock.json"),
 ]
 
 # Any path component equal to one of these prunes the whole subtree.
