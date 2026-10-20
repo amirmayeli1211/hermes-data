@@ -2280,8 +2280,8 @@
       "size": 8481
     },
     "tool/ARCHITECTURE.md": {
-      "sha256": "8b305d41dcd3e8e60017c5c9c677cc317dc3f13ca137ebef757ba1c43898d834",
-      "size": 17163
+      "sha256": "c44ecb4320313d20e6d83be3a826d61c3b449f6784bf820f85b60a6be2adb52d",
+      "size": 18372
     },
     "tool/archive.sh": {
       "sha256": "27b34702b6625dc0cf331885c5de43d8ef8d230e9b1a5d806f9db3f9e6e5212a",
@@ -2304,8 +2304,8 @@
       "size": 60708
     },
     "tool/offload-boot.sh": {
-      "sha256": "ddd02652306044684cc0de7240403045f2febb58ccedc3c1b7f7c0671ca35f98",
-      "size": 3586
+      "sha256": "64733f654430d1c0a9a6a1978e6ae3e8b43104bb9523f4c18573772f85f131d1",
+      "size": 4770
     },
     "tool/offload.sh": {
       "sha256": "f4653b4bee5572919baa87ec660c897f392220ec2741cbefbe4e3cdc7a9755dc",
@@ -2320,15 +2320,15 @@
       "size": 10722
     },
     "tool/tests/test_ghstore.py": {
-      "sha256": "0c84c45a343efac6d55835436fbced3f93717da18d95bd6da6b37a9dff04c2fc",
-      "size": 10925
+      "sha256": "c7445afc6b40f147d550c1b03daefef8b96dad645228b6f9e8f753c203a57a6f",
+      "size": 11767
     },
     "tool/tests/test_sidecars.py": {
       "sha256": "2dc8162fdd8788dd357b459277c2bb0c3740877c10a8310439c915eee1d07487",
       "size": 2400
     }
   },
-  "generated_at": "2026-10-20T10:26:29.789845Z",
+  "generated_at": "2026-10-20T10:34:24.731149Z",
   "host": "43dc92631849",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -2338,5 +2338,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 6441556
+  "total_bytes": 6444791
 }

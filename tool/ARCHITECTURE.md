@@ -14,9 +14,9 @@ pip, no `requests`, no `jq`, so anything else would not run at all).
 | --- | --- |
 | repo | `amirmayeli1211/hermes-data` (private) |
 | branch | `main` |
-| files stored | 335 |
+| files stored | 582 |
 | integrity | every blob read back and sha256-compared (`verify --full` → OK) |
-| recovery test | empty `HERMES_HOME` fully restored, 0 byte differences (verified) |
+| recovery test | empty `HERMES_HOME` fully restored: 569 files, 0 byte differences (verified 2026-10-20) |
 | scheduled | Hermes cron job `ghstore-reconcile`, every 30 min |
 
 ## What is stored in GitHub
@@ -336,6 +336,28 @@ differences**, the remaining 40 being exactly the excluded credential/runtime se
 
 This deploy used a classic token with broad scopes. A fine-grained token scoped
 to **only** `amirmayeli1211/hermes-data` with `Contents: Read and write` is
-strictly better, and the current one should be revoked once replaced. The tool
-reads `GITHUB_TOKEN` from the environment or `$HERMES_HOME/.env`; nothing else
-changes.
+strictly better, and the current one should be revoked once replaced.
+
+### Where the credential actually lives (and why `.env` alone is not enough)
+
+`$HERMES_HOME/.env` is **rewritten by the container entrypoint on every boot**:
+`/app/scripts/entrypoint.sh` truncates it and re-emits only the keys present in
+the container's environment. Measured on this deployment — a `GITHUB_TOKEN`
+appended to `.env` by hand was gone after the next container restart, and the
+scheduled reconcile then failed every tick with "no GitHub credential found".
+
+Resolution order in `resolve_token()`:
+
+| order | source | survives a reboot? |
+| --- | --- | --- |
+| 1 | `--token` flag / `GITHUB_TOKEN` in the process environment | depends on the platform |
+| 2 | `$HERMES_HOME/.ghfirst/token` (mode 600, sidecar) | **yes** — not touched by the entrypoint |
+| 3 | `$HERMES_HOME/.env` (credential store) | only if the platform sets `GITHUB_TOKEN` as a container env var |
+
+`offload-boot.sh` (top of every reconcile tick) copies the sidecar back into
+`.env` when the entrypoint dropped it, so both agree. Nothing is invented when
+the sidecar is absent.
+
+**The permanent fix is platform-side:** set `GITHUB_TOKEN` in the container
+environment (compose/`.env` of the deployment, never the repo). Then the
+entrypoint re-emits it itself and even a wiped `$HERMES_HOME` recovers.

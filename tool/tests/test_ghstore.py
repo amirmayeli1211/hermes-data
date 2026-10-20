@@ -171,6 +171,19 @@ def test_credential_resolution() -> None:
             os.environ["GITHUB_TOKEN"] = "from-env"
             token, source = ghstore.resolve_token()
             check("environment wins over file", token == "from-env", f"got {token!r}")
+            # The sidecar exists because the container entrypoint REWRITES .env on
+            # every boot, dropping a hand-appended GITHUB_TOKEN. It must outrank .env
+            # or a restarted container silently loses its credential.
+            os.environ.pop("GITHUB_TOKEN", None)
+            sidecar = Path(td) / ".ghfirst" / "token"
+            sidecar.parent.mkdir(parents=True, exist_ok=True)
+            sidecar.write_text("from-sidecar\n")
+            token, source = ghstore.resolve_token()
+            check("sidecar outranks .env (survives an entrypoint rewrite)",
+                  token == "from-sidecar", f"got {token!r}")
+            os.environ["GITHUB_TOKEN"] = "from-env"
+            token, source = ghstore.resolve_token()
+            check("environment still wins over sidecar", token == "from-env", f"got {token!r}")
     finally:
         for k, v in saved.items():
             if v is None:

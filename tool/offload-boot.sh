@@ -44,6 +44,27 @@ fi
 # also prunes its own scratch on a 24h idle rule, which does not apply here.
 find "$OFFLOAD_ROOT/tmp" -mindepth 1 -mmin +1440 -exec rm -rf {} + 2>/dev/null || true
 
+# --- keep the credential-store sidecar alive -------------------------------
+#
+# `$HERMES_HOME/.env` is REWRITTEN by the Hermes container entrypoint on every
+# boot: it truncates the file and re-emits only the keys present in the
+# container's environment. A token appended to `.env` by hand therefore survives
+# until the next restart and then vanishes — measured on this deployment
+# (GITHUB_TOKEN was gone after a container restart, and every scheduled push
+# failed with "no GitHub credential found").
+#
+# The durable local copy is `$HERMES_HOME/.ghfirst/token` (mode 600, outside the
+# sync map, never committed). Forward it into the credential store so the
+# platform-managed `.env` and the sidecar agree, without regenerating it here:
+# if the sidecar is absent, nothing is invented.
+SIDECAR="${HERMES_HOME}/.ghfirst/token"
+ENV_FILE="${HERMES_HOME}/.env"
+if [ -s "$SIDECAR" ] && [ -f "$ENV_FILE" ] && ! grep -q '^GITHUB_TOKEN=' "$ENV_FILE" 2>/dev/null; then
+    printf 'GITHUB_TOKEN=%s\n' "$(cat "$SIDECAR")" >> "$ENV_FILE"
+    chmod 600 "$ENV_FILE" 2>/dev/null || true
+    printf 'offload-boot: restored GITHUB_TOKEN into the credential store from the local sidecar\n'
+fi
+
 # --- rehydrate offloaded skills -------------------------------------------
 #
 # The live copies of offloaded skills live HERE, on the ephemeral volume. Their
