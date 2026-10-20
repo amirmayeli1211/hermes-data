@@ -15,6 +15,13 @@ any FAIL.
   and `notifications._try = ...`. Keep everything recorded in a list so later
   checks can assert on what WOULD have been sent ("the customer received the
   panel menu", "the code reached the invited user").
+- The `bot.api` stub must also handle the media methods (`sendPhoto`,
+  `sendDocument`) by recording `(chat_id, method, file_id, caption, keyboard)`
+  into a separate list. Otherwise a receipt that never left the process still
+  looks delivered to a text-only assertion. Build the fixture updates the way
+  Telegram does: photo sizes ascending in the list, each entry carrying
+  `file_size` — a fixture without sizes exercises a code path that production
+  never hits.
 - Point `sys.path` at the project dir and run the script from OUTSIDE it, so
   the shipped tree never collects test files.
 
@@ -38,6 +45,15 @@ any FAIL.
 - platform layer, when the product has one: sale → pending account → code →
   active → panel; plan cap enforced at the limit AND one past it; a shop owned
   by another account refused; tickets not leaking across shops
+- self-service purchase, when plans are sold: price/card validators (spaces
+  and dashes tolerated, 15 digits rejected, price 0 means "not for sale");
+  buy → order amount equals the PLAN price even when the user typed a number;
+  text instead of an image refused and the order stays `awaiting_receipt`;
+  photo and document receipts both reach the owner with the right method;
+  approve creates exactly one active account and lands the buyer on the panel;
+  reject leaves no account; another user's order cannot be receipted or
+  cancelled; an approved order cannot be rejected; a zero-priced or disabled
+  plan is absent from the buy list and refused by direct callback
 - verification: issue → wrong code rejected → right code consumed exactly
   once → second use rejected; full `start()` flow with `is_human` stubbed
 - ticket lifecycle: create (auto-assign honours capacity) → agent reply
@@ -73,3 +89,9 @@ the FSM state row and the last sent text after each step. The state row
 reveals a stale or missing state that a message-level assertion cannot — and
 a missing plan/limit join shows up as `None` there before it becomes a wrong
 product limit elsewhere.
+
+When a check fails on something "that was just written", check whether the
+handler is reading a row it loaded BEFORE its own write (e.g. a notifier using
+the order dict captured before the receipt was attached). Print the row at the
+notification site; if the new field is still `None`, the fix is a re-read, not
+a new assertion.

@@ -64,6 +64,46 @@ one user makes "which panel am I in" ambiguous everywhere.
   staff/admin/owner flags, so the existing shop-scoped handlers work unchanged.
   A shop belonging to another account gets an explicit refusal.
 
+## Self-service purchase (buyer never talks to the owner)
+
+The same plans table also powers a shop window: the platform owner prices the
+plans once, and strangers buy without being added by hand. Add one order table
+and two platform settings; nothing about the account/shop layer changes.
+
+```sql
+orders(id, tg_id, plan_id, amount, status, receipt_file_id, receipt_type,
+       account_id, created_at, reviewed_at, reviewed_by)
+-- status: awaiting_receipt | pending | approved | rejected | cancelled
+-- platform settings live in the SAME settings table at tenant_id = 0
+-- (card_number, card_holder): no tenant owns them, so give them
+-- plat_get/plat_set helpers rather than a second settings table.
+```
+
+Flow, with the amount fixed at order creation:
+
+1. Buyer taps "buy" → one button per sellable plan, price IN the label.
+2. Picking a plan inserts an order with `amount` copied from the plan row, then
+   shows a payment screen: card printed as `<code>` text + a copy_text button.
+3. "Send receipt" sets an FSM state; the handler accepts only a photo or a
+   document (plain text gets a retry message, not a silent drop), stores the
+   `file_id` + type, and flips the order to `pending`.
+4. The owner is alerted with the receipt attached and two buttons
+   (approve / reject). Approve creates or re-plans the account, marks it
+   verified, and drops the buyer straight into the customer panel.
+
+Rules that keep it honest:
+
+- **Amount comes from the plan row, never from the buyer's message.** Price 0
+  or an inactive plan means it is not listed and not buyable, so the "free"
+  path cannot be reached by choosing weird input.
+- **Ownership-check every order action** (`order["tg_id"] == ctx["tg_id"]`)
+  for receipt upload and cancel; an approved order cannot be rejected.
+- **A second buy from an already-active customer is refused** with a pointer to
+  their panel, otherwise they end up with two panels' worth of state.
+- **Surface the setup gaps in the owner's own screens**: a plans list that
+  warns "no plan is priced" and "no card number set" saves a support round
+  trip that would otherwise arrive as "nobody can buy" from a stranger.
+
 ## Entry routing
 
 One entry point is enough, and the order matters:
@@ -86,3 +126,7 @@ loses the owner block the moment they also buy a plan themselves.
 - entering another account's shop is refused
 - cap is enforced exactly at the limit, and no FSM state is left behind
 - the platform owner still sees their own `tenants` list after gaining an account
+- a stranger sees the buy entry and an active account holder does not
+- an approved order leaves exactly one active account, and a rejected one leaves none
+- a photo receipt is stored as the LARGEST size, and a document receipt keeps
+  its type so the owner gets `sendDocument` rather than `sendPhoto`

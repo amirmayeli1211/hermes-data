@@ -110,6 +110,24 @@ calls the Telegram API except `bot.py`.
   from a real run in this session. Reza checks the claim ("did the tests
   actually pass?"), so an unverified "all good" costs more trust than a
   failing test reported honestly.
+- **Re-read the row after a mutating repo call before rendering or notifying
+  from it.** A dict loaded before `attach_receipt()` still has
+  `receipt_file_id = None`, so the owner's alert goes out text-only and the
+  receipt silently never arrives; `row = repo.get(row["id"])` after the write.
+  Same shape for any "load, mutate, then message about it" sequence.
+- **Every button needs a route — prove it by tapping all of them.** A "change
+  card holder" button shipped with no matching op and did nothing at all. The
+  cheapest gate is a test that iterates each role's main menu, taps every
+  `callback_data`, and fails on any exception; run it after every new button.
+- **A payment/info screen must print the value as text, not only hide it behind
+  a `copy_text` button.** The copy button is a convenience for one device; the
+  printed card number is the requirement. Shipping only the button reads as
+  "where do I even pay".
+- **Media sends go through `bot.api("sendPhoto"/"sendDocument",
+  reply_markup=..., caption=...)`** — the thin `bot.send` wrapper has no media
+  variant, so do not invent `bot.send_media`. Pick a photo receipt by largest
+  `file_size` and fall back to the LAST entry (Telegram sends ascending sizes);
+  hand-built test updates often omit `file_size` entirely.
 - **A limit that lives on a joined table must be joined in EVERY accessor.**
   A row-fetch helper (`get_account`) returning the bare row while the list
   helper joins the plan makes `max_shops` come back `None`, and every caller's
@@ -143,4 +161,6 @@ Support files: `references/offline-selftest.md` — the stub harness, the check
 list, and the flows a bot of this shape must pass before it ships.
 `references/platform-reseller-model.md` — how to layer plans → accounts →
 shops above the tenant table when the product is a platform rather than one
-company's helpdesk.
+company's helpdesk, plus the self-service purchase flow (prices, owner's card,
+receipt upload, approve/reject) that sells a plan without the owner adding
+anyone by hand.
