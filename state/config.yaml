@@ -2390,3 +2390,5 @@ command_allowlist:
   - recursive delete
   - script execution via -e/-c flag
   - script execution via heredoc
+approvals:
+  destructive_slash_confirm: false
