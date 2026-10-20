@@ -1155,9 +1155,11 @@ skills:
   # and resolved to an absolute path.  External dirs are read-only: skill
   # creation always writes to ~/.hermes/skills/.  Local skills take precedence
   # when names collide.
-  # external_dirs:
-  #   - ~/.agents/skills
-  #   - /home/shared/team-skills
+  # Offloaded skills live on the big ephemeral disk (/var/tmp, 2.9 TB) so
+  # fetching them never consumes the 434 MB /data volume. offload-boot.sh
+  # recreates this directory on every reconcile tick.
+  external_dirs:
+    - /var/tmp/hermes-offload/skills
 
 # =============================================================================
 # Agent Behavior
@@ -2374,6 +2376,15 @@ updates:
 onboarding:
   seen:
     profile_build_offered: true
+    busy_input_prompt: true
+platforms:
+  telegram:
+    enabled: true
+    home_channel:
+      platform: telegram
+      chat_id: '7025776524'
+      name: 𝑹𝑬𝒁𝑨
+      user_id: '7025776524'
 command_allowlist:
   - recursive delete
   - script execution via -e/-c flag

@@ -1,7 +1,7 @@
 {
   "commit": null,
-  "excluded_count": 3,
-  "file_count": 571,
+  "excluded_count": 4,
+  "file_count": 582,
   "files": {
     "state/SOUL.md": {
       "sha256": "3bd38ef92efb90d0fdda1bb73036185d4a4bc11079963cb0e2db71c84281e64e",
@@ -740,16 +740,12 @@
       "size": 3157
     },
     "state/config.yaml": {
-      "sha256": "9c180eca2cf6f120b48e3da4ea93a7256f0452e65df2c664d02494e891a6cdec",
-      "size": 125913
+      "sha256": "20e9dc97ab8e5c48389a30bb5836d46c7481b488ceb606d49d8842d990ce366f",
+      "size": 126289
     },
     "state/cron/jobs.json": {
-      "sha256": "9d280ea2d009252d102ee9d4697b53463cb427953f0906fbb611c4fc07890ca4",
-      "size": 7644
-    },
-    "state/cron/output/ecb9785322d5/2026-10-19_08-36-29.md": {
-      "sha256": "0448e43e6443df6af3bc57c952f3290ff6aff559c468e88a40f99abcfc0de3b0",
-      "size": 4973
+      "sha256": "e32e5f6df68fdf63898f3e04d53f84249d2aefe0010001312db93acc202a5cef",
+      "size": 7523
     },
     "state/cron/output/ecb9785322d5/2026-10-19_09-07-29.md": {
       "sha256": "80533b86ad67bcfe13a649eeb7fe83f8c665ab9e6aa86562667987b7c455ed1f",
@@ -906,6 +902,10 @@
     "state/cron/output/ecb9785322d5/2026-10-20_04-41-43.md": {
       "sha256": "db3cebeca78accc2fa1fb41e2438d40a882da557083633f776310d713f1901e1",
       "size": 1838
+    },
+    "state/cron/output/ecb9785322d5/2026-10-20_10-16-08.md": {
+      "sha256": "c446caa3cdb1b3f792d834d5ac67484ed42261bc1dfe675668c724509d71d1fd",
+      "size": 1943
     },
     "state/memories/MEMORY.md": {
       "sha256": "f57d46ad176863314c18c684e3a9e4bd64c3d1e14113b23c046c30c0d16ad691",
@@ -1303,6 +1303,18 @@
       "sha256": "9a27502ab6bba76ad042cfa08834053f9e563c76cc8ffb46456cd3db2a6523a3",
       "size": 596
     },
+    "state/skills/creative/browser-game-development/SKILL.md": {
+      "sha256": "48e236396640bcab09d520d1eefee659fb9afbe419c0122a9e34aa1e5e2df9dd",
+      "size": 14197
+    },
+    "state/skills/creative/browser-game-development/references/headless-verification.md": {
+      "sha256": "e67c7d2a02fb3723841b19425cab04a35e10afbeb98fdff1c4632f2eabdbe190",
+      "size": 7300
+    },
+    "state/skills/creative/browser-game-development/scripts/cdp-playtest.js": {
+      "sha256": "10e732dbc447e059d02d6c571147e008874690932249730dc5e112c8409d129c",
+      "size": 10864
+    },
     "state/skills/creative/claude-design/SKILL.md": {
       "sha256": "1582b0d49e48bdf937b2f555098484e0979cdfa285c6cc9fa329ba8e416d347a",
       "size": 25117
@@ -1682,6 +1694,30 @@
     "state/skills/creative/songwriting-and-ai-music/SKILL.md": {
       "sha256": "5dbf92dc336e9b17be45c35c92a5bb307e4655e39a86617f07b7654678f92583",
       "size": 10963
+    },
+    "state/skills/devops/github-first-storage/SKILL.md": {
+      "sha256": "9ac34bdeb52484da5d5f3b8f0452e6f7e1747559eb7da24dc04258118650166d",
+      "size": 22788
+    },
+    "state/skills/devops/github-first-storage/references/disk-tiers.md": {
+      "sha256": "6e5eaa40e0ef43594215778be1e2c28aecb32eeb3ca98ca37ba01ea17122f045",
+      "size": 8460
+    },
+    "state/skills/devops/github-first-storage/references/project-retirement.md": {
+      "sha256": "5c9db6f6ca3d0d3d7909443296b81257275ae8c3128a54a62a1a6fd677019db5",
+      "size": 3943
+    },
+    "state/skills/devops/github-first-storage/scripts/disk-tier-check.sh": {
+      "sha256": "eac2ed833b0e48ccff5afb7edebb02afce5989364e17d1920774509c953884db",
+      "size": 6062
+    },
+    "state/skills/devops/remote-ops-via-ci/SKILL.md": {
+      "sha256": "9a754d64bc4c1a6816f13e5f4ba7ed4413e1fd5c056eea3bfd9b5d36fc95f5df",
+      "size": 11755
+    },
+    "state/skills/devops/remote-ops-via-ci/references/pasarguard-deploy.md": {
+      "sha256": "31761e87af115d32010bfef9aee4dc6be3cc622506de8034d8ed0621f7b6513d",
+      "size": 6221
     },
     "state/skills/devops/sdlc-review/SKILL.md": {
       "sha256": "ce90e8a3e145cce69c62880dc85921700110879f9290952d6cec28218503155f",
@@ -2243,6 +2279,14 @@
       "sha256": "22b996996ae2bf252b31cfd2636231f08936729a381dce7ba8bfa4afb8ffe8c6",
       "size": 8481
     },
+    "tool/.config.local.1792491525.bak": {
+      "sha256": "f0e2368ed5b7de43cee2d9c86751e41ca62fbe10d4bcfea7732024ddd98ddf71",
+      "size": 126120
+    },
+    "tool/ARCHITECTURE.md": {
+      "sha256": "8b305d41dcd3e8e60017c5c9c677cc317dc3f13ca137ebef757ba1c43898d834",
+      "size": 17163
+    },
     "tool/archive.sh": {
       "sha256": "27b34702b6625dc0cf331885c5de43d8ef8d230e9b1a5d806f9db3f9e6e5212a",
       "size": 16899
@@ -2260,8 +2304,8 @@
       "size": 10081
     },
     "tool/ghstore.py": {
-      "sha256": "80d1fc3474171c40b0071123188d841ba594270926d9c707560a7f8e13af0c04",
-      "size": 59620
+      "sha256": "0958e7deac360b9c9fb8af2648b510c4421ac7aab0c5f608f50beea9da05f851",
+      "size": 59812
     },
     "tool/offload-boot.sh": {
       "sha256": "ddd02652306044684cc0de7240403045f2febb58ccedc3c1b7f7c0671ca35f98",
@@ -2288,7 +2332,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-20T10:15:47.001886Z",
+  "generated_at": "2026-10-20T10:19:34.988255Z",
   "host": "b9404f45f2c4",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -2298,5 +2342,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 6334012
+  "total_bytes": 6566302
 }

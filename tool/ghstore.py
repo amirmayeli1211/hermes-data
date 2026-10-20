@@ -164,6 +164,9 @@ EXCLUDE_REL_PREFIXES = (
     "cron/executions.db", "cron/.tick.lock", "cron/.jobs.lock",
     "cron/ticker_heartbeat", "cron/ticker_last_success",
     "cron/executions.db-wal", "cron/executions.db-shm",
+    # Catch-up bookkeeping written by the cron ticker each fire; meaningless to
+    # Git and regenerated on boot. Found by `audit` after a container rebuild.
+    "cron/catch_up_occurrences",
     ".ghfirst",
 )
 
