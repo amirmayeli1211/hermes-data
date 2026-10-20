@@ -768,12 +768,8 @@
       "size": 126415
     },
     "state/cron/jobs.json": {
-      "sha256": "fb24b02cbd8fcb0eb2b4f2e19cc891b143ddf3b5d8f38df1884d06f24cd68bd1",
-      "size": 5811
-    },
-    "state/cron/output/ecb9785322d5/2026-10-19_15-50-29.md": {
-      "sha256": "a3f38bc5ce72e68f00dfa621762994fe9971c6c6361d04f63b98260ce88970fc",
-      "size": 4973
+      "sha256": "db5965725f470eedc6ba0726b657fac2e1ffc87f5f45da90c0d4bd964eb33c74",
+      "size": 4160
     },
     "state/cron/output/ecb9785322d5/2026-10-19_16-21-29.md": {
       "sha256": "a2d4e0d8de2f59bbaf3d3abf6ec945cbeab055a1716c31c2f38b47067edc3181",
@@ -931,6 +927,10 @@
       "sha256": "e144d5594629ffe2537a237f27c7da13948139f9bbba3cc0e1e8c8dd539e4e9a",
       "size": 1643
     },
+    "state/cron/output/ecb9785322d5/2026-10-20_17-23-44.md": {
+      "sha256": "41cd9fe7c21e34534abf3017139f3d165a7e363840315f81b63561538106040d",
+      "size": 1762
+    },
     "state/lsp/package-lock.json": {
       "sha256": "71041d784c03be589fa39281e05fc59180171486f386349a6bc18fd06f8aca39",
       "size": 1135
@@ -956,15 +956,15 @@
       "size": 2727
     },
     "state/skills/.curator_ledger.jsonl": {
-      "sha256": "63877a18cf71288af7af00f233c9d82570ef1a035bbd37fad5089110c35a2af5",
-      "size": 39367
+      "sha256": "3a4aafb2b7a43edfb8ddbf30c4f7c39cb1caf940114335f33bc0ff7d65fa35eb",
+      "size": 39879
     },
     "state/skills/.curator_state": {
       "sha256": "f78cbcfcc28a81ce261c4d3ccba4bee023c75457836622229c25818e608c82b0",
       "size": 337
     },
     "state/skills/.usage.json": {
-      "sha256": "79e856f0829b34bd644adcccb3b226c2325fb437ad0b4f7339b94e9fe1ebfbfc",
+      "sha256": "d39bac2616d5deedad5fa0738af60fb8ffead8da57af226d60693b9d4ad77c9e",
       "size": 1488
     },
     "state/skills/apple/DESCRIPTION.md": {
@@ -1728,8 +1728,8 @@
       "size": 10963
     },
     "state/skills/devops/github-first-storage/SKILL.md": {
-      "sha256": "17e4d954e8b47f821f43be1839f6f18511ce946380dd14d0e49fa5e4fdd1d31c",
-      "size": 23460
+      "sha256": "a9512a010d153df592049719e7152738d6de08322f7fb5ecd716eeee3bc68d56",
+      "size": 26530
     },
     "state/skills/devops/github-first-storage/references/disk-tiers.md": {
       "sha256": "6e5eaa40e0ef43594215778be1e2c28aecb32eeb3ca98ca37ba01ea17122f045",
@@ -2348,8 +2348,8 @@
       "size": 67462
     },
     "tool/offload-boot.sh": {
-      "sha256": "c6f95de1c66930fd3894644704518611a3b17a7f9f2a26a4fb9541cd1016ff91",
-      "size": 6991
+      "sha256": "ccae90c0e9f598ad319bbb1ac8a2ee95fd85ab8d023d847539cf22341caa9c4a",
+      "size": 7839
     },
     "tool/offload.sh": {
       "sha256": "f4653b4bee5572919baa87ec660c897f392220ec2741cbefbe4e3cdc7a9755dc",
@@ -2364,15 +2364,15 @@
       "size": 10722
     },
     "tool/tests/test_ghstore.py": {
-      "sha256": "e45bbca9305975953b9af4490b143f3e5a2cc7dfb83b655c7baf3ea80fa27377",
-      "size": 15422
+      "sha256": "f31a14cc42b3699f2e02d4e38cd5d61804e8993c90cad7b9f69c37d8ad0709f2",
+      "size": 15450
     },
     "tool/tests/test_sidecars.py": {
       "sha256": "2dc8162fdd8788dd357b459277c2bb0c3740877c10a8310439c915eee1d07487",
       "size": 2400
     }
   },
-  "generated_at": "2026-10-20T17:23:31.737112Z",
+  "generated_at": "2026-10-20T17:25:16.913375Z",
   "host": "43dc92631849",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -2382,5 +2382,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 6478864
+  "total_bytes": 6478460
 }

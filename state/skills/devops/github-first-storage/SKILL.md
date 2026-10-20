@@ -297,7 +297,55 @@ live filesystem, not by review.
     bashisms (process substitution, arrays, `[[ ]]`) in any script a workflow,
     a cron wrapper, or another script may call, and syntax-check with both shells.
 
-11. **Extending `SYNC_MAP` to a NEW repo top-level root breaks `verify` late.**
+12. **A GitHub tree POST that carries every path is what triggers HTTP 422.**
+    `POST /git/trees` with `base_tree` set does NOT need the unchanged paths —
+    the base already carries them. Sending all 593 entries anyway is what made
+    the scheduled push die with `422 "your input was too large to process"`.
+    Send ONLY the changed entries, then chunk the rest: build the tree in
+    groups of ~100 entries, each chunk's `base_tree` being the previous
+    chunk's tree sha. A chunk that is still refused is bisected, not fatal.
+
+13. **HTTP 422 is overloaded: "too large" AND "your request timed out" share
+    the status.** The timeout wording arrives with the same 422 code and a body
+    saying `Sorry, your request timed out` — it is a transient server-side
+    timeout, NOT a size problem, and it hit a tree with only 11 entries.
+    Splitting a tree because of it doubles the API calls and changes nothing.
+    Branch on the BODY: "timed out" → retry the same payload; anything else →
+    treat it as a size limit and bisect.
+
+14. **Verify right after a push can read the PREVIOUS tree.** GitHub's
+    git-data reads are briefly eventually consistent, so an immediate
+    read-back can report a file as "absent from committed tree" even though
+    the just-created commit's tree contains it (re-fetching the commit later
+    proved it). Retry the whole read-back twice before declaring a failure, or
+    the cron job goes red on a false alarm.
+
+15. **`audit` must derive the repo path from `SYNC_MAP`, not from a hard-coded
+    prefix.** The map is the only place that knows the layout. A hard-coded
+    `"state/" + rel` made every `projects/...` file report UNCLASSIFIED (6
+    false failures) while the push was placing them correctly under
+    `projects/`. One `repo_path_for()` helper, used by both the collector and
+    the auditor, keeps them in agreement.
+
+16. **Move a big rebuildable tree off the small disk with a SYMLINK, and
+    recreate the target every boot.** `<HERMES_HOME>/lsp` was 38 MB of npm
+    node_modules — 11% of a 434 MB volume. Symlink it to the ephemeral disk
+    and Hermes' own `<HERMES_HOME>/lsp` lookups keep working unchanged.
+    Trap: the symlink survives a container rebuild, its TARGET does not, and a
+    DANGLING symlink is worse than none — `os.makedirs("<home>/lsp/bin")`
+    then fails with FileNotFoundError (measured), so the installer breaks
+    instead of reinstalling. Recreate the target directory on every boot tick.
+    Verify the tool still sees the server (`hermes lsp status` → `✓ installed`).
+
+17. **A symlinked directory is safe for npm and unsafe for `os.replace`.**
+    npm only ever writes inside the directory it was pointed at, so a symlink
+    keeps its bytes on the big disk. But an atomic write staged in one
+    directory and renamed into another raises `EXDEV` across devices, and
+    `os.replace` onto a symlink path REPLACES the symlink with a real file
+    (silently putting the bytes back on the small disk). Only symlink trees
+    that no atomic-write code path targets.
+
+18. **Extending `SYNC_MAP` to a NEW repo top-level root breaks `verify` late.**
     The sync map is not the only place that knows the repo layout: the remote
     read-back filter (which tree entries count as "ours") and the restore-path
     resolver must learn the new root too. A map entry alone commits successfully

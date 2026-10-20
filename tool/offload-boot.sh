@@ -115,13 +115,32 @@ fi
 # reinstalling. Recreate the target directory every tick.
 LSP_LINK="${HERMES_HOME}/lsp"
 LSP_REAL="${OFFLOAD_ROOT}/lsp"
-if [ -L "$LSP_LINK" ] || [ ! -e "$LSP_LINK" ]; then
+if [ -L "$LSP_LINK" ]; then
+    # The link survives a container rebuild; its target does not. Recreate it, or
+    # every lookup through it fails with FileNotFoundError.
     mkdir -p "$LSP_REAL/bin"
-    [ -e "$LSP_LINK" ] && [ ! -L "$LSP_LINK" ] || ln -sfn "$LSP_REAL" "$LSP_LINK"
-elif [ -d "$LSP_LINK" ] && [ -d "$LSP_REAL" ] && [ ! -s "$LSP_LINK/package.json" ] \
-     && [ -s "$LSP_REAL/package.json" ]; then
-    # A real dir on /data with nothing in it: prefer the offloaded copy.
-    rm -rf "$LSP_LINK" && ln -sfn "$LSP_REAL" "$LSP_LINK"
+elif [ -d "$LSP_LINK" ]; then
+    # A REAL directory on /data: either the tree was never offloaded, or a
+    # restore put it back. Move it to the big disk and re-point the link, so
+    # the bytes stop occupying the small volume. The move is copy+delete
+    # across filesystems (EXDEV), so it needs ~2x the tree size free here —
+    # 38 MB on a 434 MB volume is fine, and the copy is checked before the
+    # original is removed.
+    if [ -d "$LSP_LINK/node_modules" ] || [ -s "$LSP_LINK/package.json" ]; then
+        mkdir -p "$LSP_REAL"
+        if cp -a "$LSP_LINK/." "$LSP_REAL/" 2>/dev/null && [ -d "$LSP_REAL/node_modules" ]; then
+            rm -rf "$LSP_LINK"
+            ln -sfn "$LSP_REAL" "$LSP_LINK"
+            printf 'offload-boot: moved the language-server tree off /data\n'
+        else
+            printf 'offload-boot: WARNING — could not move the lsp tree; leaving it on /data\n' >&2
+        fi
+    fi
+    mkdir -p "$LSP_LINK/bin" 2>/dev/null || true
+fi
+if [ ! -e "$LSP_LINK" ]; then
+    mkdir -p "$LSP_REAL/bin"
+    ln -sfn "$LSP_REAL" "$LSP_LINK"
 fi
 
 # npm's download cache is the same story at a smaller scale (5.7 MB): rebuildable,

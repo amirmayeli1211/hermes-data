@@ -23,24 +23,24 @@
       "schedule_display": "every 30m",
       "repeat": {
         "times": null,
-        "completed": 126
+        "completed": 127
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-10-17T19:22:22.768176+00:00",
-      "next_run_at": "2026-10-20T17:53:28.315490+00:00",
-      "last_run_at": "2026-10-20T16:59:01.800453+00:00",
-      "last_status": "error",
-      "last_error": "Script exited with code 10\nstdout:\nghstore reconcile 2026-10-20T16:58:44Z\noffload-boot: /var/tmp/hermes-offload ready; /data at 16% used\ndisk-guard: /data 16% used (358M free)\n  OK — running tier 1 only\n  tier 1 — pure garbage:\n    sqlite WAL checkpoints: nothing to reclaim\n    orphaned temp files: nothing to reclaim\n    python bytecode: nothing to reclaim\n  result: 16% -> 16% used, 358M free\nscan warnings: 22 file(s) (high-entropy-string=22)\n  [scan-warning] state/archive/gamedev-skills/.offloaded/gamedev-workflows/itch-publish/references/butler-ci.md: high-entropy-string\n  [scan-warning] state/archive/room13-game/horror-game/dist/room13.html: high-entropy-string\n  [scan-warning] state/cron/output/ecb9785322d5/2026-10-19_15-19-29.md: high-entropy-string\n  [scan-warning] state/cron/output/ecb9785322d5/2026-10-19_15-50-29.md: high-entropy-string\n  [scan-warning] state/cron/output/ecb9785322d5/2026-10-19_16-21-29.md: high-entropy-string\n  ... and 17 more (re-run with --verbose)\nnote: deleting 1 tracked file(s) (0.2% of 591)\nFAILED: HTTP 422 on POST /repos/amirmayeli1211/hermes-data/git/trees: {\"message\":\"Sorry, your request timed out.  It's likely that your input was too large to process.  Consider building the tree incrementally, or building the commits you need in a local clone of the repository and then pushing them to GitHub.\",\"documentation_url\":\"https://docs.github.com/rest/git/trees#create-a-tree\",\"status\":\"422\"}\npush: FAILED (network/API) — will retry next tick",
+      "next_run_at": "2026-10-20T17:53:45.011376+00:00",
+      "last_run_at": "2026-10-20T17:23:45.011376+00:00",
+      "last_status": "ok",
+      "last_error": null,
       "last_delivery_error": null,
       "last_delivery_unverified": null,
       "last_failure": {
         "at": "2026-10-20T16:59:01.800453+00:00",
         "detail": "Script exited with code 10\nstdout:\nghstore reconcile 2026-10-20T16:58:44Z\noffload-boot: /var/tmp/hermes-offload ready; /data at 16% used\ndisk-guard: /data 16% used (358M free)\n  OK — running tier 1 only\n  tier 1 — pure garbage:\n    sqlite WAL checkpoints: nothing to reclaim\n    orphaned temp files: nothing to reclaim\n    python bytecode: nothing to reclaim\n  result: 16% -> 16% used, 358M free\nscan warnings: 22 file(s) (high-entropy-string=22)\n  [scan-warning] state/archive/gamedev-skills/.offloaded/gamedev-workflows/itch-publish/references/butler-ci.md: high-entropy-string\n  [scan-warning] state/archive/room13-game/horror-game/dist/room13.html: high-entropy-string\n  [scan-warning] state/cron/output/ecb9785322d5/2026-10-19_15-19-29.md: high-entropy-string\n  [scan-warning] state/cron/output/ecb9785322d5/2026-10-19_15-50-29.md: high-entropy-string\n  [scan-warning] state/cron/output/ecb9785322d5/2026-10-19_16-21-29.md: high-entropy-string\n  ... and 17 more (re-run with --verbose)\nnote: deleting 1 tracked file(s) (0.2% of 591)\nFAILED: HTTP 422 on POST /repos/amirmayeli1211/hermes-data/git/trees: {\"message\":\"Sorry, your request timed out.  It's likely that your input was too large to process.  Consider building the tree incrementally, or building the commits you need in a local clone of the repository and then pushing them to GitHub.\",\"documentation_url\":\"https://docs.github.com/rest/git/trees#create-a-tree\",\"status\":\"422\"}\npush: FAILED (network/API) — will retry next tick"
       },
-      "failure_streak": 1,
+      "failure_streak": 0,
       "deliver": "local",
       "origin": {
         "platform": "telegram",
@@ -60,12 +60,9 @@
         "lateness_seconds": 33.3,
         "kind": "on_time"
       },
-      "fire_claim": {
-        "at": "2026-10-20T17:23:28.345355+00:00",
-        "by": "43dc92631849:161:7d4c87a119034755a6da4dff49360a73"
-      },
+      "fire_claim": null,
       "failure_deliver": "origin"
     }
   ],
-  "updated_at": "2026-10-20T17:23:28.345580+00:00"
+  "updated_at": "2026-10-20T17:23:45.011660+00:00"
 }

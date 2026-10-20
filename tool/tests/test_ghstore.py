@@ -132,7 +132,8 @@ def test_exclusions() -> None:
     check("maps memories", ghstore.repo_path_for("memories/USER.md") == "state/memories/USER.md")
     check("maps projects to their own root",
           ghstore.repo_path_for("projects/ticket-bot/db.py") == "projects/ticket-bot/db.py")
-    check("unmapped path returns None", ghstore.repo_path_for("lsp/package.json") is None)
+    check("unmapped path returns None",
+          ghstore.repo_path_for("lsp/node_modules/pyright/dist/x.js") is None)
 
 
 # --- collection + manifest -------------------------------------------------
