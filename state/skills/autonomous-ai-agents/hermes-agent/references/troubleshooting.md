@@ -76,39 +76,6 @@ hermes config set auxiliary.vision.provider <your_provider>
 hermes config set auxiliary.vision.model <model_name>
 ```
 
-### "No space left on device" / the state volume fills up
-Hermes points `TMPDIR`/`TMP`/`TEMP` at `<HERMES_HOME>/cache/scratch` at boot. When
-`HERMES_HOME` is a small mounted volume rather than the container overlay, every
-temp file written by any tool lands on that small volume — a single large job can
-exhaust it and take the gateway down with the whole process group.
-
-Diagnose in this order:
-```sh
-df -h "$HERMES_HOME" /              # compare the state volume against the overlay
-findmnt -T "$HERMES_HOME" -o SOURCE,FSTYPE
-du -sh "$HERMES_HOME"/* | sort -rh | head -12
-python3 -c 'import tempfile; print(tempfile.gettempdir())'
-```
-
-Two facts about the override that are easy to get wrong:
-
-- A user-set `TMPDIR` (environment or `HERMES_HOME/.env`) is **respected** —
-  `apply_scratch_tmp_env()` leaves it alone, and `python3 -c "import tempfile"`
-  follows it. So setting `TMPDIR` in `.env` to a roomier path is the supported fix.
-- A `TMPDIR` naming a **missing** directory does not error: `tempfile` silently
-  falls through to the next candidate, which is `<HERMES_HOME>/cache/scratch` on
-  the small volume. Recreate that directory on boot, or the offload quietly
-  stops working after a container recreate.
-
-Do not symlink `<HERMES_HOME>/cache/scratch` at another filesystem — `os.replace`
-is a rename and raises `EXDEV` across devices, breaking atomic writes. Redirect
-`TMPDIR` instead. `hermes scratch`-style pruning (24h idle) only covers Hermes's
-own scratch dir, not a redirected temp root.
-
-Floor planning for a two-tier container, the measurement recipes, and a
-re-runnable check: see the `github-first-storage` skill
-(`references/disk-tiers.md`, `scripts/disk-tier-check.sh`).
-
 ### "Reset permissions" / auto-approving everything
 See `references/security-privacy.md` — wipe the "Always allow" stores, don't touch yolo mode.
 

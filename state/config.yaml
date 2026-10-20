@@ -1162,8 +1162,6 @@ skills:
 # =============================================================================
 # Agent Behavior
 # =============================================================================
-  external_dirs:
-    - /var/tmp/hermes-offload/skills
 agent:
   # Maximum tool-calling iterations per conversation (default: 500)
   # Higher = more room for complex tasks, but costs more tokens
@@ -2376,14 +2374,7 @@ updates:
 onboarding:
   seen:
     profile_build_offered: true
-    busy_input_prompt: true
-platforms:
-  telegram:
-    enabled: true
-    home_channel:
-      platform: telegram
-      chat_id: '7025776524'
-      name: 𝑹𝑬𝒁𝑨
-      user_id: '7025776524'
 command_allowlist:
+  - recursive delete
   - script execution via -e/-c flag
+  - script execution via heredoc
