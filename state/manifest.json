@@ -1,7 +1,7 @@
 {
   "commit": null,
   "excluded_count": 6,
-  "file_count": 583,
+  "file_count": 587,
   "files": {
     "projects/README.md": {
       "sha256": "3d342e460991acfd867b966da08bbc740d16a954a0a32eb00824108259a75273",
@@ -10,6 +10,22 @@
     "projects/ticket-bot/.keep": {
       "sha256": "2f73349cfc4630255319c6c8dfc1b46a8996ace9d14d8e07563b165915918ec2",
       "size": 12
+    },
+    "projects/ticket-bot/config.py": {
+      "sha256": "f82811e35e873d1cd31cb87bf06d624e2c95daee02abe0c025720fc8b322d5e1",
+      "size": 1563
+    },
+    "projects/ticket-bot/db.py": {
+      "sha256": "159eee4eb0e50fed419b7e457039721d175689483a3329c45d9707932e97564d",
+      "size": 17103
+    },
+    "projects/ticket-bot/logic.py": {
+      "sha256": "212ec8c9c8690d789fe5ec3391ea301f2c5aa2c4659a98aabe769a3af0819ab6",
+      "size": 3292
+    },
+    "projects/ticket-bot/tg.py": {
+      "sha256": "32e0a9317c8c36436dda633d26eceb1746ed1afe3232d67d9a32bd0fea41587a",
+      "size": 5582
     },
     "state/SOUL.md": {
       "sha256": "3bd38ef92efb90d0fdda1bb73036185d4a4bc11079963cb0e2db71c84281e64e",
@@ -752,8 +768,8 @@
       "size": 126289
     },
     "state/cron/jobs.json": {
-      "sha256": "e1f62cf166f5e87bd2cc63865f745af50a4af7e50aac527942eaacb5110c3fd4",
-      "size": 7519
+      "sha256": "979b215f3816d31c5f9b049e435868863bab143acd99121f5ecac810b74c8898",
+      "size": 7640
     },
     "state/cron/output/ecb9785322d5/2026-10-19_09-38-29.md": {
       "sha256": "4cb22e6eb7f0ccbfa4bb23b4437db72317da22074fc1f5941e700945238be74e",
@@ -940,7 +956,7 @@
       "size": 337
     },
     "state/skills/.usage.json": {
-      "sha256": "04170e446048d190f20a5084d0856eec3cc86697b58f32a68b87dfbb983539d5",
+      "sha256": "77a4c6d00139ccb8ea66f35b706b56153e189b966ee254cb5b63d1695b060f02",
       "size": 944
     },
     "state/skills/apple/DESCRIPTION.md": {
@@ -2336,7 +2352,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-20T10:49:17.708185Z",
+  "generated_at": "2026-10-20T11:17:47.824164Z",
   "host": "43dc92631849",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -2346,5 +2362,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 6443306
+  "total_bytes": 6470967
 }

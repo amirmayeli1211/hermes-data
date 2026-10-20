@@ -22,13 +22,13 @@
     "first_seen_at": null,
     "last_patched_at": null,
     "last_reused_patch_generation": 0,
-    "last_used_at": "2026-10-20T10:24:42.238662+00:00",
-    "last_viewed_at": "2026-10-20T10:24:42.233001+00:00",
+    "last_used_at": "2026-10-20T10:50:20.671012+00:00",
+    "last_viewed_at": "2026-10-20T10:50:20.652239+00:00",
     "patch_count": 0,
     "patch_generation": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 1,
-    "view_count": 1
+    "use_count": 2,
+    "view_count": 2
   }
 }
