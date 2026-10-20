@@ -1,6 +1,6 @@
 {
   "commit": null,
-  "excluded_count": 13,
+  "excluded_count": 14,
   "file_count": 589,
   "files": {
     "projects/README.md": {
@@ -768,12 +768,8 @@
       "size": 126289
     },
     "state/cron/jobs.json": {
-      "sha256": "d19e48f5307f2451ae01999ef56dcb6eca73e5b85b75e9c10c881fb08f102524",
+      "sha256": "154b5fb23256da9a5450f3d3ba6c7678735d508400767fdee93fea2c3cc2118f",
       "size": 7640
-    },
-    "state/cron/output/ecb9785322d5/2026-10-19_11-42-28.md": {
-      "sha256": "cf0d04d552eaefceff30a63e023de8a4657ae8b8f7a57fb5ff5753a1f45c6192",
-      "size": 4973
     },
     "state/cron/output/ecb9785322d5/2026-10-19_12-13-28.md": {
       "sha256": "0b9639818a3adfb90599246fd3ed3b73533217698b19a8dd95342e18968729cb",
@@ -931,6 +927,10 @@
       "sha256": "bc6436b4e3a4d6ad3bb350dc1f072a8b4fb111241e8c25a92541fd09292232ad",
       "size": 1864
     },
+    "state/cron/output/ecb9785322d5/2026-10-20_13-22-09.md": {
+      "sha256": "69c774aeb3de6cf81a209c6eb557a384c822895770afd07a4982f77df719f59d",
+      "size": 2079
+    },
     "state/memories/MEMORY.md": {
       "sha256": "1ef34dc833b3568de1eb383d57872683c4c7b8d2060377369d074951091de859",
       "size": 2179
@@ -956,7 +956,7 @@
       "size": 337
     },
     "state/skills/.usage.json": {
-      "sha256": "7bc8e342bee8320abfa631012f8ded964856b860b7d3e6a52014c13d85218b7a",
+      "sha256": "9b235f4c3e675d8bd524832c8697287e520124a8d98336d70aabf56d05ddb44d",
       "size": 1485
     },
     "state/skills/apple/DESCRIPTION.md": {
@@ -2360,7 +2360,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-20T13:21:47.848682Z",
+  "generated_at": "2026-10-20T13:52:48.254451Z",
   "host": "43dc92631849",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -2370,5 +2370,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 6469680
+  "total_bytes": 6466786
 }
