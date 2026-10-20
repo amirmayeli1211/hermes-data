@@ -28,6 +28,16 @@ any FAIL.
   set returns `None` rather than raising
 - tenant lifecycle: create (owner auto-member, settings seeded) → disable →
   enable
+- **every role's menu, with EVERY callback on it routed** — iterate
+  `callback_data` off the sent keyboard and tap each one, collecting the ones
+  that raise. A dead button is invisible to a flow test; this is the check
+  that catches it, and it covers roles the author forgot to write a flow for.
+  (A callback scheme mixing id-first `<ns>:<id>:<op>` with op-first
+  `<ns>:<op>[:<arg>]` needs the digit test: `args[0].isdigit()` decides which
+  parse applies.)
+- platform layer, when the product has one: sale → pending account → code →
+  active → panel; plan cap enforced at the limit AND one past it; a shop owned
+  by another account refused; tickets not leaking across shops
 - verification: issue → wrong code rejected → right code consumed exactly
   once → second use rejected; full `start()` flow with `is_human` stubbed
 - ticket lifecycle: create (auto-assign honours capacity) → agent reply
@@ -52,3 +62,14 @@ the wrong expectation (e.g. asserting auto-assignment picked an agent when the
 owner legitimately has the least load). Fix the expectation only after
 confirming the implementation is the intended behaviour — never weaken an
 assertion just to go green.
+
+A stub that always succeeds hides real routing bugs. Model the failure the
+real API produces: keep a `NEVER_STARTED` set of chat ids that the send stub
+refuses, so "the customer never pressed Start" is exercised, and assert the
+fallback (threaded group reply) fired.
+
+To debug a puzzling FAIL, replay the flow in a throwaway script that PRINTS
+the FSM state row and the last sent text after each step. The state row
+reveals a stale or missing state that a message-level assertion cannot — and
+a missing plan/limit join shows up as `None` there before it becomes a wrong
+product limit elsewhere.

@@ -1,7 +1,7 @@
 {
   "commit": null,
   "excluded_count": 18,
-  "file_count": 589,
+  "file_count": 590,
   "files": {
     "projects/README.md": {
       "sha256": "3d342e460991acfd867b966da08bbc740d16a954a0a32eb00824108259a75273",
@@ -768,12 +768,8 @@
       "size": 126369
     },
     "state/cron/jobs.json": {
-      "sha256": "9c8bd5f2ff538404eb52e86b6875184ed38c04f17712f062e88ff304c0a231fd",
+      "sha256": "034c4398fb05f807331a55eb5f6fce7dbf1bc9720885630a486c4cd9b8c8debb",
       "size": 4170
-    },
-    "state/cron/output/ecb9785322d5/2026-10-19_13-46-29.md": {
-      "sha256": "109c6ad15d11abf1d55f103401a5d38d0d8fd0f5bfe126a79f053de437b0dffe",
-      "size": 4973
     },
     "state/cron/output/ecb9785322d5/2026-10-19_14-17-29.md": {
       "sha256": "b509c7c06977b866234e0ea01a3e264778dc22f7ac03ea329c42cf7397ecc751",
@@ -931,6 +927,10 @@
       "sha256": "bd29296b1e4526ec3a64691a57bae70cef1b29c06b7172bf17cd7efe8a3cce50",
       "size": 1868
     },
+    "state/cron/output/ecb9785322d5/2026-10-20_15-26-12.md": {
+      "sha256": "baca00a0bfc0fcfad32fcbdbe79ac1656e8045b6a78231888b735cff10107223",
+      "size": 1896
+    },
     "state/memories/MEMORY.md": {
       "sha256": "1ef34dc833b3568de1eb383d57872683c4c7b8d2060377369d074951091de859",
       "size": 2179
@@ -948,16 +948,16 @@
       "size": 2727
     },
     "state/skills/.curator_ledger.jsonl": {
-      "sha256": "caaa21ce495c4bdb348f85f5be0b07042bfecf0fb2416c7e3b7feaf1e05f3a18",
-      "size": 30240
+      "sha256": "1bb400eec023d4f1812ee3ff27c2f5f29c1dcce21234295a52412fcfd805fe5d",
+      "size": 35370
     },
     "state/skills/.curator_state": {
       "sha256": "f78cbcfcc28a81ce261c4d3ccba4bee023c75457836622229c25818e608c82b0",
       "size": 337
     },
     "state/skills/.usage.json": {
-      "sha256": "9b235f4c3e675d8bd524832c8697287e520124a8d98336d70aabf56d05ddb44d",
-      "size": 1485
+      "sha256": "a322ef31842989d90668be28b97e57a0754d1eaeaad2e4a4c9316724aacd1f5f",
+      "size": 1488
     },
     "state/skills/apple/DESCRIPTION.md": {
       "sha256": "c9537e578d68950224dbc09a425497a780e8c3956db9cb38a97b4a9e985516b3",
@@ -2124,12 +2124,16 @@
       "size": 21986
     },
     "state/skills/python-telegram-bots/SKILL.md": {
-      "sha256": "bbe4dcf3355ae3db6259be23a00c94d4a3099ba83d6877c85d2d6c107ec497c0",
-      "size": 5339
+      "sha256": "06c965a746060374f9674103271c47e1eca4abadd8c5bb9bc45bf756eba568ec",
+      "size": 8583
     },
     "state/skills/python-telegram-bots/references/offline-selftest.md": {
-      "sha256": "68d71bfff56afc0380302c16aa37c7b7310fa48b58dfce10f5cebf31de32cf13",
-      "size": 2820
+      "sha256": "5cad9cf310039583e3eaad0358bcba334c94f1ba87744273dd9789568422e4b9",
+      "size": 4109
+    },
+    "state/skills/python-telegram-bots/references/platform-reseller-model.md": {
+      "sha256": "481579b9240b764335cc908c5feaae6a47a1467dcdbedd2832a4432499ec6788",
+      "size": 3827
     },
     "state/skills/research/DESCRIPTION.md": {
       "sha256": "a7bc842330a491de5f73cd63e87521e53724d94d4f53949bfa2171beb8200e18",
@@ -2360,7 +2364,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-20T15:25:48.030672Z",
+  "generated_at": "2026-10-20T15:56:48.141604Z",
   "host": "43dc92631849",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -2370,5 +2374,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 6453912
+  "total_bytes": 6464328
 }

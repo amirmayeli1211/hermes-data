@@ -38,7 +38,12 @@ offline self-test that proves the logic before any token is involved.
 - **GitHub only**: stage, push, verify the remote tree, then delete the local
   staging copy. Project code does not live on the machine's disk.
 - Reza wants a short Persian status line after every batch of work — end
-  turns frequently instead of running one long silent turn.
+  turns frequently instead of running one long silent turn. Concretely: one
+  line, present tense, what landed and what is next ("migration 6 added ✅
+  حالا پنل مشتری"), between tool batches — not a wall of explanation and not
+  silence until the end. He benchmarks against the fastest session he has
+  had; long silent stretches read as "stuck", so ship the small step and
+  report it rather than batching everything behind one final summary.
 
 ## Module map (flat, one role each)
 
@@ -55,17 +60,24 @@ calls the Telegram API except `bot.py`.
 
 ## Procedure
 
-1. Confirm the module list and constraints, then write files in dependency
+1. **Restate the product model as a layer diagram and get a yes before
+   writing code.** These bots are multi-layer products (platform owner →
+   paying customer → shop → end user), and a one-level misreading costs a
+   full redesign, not a patch. One short message: who sits at each layer,
+   who creates whom, and where a ticket stops. Do not start building on an
+   inferred hierarchy — ask the single open question (e.g. "how many shops
+   per customer?") and let the answer fix the schema.
+2. Confirm the module list and constraints, then write files in dependency
    order, keeping each `py_compile`-clean as you go (the write tool lints).
-2. Build the callback scheme first: `enc(prefix, *parts)` / `decode(data)`,
+3. Build the callback scheme first: `enc(prefix, *parts)` / `decode(data)`,
    64-byte cap enforced with a raise, one parser for the whole bot — no
    handler ever splits raw callback_data itself.
-3. FSM states live in a table keyed by tg_id; the dispatcher maps state →
+4. FSM states live in a table keyed by tg_id; the dispatcher maps state →
    handler and CLEARS unknown states instead of looping on them.
-4. Write the offline self-test before declaring done (see
+5. Write the offline self-test before declaring done (see
    `references/offline-selftest.md`): stub the API, temp DB, real end-to-end
    flows, health endpoint over urllib, exit non-zero on any FAIL.
-5. Ship: stage under `/data/.hermes/cache/scratch/`, `git init` + commit,
+6. Ship: stage under `/data/.hermes/cache/scratch/`, `git init` + commit,
    push with a GIT_ASKPASS script that reads the token sidecar (token never in
    the URL or argv), then verify the remote tree against local (file count,
    missing, extra, `truncated`), then delete the staging dir.
@@ -93,8 +105,42 @@ calls the Telegram API except `bot.py`.
   `last_customer_msg_at`).
 - **Railway needs `$PORT`, a `/health` endpoint, and a volume mounted at
   `/data`**; put the DB and backups there so redeploys do not wipe them.
-- **`DEV=1`** boots without a token so the self-test and a local smoke run
-  work with zero secrets.
+- **Report the finish with a commit hash and the verification counts** —
+  "`5332e45`, 55 checks PASS + 33 regression PASS", and the numbers must come
+  from a real run in this session. Reza checks the claim ("did the tests
+  actually pass?"), so an unverified "all good" costs more trust than a
+  failing test reported honestly.
+- **A limit that lives on a joined table must be joined in EVERY accessor.**
+  A row-fetch helper (`get_account`) returning the bare row while the list
+  helper joins the plan makes `max_shops` come back `None`, and every caller's
+  `or 1` fallback silently caps the plan at its minimum — no error, wrong
+  product. Join in the single-row getter too, and assert the plan name is
+  present in the test rather than only the cap.
+- **Validate input before clearing FSM state.** Clearing first (`clear_state`
+  at the top of the state handler) means one typo ejects the user from a
+  multi-step flow and they must restart it; send the retry message, return,
+  and clear only on success. Same rule for any flow whose last step is a
+  numeric id.
+- **Two verify purposes must be checked in one place, in order.** When both
+  an account-level code and a customer-level code can arrive as plain text,
+  try them explicitly (account first, then customer) at the single entry
+  point — otherwise a bare digit string falls through to the "I did not
+  understand" branch and the buyer can never activate.
+- **Binding a sub-entity (shop/store) into ctx must come from an
+  ownership-checked lookup**, never from a callback argument. `ctx["tenant_id"]
+  = shop["id"]` only after verifying `shop["account_id"] == account["id"]`;
+  everything downstream (settings, operators, tickets) trusts that field.
+- **Group tickets: a user who never pressed Start cannot receive a DM.** Put
+  the operator reply into the bound group as a threaded reply to the
+  customer's last message when the DM raises `TgError` — do not treat the
+  reply as failed. Ack only the ticket's FIRST message, and decide "first" by
+  message count (`len(list_messages(ticket_id)) == 1`) — second-resolution
+  timestamps make two messages in one second both look new and spam the group.
+  Staff messages in the group must never become tickets (check membership
+  first).
 
-Support file: `references/offline-selftest.md` — the stub harness, the check
+Support files: `references/offline-selftest.md` — the stub harness, the check
 list, and the flows a bot of this shape must pass before it ships.
+`references/platform-reseller-model.md` — how to layer plans → accounts →
+shops above the tenant table when the product is a platform rather than one
+company's helpdesk.
