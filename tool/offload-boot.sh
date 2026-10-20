@@ -102,6 +102,42 @@ if [ -d "$STAGE" ]; then
     [ "$added" -gt 0 ] && printf 'offload-boot: rehydrated %s skill(s) from the repo snapshot\n' "$added"
 fi
 
+# --- keep big rebuildable trees OFF the small disk -------------------------
+#
+# The language-server tree (npm-installed pyright and friends) is 38 MB of
+# third-party node_modules — 11% of the whole 434 MB volume, and it is pure
+# rebuildable cache. It lives on the ephemeral disk and is reached through a
+# symlink so Hermes' own <HERMES_HOME>/lsp lookups keep working unchanged.
+#
+# The symlink survives a container rebuild; its TARGET does not. A dangling
+# symlink is worse than none: `os.makedirs(<home>/lsp/bin)` then fails with
+# FileNotFoundError (measured), so `hermes lsp status` breaks instead of
+# reinstalling. Recreate the target directory every tick.
+LSP_LINK="${HERMES_HOME}/lsp"
+LSP_REAL="${OFFLOAD_ROOT}/lsp"
+if [ -L "$LSP_LINK" ] || [ ! -e "$LSP_LINK" ]; then
+    mkdir -p "$LSP_REAL/bin"
+    [ -e "$LSP_LINK" ] && [ ! -L "$LSP_LINK" ] || ln -sfn "$LSP_REAL" "$LSP_LINK"
+elif [ -d "$LSP_LINK" ] && [ -d "$LSP_REAL" ] && [ ! -s "$LSP_LINK/package.json" ] \
+     && [ -s "$LSP_REAL/package.json" ]; then
+    # A real dir on /data with nothing in it: prefer the offloaded copy.
+    rm -rf "$LSP_LINK" && ln -sfn "$LSP_REAL" "$LSP_LINK"
+fi
+
+# npm's download cache is the same story at a smaller scale (5.7 MB): rebuildable,
+# re-downloaded on demand. Symlinked, because a directory symlink is only
+# traversed by npm — no os.replace across devices ever touches the link itself.
+NPM_LINK="${HERMES_HOME}/home/.npm"
+NPM_REAL="${OFFLOAD_ROOT}/npm-cache"
+if [ -d "$NPM_LINK" ] && [ ! -L "$NPM_LINK" ]; then
+    mkdir -p "$NPM_REAL"
+    cp -a "$NPM_LINK/." "$NPM_REAL/" 2>/dev/null || true
+    rm -rf "$NPM_LINK"
+    ln -sfn "$NPM_REAL" "$NPM_LINK"
+elif [ -L "$NPM_LINK" ]; then
+    mkdir -p "$NPM_REAL"
+fi
+
 used="$(df -h /data | tail -1 | awk '{print $5}')"
 printf 'offload-boot: %s ready; /data at %s used\n' "$OFFLOAD_ROOT" "$used"
 exit 0

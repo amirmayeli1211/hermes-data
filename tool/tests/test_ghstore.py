@@ -110,17 +110,29 @@ def test_exclusions() -> None:
         "shared/nous_auth.json", "shared/nous_auth.lock",
         "install_id", ".initialized", "channel_directory.json",
         "processes.json", "models_dev_cache.etag",
+        # lsp/ is 38 MB of npm-installed language servers: rebuildable, and it
+        # lives on the ephemeral disk via a symlink (offload-boot.sh).
+        "lsp/node_modules/pyright/dist/pyright-internal.js",
     ]
     must_keep = [
         "config.yaml", "SOUL.md", "memories/notes.md",
         "skills/apple/apple-notes/SKILL.md",
         "cron/jobs.json", "cron/output/run-1.md",
         "workspace/main.py", "plans/roadmap.md",
+        "projects/ticket-bot/db.py",
     ]
     for rel in must_exclude:
         check(f"excludes {rel}", ghstore.is_excluded(rel))
     for rel in must_keep:
         check(f"keeps {rel}", not ghstore.is_excluded(rel))
+    # `audit` must map a path through SYNC_MAP, not assume `state/`. The hard-coded
+    # prefix made every projects/ file look UNCLASSIFIED (6 false failures) while
+    # the push was placing it correctly.
+    check("maps config.yaml", ghstore.repo_path_for("config.yaml") == "state/config.yaml")
+    check("maps memories", ghstore.repo_path_for("memories/USER.md") == "state/memories/USER.md")
+    check("maps projects to their own root",
+          ghstore.repo_path_for("projects/ticket-bot/db.py") == "projects/ticket-bot/db.py")
+    check("unmapped path returns None", ghstore.repo_path_for("lsp/package.json") is None)
 
 
 # --- collection + manifest -------------------------------------------------
@@ -196,6 +208,62 @@ def test_credential_resolution() -> None:
             os.environ["HERMES_HOME"] = saved_home
 
 
+# --- tree construction (offline, fake client) ------------------------------
+
+class _FakeTreeGh:
+    """Records tree calls; can fail the first N with a chosen 422 wording."""
+
+    def __init__(self, fail_first: int = 0, body: str = "", max_entries: int = 10_000):
+        self.calls: list[int] = []
+        self.ok: list[int] = []          # payload sizes that SUCCEEDED
+        self.fail_first = fail_first
+        self.body = body
+        self.max_entries = max_entries
+
+    def create_tree(self, entries, base_tree):
+        self.calls.append(len(entries))
+        if len(self.calls) <= self.fail_first:
+            raise ghstore.GhError("HTTP 422", 422, self.body)
+        if len(entries) > self.max_entries:
+            # Mirrors the real API: an oversized body is refused, not truncated.
+            raise ghstore.GhError("HTTP 422", 422,
+                                  '{"message":"Sorry, your input was too large to process."}')
+        self.ok.append(len(entries))
+        return f"tree-{len(self.calls)}-{len(entries)}"
+
+
+def test_incremental_tree() -> None:
+    print("\ntree construction (the live 422 failure):")
+    entries = [{"path": f"state/f{i}.txt", "mode": "100644", "type": "blob", "sha": "a" * 40}
+               for i in range(250)]
+    fake = _FakeTreeGh(max_entries=120)
+    first = ghstore.build_tree_incrementally(fake, entries, "base")
+    check("chunks a 250-entry tree into bounded calls",
+          all(n <= ghstore.TREE_CHUNK for n in fake.calls) and first.startswith("tree-"),
+          f"calls={fake.calls}")
+    check("covers every entry exactly once", sum(fake.ok) == len(entries), f"ok={fake.ok}")
+    check("chunk count matches the chunk size",
+          len(fake.ok) == -(-len(entries) // ghstore.TREE_CHUNK), f"ok={fake.ok}")
+
+    # A transient "timed out" 422 must be RETRIED, not split: splitting a tiny tree
+    # on a server-side timeout would have doubled the API calls for nothing.
+    retry_fake = _FakeTreeGh(fail_first=1,
+                             body='{"message":"Sorry, your request timed out."}')
+    ghstore.build_tree_incrementally(retry_fake, entries[:20], "base")
+    check("retries a server-side timeout instead of splitting", len(retry_fake.calls) == 2,
+          f"calls={retry_fake.calls}")
+
+    # A genuine oversize 422 that survives chunking must bisect, not abort.
+    split_fake = _FakeTreeGh(max_entries=40)
+    ghstore.build_tree_incrementally(split_fake, entries[:100], "base")
+    check("bisects when a chunk is still too large", sum(split_fake.ok) == 100,
+          f"ok={split_fake.ok}")
+
+    empty = _FakeTreeGh()
+    ghstore.build_tree_incrementally(empty, [], "base")
+    check("empty change set still posts one (empty) tree", empty.calls == [0], f"calls={empty.calls}")
+
+
 # --- live API (only with a real token) ------------------------------------
 
 def test_live_api() -> None:
@@ -242,6 +310,7 @@ def main() -> int:
     test_exclusions()
     test_collection_and_manifest()
     test_credential_resolution()
+    test_incremental_tree()
     test_live_api()
     print(f"\n{len(PASS)} passed, {len(FAIL)} failed")
     if FAIL:
