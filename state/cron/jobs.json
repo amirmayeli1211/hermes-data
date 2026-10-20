@@ -30,7 +30,7 @@
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-10-17T19:22:22.768176+00:00",
-      "next_run_at": "2026-10-20T17:53:45.011376+00:00",
+      "next_run_at": "2026-10-20T17:55:39.738684+00:00",
       "last_run_at": "2026-10-20T17:23:45.011376+00:00",
       "last_status": "ok",
       "last_error": null,
@@ -60,9 +60,12 @@
         "lateness_seconds": 33.3,
         "kind": "on_time"
       },
-      "fire_claim": null,
+      "fire_claim": {
+        "at": "2026-10-20T17:25:39.789253+00:00",
+        "by": "43dc92631849:161:028d54ac7f9f45019028e35ee729ae35"
+      },
       "failure_deliver": "origin"
     }
   ],
-  "updated_at": "2026-10-20T17:23:45.011660+00:00"
+  "updated_at": "2026-10-20T17:25:39.799240+00:00"
 }
