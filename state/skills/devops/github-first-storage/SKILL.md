@@ -294,8 +294,18 @@ live filesystem, not by review.
     A shebang saying `bash` does not protect a script that gets invoked as
     `sh tool.sh` — under dash a process substitution (`done < <(cmd)`) dies with
     "Syntax error: redirection unexpected" at runtime, not at write time. Avoid
-    bashisms (process substitution, arrays, `[[ ]]`) in any script a workflow, a
-    cron wrapper, or another script may call, and syntax-check with both shells.
+    bashisms (process substitution, arrays, `[[ ]]`) in any script a workflow,
+    a cron wrapper, or another script may call, and syntax-check with both shells.
+
+11. **Extending `SYNC_MAP` to a NEW repo top-level root breaks `verify` late.**
+    The sync map is not the only place that knows the repo layout: the remote
+    read-back filter (which tree entries count as "ours") and the restore-path
+    resolver must learn the new root too. A map entry alone commits successfully
+    and then crashes inside `verify` with `KeyError: '<newroot>/...'` — the
+    failure surfaces after the commit exists and looks like a verify bug, when
+    the map edit was simply incomplete. Change all three in one edit, and prove
+    it with a real `push`, not `plan`: `plan` walks only the local side and
+    cannot see a missing remote filter.
 
 ## Disk tiers: not every writable path is equal
 
