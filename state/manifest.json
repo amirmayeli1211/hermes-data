@@ -1,6 +1,6 @@
 {
   "commit": null,
-  "excluded_count": 6,
+  "excluded_count": 7,
   "file_count": 587,
   "files": {
     "projects/README.md": {
@@ -768,12 +768,8 @@
       "size": 126289
     },
     "state/cron/jobs.json": {
-      "sha256": "979b215f3816d31c5f9b049e435868863bab143acd99121f5ecac810b74c8898",
+      "sha256": "204dea77a1a85c77a211fe5d8a6763023772a0b02d92b899f69ecd768e96364e",
       "size": 7640
-    },
-    "state/cron/output/ecb9785322d5/2026-10-19_09-38-29.md": {
-      "sha256": "4cb22e6eb7f0ccbfa4bb23b4437db72317da22074fc1f5941e700945238be74e",
-      "size": 4973
     },
     "state/cron/output/ecb9785322d5/2026-10-19_10-09-28.md": {
       "sha256": "6c93d8f860b83a6abad1c3dcbb4061e8cf2c0b3930c4ffe727a6d20b6d8e47cc",
@@ -930,6 +926,10 @@
     "state/cron/output/ecb9785322d5/2026-10-20_10-47-04.md": {
       "sha256": "55bb8be3436715e3d0aa8003d39f17d05304a61ff510e2583b0399691f9a1123",
       "size": 1728
+    },
+    "state/cron/output/ecb9785322d5/2026-10-20_11-18-03.md": {
+      "sha256": "b13febe01f0aede7c499974fd0bbc9a7809233c2ef533ea79f654f90c8db6b0f",
+      "size": 1889
     },
     "state/memories/MEMORY.md": {
       "sha256": "1ef34dc833b3568de1eb383d57872683c4c7b8d2060377369d074951091de859",
@@ -2352,7 +2352,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-20T11:17:47.824164Z",
+  "generated_at": "2026-10-20T11:48:48.112700Z",
   "host": "43dc92631849",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -2362,5 +2362,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 6470967
+  "total_bytes": 6467883
 }
