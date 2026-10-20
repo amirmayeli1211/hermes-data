@@ -1,6 +1,6 @@
 {
   "commit": null,
-  "excluded_count": 4,
+  "excluded_count": 5,
   "file_count": 581,
   "files": {
     "state/SOUL.md": {
@@ -908,8 +908,8 @@
       "size": 1943
     },
     "state/memories/MEMORY.md": {
-      "sha256": "f57d46ad176863314c18c684e3a9e4bd64c3d1e14113b23c046c30c0d16ad691",
-      "size": 2006
+      "sha256": "1ef34dc833b3568de1eb383d57872683c4c7b8d2060377369d074951091de859",
+      "size": 2179
     },
     "state/memories/USER.md": {
       "sha256": "4f557f775eab76bb622b76eac76bde2c3646b6b5ed5a7a6aec52a5959e165711",
@@ -2304,8 +2304,8 @@
       "size": 60708
     },
     "tool/offload-boot.sh": {
-      "sha256": "64733f654430d1c0a9a6a1978e6ae3e8b43104bb9523f4c18573772f85f131d1",
-      "size": 4770
+      "sha256": "62b37d2a990d78c54bd12beaa3ac8632a7e2e615097a0a5b7ccbdf09bb4ef812",
+      "size": 5267
     },
     "tool/offload.sh": {
       "sha256": "f4653b4bee5572919baa87ec660c897f392220ec2741cbefbe4e3cdc7a9755dc",
@@ -2328,7 +2328,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-20T10:34:24.731149Z",
+  "generated_at": "2026-10-20T10:35:21.374041Z",
   "host": "43dc92631849",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -2338,5 +2338,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 6444791
+  "total_bytes": 6445461
 }

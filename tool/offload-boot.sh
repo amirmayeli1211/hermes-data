@@ -65,6 +65,15 @@ if [ -s "$SIDECAR" ] && [ -f "$ENV_FILE" ] && ! grep -q '^GITHUB_TOKEN=' "$ENV_F
     printf 'offload-boot: restored GITHUB_TOKEN into the credential store from the local sidecar\n'
 fi
 
+# The same entrypoint rewrite drops TMPDIR, which silently puts temp writes back
+# on the 434 MB volume — the exact failure this whole area exists to prevent.
+# Re-assert it every tick; the directory above is guaranteed to exist by now.
+if [ -f "$ENV_FILE" ] && ! grep -q '^TMPDIR=' "$ENV_FILE" 2>/dev/null; then
+    printf 'TMPDIR=%s/tmp\n' "$OFFLOAD_ROOT" >> "$ENV_FILE"
+    chmod 600 "$ENV_FILE" 2>/dev/null || true
+    printf 'offload-boot: re-asserted TMPDIR in the credential store\n'
+fi
+
 # --- rehydrate offloaded skills -------------------------------------------
 #
 # The live copies of offloaded skills live HERE, on the ephemeral volume. Their
