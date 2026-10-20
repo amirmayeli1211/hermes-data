@@ -23,24 +23,24 @@
       "schedule_display": "every 30m",
       "repeat": {
         "times": null,
-        "completed": 121
+        "completed": 122
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-10-17T19:22:22.768176+00:00",
-      "next_run_at": "2026-10-20T15:24:44.689230+00:00",
-      "last_run_at": "2026-10-20T14:24:07.207090+00:00",
-      "last_status": "error",
-      "last_error": "Script exited with code 6\nstdout:\nghstore reconcile 2026-10-20T14:23:44Z\noffload-boot: /var/tmp/hermes-offload ready; /data at 6% used\ndisk-guard: /data 6% used (401M free)\n  OK — running tier 1 only\n  tier 1 — pure garbage:\n    sqlite WAL checkpoints: reclaimed 1 MiB\n    orphaned temp files: nothing to reclaim\n    python bytecode: nothing to reclaim\n  result: 6% -> 5% used, 403M free\nscan warnings: 24 file(s) (high-entropy-string=24)\n  [scan-warning] state/archive/gamedev-skills/.offloaded/gamedev-workflows/itch-publish/references/butler-ci.md: high-entropy-string\n  [scan-warning] state/archive/room13-game/horror-game/dist/room13.html: high-entropy-string\n  [scan-warning] state/cron/jobs.json: high-entropy-string\n  [scan-warning] state/cron/output/ecb9785322d5/2026-10-19_12-44-29.md: high-entropy-string\n  [scan-warning] state/cron/output/ecb9785322d5/2026-10-19_13-15-29.md: high-entropy-string\n  ... and 19 more (re-run with --verbose)\nnote: deleting 1 tracked file(s) (0.2% of 590)\ncommitted da746de6002caa4ada8049dafc90a042529c6610  files=592 uploaded=6 reused=586 deleted=1\n  up .gitattributes\n  up .gitignore\n  up README.md\n  up state/config.yaml\n  up state/cron/jobs.json\n  up state/cron/output/ecb9785322d5/2026-10-20_13-53-09.md\nVERIFY FAILED (1 problems)\n  ! state/cron/output/ecb9785322d5/2026-10-20_13-53-09.md: absent from committed tree\npush: unexpected exit 6",
+      "next_run_at": "2026-10-20T15:55:44.693564+00:00",
+      "last_run_at": "2026-10-20T14:55:09.105390+00:00",
+      "last_status": "ok",
+      "last_error": null,
       "last_delivery_error": null,
       "last_delivery_unverified": null,
       "last_failure": {
         "at": "2026-10-20T14:24:07.207090+00:00",
         "detail": "Script exited with code 6\nstdout:\nghstore reconcile 2026-10-20T14:23:44Z\noffload-boot: /var/tmp/hermes-offload ready; /data at 6% used\ndisk-guard: /data 6% used (401M free)\n  OK — running tier 1 only\n  tier 1 — pure garbage:\n    sqlite WAL checkpoints: reclaimed 1 MiB\n    orphaned temp files: nothing to reclaim\n    python bytecode: nothing to reclaim\n  result: 6% -> 5% used, 403M free\nscan warnings: 24 file(s) (high-entropy-string=24)\n  [scan-warning] state/archive/gamedev-skills/.offloaded/gamedev-workflows/itch-publish/references/butler-ci.md: high-entropy-string\n  [scan-warning] state/archive/room13-game/horror-game/dist/room13.html: high-entropy-string\n  [scan-warning] state/cron/jobs.json: high-entropy-string\n  [scan-warning] state/cron/output/ecb9785322d5/2026-10-19_12-44-29.md: high-entropy-string\n  [scan-warning] state/cron/output/ecb9785322d5/2026-10-19_13-15-29.md: high-entropy-string\n  ... and 19 more (re-run with --verbose)\nnote: deleting 1 tracked file(s) (0.2% of 590)\ncommitted da746de6002caa4ada8049dafc90a042529c6610  files=592 uploaded=6 reused=586 deleted=1\n  up .gitattributes\n  up .gitignore\n  up README.md\n  up state/config.yaml\n  up state/cron/jobs.json\n  up state/cron/output/ecb9785322d5/2026-10-20_13-53-09.md\nVERIFY FAILED (1 problems)\n  ! state/cron/output/ecb9785322d5/2026-10-20_13-53-09.md: absent from committed tree\npush: unexpected exit 6"
       },
-      "failure_streak": 1,
+      "failure_streak": 0,
       "deliver": "local",
       "origin": {
         "platform": "telegram",
@@ -55,17 +55,17 @@
       ],
       "workdir": null,
       "last_dispatch": {
-        "scheduled_at": "2026-10-20T14:54:07.207090+00:00",
-        "dispatched_at": "2026-10-20T14:54:44.633249+00:00",
-        "lateness_seconds": 37.4,
+        "scheduled_at": "2026-10-20T15:25:09.105390+00:00",
+        "dispatched_at": "2026-10-20T15:25:44.633819+00:00",
+        "lateness_seconds": 35.5,
         "kind": "on_time"
       },
       "fire_claim": {
-        "at": "2026-10-20T14:54:44.722467+00:00",
-        "by": "43dc92631849:161:6f6aac027a574dec9273d931b2edb0c4"
+        "at": "2026-10-20T15:25:44.712929+00:00",
+        "by": "43dc92631849:161:6ff6ee62fb5f4188bae54ef07b725248"
       },
       "failure_deliver": "origin"
     }
   ],
-  "updated_at": "2026-10-20T14:54:44.723075+00:00"
+  "updated_at": "2026-10-20T15:25:44.713152+00:00"
 }
