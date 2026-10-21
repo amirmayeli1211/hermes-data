@@ -30,7 +30,7 @@
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-10-17T19:22:22.768176+00:00",
-      "next_run_at": "2026-10-21T05:48:39.620676+00:00",
+      "next_run_at": "2026-10-21T05:53:24.436457+00:00",
       "last_run_at": "2026-10-21T05:18:39.620676+00:00",
       "last_status": "error",
       "last_error": "Script not found: /data/.hermes/scripts/ghstore-reconcile.sh. Cron scripts are looked up only in this profile's folder (/data/.hermes/scripts); if the job was copied from another profile, copy the script there too, or edit the job with `hermes cron edit`.",
@@ -60,9 +60,12 @@
         "lateness_seconds": 39114.7,
         "kind": "catch_up"
       },
-      "fire_claim": null,
+      "fire_claim": {
+        "at": "2026-10-21T05:23:24.467354+00:00",
+        "by": "458a3d4f7b92:159:22472b66114942668ead5088b89efe55"
+      },
       "failure_deliver": "origin"
     }
   ],
-  "updated_at": "2026-10-21T05:18:39.620910+00:00"
+  "updated_at": "2026-10-21T05:23:24.467726+00:00"
 }
