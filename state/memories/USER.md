@@ -5,3 +5,5 @@ Reza expects proactive infrastructure care over warnings: he asked me to keep wa
 Wants finished deliverables sent as actual files/attachments, not a log describing them. Wants every reply as a continuous log — report step by step, never stop mid-task for confirmation. While work runs, expects a short progress line in the chat every minute or so — the Oct-18 style: one line per step ("پیدا کردم... دارم تست میکنم"), never silence, and fast/lightweight execution over long deliberation. Sets explicit resource budgets (e.g. "ask me before exceeding 100 MB") and expects to be consulted before exceeding them.
 §
 Works on game/dev projects iteratively and expects progress notes during long builds; when told to stop a line of work ("come out of the game process"), drop it cleanly and leave state verified rather than abandoning it half-done.
+§
+User Reza was given a test VPS: srv-56bjmxlq, IP 104.237.250.99, IPv6 2602:ffbc::5000, root / d4Hk9zHwPBiSzVpv, SSH root@104.237.250.99. Free until 1405/07/29 13:29 (up to 10GB traffic). Need to install and configure 3x-ui panel and deliver a working config link. Password must be stored securely and message deleted after.
