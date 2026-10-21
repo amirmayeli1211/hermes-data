@@ -78,6 +78,10 @@ Non-negotiables, each of which fixes a specific bug class:
 - **Bake sprites once** into offscreen canvases at load; never `fillRect` per
   pixel per frame. Per-pixel drawing on a full tile screen dominates the frame
   budget.
+- **For a first-person 3D game, use a DDA raycaster** instead of a full 3D
+  engine — see `references/raycasting-fps.md` for the column loop, fisheye
+  correction, sprite billboards, and z-buffer rules. Raycasting is the right
+  tool when the deliverable must stay a single dependency-free HTML file.
 - **Draw at integer coordinates** with `image-rendering: pixelated`, and letterbox
   the canvas with `object-fit: contain` so it scales on a phone.
 - **Darkness via one opaque overlay with `destination-out` holes**, not additive
@@ -88,6 +92,12 @@ Non-negotiables, each of which fixes a specific bug class:
 
 - **Wrap every `play()`** and swallow failures. A missing or blocked file must
   degrade to silence, never throw into the update loop.
+- **For a single-file game, prefer procedural Web Audio over embedded mp3.**
+  Synthesize shots, hits, and deaths with `OscillatorNode` + an `AudioBuffer`
+  noise source and a `GainNode` envelope; `resume()` the `AudioContext` on the
+  first user gesture. Zero bytes, no packaging step, no licence question, and it
+  cannot 404. Reserve embedded mp3 for music and long ambient beds, where
+  synthesis gets expensive.
 - **Autoplay policy needs a gesture.** Queue requested sounds until the first
   user interaction, then flush the queue. The start button is the natural unlock.
 - **Crossfade ambient beds** on an interval rather than setting volume once, or
@@ -203,6 +213,11 @@ regenerate — otherwise ship them.** A `dist/` directory is a build product, bu
 is also the thing the user opens; commit it alongside the source rather than
 excluding it, and make the packaging step reproducible so a rebuild matches.
 
+**For a single-file game, the `.html` IS the deliverable.** Do not split it into
+modules or a build pipeline unless the user asks — the point of the zero-dependency
+shape is that it opens by double-click with no server, no bundler, and no sibling
+files. Inline CSS, JS, and (if any) audio as data URIs.
+
 Then **verify the artifacts programmatically**, because an inlining script fails
 quietly. Required checks:
 
@@ -253,6 +268,13 @@ The wrapper (Capacitor or Cordova) is a Node toolchain that packages this same
 directory into a WebView shell, so nothing in `js/` needs to change.
 
 ## Verification checklist
+
+- Run `node --check` on the extracted script block before declaring it done. A
+  single syntax error makes the whole game a blank page, and it is the cheapest
+  check available.
+- Confirm the file opens over `file://` (or `--allow-file-access-from-files`) with
+  no sibling files and no console errors, then play it: start, move, shoot, die,
+  and reach the win state.
 
 - `node tools/validate-world.js` — geometry, reachability, key ordering.
 - `node tools/validate-story.js` — graph integrity, all endings reachable.

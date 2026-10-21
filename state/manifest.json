@@ -1,7 +1,7 @@
 {
   "commit": null,
-  "excluded_count": 11,
-  "file_count": 590,
+  "excluded_count": 13,
+  "file_count": 591,
   "files": {
     "projects/README.md": {
       "sha256": "3d342e460991acfd867b966da08bbc740d16a954a0a32eb00824108259a75273",
@@ -768,12 +768,8 @@
       "size": 126449
     },
     "state/cron/jobs.json": {
-      "sha256": "f2d611fd464271ba094ae5840bbc6a8ebe04d41abfea91320b7efd96396a2492",
+      "sha256": "c9adca053bfea1221cba7903363717998994d580d609f88c691932d589c808cd",
       "size": 3007
-    },
-    "state/cron/output/ecb9785322d5/2026-10-19_18-52-44.md": {
-      "sha256": "3329a243d0ae0d620179b02d1ffae0f6072c9ba64e746f9fe8e57f8a0ba1c589",
-      "size": 1838
     },
     "state/cron/output/ecb9785322d5/2026-10-19_19-23-44.md": {
       "sha256": "c780ba339deea74ee32181cbf7c8459aa1eacc90c8cdb7732e2a67be4299decd",
@@ -931,6 +927,10 @@
       "sha256": "3d8dfcd5c8d571bc2913772a6b61db36c9e083650cad3502989006cfe319129a",
       "size": 1845
     },
+    "state/cron/output/ecb9785322d5/2026-10-21_06-56-35.md": {
+      "sha256": "d50490ee516343a27ec8e2ce7e8ecc0882b6332989f2318728e756532618e020",
+      "size": 1898
+    },
     "state/memories/MEMORY.md": {
       "sha256": "8f0c93eaed45bbac9ca50493a0bdf9144f5678c0eb55d66a4138cda999e6c629",
       "size": 2010
@@ -948,16 +948,16 @@
       "size": 2727
     },
     "state/skills/.curator_ledger.jsonl": {
-      "sha256": "9b3eb6314c4755cc91937d846c70a1f599b0821567c75c0ac7de1cb4bc03331a",
-      "size": 40905
+      "sha256": "265a629cf1330f5c5f0998027c26531da77bbe3ccd5c31c1a58abc19c01059c1",
+      "size": 43472
     },
     "state/skills/.curator_state": {
       "sha256": "f78cbcfcc28a81ce261c4d3ccba4bee023c75457836622229c25818e608c82b0",
       "size": 337
     },
     "state/skills/.usage.json": {
-      "sha256": "ded426c170aa7e4cb6399159bbc98e97a252c3985468c679473ed6af6a80d141",
-      "size": 5268
+      "sha256": "fe33988ed23d58998994c70237306fb3a66b6a77f2705a58db270181e6b8ae03",
+      "size": 5780
     },
     "state/skills/apple/DESCRIPTION.md": {
       "sha256": "c9537e578d68950224dbc09a425497a780e8c3956db9cb38a97b4a9e985516b3",
@@ -1328,12 +1328,16 @@
       "size": 596
     },
     "state/skills/creative/browser-game-development/SKILL.md": {
-      "sha256": "48e236396640bcab09d520d1eefee659fb9afbe419c0122a9e34aa1e5e2df9dd",
-      "size": 14197
+      "sha256": "8dc6c1412c236d48c804d3fd9ff71ea23c570e1e1c97f65e6a1a774c51f4059c",
+      "size": 15593
     },
     "state/skills/creative/browser-game-development/references/headless-verification.md": {
       "sha256": "e67c7d2a02fb3723841b19425cab04a35e10afbeb98fdff1c4632f2eabdbe190",
       "size": 7300
+    },
+    "state/skills/creative/browser-game-development/references/raycasting-fps.md": {
+      "sha256": "c840a8bd1e5f2e48d67538d7b39bace75cc0dbc4d4df8de9c43fbc07f2185dac",
+      "size": 5037
     },
     "state/skills/creative/browser-game-development/scripts/cdp-playtest.js": {
       "sha256": "10e732dbc447e059d02d6c571147e008874690932249730dc5e112c8409d129c",
@@ -2364,7 +2368,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-21T06:56:24.414931Z",
+  "generated_at": "2026-10-21T07:27:24.454336Z",
   "host": "ddab4be9dacf",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -2374,5 +2378,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 6477182
+  "total_bytes": 6486754
 }
