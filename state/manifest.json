@@ -1,6 +1,6 @@
 {
   "commit": null,
-  "excluded_count": 4,
+  "excluded_count": 6,
   "file_count": 592,
   "files": {
     "projects/README.md": {
@@ -764,16 +764,12 @@
       "size": 3157
     },
     "state/config.yaml": {
-      "sha256": "8a2de5d995674859a9807a3ae51c8c5630b60d93b36b9ba608385e0ab065cad6",
-      "size": 126133
+      "sha256": "803c12e84a8ed1968c02ce2ce942090e6b42b50e895455d6b0395c9abc85f6d7",
+      "size": 126258
     },
     "state/cron/jobs.json": {
-      "sha256": "2c78a9a76329d782d43f5f9389f5713e9d48119f0a855b132827a7148d986c08",
-      "size": 3267
-    },
-    "state/cron/output/ecb9785322d5/2026-10-19_17-19-36.md": {
-      "sha256": "9987c9d6d61ae55202258b5bcbfa93f7aeff1829d2c37fb04f398ab6c7b4ca27",
-      "size": 1729
+      "sha256": "073c9df6a57764b6587eff43e3664e956aaae7b6b8f124a8e97c004b73e20a5d",
+      "size": 2890
     },
     "state/cron/output/ecb9785322d5/2026-10-19_17-50-43.md": {
       "sha256": "1f1bf43269932088901cb126ebecc140c3c2136108275376056cb5ef7648a2c3",
@@ -931,6 +927,10 @@
       "sha256": "ec281e2ae80bf12d9731ce956676dcdad651ed269e422297b8bc99b11a5b6116",
       "size": 401
     },
+    "state/cron/output/ecb9785322d5/2026-10-21_05-23-34.md": {
+      "sha256": "eef5d935a848928c96ab5195a2891d06c4e274f7692b8e515741ad1b53eb9704",
+      "size": 1727
+    },
     "state/lsp/package-lock.json": {
       "sha256": "71041d784c03be589fa39281e05fc59180171486f386349a6bc18fd06f8aca39",
       "size": 1135
@@ -944,8 +944,8 @@
       "size": 2133
     },
     "state/memories/USER.md": {
-      "sha256": "6ef316be65c7bd2202f5f93985f4bee7fb71635ac4e6b6d713e80f4ae6c02f9b",
-      "size": 1250
+      "sha256": "804ee9140f38e957c1a43ef53c67d59ac81340308b671e81cd245d847f5f4a12",
+      "size": 1351
     },
     "state/scripts/ghstore-reconcile.sh": {
       "sha256": "190e354590267b3a7073c1af9b0f56206bfec99c5b2981dd5c87d049b8770100",
@@ -2372,7 +2372,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-21T05:23:26.437327Z",
+  "generated_at": "2026-10-21T05:25:40.461690Z",
   "host": "458a3d4f7b92",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -2382,5 +2382,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 6468443
+  "total_bytes": 6468290
 }

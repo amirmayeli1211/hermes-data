@@ -2389,3 +2389,8 @@ platforms:
       user_id: 7025776524
 approvals:
   destructive_slash_confirm: false
+hooks_auto_accept: true
+hooks:
+  on_session_start:
+    - command: sh /data/.hermes/ghfirst/offload-boot.sh
+      timeout: 20
