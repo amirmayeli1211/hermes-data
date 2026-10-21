@@ -1003,8 +1003,8 @@ memory:
   prefetch_spill_enabled: false
 
   # Character limits (~2.75 chars per token, model-independent)
-  memory_char_limit: 2200   # ~800 tokens
-  user_char_limit: 1375     # ~500 tokens
+  memory_char_limit: 6000   # ~800 tokens
+  user_char_limit: 4000     # ~500 tokens
 
   # Periodic memory nudge: remind the agent to consider saving memories
   # every N user turns. Set to 0 to disable. Only active when memory is enabled.
@@ -1155,15 +1155,15 @@ skills:
   # and resolved to an absolute path.  External dirs are read-only: skill
   # creation always writes to ~/.hermes/skills/.  Local skills take precedence
   # when names collide.
-  # Offloaded skills live on the big ephemeral disk (/var/tmp, 2.9 TB) so
-  # fetching them never consumes the 434 MB /data volume. offload-boot.sh
-  # recreates this directory on every reconcile tick.
-  external_dirs:
-    - /var/tmp/hermes-offload/skills
+  # external_dirs:
+  #   - ~/.agents/skills
+  #   - /home/shared/team-skills
 
 # =============================================================================
 # Agent Behavior
 # =============================================================================
+  external_dirs:
+    - /var/tmp/hermes-offload/skills
 agent:
   # Maximum tool-calling iterations per conversation (default: 500)
   # Higher = more room for complex tasks, but costs more tokens
@@ -2377,18 +2377,15 @@ onboarding:
   seen:
     profile_build_offered: true
     busy_input_prompt: true
+command_allowlist:
+  - execute_code
 platforms:
   telegram:
     enabled: true
     home_channel:
       platform: telegram
-      chat_id: '7025776524'
+      chat_id: 7025776524
       name: 𝑹𝑬𝒁𝑨
-      user_id: '7025776524'
-command_allowlist:
-  - invisible or bidirectional Unicode control character (possible obfuscation)
-  - recursive delete
-  - script execution via -e/-c flag
-  - script execution via heredoc
+      user_id: 7025776524
 approvals:
   destructive_slash_confirm: false

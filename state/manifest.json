@@ -1,6 +1,6 @@
 {
   "commit": null,
-  "excluded_count": 18,
+  "excluded_count": 4,
   "file_count": 592,
   "files": {
     "projects/README.md": {
@@ -764,16 +764,12 @@
       "size": 3157
     },
     "state/config.yaml": {
-      "sha256": "06b9c229a54a258b8f17f80a5bb56cc78a0f92e9b5a1c9c730a4dc0e4b381677",
-      "size": 126415
+      "sha256": "8a2de5d995674859a9807a3ae51c8c5630b60d93b36b9ba608385e0ab065cad6",
+      "size": 126133
     },
     "state/cron/jobs.json": {
-      "sha256": "4b8131b51c5b105e1caeab46bced5ef69b6ba1411f33845040ad550abe7aeab7",
-      "size": 4281
-    },
-    "state/cron/output/ecb9785322d5/2026-10-19_16-52-29.md": {
-      "sha256": "6bf67951ea3ea9b7f25acf087311d08856d2850b010a3028f81f5a8955d04acc",
-      "size": 4973
+      "sha256": "c29c45c26d2742eedb7a0fa0704520ff9bae8d84eb92a012b8bbcb9d3d78492d",
+      "size": 3146
     },
     "state/cron/output/ecb9785322d5/2026-10-19_17-19-36.md": {
       "sha256": "9987c9d6d61ae55202258b5bcbfa93f7aeff1829d2c37fb04f398ab6c7b4ca27",
@@ -931,6 +927,10 @@
       "sha256": "e0ea8414846721d5b3b592d2ce4b44ec25b3a5a32d737d3071b648a8a9c97a5f",
       "size": 1765
     },
+    "state/cron/output/ecb9785322d5/2026-10-21_05-18-39.md": {
+      "sha256": "ec281e2ae80bf12d9731ce956676dcdad651ed269e422297b8bc99b11a5b6116",
+      "size": 401
+    },
     "state/lsp/package-lock.json": {
       "sha256": "71041d784c03be589fa39281e05fc59180171486f386349a6bc18fd06f8aca39",
       "size": 1135
@@ -964,8 +964,8 @@
       "size": 337
     },
     "state/skills/.usage.json": {
-      "sha256": "282d35ddb74c94defa7e4a13dacd33dd2d18bc1dff4f4f9dd98d9f0163fc9487",
-      "size": 1958
+      "sha256": "f9266f9082ccf6734e0a959723300223814ce73c28c8258b254c4fe2a3b72fa1",
+      "size": 472
     },
     "state/skills/apple/DESCRIPTION.md": {
       "sha256": "c9537e578d68950224dbc09a425497a780e8c3956db9cb38a97b4a9e985516b3",
@@ -2372,8 +2372,8 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-20T17:56:48.651111Z",
-  "host": "43dc92631849",
+  "generated_at": "2026-10-21T05:23:01.405251Z",
+  "host": "458a3d4f7b92",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
     "Live SQLite state (state.db: sessions, kanban, cron executions) is not Git-suitable and is deliberately absent."
@@ -2382,5 +2382,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 6475797
+  "total_bytes": 6468322
 }
