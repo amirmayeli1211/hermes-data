@@ -2384,6 +2384,8 @@ onboarding:
     busy_input_prompt: true
 command_allowlist:
   - execute_code
+  - git force push (rewrites remote history)
+  - script execution via -e/-c flag
 platforms:
   telegram:
     enabled: true
