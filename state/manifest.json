@@ -1,7 +1,7 @@
 {
   "commit": null,
   "excluded_count": 19,
-  "file_count": 591,
+  "file_count": 595,
   "files": {
     "projects/README.md": {
       "sha256": "3d342e460991acfd867b966da08bbc740d16a954a0a32eb00824108259a75273",
@@ -768,12 +768,8 @@
       "size": 126449
     },
     "state/cron/jobs.json": {
-      "sha256": "597a722f061fd08b6740d004792c091787caf66089de140c72496cf1b25d9e6b",
+      "sha256": "86ec27f38e2b624be4dc2dcb937d41619b8c27ba1d94631007a69e9d4fefc945",
       "size": 3007
-    },
-    "state/cron/output/ecb9785322d5/2026-10-19_23-00-42.md": {
-      "sha256": "9e06ad79dd7caa03bd3db41c3601b7ce32423e1f8d1ffb9d8d0c7f1b25d396a0",
-      "size": 1838
     },
     "state/cron/output/ecb9785322d5/2026-10-19_23-31-42.md": {
       "sha256": "40bb5025f2a584d730a88664501966f497cf0dc372dbd555fce47b3dac95fa34",
@@ -931,6 +927,10 @@
       "sha256": "6d44f725f5a574b2b9d769a14aa1cabe5b7d2d076fd59c847682503af4a491fd",
       "size": 1871
     },
+    "state/cron/output/ecb9785322d5/2026-10-21_11-04-33.md": {
+      "sha256": "9482e6fc915800ab152c5b1d9ee875a37336cfc132e7fe5c30f832464b990fca",
+      "size": 1868
+    },
     "state/memories/MEMORY.md": {
       "sha256": "8f0c93eaed45bbac9ca50493a0bdf9144f5678c0eb55d66a4138cda999e6c629",
       "size": 2010
@@ -954,6 +954,22 @@
     "state/skills/.curator_state": {
       "sha256": "f78cbcfcc28a81ce261c4d3ccba4bee023c75457836622229c25818e608c82b0",
       "size": 337
+    },
+    "state/skills/.hub/.ignore": {
+      "sha256": "54cb5d16a0e92aa99d33526c5fdedb86d593ad09821600e636cb67e6a72dd913",
+      "size": 44
+    },
+    "state/skills/.hub/index-cache/browse_sh_catalog.json": {
+      "sha256": "4b0aacd9f6f967bcb66f2db9d389e831adf56f696317ad50ca8ba545c93991d6",
+      "size": 724621
+    },
+    "state/skills/.hub/index-cache/lobehub_index.json": {
+      "sha256": "6a51d5c10d92eeaa4c98769b2aec0223bf373a614218fa8222d41de66ab172f9",
+      "size": 251446
+    },
+    "state/skills/.hub/index-cache/official_optional_dirs.json": {
+      "sha256": "b6e9be2b6edd1fd7816a0520aa102a62b9c96e2baa5e175e9da8719d78106732",
+      "size": 4974
     },
     "state/skills/.usage.json": {
       "sha256": "ca899c37cfec8b694ffc6fc92bcc59bc5cf7bd30be59ac28209f68736159ef8a",
@@ -2368,15 +2384,15 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-21T11:04:24.464823Z",
+  "generated_at": "2026-10-21T11:35:24.525543Z",
   "host": "ddab4be9dacf",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
     "Live SQLite state (state.db: sessions, kanban, cron executions) is not Git-suitable and is deliberately absent."
   ],
   "schema": 1,
-  "skipped_count": 0,
+  "skipped_count": 1,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 6492128
+  "total_bytes": 7473243
 }
