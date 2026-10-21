@@ -2348,8 +2348,8 @@
       "size": 67462
     },
     "tool/offload-boot.sh": {
-      "sha256": "ccae90c0e9f598ad319bbb1ac8a2ee95fd85ab8d023d847539cf22341caa9c4a",
-      "size": 7839
+      "sha256": "a922425a54df9a76d385db860b9cf3744705bd21ec56eb7594c78d1c46f1c6e8",
+      "size": 8489
     },
     "tool/offload.sh": {
       "sha256": "f4653b4bee5572919baa87ec660c897f392220ec2741cbefbe4e3cdc7a9755dc",
@@ -2372,7 +2372,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-21T05:27:05.591330Z",
+  "generated_at": "2026-10-21T05:35:00.342605Z",
   "host": "458a3d4f7b92",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -2382,5 +2382,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 6471096
+  "total_bytes": 6471746
 }

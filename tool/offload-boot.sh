@@ -102,6 +102,19 @@ if [ -d "$STAGE" ]; then
     [ "$added" -gt 0 ] && printf 'offload-boot: rehydrated %s skill(s) from the repo snapshot\n' "$added"
 fi
 
+# --- keep rebuildable catalog caches off the small disk ---------------------
+# models_dev_cache.json (5.6 MB+) and provider_models_cache.json are vendored
+# catalogs re-downloaded on demand. A symlink keeps the live path working while
+# the bytes sit on the ephemeral volume; recreate the target every tick.
+for CACHE in models_dev_cache.json provider_models_cache.json; do
+    LINK="${HERMES_HOME}/$CACHE"
+    REAL="${OFFLOAD_ROOT}/$CACHE"
+    if [ -f "$LINK" ] && [ ! -L "$LINK" ]; then
+        cp "$LINK" "$REAL" 2>/dev/null && rm -f "$LINK" && ln -sfn "$REAL" "$LINK"
+    elif [ ! -e "$LINK" ]; then
+        ln -sfn "$REAL" "$LINK"
+    fi
+done
 # --- keep big rebuildable trees OFF the small disk -------------------------
 #
 # The language-server tree (npm-installed pyright and friends) is 38 MB of
