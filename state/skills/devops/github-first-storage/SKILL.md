@@ -355,6 +355,34 @@ live filesystem, not by review.
     it with a real `push`, not `plan`: `plan` walks only the local side and
     cannot see a missing remote filter.
 
+19. **A restored `memories/` does NOT reach the running agent this session.**
+    MEMORY.md/USER.md enter the system prompt as a FROZEN snapshot captured at
+    session start, so a `pull` executed mid-session writes the files and the live
+    agent keeps the empty view until the next session begins. Verify a restore by
+    loading the store directly (`load_on_disk_store()` or the `memories/` bytes),
+    not by asking the current agent what it remembers, and tell the user plainly
+    that the memory shows up on their next session rather than claiming it is
+    already active.
+
+20. **A restored `cron/jobs.json` says `ok`-looking things while its script is
+    missing.** The job definition and the script are two separate files; on a
+    rebuilt home the definition can be restored while `scripts/` (and the
+    `ghfirst/` tool it delegates to) is absent, so every fire fails with
+    "Script not found" and — with `deliver=local` — nobody sees it for hours.
+    After any restore, run `hermes cron list` and confirm `last_status`, then
+    fire the job once (`cronjob run`) and read the real output before reporting
+    the schedule as fixed. Keep `failure_deliver=origin` so the next breakage is
+    visible in chat.
+
+21. **The credential has two homes and only one survives a redeploy.** The
+    container entrypoint truncates `.env` on every boot and re-emits only
+    platform-managed keys, so a token appended by hand disappears while the repo
+    still needs it to push. Keep `$HERMES_HOME/.ghfirst/token` (mode 600, outside
+    the sync map) as the durable copy and re-inject it from a registered
+    `on_session_start` hook, not from an unregistered script — an unregistered
+    hook is listed as `✗ not allowlisted` and never runs in a non-interactive
+    gateway, silently leaving the deployment credential-less.
+
 ## Disk tiers: not every writable path is equal
 
 A disposable container usually has TWO filesystems with opposite properties,
