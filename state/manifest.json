@@ -1,7 +1,7 @@
 {
   "commit": null,
   "excluded_count": 9,
-  "file_count": 592,
+  "file_count": 590,
   "files": {
     "projects/README.md": {
       "sha256": "3d342e460991acfd867b966da08bbc740d16a954a0a32eb00824108259a75273",
@@ -764,12 +764,12 @@
       "size": 3157
     },
     "state/config.yaml": {
-      "sha256": "803c12e84a8ed1968c02ce2ce942090e6b42b50e895455d6b0395c9abc85f6d7",
-      "size": 126258
+      "sha256": "fe54ea9a8a1fbbd11adb0379f004a905c06ca99bb1b3c2ebe2f46158fa5b51a0",
+      "size": 126368
     },
     "state/cron/jobs.json": {
-      "sha256": "073c9df6a57764b6587eff43e3664e956aaae7b6b8f124a8e97c004b73e20a5d",
-      "size": 2890
+      "sha256": "7723a2cc4c082ef7d40f844c2a35096bfd1ee4228d2af440a11dc3d2dfe2244c",
+      "size": 3007
     },
     "state/cron/output/ecb9785322d5/2026-10-19_17-50-43.md": {
       "sha256": "1f1bf43269932088901cb126ebecc140c3c2136108275376056cb5ef7648a2c3",
@@ -931,17 +931,9 @@
       "sha256": "eef5d935a848928c96ab5195a2891d06c4e274f7692b8e515741ad1b53eb9704",
       "size": 1727
     },
-    "state/lsp/package-lock.json": {
-      "sha256": "71041d784c03be589fa39281e05fc59180171486f386349a6bc18fd06f8aca39",
-      "size": 1135
-    },
-    "state/lsp/package.json": {
-      "sha256": "bc4c758a8460b814ed84426cc48f8ae6d374218bc7d84b52aa0cd6144b9d5063",
-      "size": 54
-    },
     "state/memories/MEMORY.md": {
-      "sha256": "e7b26701225904bc489c358dc332feca5f3841a06622fa338546446c64f673bf",
-      "size": 2080
+      "sha256": "975e03ab45e98b670c19a38dbb259aad7d430f2d1b424b9b32323a855530c922",
+      "size": 2411
     },
     "state/memories/USER.md": {
       "sha256": "804ee9140f38e957c1a43ef53c67d59ac81340308b671e81cd245d847f5f4a12",
@@ -956,15 +948,15 @@
       "size": 2727
     },
     "state/skills/.curator_ledger.jsonl": {
-      "sha256": "35df4dc7b3968b31fb270d97428f7bff36453c30d9797f2232ace7a274d2dc88",
-      "size": 40391
+      "sha256": "9b3eb6314c4755cc91937d846c70a1f599b0821567c75c0ac7de1cb4bc03331a",
+      "size": 40905
     },
     "state/skills/.curator_state": {
       "sha256": "f78cbcfcc28a81ce261c4d3ccba4bee023c75457836622229c25818e608c82b0",
       "size": 337
     },
     "state/skills/.usage.json": {
-      "sha256": "f7ee4b8518127b931423964bb0de596a577fe17f92770b29d110837061aa357a",
+      "sha256": "4f6a8912aa9c318f310f90a86ffb5b2f9e8f8ff465eecd7aa8a63298474e326c",
       "size": 980
     },
     "state/skills/apple/DESCRIPTION.md": {
@@ -1728,8 +1720,8 @@
       "size": 10963
     },
     "state/skills/devops/github-first-storage/SKILL.md": {
-      "sha256": "e6d0d109796e5fff42844ab0ef576211ec6ad16a326f62e78c61d528e46a3601",
-      "size": 28369
+      "sha256": "df2a118ff9fffd3b8d73a7b9b93c60da0a977e61a63e65c442b50aa7840755b0",
+      "size": 29575
     },
     "state/skills/devops/github-first-storage/references/disk-tiers.md": {
       "sha256": "6e5eaa40e0ef43594215778be1e2c28aecb32eeb3ca98ca37ba01ea17122f045",
@@ -2372,8 +2364,8 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-21T05:35:00.342605Z",
-  "host": "458a3d4f7b92",
+  "generated_at": "2026-10-21T05:54:24.588007Z",
+  "host": "ddab4be9dacf",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
     "Live SQLite state (state.db: sessions, kanban, cron executions) is not Git-suitable and is deliberately absent."
@@ -2382,5 +2374,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 6471746
+  "total_bytes": 6472835
 }

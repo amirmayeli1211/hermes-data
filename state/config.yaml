@@ -1348,6 +1348,7 @@ agent:
 # =============================================================================
 # Gateway Lifecycle
 # =============================================================================
+  gateway_notify_interval: 90
 gateway:
   signal_interrupt_grace_timeout: 1
   delivery_ledger: true
@@ -2178,6 +2179,10 @@ display:
 #     shared-metrics directory resets it.
 # See docs/observability/relay-shared-metrics.md (Appendix A) for the full
 # consent, identity, retention, and deletion decisions.
+  platforms:
+    telegram:
+      tool_progress: all
+      busy_ack_detail: true
 telemetry:
   shared_metrics:
     enabled: false

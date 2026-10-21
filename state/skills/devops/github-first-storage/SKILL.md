@@ -383,6 +383,24 @@ live filesystem, not by review.
     hook is listed as `✗ not allowlisted` and never runs in a non-interactive
     gateway, silently leaving the deployment credential-less.
 
+22. **Git-over-HTTPS clone can fail while the API works with the same token.**
+    `Bearer` auth satisfies every GitHub API call but git's credential layer may
+    still answer a plain clone with `Invalid username or token`. A tarball via
+    the API (`GET /repos/{r}/tarball/{branch}`) replaces the clone perfectly for
+    a restore tool: it takes one request, needs no git binary, and honors the
+    same token. Fall back to the tarball whenever a clone denies a token the API
+    just accepted; do not burn time debugging terminal-shared-header tricks.
+
+23. **Set every rebuildable cache off the small disk, not just the ones a
+    config file names.** After a restore, run `du -sh <state-root>/* | sort -rh`
+    and audit the top entries against the rebuildable/durable split — anything
+    machine-rebuildable (model catalogs, npm caches, downloads) moves to the
+    offload root behind a symlink, and the scheduled offload script gains a
+    loop that recreates each symlink+target every tick (see rule 16). A fresh
+    install regenerates these caches on the small disk unless the symlink
+    exists first, so the reassertion loop in the periodic job is the durable
+    fix, not a one-time `mv`.
+
 ## Disk tiers: not every writable path is equal
 
 A disposable container usually has TWO filesystems with opposite properties,
