@@ -98,7 +98,8 @@ python scripts/pdf_meta.py doc.pdf --list-attachments | --extract-attachments di
 
 ## Pitfalls
 
-- **Scanned PDFs**: empty `extract_text()` plus page images means there is no text layer. Route to `references/ocr-extraction.md`; do not fabricate text.
+- **pdf-lib fails on structured/marked PDFs** (those with a `StructTreeRoot` / tag tree): it throws at parse time ("error at offset ..."). For extracting page subsets, splitting, or merging such files, use **pypdf** instead — it ignores the structure tree and reads pages fine. Prefer pypdf for any split/merge/extraction task unless you specifically need pdf-lib's features; verify by re-reading the output and comparing first/last page text to the source.
+- **Odd/even page subsets**: define pages in 1-based terms (`1,3,5,...`), convert once at the API boundary, and verify by extracting text of the first and last page of the output against the source — empty or mismatched text means the range was off or the file is scanned.
 - **Flattening limits**: `pdf_fill_form.py --flatten` uses pypdf's flatten support, which converts widget appearances into page content. It is reliable for plain text fields and checkboxes but can drop or misrender exotic widgets (rich text, custom appearance streams, some radio groups). Verify the flattened output visually with `vision_analyze`; for bulletproof flattening use an external renderer (e.g. Ghostscript or `pdftoppm`+reassembly) as a fallback.
 - **NeedAppearances**: after filling, viewers only render values if appearance streams exist. The fill script sets the AcroForm `NeedAppearances` flag so conforming viewers regenerate them; some minimal viewers ignore it — flatten if display fidelity matters.
 - **Non-Latin form values**: values are stored correctly (UTF-16), but the field's default font may lack glyphs, so a viewer can show blanks even though the data round-trips. Verify with `--fields`, not just visually.

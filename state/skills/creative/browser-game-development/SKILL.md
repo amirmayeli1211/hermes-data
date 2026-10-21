@@ -82,6 +82,12 @@ Non-negotiables, each of which fixes a specific bug class:
   engine — see `references/raycasting-fps.md` for the column loop, fisheye
   correction, sprite billboards, and z-buffer rules. Raycasting is the right
   tool when the deliverable must stay a single dependency-free HTML file.
+- **"Real 3D" means real WebGL, not a raycaster.** When the user explicitly
+  asks for real movement/quality ("واقعاً 3D", "واقعی"), drop the raycaster and
+  use **Three.js from a CDN** with a perspective camera, real meshes, shadow
+  maps (PCFSoft, 2048), ACES tone mapping, and a pixelRatio of 2. Keep it a
+  single HTML file (inline everything except the Three.js import map) so it
+  still opens by double-click. Do not ship a raycaster and call it 3D.
 - **Draw at integer coordinates** with `image-rendering: pixelated`, and letterbox
   the canvas with `object-fit: contain` so it scales on a phone.
 - **Darkness via one opaque overlay with `destination-out` holes**, not additive

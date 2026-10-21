@@ -37,13 +37,24 @@ offline self-test that proves the logic before any token is involved.
   via `setMyCommands`.
 - **GitHub only**: stage, push, verify the remote tree, then delete the local
   staging copy. Project code does not live on the machine's disk.
-- Reza wants a short Persian status line after every batch of work — end
+- **Reza wants a short Persian status line after every batch of work — end
   turns frequently instead of running one long silent turn. Concretely: one
   line, present tense, what landed and what is next ("migration 6 added ✅
   حالا پنل مشتری"), between tool batches — not a wall of explanation and not
   silence until the end. He benchmarks against the fastest session he has
   had; long silent stretches read as "stuck", so ship the small step and
   report it rather than batching everything behind one final summary.
+- **One-line installer pattern (for a stdlib bot repo):** ship an `install.sh`
+  at repo root that prompts only for the two secrets the operator must supply
+  (BOT_TOKEN, OWNER_TG_ID), installs OS deps, clones/updates the repo,
+  writes a mode-600 `.env`, creates an `EnvironmentFile`-backed systemd unit
+  with `Restart=always`, enables+starts it, and runs a health check via
+  `systemctl is-active`. The one-liner is
+  `bash <(curl -fsSL https://raw.githubusercontent.com/<owner>/<repo>/main/install.sh)`.
+  Keep the bot's nature unchanged — the installer only wraps deployment; it
+  must never alter bot code or add dependencies. If the repo is private, the
+  one-liner needs a token in the header; tell the user the public/private
+  assumption explicitly rather than guessing.
 
 ## Module map (flat, one role each)
 
