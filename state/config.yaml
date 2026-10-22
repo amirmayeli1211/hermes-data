@@ -2183,6 +2183,8 @@ display:
     telegram:
       tool_progress: all
       busy_ack_detail: true
+  runtime_footer:
+    enabled: true
 telemetry:
   shared_metrics:
     enabled: false
