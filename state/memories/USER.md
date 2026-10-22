@@ -7,3 +7,5 @@ Wants finished deliverables sent as actual files/attachments, not a log describi
 Works on game/dev projects iteratively and expects progress notes during long builds; when told to stop a line of work ("come out of the game process"), drop it cleanly and leave state verified rather than abandoning it half-done.
 §
 User Reza was given a test VPS: srv-56bjmxlq, IP 104.237.250.99, IPv6 2602:ffbc::5000, root / d4Hk9zHwPBiSzVpv, SSH root@104.237.250.99. Free until 1405/07/29 13:29 (up to 10GB traffic). Need to install and configure 3x-ui panel and deliver a working config link. Password must be stored securely and message deleted after.
+§
+Reza explicitly wants agent-like behavior (always active, real progress logs every ~10 min, typing indicator) NOT chatbot-like (respond then stop). He reversed the earlier 'fast response' preference and now wants the 'heavy' style with real logs and evidence-backed results. He asked me NOT to update/restart myself (reversed earlier request).
