@@ -5,8 +5,8 @@ the Hermes instance it belongs to. The container filesystem is a rebuildable
 cache; a fresh container restores itself from here.
 
 - schema: `1` · tool `ghstore v1.0.0`
-- generated: `2026-10-28T15:38:18.557597Z` · host `ddab4be9dacf`
-- files: `595` · bytes: `7475328`
+- generated: `2026-10-28T15:39:59.437270Z` · host `sandbox-b1e0eab0`
+- files: `582` · bytes: `6639963`
 
 ## Layout
 
@@ -15,6 +15,14 @@ cache; a fresh container restores itself from here.
 | `state/` | durable Hermes state: config, memories, skills, plans, hooks, plugins, skins, cron jobs + scripts, workspace |
 | `state/manifest.json` | per-file sha256 + size index; the integrity record |
 | `tool/` | `ghstore.py` and bootstrap scripts — the restore path itself |
+
+## Redacted before commit
+
+`1` synced file(s) carried an inline credential
+value, which was blanked before commit (an `api_key:` value becomes `''`); the
+rest of each file is stored verbatim. Their paths and blanked-value counts are
+listed in `state/manifest.json` under `redactions`, so a restore knows exactly
+which credentials must be re-entered.
 
 ## Restore into a fresh container
 

@@ -1,9 +1,0 @@
-{
-  "schema": 1,
-  "generated_at": "2026-10-18T11:37:57Z",
-  "source_repo": "gamedev-skills/awesome-gamedev-agent-skills",
-  "source_commit": "0a70cfc64672d512c5b5b6006b5dcb5cf90dbdbd",
-  "skills_installed": 60,
-  "layout": "verbatim mirror of the offload skills tree; nesting depth preserved",
-  "note": "Restore direction is offload-sync.sh pull. Content here is a snapshot so a container rebuild does not need network access to re-fetch."
-}

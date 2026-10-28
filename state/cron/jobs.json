@@ -1,71 +1,89 @@
 {
   "jobs": [
     {
-      "id": "ecb9785322d5",
-      "name": "ghstore-reconcile",
-      "prompt": "Run the GitHub-first state reconcile and report the result.\n\nExecute this exact command:\n\n    sh /data/.hermes/ghfirst/reconcile.sh\n\nIt pushes any Hermes state changes to the GitHub repository, verifies the committed tree, and reports drift plus /data disk pressure. The credential is read from /data/.hermes/.env automatically — never print, echo, or reveal its contents or any token value.\n\nReply with a SHORT plain-text status (a few lines maximum):\n- the commit sha pushed, or 'no changes — repo in sync'\n- whether verify passed (only claim this if the output literally said VERIFY OK)\n- drift counts (local-only / remote-only / differing)\n- the /data disk line it printed\n- if anything failed: the exact error and the exit code\n\nNever claim success unless the command's own output said VERIFY OK.",
+      "id": "9a1f44193ab7",
+      "name": "Gateway Supervisor Keepalive",
+      "prompt": "",
       "skills": [],
       "skill": null,
       "model": null,
       "provider": null,
       "base_url": null,
-      "script": "ghstore-reconcile.sh",
+      "script": "gateway_keepalive.sh",
       "no_agent": true,
-      "monitor_script": null,
-      "monitor_url": null,
-      "monitor_state": null,
       "context_from": null,
       "schedule": {
-        "kind": "interval",
-        "minutes": 30,
-        "display": "every 30m"
+        "kind": "cron",
+        "expr": "*/5 * * * *",
+        "display": "*/5 * * * *"
       },
-      "schedule_display": "every 30m",
+      "schedule_display": "*/5 * * * *",
       "repeat": {
         "times": null,
-        "completed": 474
+        "completed": 9
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
-      "created_at": "2026-10-17T19:22:22.768176+00:00",
-      "next_run_at": "2026-10-28T16:08:16.042268+00:00",
-      "last_run_at": "2026-10-28T15:07:29.828691+00:00",
+      "created_at": "2026-10-28T14:50:46.666568+00:00",
+      "next_run_at": "2026-10-28T15:40:00+00:00",
+      "last_run_at": "2026-10-28T15:35:54.936538+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
-      "last_delivery_unverified": null,
-      "last_failure": {
-        "at": "2026-10-21T05:18:39.620676+00:00",
-        "detail": "Script not found: /data/.hermes/scripts/ghstore-reconcile.sh. Cron scripts are looked up only in this profile's folder (/data/.hermes/scripts); if the job was copied from another profile, copy the script there too, or edit the job with `hermes cron edit`."
-      },
-      "failure_streak": 0,
-      "deliver": "local",
+      "deliver": "origin",
       "origin": {
         "platform": "telegram",
         "chat_id": "7025776524",
-        "chat_name": "𝑹𝑬𝒁𝑨",
-        "thread_id": null,
-        "user_id": "7025776524",
-        "scope_id": null
+        "chat_name": "\ud835\udc79\ud835\udc6c\ud835\udc81\ud835\udc68",
+        "thread_id": null
       },
-      "enabled_toolsets": [
-        "terminal"
-      ],
-      "workdir": null,
-      "last_dispatch": {
-        "scheduled_at": "2026-10-28T15:37:29.828691+00:00",
-        "dispatched_at": "2026-10-28T15:38:16.018659+00:00",
-        "lateness_seconds": 46.2,
-        "kind": "on_time"
+      "enabled_toolsets": null,
+      "workdir": null
+    },
+    {
+      "id": "0686a8638e72",
+      "name": "hermes-data Sync",
+      "prompt": "Push this instance's durable Hermes state (config, memories, skills, scripts, projects) to the GitHub store amirmayeli1211/hermes-data via tool/ghstore.py push. Silent on success; reports only failures.",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": "ghstore_sync.sh",
+      "no_agent": true,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "*/30 * * * *",
+        "display": "*/30 * * * *"
       },
-      "fire_claim": {
-        "at": "2026-10-28T15:38:16.051962+00:00",
-        "by": "ddab4be9dacf:46640:229bb58f8018449e9303f4f22739e1d9"
+      "schedule_display": "*/30 * * * *",
+      "repeat": {
+        "times": null,
+        "completed": 0
       },
-      "failure_deliver": "origin"
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-10-28T15:38:41.407749+00:00",
+      "next_run_at": "2026-10-28T16:00:00+00:00",
+      "last_run_at": null,
+      "last_status": null,
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": {
+        "platform": "telegram",
+        "chat_id": "7025776524",
+        "chat_name": "\ud835\udc79\ud835\udc6c\ud835\udc81\ud835\udc68",
+        "thread_id": null
+      },
+      "enabled_toolsets": null,
+      "workdir": null
     }
   ],
-  "updated_at": "2026-10-28T15:38:16.052157+00:00"
+  "updated_at": "2026-10-28T15:38:41.408182+00:00"
 }

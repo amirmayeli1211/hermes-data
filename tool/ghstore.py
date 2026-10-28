@@ -601,6 +601,44 @@ def iter_files(root: Path):
             yield Path(dirpath) / name
 
 
+INLINE_CREDENTIAL_RE = re.compile(
+    r"(?im)^(?P<prefix>[ \t]*(?:-[ \t]+)?[A-Za-z0-9_.\-]*"
+    r"(?:api[_-]?key|apikey|secret[_-]?key|client[_-]?secret|access[_-]?token"
+    r"|auth[_-]?token|private[_-]?key|password|passwd|token)"
+    r"[A-Za-z0-9_.\-]*[ \t]*[:=][ \t]*)(?P<quote>['\"]?)(?P<value>[^\s'\"]{8,})(?P=quote)[ \t]*$"
+)
+
+
+def redact_inline_credentials(data: bytes) -> tuple[bytes, int] | None:
+    """Blank credential *values* in a text file before it is stored.
+
+    A live `config.yaml` may carry provider API keys inline (custom_providers
+    entries). This store is a Git repository and the secret gate aborts any push
+    carrying such a value, so the value is replaced with an empty string. The
+    caller records that the stored copy differs from the file on disk; a restore
+    therefore needs that credential re-entered (or supplied through `.env`,
+    which is never synced). Returns (new bytes, number of values blanked).
+    """
+    if b"\x00" in data[:4096]:
+        return None
+    try:
+        text = data.decode("utf-8")
+    except UnicodeDecodeError:
+        return None
+
+    count = 0
+
+    def _blank(match) -> str:
+        nonlocal count
+        count += 1
+        return f"{match.group('prefix')}{match.group('quote')}{match.group('quote')}"
+
+    redacted = INLINE_CREDENTIAL_RE.sub(_blank, text)
+    if not count:
+        return None
+    return redacted.encode("utf-8"), count
+
+
 def collect_local(home: Path) -> tuple[dict[str, bytes], list[dict], list[dict]]:
     """Return (repo_path -> content, excluded report, skipped report)."""
     files: dict[str, bytes] = {}
@@ -696,12 +734,37 @@ def gate_secrets(files: dict[str, bytes], strict: bool) -> tuple[list[dict], lis
     return blocking, warnings
 
 
+def redact_blocking_secrets(files: dict[str, bytes], blocking: list[dict],
+                            redactions: list[dict], strict: bool = False,
+                            ) -> tuple[list[dict], list[dict]]:
+    """Blank inline credential values in files the secret gate would block.
+
+    Only files the gate flagged are rewritten, so every other synced file stays
+    byte-exact. The file set is re-scanned afterwards and that result is returned:
+    a finding the redactor cannot clear (a bare token with no assignment form)
+    stays blocking, so the gate still fails closed.
+    """
+    for item in blocking:
+        data = files.get(item["path"])
+        if data is None:
+            continue
+        redacted = redact_inline_credentials(data)
+        if redacted is None:
+            continue
+        files[item["path"]] = redacted[0]
+        redactions.append({"path": item["path"], "values_blanked": redacted[1],
+                           "patterns": item["patterns"],
+                           "reason": "inline-credential-value-blanked"})
+    return gate_secrets(files, strict)
+
+
 # --------------------------------------------------------------------------
 # manifest + remote state
 # --------------------------------------------------------------------------
 
 def build_manifest(files: dict[str, bytes], excluded: list[dict], skipped: list[dict],
-                   commit: str | None = None) -> dict:
+                   commit: str | None = None, redactions: list[dict] | None = None) -> dict:
+    redactions = sorted(redactions or [], key=lambda item: item.get("path", ""))
     return {
         "schema": MANIFEST_SCHEMA,
         "tool": "ghstore",
@@ -717,10 +780,16 @@ def build_manifest(files: dict[str, bytes], excluded: list[dict], skipped: list[
         },
         "excluded_count": len(excluded),
         "skipped_count": len(skipped),
+        "redactions": redactions,
+        "redaction_count": len(redactions),
         "notes": [
             "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
             "Live SQLite state (state.db: sessions, kanban, cron executions) is not "
             "Git-suitable and is deliberately absent.",
+            "Inline credential values inside synced text files (for example provider "
+            "api_key entries in config.yaml) are blanked before commit; the manifest's "
+            "redactions list names those files, and a restore needs the credential "
+            "re-entered.",
         ],
     }
 
@@ -804,6 +873,14 @@ def render_readme(manifest: dict, repo: str) -> bytes:
         "| `state/` | durable Hermes state: config, memories, skills, plans, hooks, plugins, skins, cron jobs + scripts, workspace |",
         "| `state/manifest.json` | per-file sha256 + size index; the integrity record |",
         "| `tool/` | `ghstore.py` and bootstrap scripts — the restore path itself |",
+        "",
+        "## Redacted before commit",
+        "",
+        f"`{manifest.get('redaction_count', 0)}` synced file(s) carried an inline credential",
+        "value, which was blanked before commit (an `api_key:` value becomes `''`); the",
+        "rest of each file is stored verbatim. Their paths and blanked-value counts are",
+        "listed in `state/manifest.json` under `redactions`, so a restore knows exactly",
+        "which credentials must be re-entered.",
         "",
         "## Restore into a fresh container",
         "",
@@ -938,6 +1015,13 @@ def cmd_doctor(args) -> int:
     print(f"excluded entries     : {len(excluded)}")
     print(f"skipped (oversize/io): {len(skipped)}")
     blocking, warnings = gate_secrets(files, args.strict_scan)
+    redactions: list[dict] = []
+    if blocking:
+        blocking, warnings = redact_blocking_secrets(files, blocking, redactions,
+                                                    args.strict_scan)
+    print(f"redacted before push : {len(redactions)}")
+    for item in redactions:
+        print(f"  REDACT {item['path']}: {item['values_blanked']} inline value(s) blanked")
     print(f"secret scan          : blocking={len(blocking)} warnings={len(warnings)}")
     for item in blocking:
         print(f"  BLOCK {item['path']}: {', '.join(item['patterns'])}")
@@ -1156,6 +1240,13 @@ def cmd_push(args) -> int:
     gh = GitHub(token, args.repo, args.verbose)
     files, excluded, skipped = collect_local(home)
     blocking, warnings = gate_secrets(files, args.strict_scan)
+    redactions: list[dict] = []
+    if blocking:
+        # A live config.yaml can carry provider API keys inline. Blank only those
+        # values (only in files the gate flagged), then re-scan: a finding the
+        # redactor cannot clear stays fatal.
+        blocking, warnings = redact_blocking_secrets(files, blocking, redactions,
+                                                    args.strict_scan)
     # Entropy warnings are advisory, and a busy home produces dozens of them; a
     # wall of notices buried the one line that mattered in the cron alert. Summarise
     # by default and list them in full only when asked.
@@ -1184,6 +1275,12 @@ def cmd_push(args) -> int:
               f"({home / '.env'}), and re-run.")
         return 4
 
+    if redactions:
+        print(f"redacted before commit: {len(redactions)} file(s), "
+              f"{sum(item['values_blanked'] for item in redactions)} inline value(s) blanked")
+        for item in redactions:
+            print(f"  REDACT {item['path']}: {item['values_blanked']} value(s)")
+
     commit_sha, tree_sha, remote_blobs, parents = fetch_remote_state(
         gh, args.branch, initialize=True)
     remote = remote_manifest(gh, remote_blobs)
@@ -1209,7 +1306,7 @@ def cmd_push(args) -> int:
             print("no changes since the last sync — nothing to commit.")
             return 0
 
-    manifest = build_manifest(files, excluded, skipped)
+    manifest = build_manifest(files, excluded, skipped, redactions=redactions)
     readme = render_readme(manifest, args.repo)
     outgoing: dict[str, bytes] = dict(files)
     outgoing["README.md"] = readme

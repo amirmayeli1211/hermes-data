@@ -1,1107 +1,147 @@
 {
   "commit": null,
-  "excluded_count": 19,
-  "file_count": 595,
+  "excluded_count": 5,
+  "file_count": 582,
   "files": {
-    "projects/README.md": {
-      "sha256": "3d342e460991acfd867b966da08bbc740d16a954a0a32eb00824108259a75273",
-      "size": 236
-    },
-    "projects/ticket-bot/.keep": {
-      "sha256": "2f73349cfc4630255319c6c8dfc1b46a8996ace9d14d8e07563b165915918ec2",
-      "size": 12
-    },
-    "projects/ticket-bot/config.py": {
-      "sha256": "f82811e35e873d1cd31cb87bf06d624e2c95daee02abe0c025720fc8b322d5e1",
-      "size": 1563
-    },
-    "projects/ticket-bot/db.py": {
-      "sha256": "159eee4eb0e50fed419b7e457039721d175689483a3329c45d9707932e97564d",
-      "size": 17103
-    },
-    "projects/ticket-bot/logic.py": {
-      "sha256": "212ec8c9c8690d789fe5ec3391ea301f2c5aa2c4659a98aabe769a3af0819ab6",
-      "size": 3292
-    },
-    "projects/ticket-bot/tg.py": {
-      "sha256": "32e0a9317c8c36436dda633d26eceb1746ed1afe3232d67d9a32bd0fea41587a",
-      "size": 5582
-    },
     "state/SOUL.md": {
-      "sha256": "3bd38ef92efb90d0fdda1bb73036185d4a4bc11079963cb0e2db71c84281e64e",
-      "size": 668
-    },
-    "state/archive/gamedev-skills/.offloaded/.installed.json": {
-      "sha256": "5381463889aed42ba1641710dbbdae5dee75d9b701d4bb4c8f55aea341dfd36c",
-      "size": 444
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/README.md": {
-      "sha256": "77d8f31df7b00f1377ed0fe7d43d466f83901b43dc6468192db1cb714b6c76a2",
-      "size": 712
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/ai-behavior-trees-utility-ai/SKILL.md": {
-      "sha256": "185960eddb169cb81490e0d01efb9240663b8a465ca34ec34e0f015a727f06e4",
-      "size": 8255
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/ai-behavior-trees-utility-ai/references/behavior-tree-core.md": {
-      "sha256": "df96b3faf1b7107240ed9c5f3bed793733dd9bdd25c05577abb7a69edd95521b",
-      "size": 14586
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/ai-behavior-trees-utility-ai/references/best-practices-and-pitfalls.md": {
-      "sha256": "8ff83984ad998bc949d7524bae38c4d5b1acec34ff24587fdc9a9e9952c23c53",
-      "size": 5836
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/ai-behavior-trees-utility-ai/references/practical-examples.md": {
-      "sha256": "9be856be9e5375fa218e927125dfca3f4f1c7b2ecd9089e5fa8b86d76b07cf1e",
-      "size": 7836
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/ai-behavior-trees-utility-ai/references/utility-ai-system.md": {
-      "sha256": "a414ecd074e467d598664cde01305be054387fd3dc3e0045525ea3673d33309b",
-      "size": 7528
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/audio-design/SKILL.md": {
-      "sha256": "cedbcb99da5cb378855e4c1a039a46286da8f5bc1b9875b887da86dcf7778096",
-      "size": 9778
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/audio-design/references/adaptive-music.md": {
-      "sha256": "ca6fd287054294004acd85d9acd773d7b52c327911116c9c02344bab5e61df13",
-      "size": 4041
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/audio-design/references/synthesized-audio.md": {
-      "sha256": "abeb7644964107b728a9813e50fbe850f0cbd506c582cf58c99ec83684a91037",
-      "size": 6932
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/camera-systems/SKILL.md": {
-      "sha256": "cec5e9ef16aaf8d42a7b86e3b17678d57920ab7692bbbfe710a34ac0d09b32c7",
-      "size": 8530
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/camera-systems/references/follow-and-framing.md": {
-      "sha256": "daf21e0079ed86580f670c3f503a4dd835511534dc0dcecda9750b6eda3ceeec",
-      "size": 4827
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/create-game-assets/SKILL.md": {
-      "sha256": "c178cde20316f7d326f2a853a76522b375b325346b5b8797ef52aa98740aff18",
-      "size": 7979
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/create-game-assets/agents/openai.yaml": {
-      "sha256": "b5ff9e75ab8a845324d28745aa97af0a3cd4fccc56067a6494947e12e40f1990",
-      "size": 231
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/create-game-assets/assets/art-direction-brief.md": {
-      "sha256": "6d5dc4f9f5fcb24300bab9ce7dbd56d5c948ba41da3cca2d3b3d235fee5fb72c",
-      "size": 858
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/create-game-assets/assets/asset-manifest.json": {
-      "sha256": "6cce05638c11b80eb5c8f776cf187f479a2579f1a1729b0970b1cc8e5fab4c8e",
-      "size": 969
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/create-game-assets/references/art-direction.md": {
-      "sha256": "19b2ccb827eae0c6c4cd3648ab7febb82e44706bef8515f2e8912de23dec0a5c",
-      "size": 3876
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/create-game-assets/references/provenance.md": {
-      "sha256": "2c2b30c69dec5c006c91ecbf506fce2ae3f857b5cc82bda9a10ddb5b769c7586",
-      "size": 2198
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/create-game-assets/references/raster-pipeline.md": {
-      "sha256": "834ecaeb35e61fc50ed5fbd518942f767f0717d1ab641822234a1f9cbe5eeb6f",
-      "size": 3909
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/create-game-assets/references/three-d-pipeline.md": {
-      "sha256": "8278baa203b7cd560d9fc5688c33489a9c478275c1795def119b7e024b27d03e",
-      "size": 3146
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/create-game-assets/scripts/asset_report.py": {
-      "sha256": "93e364f095261b44f6fd0345f7132019af1af93e81ebd84d91fe2a5049918203",
-      "size": 4702
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/create-game-assets/scripts/build_preview_sheet.py": {
-      "sha256": "002a550a7b5fac6d8815078a72afc249dd828c40d975b2323223fc770118c64b",
-      "size": 3353
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/create-game-assets/scripts/requirements.txt": {
-      "sha256": "1954ca940740c612a12e7abf0a307b7394715964d66dc8037d503fdd5c1b6424",
-      "size": 15
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/dialogue-systems/SKILL.md": {
-      "sha256": "1ffcc673e7309c196ccab90676ca128a48b087f4f3ce3d2bcd03c4a988958bd1",
-      "size": 7402
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/dialogue-systems/references/ink-and-yarn.md": {
-      "sha256": "aa3e2b6037b8e772d01b07ae9cbf7c44b0adc96b953a4faa2ea035b963866338",
-      "size": 4725
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/dialogue-systems/references/runner.md": {
-      "sha256": "e03929dcab2ab514f29ed97847334360edd795ea0387d6bf2597a3a6c502744d",
-      "size": 5092
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/game-ai/SKILL.md": {
-      "sha256": "ef23a6440743b3583d1072c92f6b0b45f3d11df33b3b77db53bce8b82c2f8940",
-      "size": 7999
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/game-ai/references/behavior-trees.md": {
-      "sha256": "2b69a6ae71a1034c049889fb4b0ccbc8697db9ad9f177f07c1053379cb0ef1fc",
-      "size": 4944
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/game-ai/references/pathfinding.md": {
-      "sha256": "3f1ce44462b4d1789245758b72d0b20e8053df458df1f743455dcd5d7319bba3",
-      "size": 4900
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/game-feel/SKILL.md": {
-      "sha256": "68fc818ad939151be2db9e358e4295a71830c19d61f3aff849f1599307f39f9d",
-      "size": 8985
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/game-feel/references/feedback-recipes.md": {
-      "sha256": "c1d0c4d9480bf4cd729ca99f2b36ebc1f3f264a873b408f2145898841e5d6685",
-      "size": 5543
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/game-ui-ux/SKILL.md": {
-      "sha256": "8a094c84a377503aa8f4c40df676d1c6b6fc07d36ff95554ce06467f1614397e",
-      "size": 8436
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/game-ui-ux/references/layout-and-flow.md": {
-      "sha256": "000d944db77155ebf97fde035a3d4fbe69ef0ae348e9dbcaff48c5ea134d7d69",
-      "size": 5413
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/input-systems/SKILL.md": {
-      "sha256": "4cb79ad13d54b5b7412efc978d8c5bc3dab529182feb531f304d7d75879f2308",
-      "size": 7665
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/input-systems/references/buffering-and-accessibility.md": {
-      "sha256": "4ddc70151a9d72fdc7e0a310f242834ab55c2f7f1133f44e4a51ecda95b4f563",
-      "size": 4130
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/level-design/SKILL.md": {
-      "sha256": "7e7f699302df834e1f017bf57e0b297d5618e0c7eed4756e7c0df39bb1ce8754",
-      "size": 9909
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/level-design/references/level-validation.md": {
-      "sha256": "286eeb3d8a8715cf893b47e6d797fbcaceda1aef39df5a27fef25eca4d6e4404",
-      "size": 5676
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/level-design/references/pacing-and-flow.md": {
-      "sha256": "e8e3940f585e376f353aefea009befe8199a1871f99d34d7b2340cb35cb61872",
-      "size": 4500
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/performance-optimization/SKILL.md": {
-      "sha256": "920073757f92e6a512d2443fcf159a51d505eaa7e5857861819c73a42e38b302",
-      "size": 11070
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/performance-optimization/references/profiling-and-budgets.md": {
-      "sha256": "fb161af3797b364c5a9032dc3836bc25f05762508f2831f6a19a6aa416811dd8",
-      "size": 5826
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/physics-tuning/SKILL.md": {
-      "sha256": "faa9a50d465c16d0060af8c8e20533efb829e07616ec01de4cbdb8d536a7d986",
-      "size": 7552
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/physics-tuning/references/timestep-and-ccd.md": {
-      "sha256": "8091f77b848fa2e9e0eaa267f7b3ad06c1af6e8af5965d6d9c1a66076f9380ef",
-      "size": 4453
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/procedural-gen/SKILL.md": {
-      "sha256": "709ccd2dd1e02177f45ccc903bb11d20d3c57365761fb2c9a784880e7b2c9270",
-      "size": 7165
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/procedural-gen/references/dungeon-generation.md": {
-      "sha256": "e743e7fa562b93eec3793acc76b40e276a385215844ca2783c0ca572225c9e51",
-      "size": 4585
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/procedural-gen/references/noise.md": {
-      "sha256": "067b4430cfc5121ac2f94e071492c910692fd10a295cedec0f25ae212fee769e",
-      "size": 4154
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/save-systems/SKILL.md": {
-      "sha256": "bf9184965b3eb4bc0b20be00681d08ef1af63fd85ca5b7afb7453ca09e80e490",
-      "size": 7337
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/save-systems/references/versioning-and-migration.md": {
-      "sha256": "a0127a2443049a801f01f950ec6f0581ca3d74f6b20e309af4e5095b162175ae",
-      "size": 4068
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/shader-programming/SKILL.md": {
-      "sha256": "e89558b15691c891e12cece81d4bafd4d61159bd4de2ae580ac109aecadca7ad",
-      "size": 6833
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-disciplines/shader-programming/references/effects.md": {
-      "sha256": "bf0665485e8b12d42d4bd6cfe5d1ebd93fbcef315b703e4657f0d40a23224975",
-      "size": 5110
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-genres/README.md": {
-      "sha256": "62b53e4887fef459609a8ea8879c3e2bf33dc09872ed96e74950513e4ec1e679",
-      "size": 491
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-genres/card-game/SKILL.md": {
-      "sha256": "1d972929333201a552087505cb26386569c844f092a51fd0dfe073f69d0e8556",
-      "size": 6519
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-genres/card-game/references/effect-resolution.md": {
-      "sha256": "62185a36e4221b8fdc605b734d66b6464765bc2fdb13c53ca6dc3a8ca528d4f9",
-      "size": 4720
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-genres/fps-shooter/SKILL.md": {
-      "sha256": "b4772d548c9f8645c099d32014ba4c5eda11b09495881a8c257b419149ed4bff",
-      "size": 6170
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-genres/fps-shooter/references/shooting-and-feel.md": {
-      "sha256": "22e17ddc59995918de3134b5bd4159400f815f18f8a2eb8f67bc5cd72a2bf698",
-      "size": 4479
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-genres/platformer/SKILL.md": {
-      "sha256": "ffa6800e26702c371543ebafc721593ba7d19eb9864b6e28dec3c3155b15f1a7",
-      "size": 6765
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-genres/platformer/references/feel-tuning.md": {
-      "sha256": "6235edcda24b8447d19269138e5e6406af490991dc96172d140166f2698bb061",
-      "size": 5106
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-genres/puzzle/SKILL.md": {
-      "sha256": "a2f40c5c684b0d0f09d0b1db1cfcb04ca7e4e6e8bca946022f8318f5fbc44b4c",
-      "size": 7001
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-genres/puzzle/references/board-and-resolution.md": {
-      "sha256": "111151fe725f98b2c679f708c7dff11f0eb4d08189a0c41b02782e9a7c37a3d7",
-      "size": 5157
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-genres/roguelike/SKILL.md": {
-      "sha256": "05dc641b7360ade29331f87262aedf2e1d9449812c95cad24decee652450b6ca",
-      "size": 7271
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-genres/roguelike/references/generation-fov-loot.md": {
-      "sha256": "795f66262d5260bf2222c62924b34cac810c05875b8cb0c7d65f5321e7597935",
-      "size": 4956
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-genres/rpg/SKILL.md": {
-      "sha256": "f33ea8698049050be589c50c532e06adeab52fbeacff81eafb909f230a38745b",
-      "size": 6363
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-genres/rpg/references/stats-combat-quests.md": {
-      "sha256": "3b5b7504ffe2fe23fb73c12e225b7422faedb5e9a7abae69d2c98344f224d066",
-      "size": 4500
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-genres/survival-crafting/SKILL.md": {
-      "sha256": "cbf1981c1a446ba7e3edbc18b3ff92e11d872386f889f9316bab0deb240df5bb",
-      "size": 7417
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-genres/survival-crafting/references/needs-and-crafting.md": {
-      "sha256": "c944e77ed6c2f7ba2e2c3213228b5387ea15a672092f46d98c44666f0945bb3b",
-      "size": 5090
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-genres/tower-defense/SKILL.md": {
-      "sha256": "27f35ea5defd81bbb81d61984b4394a11c2c6f7ce141ca8e70b7f55e97485e25",
-      "size": 6664
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-genres/tower-defense/references/balancing.md": {
-      "sha256": "75e775207bcc9bd90a5ca1d4e8253e25e9c57bb01eead960462a88ef08a46461",
-      "size": 4970
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-genres/visual-novel/SKILL.md": {
-      "sha256": "081f25d30ca70219e54496a4b19f3d8568488e3e32d51af6b743ca4d67a6cf03",
-      "size": 6765
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-genres/visual-novel/references/script-and-flow.md": {
-      "sha256": "0b30fcf3f047363194cb95facf668ae3dd6f330124e2f1cd960d9f48605a5df1",
-      "size": 4527
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-godot/README.md": {
-      "sha256": "7ceb712f10d119f40747b3856889103d9deb45adfd77cfb34683e55c4b781f91",
-      "size": 426
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-godot/godot-2d-movement/SKILL.md": {
-      "sha256": "e8089e2a10ef2e836d6a1c858a716697a23f1060b6243e50b526da27fc653fb4",
-      "size": 6011
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-godot/godot-2d-movement/references/controller-recipes.md": {
-      "sha256": "d6418b2c84f45263e01df3410f65c57100249d9aef2ca47fc760fd24fff402da",
-      "size": 3241
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-godot/godot-3d-essentials/SKILL.md": {
-      "sha256": "e2358689bf656964f3a388baf1c224dc3be2b8de460db8ac8bb1e5bf0b0a4fe8",
-      "size": 5705
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-godot/godot-3d-essentials/references/scene-and-environment.md": {
-      "sha256": "b4de6267588f540baa7e4fa149fd4653ace4324e1b17b7655d0f6551a735b428",
-      "size": 3877
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-godot/godot-animation/SKILL.md": {
-      "sha256": "9d32ef721eaa227494180b6ffb0208624a76e93217a2e39c2286eb0b5701e8e5",
-      "size": 5432
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-godot/godot-animation/references/animation-tree-and-tween.md": {
-      "sha256": "455ef0e15357428f250035fd5b0c587500b9d565f3bbcc33f95f378a986380a6",
-      "size": 4138
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-godot/godot-audio/SKILL.md": {
-      "sha256": "b75829c3c47539f4e1fa2b623ebfce6fa4f5eef2ddc950d00265c27cfae2e0db",
-      "size": 5240
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-godot/godot-audio/references/buses-and-effects.md": {
-      "sha256": "da6a33ae46b21f3526e74c5e383781e02f1f6ca0bd755475b21e14f124a52526",
-      "size": 3590
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-godot/godot-csharp/SKILL.md": {
-      "sha256": "c6d30a274621c63ab20ce2153807fd173987d1eccd06acfbe6a8a9f26a28c819",
-      "size": 6670
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-godot/godot-csharp/references/csharp-setup-and-interop.md": {
-      "sha256": "086f7bc8549d61ae96190643e9a574f666fd7ed3b04eb18ec10430f89984211d",
-      "size": 3912
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-godot/godot-export/SKILL.md": {
-      "sha256": "e97f0a889b8e06934aced7fdcee667d5bb848e33bc44d500c92f580e60295305",
-      "size": 5591
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-godot/godot-export/references/presets-and-cli.md": {
-      "sha256": "ddb73ed10a107d806e883a1d13c6a78377226223d57b536201dda9c97505ae62",
-      "size": 3902
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-godot/godot-gdscript-headless-testing/SKILL.md": {
-      "sha256": "556b63c125cd01864411a07a7d9c067b5b5df26db9cd60c745edf871edabb47e",
-      "size": 9194
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-godot/godot-gdscript/SKILL.md": {
-      "sha256": "b2625f5651fc9373e057ea47b5e2372319c4ed027fffc958f8a91d25cdea5a39",
-      "size": 5291
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-godot/godot-gdscript/references/annotations-and-typing.md": {
-      "sha256": "f1cea898e0346be3fac816093b577b30ef0f112d83cc2c1472c44d4a936700b3",
-      "size": 3354
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-godot/godot-multiplayer/SKILL.md": {
-      "sha256": "43b2f2725ab1f0565dfc132a203de75fc99f6e722f2a0dad78ca5026f0fdae44",
-      "size": 6472
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-godot/godot-multiplayer/references/replication-and-rpc.md": {
-      "sha256": "51e58312b2532f5bbb8223e0bc1e1a5bdc145f6b3140c393a263cdbdc323b34c",
-      "size": 4573
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-godot/godot-nodes-scenes/SKILL.md": {
-      "sha256": "27beea0d3994e6bc502f9dc3fb6089afcdc083e41790a4cf6a7d32314e079e3d",
-      "size": 5511
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-godot/godot-nodes-scenes/references/tree-and-instancing.md": {
-      "sha256": "be3c86180bd18dd46bfdfd7a47317bdb50fc6942cfc3e3d7342b4d0f7834b7a4",
-      "size": 3010
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-godot/godot-physics/SKILL.md": {
-      "sha256": "53310957617465653c838309851bad09b12a051e6aeef2a2b307f11d9e75062b",
-      "size": 8292
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-godot/godot-physics/references/bodies-and-queries.md": {
-      "sha256": "64f6bdd613b92607cfbf0d3be0b88172d2e6c5b9cfd353706740833fd1343160",
-      "size": 3963
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-godot/godot-resources/SKILL.md": {
-      "sha256": "c44678e5ce98171d21fb6899f8e7e3983f5599a98e45b3c24bb80a19468e44ab",
-      "size": 4993
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-godot/godot-resources/references/resource-patterns.md": {
-      "sha256": "f0474f71c843c4c9cfd05609129984a4facf3444a764b2c71f24f066a51dbbb9",
-      "size": 3272
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-godot/godot-shaders/SKILL.md": {
-      "sha256": "15bf46f7b0af586f026c1bb58beaeba2579009b70398f43859b7ab286a45e63e",
-      "size": 5527
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-godot/godot-shaders/references/shading-language.md": {
-      "sha256": "582b146d8d47b61d80eb8def8e48923d87ef1c7964542f0a12e9e05645c517e9",
-      "size": 3992
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-godot/godot-signals-groups/SKILL.md": {
-      "sha256": "bf1ff3e6b84b63da7ee1749d296722d416f9bb6436b6c2ee9418d33fbfc135c0",
-      "size": 5053
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-godot/godot-signals-groups/references/signal-patterns.md": {
-      "sha256": "837c192a07fbd0239ed30a68570ef6a1782f6ad03fe7298c7cbe580b34fb3c17",
-      "size": 3502
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-godot/godot-tilemap/SKILL.md": {
-      "sha256": "2b29349a728e0b708b5090d99372892597bfe37df6d071211ca8fb1cd15c46d5",
-      "size": 5755
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-godot/godot-tilemap/references/tileset-and-terrains.md": {
-      "sha256": "c2486c7bacdd3f099d981f50b1aa881a7647bb14112b343370f76e1753d12ed8",
-      "size": 4094
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-godot/godot-ui-control/SKILL.md": {
-      "sha256": "9ac89920e74bbf8d939b4d565e350d53b07c9afbe0970345c97d4122f590cfd5",
-      "size": 5782
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-godot/godot-ui-control/references/layout-and-theming.md": {
-      "sha256": "2b5a7d64f00709640385adda215aa3f9a839c2d461c53c886ba9c320723a9f3d",
-      "size": 4107
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-other-engines/README.md": {
-      "sha256": "f06a4636b7584d48639cc348224f7efc7e8aac8928f72d9bf9377ab9d2ab72b0",
-      "size": 442
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-other-engines/bevy-ecs/SKILL.md": {
-      "sha256": "ef127cdf6cc71f730fdc39b237983e95519de8db1e90ab18d5f929a55d0f1d76",
-      "size": 9905
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-other-engines/bevy-ecs/references/queries-and-scheduling.md": {
-      "sha256": "99661ce4b4c8247ba14cefecfe09c1bf0726c37068db99177e46ee0612d2ac3d",
-      "size": 11322
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-other-engines/love2d-core/SKILL.md": {
-      "sha256": "874fed1fd611024df5c69aeb2ae4798d2923ea61d76c3e196029195cbcf10ee1",
-      "size": 6352
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-other-engines/love2d-core/references/state-stack.md": {
-      "sha256": "848e3d1957e3ab6e83bd403323aec21b4516ce761d552813f7ebce3c76d8fbd6",
-      "size": 4640
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-other-engines/pygame-core/SKILL.md": {
-      "sha256": "e92c9a139faff1d2fe7e62f3a470f87be43e5942b0a89ac041dd1856402068d9",
-      "size": 7210
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-other-engines/pygame-core/references/sprites-and-collision.md": {
-      "sha256": "3d3233ea2bfa6e646426b038b20288841b3f657c9961f587ca5a355b75a1152c",
-      "size": 4232
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-other-engines/roblox-characters/SKILL.md": {
-      "sha256": "f3eb428069a2d0c099cfd7fc7454ea1ece3a56cca296d5758925886adeb7a92f",
-      "size": 8638
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-other-engines/roblox-characters/agents/openai.yaml": {
-      "sha256": "d206f4538baeb195e01d29cc53ea712948e6820c3c6539f7f2e2cce6656b8885",
-      "size": 209
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-other-engines/roblox-characters/references/lifecycle-and-animation.md": {
-      "sha256": "ecee2fe0dc55245ef94861d68852bbdb5c7de09eb2cb2c60e5e37295c3cfbed0",
-      "size": 2623
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-other-engines/roblox-datastores/SKILL.md": {
-      "sha256": "b64a11db8cee8b03c59a86ee197a152c4b0a368148db1fdf474bd10eb6890c52",
-      "size": 7730
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-other-engines/roblox-datastores/references/sessions-and-limits.md": {
-      "sha256": "0fd8bbd8ae9369adb48e2a2ee864fbe29c8ef9ff90e5dfdd22ccd88851c18d84",
-      "size": 5492
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-other-engines/roblox-luau/SKILL.md": {
-      "sha256": "6cefbf1ae6a57876a814bf94b9966b5a0afed1e80e192745e532c536e0ae3271",
-      "size": 8841
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-other-engines/roblox-luau/references/client-server.md": {
-      "sha256": "cbb013ca65789073687cb2ded9fb4045b5dc4a92af9afd1d535dcb2a46327c05",
-      "size": 4768
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-other-engines/roblox-networking/SKILL.md": {
-      "sha256": "4bf929dab25bde30851ddb1eb1831ee881c1491a871248c45351a513fa453849",
-      "size": 9313
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-other-engines/roblox-networking/agents/openai.yaml": {
-      "sha256": "b3f530519ed19704b115584ded1842ca430fef1650fa873694c4d9cfc7e29401",
-      "size": 206
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-other-engines/roblox-networking/references/validation-and-testing.md": {
-      "sha256": "b76848087b7adf6b68da7feb01a522515f909bd062cf9247cf44aafaab93225b",
-      "size": 3289
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-other-engines/roblox-physics/SKILL.md": {
-      "sha256": "b91d88793183b61eb80b60baa07f42c504fbbc21de344f372e85eb448e9f3044",
-      "size": 8050
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-other-engines/roblox-physics/agents/openai.yaml": {
-      "sha256": "55b06a72b4e88c5ec5a4c9d7c3a9684849b6362545d97c8703e79a22120500bf",
-      "size": 199
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-other-engines/roblox-physics/references/queries-and-ownership.md": {
-      "sha256": "67eca1dd85cc27b3443f409c10458c7157e9bb9428378126f8a784e875b66408",
-      "size": 3073
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-other-engines/roblox-studio-workflow/SKILL.md": {
-      "sha256": "77aa202a728504301413ee98b766d4ae42f91baa7b4d429d319e98dc99f97a4d",
-      "size": 10265
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-other-engines/roblox-studio-workflow/agents/openai.yaml": {
-      "sha256": "34f2fe7716ef36610d0a577e05bdcfb36cbaaa25da23a159ee9c02a2d248c7d3",
-      "size": 222
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-other-engines/roblox-studio-workflow/references/studio-verification.md": {
-      "sha256": "ddf0c896eedc6c351ec9f6e5293db20c7e7b3053342101a5eda344b890bbd5e0",
-      "size": 3542
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-other-engines/roblox-ui/SKILL.md": {
-      "sha256": "c03198cd4283325073d5b07d8655f4eaa1933e3e2b1c69fb75945dd09ee8baea",
-      "size": 11717
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-other-engines/roblox-ui/agents/openai.yaml": {
-      "sha256": "4c67a26a3054126e21db6fb6f893135944a8ca0fac9d619506e867b989073ded",
-      "size": 190
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-other-engines/roblox-ui/assets/inventory-quality-test.model.json": {
-      "sha256": "8f503559cc63a6620cf0fcf3fcf8ab434a5cabde90367c85d7dc50ed748ee11c",
-      "size": 12050
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-other-engines/roblox-ui/assets/inventory-quality-test.project.json": {
-      "sha256": "ab2388eefb502d3e9e165aadc55aba09841940c757ad6d06048e4a8fcdfa0348",
-      "size": 229
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-other-engines/roblox-ui/references/input-navigation.md": {
-      "sha256": "ab8f0d12eb1586c84b686ca02bf46f829880b2f87ec4e52cbd30c7213ab19dcb",
-      "size": 4628
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-other-engines/roblox-ui/references/responsive-layout.md": {
-      "sha256": "8fb38261a9cb00d996cba524bdd9af203f854259f455765aeb1de58d88048ddb",
-      "size": 6748
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-web-engines/README.md": {
-      "sha256": "979a6f7d63950dc879404457faab428d7be395902e133089ab729292878a940d",
-      "size": 416
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-web-engines/phaser-arcade-physics/SKILL.md": {
-      "sha256": "4b7186f03c236bbe83dfd8f24467cc4429ff47cb870e04ef939320165b6bcd04",
-      "size": 7012
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-web-engines/phaser-arcade-physics/references/bodies-and-collision.md": {
-      "sha256": "3ea38f74ac01e0c9f872407acd219104e1a729cb5a14b95498cc5b1aaa145b05",
-      "size": 4881
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-web-engines/phaser-core/SKILL.md": {
-      "sha256": "101c9382dd8a68f2573ef83d978bd19432f61512c5aa83e8c2a5cf7e7e3e38b4",
-      "size": 7281
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-web-engines/phaser-core/references/scene-flow.md": {
-      "sha256": "355c1553a116351d7088e4f15b2dd08976e2241f576dcef50a61f92d4540d143",
-      "size": 3713
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-web-engines/pixijs-rendering/SKILL.md": {
-      "sha256": "5c22e69830fd718ffc5bfca72489127099e271899a485e5d38ca7cd8ab658c85",
-      "size": 9291
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-web-engines/pixijs-rendering/references/assets-and-display.md": {
-      "sha256": "af9077d168ecd7123c948783daa1844f3fbb5c69bdf508f2e5a03864880c91a1",
-      "size": 5583
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-web-engines/threejs-gltf-loading/SKILL.md": {
-      "sha256": "d37a50198d95ee3d4e50b04014e86222df5ba177daec20b1e7ed01890cead2e2",
-      "size": 7133
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-web-engines/threejs-gltf-loading/references/loaders-and-animation.md": {
-      "sha256": "50e962527c3ec186882f3b4d9a5ecac2f121d9d3ff6756dd336241cafa5cc0a4",
-      "size": 4580
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-web-engines/threejs-materials-lighting/SKILL.md": {
-      "sha256": "5377a67ebd8058574ca1fe7bc82ced3c5b98380f3d860ef146b0727a3b6ad2af",
-      "size": 7289
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-web-engines/threejs-materials-lighting/references/materials-lights-table.md": {
-      "sha256": "1d89f5b007206d34b221ee5062d110c08ddd41fcef16f48e5aaf11ffcba08f85",
-      "size": 4952
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-web-engines/threejs-scene-setup/SKILL.md": {
-      "sha256": "8b7ef10fd2daa356182ac74f8c51cfb166345750df919c4195c36cfa00e1c80b",
-      "size": 6862
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-web-engines/threejs-scene-setup/references/scene-graph.md": {
-      "sha256": "9799dac6fb092c91bc3897336e8407063d6dc6bf7f21cf00c4e609ad223319c4",
-      "size": 4134
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-workflows/README.md": {
-      "sha256": "c45660b16032d7eba3c04b183782563888a61c7973ea54b56767389e5022b946",
-      "size": 481
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-workflows/game-jam/SKILL.md": {
-      "sha256": "5d47346146fb777ac7a1541283e95cecd4b01d65e16505cfd01eb6a714a5bd31",
-      "size": 6510
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-workflows/itch-publish/SKILL.md": {
-      "sha256": "bcee8af7090e732b8168a5f3ac79493203d0688a038faafa509f9c468020dc3f",
-      "size": 6908
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-workflows/itch-publish/references/butler-ci.md": {
-      "sha256": "4da37faa452595ef7915c9f99ff513fd16b900c6cdb28c19f7111290b4106e4f",
-      "size": 5534
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-workflows/prototype-fast/SKILL.md": {
-      "sha256": "02491395c621833d2252f7a33a96aa11f26eb48523fea167c68272fb3c785ba1",
-      "size": 6024
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-workflows/steam-publish/SKILL.md": {
-      "sha256": "39ae5448175ec1a65af60874872a7b120b6c906ca3c146588c2a1aaf13948771",
-      "size": 9349
-    },
-    "state/archive/gamedev-skills/.offloaded/gamedev-workflows/steam-publish/references/steampipe-build-scripts.md": {
-      "sha256": "a0a5afed4deef5e478ea6ea25d32b51bd2fadcee60f0ddb67fca0cfc557568d2",
-      "size": 7688
-    },
-    "state/archive/room13-game/horror-game/APK.md": {
-      "sha256": "64721fc0f7a7b6deb613bbf9e3b06167c5f3c8eafc774ec117bface4978a0cec",
-      "size": 6188
-    },
-    "state/archive/room13-game/horror-game/README.md": {
-      "sha256": "75e3af73a993c28665c16f297a85951a97a2621de9683c7043ec93fcda21f875",
-      "size": 5310
-    },
-    "state/archive/room13-game/horror-game/assets/audio/ambient_basement.mp3": {
-      "sha256": "f6bceee81e05a43000a1e800dd722ba1eae6b8f599ca0ac0d56c527b0c1592a5",
-      "size": 160958
-    },
-    "state/archive/room13-game/horror-game/assets/audio/ambient_drone.mp3": {
-      "sha256": "6b3c62697e23cdb7f4db2346133358376cc2844fe6a95f6b931a40e8810738c7",
-      "size": 200926
-    },
-    "state/archive/room13-game/horror-game/assets/audio/ambient_wind.mp3": {
-      "sha256": "b783e4a1d85ac0790e57a2783072392e4bf17325842edb5b7f9f7f97bc4c7c19",
-      "size": 151032
-    },
-    "state/archive/room13-game/horror-game/assets/audio/door.mp3": {
-      "sha256": "f44671a094aff18eced03b5e2aa45658eb81703016a17142d1ae0d61180ca9ab",
-      "size": 14934
-    },
-    "state/archive/room13-game/horror-game/assets/audio/drip.mp3": {
-      "sha256": "37e3b4e1b3409faa2943ca5ee9a0af77ea5ca684340d875483b82f3c40220cf6",
-      "size": 5269
-    },
-    "state/archive/room13-game/horror-game/assets/audio/footstep_1.mp3": {
-      "sha256": "d44e2e37face620f6a596c5bca293ce69dd00340b1419dc8fe6fc33f24e2dc89",
-      "size": 3179
-    },
-    "state/archive/room13-game/horror-game/assets/audio/footstep_2.mp3": {
-      "sha256": "202c9cec8e277b22dd81328804377d668b3ff9131d4745450d0c6362bc8abd7f",
-      "size": 3179
-    },
-    "state/archive/room13-game/horror-game/assets/audio/heartbeat.mp3": {
-      "sha256": "c41bd2da1b6b697b21bca33af25c64a2aaff77811d059d668e6d03933f65f43e",
-      "size": 14150
-    },
-    "state/archive/room13-game/horror-game/assets/audio/pickup.mp3": {
-      "sha256": "bc1f2876e1ef9f9f40cf0ed47e1ad93d9490839eab905919ef0966cb939d6be0",
-      "size": 12844
-    },
-    "state/archive/room13-game/horror-game/assets/audio/static.mp3": {
-      "sha256": "47811368fc1dc38e62a52841b033c836be8ac1de78aaa1f92aa23db0945bbf80",
-      "size": 30869
-    },
-    "state/archive/room13-game/horror-game/assets/audio/sting.mp3": {
-      "sha256": "ae80b32264732e4af0caf02ab7ac2f4756b0035d5c940bdf876a61b8ad4a3e17",
-      "size": 17024
-    },
-    "state/archive/room13-game/horror-game/assets/audio/ui_click.mp3": {
-      "sha256": "536f9a2e0efe4e480b55610aa0fc16b2536da2c59179b704038a54fc513ebcc4",
-      "size": 1873
-    },
-    "state/archive/room13-game/horror-game/assets/audio/whisper.mp3": {
-      "sha256": "760fc6b1cf5f32fb22cc6e4fdf1f223b77d0b58e3a58ce782b9a0e7cb8a0a80a",
-      "size": 23032
-    },
-    "state/archive/room13-game/horror-game/dist/room13.html": {
-      "sha256": "038d6857bd64bfdaacda2be3d68d2cd46e00e2ee4f2364b4d589e68923e825b8",
-      "size": 953317
-    },
-    "state/archive/room13-game/horror-game/dist/room13.zip": {
-      "sha256": "6bcfe4a3b035b5acfcf619be27c7025cdb4d5fd247e81621830c722c8ad1987e",
-      "size": 486388
-    },
-    "state/archive/room13-game/horror-game/index.html": {
-      "sha256": "154878d04945ce297970b732e85312f723bf3012e80a87a6b3265d9f80348acd",
-      "size": 4073
-    },
-    "state/archive/room13-game/horror-game/js/audio.js": {
-      "sha256": "01634cf75baa082eaa5b64febfb22c90b4b62b768a29c84b0f4784bdda3f3b0f",
-      "size": 5705
-    },
-    "state/archive/room13-game/horror-game/js/game.js": {
-      "sha256": "72540d6f5c70c2347f1d147f4c1ca6c8337a6ed3343d6e1c4eb2f770fe7a24e1",
-      "size": 34485
-    },
-    "state/archive/room13-game/horror-game/js/sprites.js": {
-      "sha256": "f5aba5d63d44fcead84a493effb3dde08447187801d03bec6ec99b5a09d88232",
-      "size": 14219
-    },
-    "state/archive/room13-game/horror-game/js/story.js": {
-      "sha256": "d76f5da1f6d1a6a5c056aa2d9ac20278e9a5ff52374e248d826fd73bc928ef8d",
-      "size": 20869
-    },
-    "state/archive/room13-game/horror-game/js/world.js": {
-      "sha256": "22895f9fe39467b8193880f2b075d0d04a4086b0aa581f9692b94808cfb7f235",
-      "size": 14824
-    },
-    "state/archive/room13-game/horror-game/style.css": {
-      "sha256": "9530cd1a04d700a6cbfeaea3dc8132588a869cbb3ac51fa9b2333a0868e8d055",
-      "size": 6970
-    },
-    "state/archive/room13-game/horror-game/tools/check-audio.js": {
-      "sha256": "0bbff62ebb3f2a61a1b8566c7e9cc9e5d828d6dcf225ec4d9810eb3ba106ecc1",
-      "size": 8339
-    },
-    "state/archive/room13-game/horror-game/tools/generate-audio.sh": {
-      "sha256": "dfcd8ac3e2d59920c9e64f8f35c08ac69277d04e78dc4413b283b6c61bb1f43a",
-      "size": 7185
-    },
-    "state/archive/room13-game/horror-game/tools/package.js": {
-      "sha256": "bd60d699ef0e1e785d6782f5baf1c2dac949450d81693d2612efbeee7c07cd1a",
-      "size": 6726
-    },
-    "state/archive/room13-game/horror-game/tools/playtest.js": {
-      "sha256": "b433b5976555246284538ebf95cab304ae1665921f6f4c41f7fff5920d72826e",
-      "size": 22466
-    },
-    "state/archive/room13-game/horror-game/tools/validate-story.js": {
-      "sha256": "655ca03e6e64256ae4a155024a29ff6cdf6964891065dcaf1317f91f610588fe",
-      "size": 6655
-    },
-    "state/archive/room13-game/horror-game/tools/validate-world.js": {
-      "sha256": "b79eee8aca2bcf4bb0df171bc3b0f1a9264eac2bae0404ffe3d7f79f0a7e70e9",
-      "size": 4891
-    },
-    "state/archive/room13-game/horror-game/tools/verify-package.py": {
-      "sha256": "43a5d0d6b1867da93caf89f790fe2ae5ba31e7aaa9e42fa15e1b5b4b3e81b3f0",
-      "size": 5313
-    },
-    "state/archive/vpn-ops/ops/pg-ops.py": {
-      "sha256": "c76c631b1a90543b04b122fcd92502b8b046cc08a5c5dd7353116b37ebb6f7d1",
-      "size": 9695
-    },
-    "state/archive/vpn-ops/ops/remote.sh": {
-      "sha256": "1c5c6c3e89fa6299fe4b7203f6aaf6c933893e97bff1c46ee3cdec9f270fd64e",
-      "size": 10833
-    },
-    "state/archive/vpn-ops/ops/workflow-pg-ops.yml": {
-      "sha256": "79efbc2c0874c981ce947e35d563c41e1babd171ef2540a0cf1c8dbd26d8414f",
-      "size": 3157
+      "sha256": "2765a846e1bb371d78d3b93b403dfb0f8d1ba1a9895edb5f608367abfe81194d",
+      "size": 513
     },
     "state/config.yaml": {
-      "sha256": "f896081d738be53372633969d9fdb6fefbee2e8ebcf7cb76c7d6766389e9eab7",
-      "size": 126485
+      "sha256": "020eed2fecfc2aadaf629d565ba2ae6107419610f45e9b9dd90451ff9882ecaa",
+      "size": 10103
     },
     "state/cron/jobs.json": {
-      "sha256": "558fa8581c75b6ce0ef9f303500e62e1a01e73829868c73268b765143fc0ee96",
-      "size": 3009
+      "sha256": "b7c35ff1607af79f36f9ff0296967f47f61e3909b32d748ac01f12a3d75da9ac",
+      "size": 2564
     },
-    "state/cron/output/ecb9785322d5/2026-10-27_18-58-28.md": {
-      "sha256": "0fe861e485d74cc43901528974c12c6a49dc3086111f6e26df61102d85da23f5",
-      "size": 1873
+    "state/cron/output/9a1f44193ab7/2026-10-28_14-55-17.md": {
+      "sha256": "4c8c17b620fa9ce6d20c49885f63858e88353a5b4f565b9776fb5d2e9a60149e",
+      "size": 163
     },
-    "state/cron/output/ecb9785322d5/2026-10-27_19-29-28.md": {
-      "sha256": "fb06df8ca8077054234de01871c61b4a0d08f39dec0a3e70de38ca7b8bc10a1f",
-      "size": 1873
+    "state/cron/output/9a1f44193ab7/2026-10-28_15-00-17.md": {
+      "sha256": "0e4bf2f6bb5443311f94b3bf768fada9ee29e70d3e6703b06e7e08c1f3ec637b",
+      "size": 163
     },
-    "state/cron/output/ecb9785322d5/2026-10-27_20-00-29.md": {
-      "sha256": "5688cca54b680b08df72ca51296bb37e94f536b154936214b4ea60549a528b6b",
-      "size": 1873
+    "state/cron/output/9a1f44193ab7/2026-10-28_15-05-18.md": {
+      "sha256": "ee3a5bc3ff8f90c3de82c9a1153ac2cdd50c75d54196f56bed42c3fff8cce187",
+      "size": 163
     },
-    "state/cron/output/ecb9785322d5/2026-10-27_20-31-28.md": {
-      "sha256": "5a993f1ec44e555a0266b2c8ce934000d86897bfc8814d453e8376c8a32984f9",
-      "size": 1873
+    "state/cron/output/9a1f44193ab7/2026-10-28_15-10-18.md": {
+      "sha256": "b272f46660ead8297057bb61b9a013bb62adec37bd90224f045eb5b5cc47249b",
+      "size": 163
     },
-    "state/cron/output/ecb9785322d5/2026-10-27_21-02-29.md": {
-      "sha256": "980a8bbce775a3d445eb64621701df386eeb3a132f68230744d90479a65ffa50",
-      "size": 1873
+    "state/cron/output/9a1f44193ab7/2026-10-28_15-15-18.md": {
+      "sha256": "5f9f5407ff217e323c2b9c2b4319c33b2f5ad988d1cc075da09e6bb7ee653783",
+      "size": 163
     },
-    "state/cron/output/ecb9785322d5/2026-10-27_21-33-27.md": {
-      "sha256": "38d46e4c98bad1ede6b9515808cd1afae077109b330978186ecce559302f617e",
-      "size": 1873
+    "state/cron/output/9a1f44193ab7/2026-10-28_15-20-18.md": {
+      "sha256": "dd21d08d5cc898fa6352a096eace836ce371e0feaaad054e4b3ab5df04c3267e",
+      "size": 163
     },
-    "state/cron/output/ecb9785322d5/2026-10-27_22-04-27.md": {
-      "sha256": "d9147ee1fc3b301bd136c4cfc3d816a572d7c65ce5c6fe745c18aaed3ba1d5a5",
-      "size": 1873
+    "state/cron/output/9a1f44193ab7/2026-10-28_15-25-54.md": {
+      "sha256": "df621ae34acef75420907aa0f98de9cd47d90807fc2900b6b13523035e4f724b",
+      "size": 163
     },
-    "state/cron/output/ecb9785322d5/2026-10-27_22-35-28.md": {
-      "sha256": "5d3ddd71f5d98b1c6a10b770dd73fee003b09f264931e9269dc4798af4fa3f80",
-      "size": 1873
+    "state/cron/output/9a1f44193ab7/2026-10-28_15-30-54.md": {
+      "sha256": "fc1d838a0d185378f04fe3476083c97fb4c3fe02da4038519fcdbdf3509e5e93",
+      "size": 163
     },
-    "state/cron/output/ecb9785322d5/2026-10-27_23-06-27.md": {
-      "sha256": "aa1f370035a0dbaa44f2a95448c66b05ef5a056dd5f06c3672e6811af59e50a8",
-      "size": 1873
+    "state/cron/output/9a1f44193ab7/2026-10-28_15-35-54.md": {
+      "sha256": "ecd4bbab7c3a985d25381bed8126f43ead8ed3b1f1651f5a9bd66c01e8f4c81f",
+      "size": 163
     },
-    "state/cron/output/ecb9785322d5/2026-10-27_23-37-27.md": {
-      "sha256": "1799d86c31047eae8a8e78f49f506c3c21e573c0cd418091287651599a919e68",
-      "size": 1873
+    "state/lsp/package-lock.json": {
+      "sha256": "71041d784c03be589fa39281e05fc59180171486f386349a6bc18fd06f8aca39",
+      "size": 1135
     },
-    "state/cron/output/ecb9785322d5/2026-10-28_00-08-27.md": {
-      "sha256": "ae3c88fde97e76044eb1140fd340a3615e7855427ec3237793885f12d6ff9999",
-      "size": 1873
-    },
-    "state/cron/output/ecb9785322d5/2026-10-28_00-39-27.md": {
-      "sha256": "e2e48067dc60a7ef63ed540ba9fe1f03d531e4876fbef6e425b84b2fc8de7901",
-      "size": 1873
-    },
-    "state/cron/output/ecb9785322d5/2026-10-28_01-10-27.md": {
-      "sha256": "978bd94ecb7a17b6b39d1a530dbf96aa490bd741ffc7f2fe5ac87a4596a57799",
-      "size": 1873
-    },
-    "state/cron/output/ecb9785322d5/2026-10-28_01-41-27.md": {
-      "sha256": "3478e93386b01e1258d5b73c51fd727ac7dc9b72a7c5199fa67363e30c585969",
-      "size": 1873
-    },
-    "state/cron/output/ecb9785322d5/2026-10-28_02-12-27.md": {
-      "sha256": "755f30169c47133d88b04f4214a7e2d38f201a5db8c012a996b7ffb5146451a1",
-      "size": 1873
-    },
-    "state/cron/output/ecb9785322d5/2026-10-28_02-43-27.md": {
-      "sha256": "04510d134089bec1d42b50981317d1f023c6341d81ec6aeb7aed36d0031038a5",
-      "size": 1873
-    },
-    "state/cron/output/ecb9785322d5/2026-10-28_03-14-27.md": {
-      "sha256": "e5a0b6a94e325dcebd88d01f3b30856659833d60da8700980f9174fb484d62cc",
-      "size": 1873
-    },
-    "state/cron/output/ecb9785322d5/2026-10-28_03-45-27.md": {
-      "sha256": "f820188ef0bb9904ada2e79cc315494353c971293912274538198ab202622361",
-      "size": 1873
-    },
-    "state/cron/output/ecb9785322d5/2026-10-28_04-16-27.md": {
-      "sha256": "2c3989fb66045ea7f1662c6228b36fc1878eaf52c6f8e6fe89f20a882d6983e6",
-      "size": 1873
-    },
-    "state/cron/output/ecb9785322d5/2026-10-28_04-47-27.md": {
-      "sha256": "6bf69b87e010ffdfbce9aac56b47b5f317fdf39ff70b6bcef8e12844bb7e24aa",
-      "size": 1873
-    },
-    "state/cron/output/ecb9785322d5/2026-10-28_05-18-27.md": {
-      "sha256": "586fee6910f0b98ff53a60c6a83640c4150f70c4bd0949c2037fe280aae4c396",
-      "size": 1873
-    },
-    "state/cron/output/ecb9785322d5/2026-10-28_05-49-27.md": {
-      "sha256": "bf12ecd08653690116236e96d6a254dfe9113c5472d426a67867ed864d767738",
-      "size": 1873
-    },
-    "state/cron/output/ecb9785322d5/2026-10-28_06-20-27.md": {
-      "sha256": "061681b57959c68c0918ded9d840118c127aea5f855893b0fb65c203d775ec64",
-      "size": 1873
-    },
-    "state/cron/output/ecb9785322d5/2026-10-28_06-51-27.md": {
-      "sha256": "b77c59be1378cb033e965318d58c452e22571d43a00e58004034f7e863333eb7",
-      "size": 1873
-    },
-    "state/cron/output/ecb9785322d5/2026-10-28_07-22-27.md": {
-      "sha256": "2eb287f24b8ab3b9cd38023e9779fb01a7fe62e4b4130e68d85edbf9dd62fb34",
-      "size": 1873
-    },
-    "state/cron/output/ecb9785322d5/2026-10-28_07-53-30.md": {
-      "sha256": "adf1ab8869c9dc04e3d6f0dcc0aed7db9e481c342bfdd745a913511887362bee",
-      "size": 1957
-    },
-    "state/cron/output/ecb9785322d5/2026-10-28_08-24-28.md": {
-      "sha256": "d7d06cc253d76047e52e0909ae79be6b9057645202e1ac53576fc25ab02516ff",
-      "size": 1873
-    },
-    "state/cron/output/ecb9785322d5/2026-10-28_08-55-28.md": {
-      "sha256": "cdd27ad3d1c5f1bebdc45df6f0e94cb5dde33b5eb6829c1691b9a5bf9e55246f",
-      "size": 1873
-    },
-    "state/cron/output/ecb9785322d5/2026-10-28_09-26-28.md": {
-      "sha256": "910dd0077feecb462b877c8bd017022dbb451360c5bba3cfadc2ea075eaf70b7",
-      "size": 1873
-    },
-    "state/cron/output/ecb9785322d5/2026-10-28_09-57-28.md": {
-      "sha256": "f9bd77aa938d3c1c5bf61e88d784ffbaa5852981a80da2d05156c07852a82dd9",
-      "size": 1873
-    },
-    "state/cron/output/ecb9785322d5/2026-10-28_10-28-28.md": {
-      "sha256": "d0ff6654024381982808a3f51f530fe6a605e461b363645e63b255403beaee2a",
-      "size": 1873
-    },
-    "state/cron/output/ecb9785322d5/2026-10-28_10-59-28.md": {
-      "sha256": "ac7d9e7c1ccc657667911a7e9b66cbbeb8ad333c7c2c8cabf7ad021bee2a05c3",
-      "size": 1873
-    },
-    "state/cron/output/ecb9785322d5/2026-10-28_11-30-29.md": {
-      "sha256": "339d5d2bd5d43bd2d910429c3da2b23cce67404182f8f80f286b284a4095feba",
-      "size": 1866
-    },
-    "state/cron/output/ecb9785322d5/2026-10-28_12-01-29.md": {
-      "sha256": "aff2f65b60149c278e849f29fca6510c6365115fd59001c94fa1914ba48909bd",
-      "size": 1866
-    },
-    "state/cron/output/ecb9785322d5/2026-10-28_12-32-29.md": {
-      "sha256": "7069f11cb402576dfebdd10ceb9b4e6535a9eb87bc03b82e28588a52758ca4dd",
-      "size": 1873
-    },
-    "state/cron/output/ecb9785322d5/2026-10-28_13-03-28.md": {
-      "sha256": "d243c235469776c667567d7d7899592c62f12df98ec3572c5ac56af9c79c77bb",
-      "size": 1873
-    },
-    "state/cron/output/ecb9785322d5/2026-10-28_13-34-29.md": {
-      "sha256": "0744208d8dbed9e55c71e48d7b4275c02d5abac4289c3870d9996d7dd93f5490",
-      "size": 1873
-    },
-    "state/cron/output/ecb9785322d5/2026-10-28_14-05-29.md": {
-      "sha256": "c51b8524a4baf4dbe6fcf771f8f6558f95fd8bdd10aadabb90a873ccd847f8d9",
-      "size": 1873
-    },
-    "state/cron/output/ecb9785322d5/2026-10-28_14-36-30.md": {
-      "sha256": "158ccb5675a628e7c9db8e096291971c243bcb5e5c65f40ff9d91e4050f6eb3c",
-      "size": 1873
-    },
-    "state/cron/output/ecb9785322d5/2026-10-28_15-07-29.md": {
-      "sha256": "44c8cec888182d2656b4e3a8b27cf19b16714582d25264281c9f9c46d7d23dc4",
-      "size": 1873
+    "state/lsp/package.json": {
+      "sha256": "bc4c758a8460b814ed84426cc48f8ae6d374218bc7d84b52aa0cd6144b9d5063",
+      "size": 54
     },
     "state/memories/MEMORY.md": {
-      "sha256": "c514275e81fa8f5b0955e1fb358f3a753e81b03b18072f3bdf0f7ccc9d5f913e",
-      "size": 2228
+      "sha256": "80dc5ba4876e23e688a494cfdb8c57dc352415f07ea94fc0595dbcadf021d707",
+      "size": 1714
     },
     "state/memories/USER.md": {
-      "sha256": "8a0690ade0fcfcf5254bfe6e2a0cd804c62040c09c9c708600000242981c7864",
-      "size": 2025
+      "sha256": "86e13c4c089abf4292c168d832c7a666066436ffa42df9b2a8de73d27815b701",
+      "size": 230
     },
-    "state/scripts/ghstore-reconcile.sh": {
-      "sha256": "190e354590267b3a7073c1af9b0f56206bfec99c5b2981dd5c87d049b8770100",
-      "size": 291
+    "state/scripts/count_rea_tools.sh": {
+      "sha256": "375f92764e073f02519f39cb44253dffa446bd2f81143a9aff727d7165a4246a",
+      "size": 1536
+    },
+    "state/scripts/gateway_keepalive.sh": {
+      "sha256": "1705b673e18cf60d0649601eb303431a4c331e18dc21a303f86710868e1507cd",
+      "size": 1898
+    },
+    "state/scripts/gateway_supervisor.sh": {
+      "sha256": "9957ddb9415c52e713e4b3b99a967f27a91b235e9d03457ba70861ab44133a78",
+      "size": 3832
+    },
+    "state/scripts/ghstore_sync.sh": {
+      "sha256": "00f1c7808adfd79af888c1528edaa58527aef6dfda550580f6b8a0a6a4a61f86",
+      "size": 1322
+    },
+    "state/scripts/start_gateway_supervisor.sh": {
+      "sha256": "5472b561503b61e2e204cb0828f1807988112096f4829a7bacf4fdb363e55027",
+      "size": 1077
     },
     "state/skills/.bundled_manifest": {
-      "sha256": "49a899583a852d558603d43b969fbdf788e372a70cb6ec86c73c4af08dd22049",
-      "size": 2727
-    },
-    "state/skills/.curator_ledger.jsonl": {
-      "sha256": "e7826ed23fbfc335b68c722de48d3c444325091774f9671801d61d88ed708f55",
-      "size": 44502
+      "sha256": "c59721bff4ca3c18ccf214a3238702bfd8a0767ac2b1bf8d4f48608b8fc814d3",
+      "size": 4095
     },
     "state/skills/.curator_state": {
-      "sha256": "4225e11176d3e071154ab80cff77f2e4b3d93d24de3010b77c70fe6e9d944a67",
-      "size": 313
-    },
-    "state/skills/.hub/.ignore": {
-      "sha256": "54cb5d16a0e92aa99d33526c5fdedb86d593ad09821600e636cb67e6a72dd913",
-      "size": 44
-    },
-    "state/skills/.hub/index-cache/browse_sh_catalog.json": {
-      "sha256": "3eec364e1539a6368b66596054b40e315263384d96aad6a4745aade810c49a1f",
-      "size": 724621
-    },
-    "state/skills/.hub/index-cache/lobehub_index.json": {
-      "sha256": "6a51d5c10d92eeaa4c98769b2aec0223bf373a614218fa8222d41de66ab172f9",
-      "size": 251446
-    },
-    "state/skills/.hub/index-cache/official_optional_dirs.json": {
-      "sha256": "b6e9be2b6edd1fd7816a0520aa102a62b9c96e2baa5e175e9da8719d78106732",
-      "size": 4974
+      "sha256": "c5b14e9742c24b86ab3ac185d21328db3d366b440ca35f1bdef2393c1868ead5",
+      "size": 337
     },
     "state/skills/.usage.json": {
-      "sha256": "ca899c37cfec8b694ffc6fc92bcc59bc5cf7bd30be59ac28209f68736159ef8a",
-      "size": 7219
+      "sha256": "1adb1790b56e18f0922367823a92777bf9d8ea2c1ac575307cf1de08e05226e0",
+      "size": 392
     },
     "state/skills/apple/DESCRIPTION.md": {
       "sha256": "c9537e578d68950224dbc09a425497a780e8c3956db9cb38a97b4a9e985516b3",
       "size": 137
     },
     "state/skills/apple/apple-notes/SKILL.md": {
-      "sha256": "1ba042cb17e3aca06a68415526e926ada464bf873c8592c3326125cd72cb397f",
-      "size": 2394
+      "sha256": "c652e01e47938b8ac21c97873e0a14f5f3a773b554bd10737fbfdcc5e5c28d23",
+      "size": 2169
     },
     "state/skills/apple/apple-reminders/SKILL.md": {
-      "sha256": "ee5084f2d7ec196488bef2c74248fb3d8328d1b2e3277ddda3f0de9da6fc7131",
-      "size": 3606
+      "sha256": "7ed9206a4df2739d41818a17de1b5ff79e7b24cdb5de9c2e74247c8835bcb515",
+      "size": 2530
     },
     "state/skills/apple/findmy/SKILL.md": {
-      "sha256": "e35d4d165daadfd066661df59a202a4159c5df41b77642884d3656830054d6bc",
-      "size": 3823
+      "sha256": "19ec56e3b7f9f0be13c26d99948ed5684d8fb1f9c478da078c19356b5df63f57",
+      "size": 3709
     },
     "state/skills/apple/imessage/SKILL.md": {
       "sha256": "bc68b1648e301409bc25b1084ec26766213ca9f3c1b2fd3d3d6ebe3dbde9e967",
       "size": 2442
+    },
+    "state/skills/apple/macos-computer-use/SKILL.md": {
+      "sha256": "08b4bb4647d983d1c56994c175829e8e4d4189a0bdffd44ff9db57c78451c90a",
+      "size": 7309
     },
     "state/skills/autonomous-ai-agents/DESCRIPTION.md": {
       "sha256": "7f2427c7112d71235d92f68ba68392a4fed3d28a7636f522deb2748cb44fe7fc",
       "size": 211
     },
     "state/skills/autonomous-ai-agents/claude-code/SKILL.md": {
-      "sha256": "9cf9b448e9272335d90dc8552126b4d82022ae0cdc783a6d206a657c7254ae54",
-      "size": 35175
+      "sha256": "4d195cf896e7d1a045b966216c46392d00672adc9c59b7919aa00e931ba8f762",
+      "size": 34288
     },
     "state/skills/autonomous-ai-agents/codex/SKILL.md": {
-      "sha256": "1b15b57bcaba128b83ebe9f050b6873958198a1570bc801d4ca0406fb7e3271d",
-      "size": 5852
-    },
-    "state/skills/autonomous-ai-agents/computer-use/SKILL.md": {
-      "sha256": "778833ecfea4385cab79ec4dda0ffe956e3f4bf9231eb80e52c5d113ee4e6cdf",
-      "size": 18054
+      "sha256": "55554cc334c0435752311dc116591262c75f161f96c54aa5c57829327ce31d86",
+      "size": 4557
     },
     "state/skills/autonomous-ai-agents/hermes-agent/SKILL.md": {
-      "sha256": "dcdc4b2d232ad415c76e09cc229a2c861f3e1225fd1f1262b33a965ea4732b24",
-      "size": 13190
-    },
-    "state/skills/autonomous-ai-agents/hermes-agent/references/background-systems.md": {
-      "sha256": "70099ca64774cc7e70a33330d180f862cf19a02c0f936dc4c50d51c6d0b73556",
-      "size": 5069
-    },
-    "state/skills/autonomous-ai-agents/hermes-agent/references/cli-reference.md": {
-      "sha256": "a15c6838f9ac1e35b0e113a66738b3ce27bb6500d31218797467a2f8691341b5",
-      "size": 6617
-    },
-    "state/skills/autonomous-ai-agents/hermes-agent/references/configuration.md": {
-      "sha256": "ba075f369ff66e60134d4a472894599b18dd9f8f715840a928a5ff7e818f2455",
-      "size": 4431
-    },
-    "state/skills/autonomous-ai-agents/hermes-agent/references/contributor-guide.md": {
-      "sha256": "097c860be377fcfc0c414d07dffe2ba5470ae33e3805a6536c2956dc6f520087",
-      "size": 5900
-    },
-    "state/skills/autonomous-ai-agents/hermes-agent/references/delegate-task-concurrency-diagnosis.md": {
-      "sha256": "41019dd37c0c048b002d3639fe01455513b5c9aba142a21ff9c3bd4c7718a77b",
-      "size": 4660
-    },
-    "state/skills/autonomous-ai-agents/hermes-agent/references/desktop-plugins.md": {
-      "sha256": "2bd78982684a2612f27756b3e2f7eb744d17f72e523e5586d2b388f6d7db1037",
-      "size": 14019
-    },
-    "state/skills/autonomous-ai-agents/hermes-agent/references/native-mcp.md": {
-      "sha256": "ded08718d2eb141262a31b323f8e66eeb40f35e074e1f0e70abb76860891ec92",
-      "size": 12581
-    },
-    "state/skills/autonomous-ai-agents/hermes-agent/references/petdex.md": {
-      "sha256": "2254eabf40c360efb54e4df482f3b84820b54a15e6954c4a7e9e7fee4eb90f77",
-      "size": 3244
-    },
-    "state/skills/autonomous-ai-agents/hermes-agent/references/portal-auth-for-third-party-apps.md": {
-      "sha256": "4890617a80d8c70fc388a49201d5a718049a64c0ddd5fac3f35754641f063b99",
-      "size": 6579
-    },
-    "state/skills/autonomous-ai-agents/hermes-agent/references/project-context-files.md": {
-      "sha256": "20b51406102e6498f62ed837978e5c67ebd91a917b985de7bbddfaaf23c1f593",
-      "size": 3285
-    },
-    "state/skills/autonomous-ai-agents/hermes-agent/references/providers-and-models.md": {
-      "sha256": "41c9c8e9de3a66c5e7f12c6fe39916d58a13e315be1dfd712fbf8cdaab4af203",
-      "size": 3381
-    },
-    "state/skills/autonomous-ai-agents/hermes-agent/references/security-privacy.md": {
-      "sha256": "f27913f7775915d8065b2dea782197907ff90cf37f07b865135c7f61aee98e83",
-      "size": 3393
-    },
-    "state/skills/autonomous-ai-agents/hermes-agent/references/slash-commands.md": {
-      "sha256": "690dc6c2543dfa028bbf2918c229f27f4962e9d897fce25ebb1de67d56f3b822",
-      "size": 5379
-    },
-    "state/skills/autonomous-ai-agents/hermes-agent/references/themes.md": {
-      "sha256": "f5a8269a7312173f0caa6736156a3f76d32e56b4e15511e84dc2e902f48e8157",
-      "size": 6887
-    },
-    "state/skills/autonomous-ai-agents/hermes-agent/references/troubleshooting.md": {
-      "sha256": "70045d9a3dd4f8ff4001b3a7ccfa7f967c130ce89877ee5f052c87752fcd5f5b",
-      "size": 3767
-    },
-    "state/skills/autonomous-ai-agents/hermes-agent/references/tui-widgets.md": {
-      "sha256": "20e21aabb757a9d3c7d895db8f05a3782fe8b28feef3768ac5550c8860b4a3db",
-      "size": 6484
-    },
-    "state/skills/autonomous-ai-agents/hermes-agent/references/webhooks.md": {
-      "sha256": "f668c57d1900e249cb4b54e5d624e9aacb399ecf1452f9b258a1bf857ffa8a42",
-      "size": 8466
-    },
-    "state/skills/autonomous-ai-agents/hermes-agent/references/windows-quirks.md": {
-      "sha256": "4af2c0907983376f1b21d2164de17f1229faeb0609c61762cfc026b806bc5501",
-      "size": 2671
-    },
-    "state/skills/autonomous-ai-agents/hermes-agent/templates/clock.mjs": {
-      "sha256": "44ec25d560e16c7815a633039a783ddbba2d8e8cf1659560c0cd1cddec83f89d",
-      "size": 1423
-    },
-    "state/skills/autonomous-ai-agents/hermes-agent/templates/plugin.js": {
-      "sha256": "a63c8f879756854b45373f5d6b1ae0a7fefcdd4a5af840be8a60d83b64724744",
-      "size": 3141
-    },
-    "state/skills/autonomous-ai-agents/hermes-agent/templates/skin.yaml": {
-      "sha256": "bc8fddd7e5373b074c1c7dd423bb59d6e04769977e8a18354e3a6b3983209994",
-      "size": 1389
+      "sha256": "8b6a1e16ef86a8f91ed85e5ab055792a9dfb64e44b2db4dba81cb734f91cdea7",
+      "size": 49941
     },
     "state/skills/autonomous-ai-agents/opencode/SKILL.md": {
-      "sha256": "885582e6f2d5b88f431c5a0bc3b69b88f5aab701774f91572487a6f4e4679a0b",
-      "size": 7297
+      "sha256": "afb3ea1f1b4300705f4a44f41ef2bb6f36c45e474b677dcb3c0aa4e6b3740595",
+      "size": 7259
     },
     "state/skills/creative/DESCRIPTION.md": {
       "sha256": "e890a87ac49fed98df4e1fc72fb9c548dd2ba66efa9f15dd1ba65935a1a60eed",
@@ -1115,13 +155,17 @@
       "sha256": "d17a1631a14f108dd469ad16c83d667d917565ebe780f42fad7321be327de442",
       "size": 12483
     },
+    "state/skills/creative/ascii-art/SKILL.md": {
+      "sha256": "b69fdd300045a3e68b4886c5c5c714f904c9277ac40b2da371bf9e156fd9fa88",
+      "size": 10556
+    },
     "state/skills/creative/ascii-video/README.md": {
       "sha256": "a182ea6fd86e9a1a3e1d8e3281e0274b7cd33ef7b15c10bd12064ad4d75fbfae",
       "size": 16440
     },
     "state/skills/creative/ascii-video/SKILL.md": {
-      "sha256": "3bd3f39985a52954e2693866608bd8105f4dc0efbca5b6baa3045c2b641bda26",
-      "size": 15011
+      "sha256": "1d4f84e0eacc0d8adfaee62e0f2ab947dd79302ebbf55d5cd07d94a92c92cb95",
+      "size": 14864
     },
     "state/skills/creative/ascii-video/references/architecture.md": {
       "sha256": "d537a3f6e6263cdd87a9cc71938706e50e8d7cc454aab36231923c319abd4aeb",
@@ -1155,13 +199,153 @@
       "sha256": "eb992b11d051ba1ec8bb47d62cb28c329b69fc8ebc5ba38d4f501a9893ae9ebd",
       "size": 13246
     },
+    "state/skills/creative/baoyu-comic/PORT_NOTES.md": {
+      "sha256": "6af24f784063dad0e8814feb4304072f4202415dffc32a2ea15169b38891534d",
+      "size": 5721
+    },
+    "state/skills/creative/baoyu-comic/SKILL.md": {
+      "sha256": "39daa86a4c9737a51c2734455a4b27f3fd35eb80ae2a70820093d4354a1e2de2",
+      "size": 14621
+    },
+    "state/skills/creative/baoyu-comic/references/analysis-framework.md": {
+      "sha256": "7917f3552fb4f0b8eba8671d63b4970de31c9308dfdc7a9e9872c15bb45cf726",
+      "size": 5481
+    },
+    "state/skills/creative/baoyu-comic/references/art-styles/chalk.md": {
+      "sha256": "735f5eea5723d1d6c9e136f95d509661dcfdf4aecf376da1a610380561783c06",
+      "size": 2790
+    },
+    "state/skills/creative/baoyu-comic/references/art-styles/ink-brush.md": {
+      "sha256": "cf43c5345bc8c80b4f0f7c2ce4810392a489494af248cd8ff6c21831fb839c9a",
+      "size": 2569
+    },
+    "state/skills/creative/baoyu-comic/references/art-styles/ligne-claire.md": {
+      "sha256": "8906cb27124d23c3a31953b54b6c30eff4d35608f99b38fe5d05dbcdf7a62cdc",
+      "size": 2384
+    },
+    "state/skills/creative/baoyu-comic/references/art-styles/manga.md": {
+      "sha256": "b2ea678169e7caa473205f2c33ce973d9ad7b2a9249efbc156cb946ef6314cf5",
+      "size": 2608
+    },
+    "state/skills/creative/baoyu-comic/references/art-styles/minimalist.md": {
+      "sha256": "d5ff796d5cb517751f58f94af8b58a7fb0485c83acdbea6722d93067932bead6",
+      "size": 3402
+    },
+    "state/skills/creative/baoyu-comic/references/art-styles/realistic.md": {
+      "sha256": "6b12457bc3d30eac36aa47862e387a0ef75899422a2298de4fb361d2fbdeba46",
+      "size": 2775
+    },
+    "state/skills/creative/baoyu-comic/references/auto-selection.md": {
+      "sha256": "1d5de33377dbb0c97f90d51e8e8c62049b9f68eab7cb1e67fb4e11958d12bf2e",
+      "size": 3581
+    },
+    "state/skills/creative/baoyu-comic/references/base-prompt.md": {
+      "sha256": "9cea612602d354d3ebe5e4d0b4619e615e4ca7b94cfe3c4a012c942db2194d37",
+      "size": 3140
+    },
+    "state/skills/creative/baoyu-comic/references/character-template.md": {
+      "sha256": "4a1479a239e0c54de327e16fbb2e58aa707652f66152283669aa94382a598210",
+      "size": 4876
+    },
+    "state/skills/creative/baoyu-comic/references/layouts/cinematic.md": {
+      "sha256": "5ac2a2aa0fc0776851e8af478b37b9fc831047a3bd9f4a83347b7927865cb7e5",
+      "size": 450
+    },
+    "state/skills/creative/baoyu-comic/references/layouts/dense.md": {
+      "sha256": "0dde755a4f36cca13fd5937cebbb1daebb00769e6480b799773270b6187361e7",
+      "size": 415
+    },
+    "state/skills/creative/baoyu-comic/references/layouts/four-panel.md": {
+      "sha256": "89819b87e5fe2227003f45e3419a9d5d07430256b1aedad6c6a0bee3e52b68f3",
+      "size": 1388
+    },
+    "state/skills/creative/baoyu-comic/references/layouts/mixed.md": {
+      "sha256": "bd69b3bfca5b5d5986d0b9885645ba24a8a6a26efbb2760ac7cbf249b13c831e",
+      "size": 429
+    },
+    "state/skills/creative/baoyu-comic/references/layouts/splash.md": {
+      "sha256": "eb7c74f8c006ddffbb345737732773b55202be3b3f5f4350f2993323b1e5113e",
+      "size": 471
+    },
+    "state/skills/creative/baoyu-comic/references/layouts/standard.md": {
+      "sha256": "4b498faee176acbaf6638129bbd91efaab2bbf6dd972facb47b5362884a7a583",
+      "size": 440
+    },
+    "state/skills/creative/baoyu-comic/references/layouts/webtoon.md": {
+      "sha256": "2de64e32988aaa14779806007dfdbe382f0b423e0a0cea041d1a1c816ed382e0",
+      "size": 778
+    },
+    "state/skills/creative/baoyu-comic/references/ohmsha-guide.md": {
+      "sha256": "f4efbcfbb232079762ca09a3830cff2ab1ffe435ec89efa63055ca6e1be645dd",
+      "size": 2978
+    },
+    "state/skills/creative/baoyu-comic/references/partial-workflows.md": {
+      "sha256": "2d6f8527082778c72dab8d17b3bd8ca61481fd8594cddc0768228f7b716debc6",
+      "size": 3051
+    },
+    "state/skills/creative/baoyu-comic/references/presets/concept-story.md": {
+      "sha256": "00e667ff72abee8dc39ebc5f1579976f6df9444e63dcce80332f38daa18dede5",
+      "size": 5644
+    },
+    "state/skills/creative/baoyu-comic/references/presets/four-panel.md": {
+      "sha256": "2d41f004ce8e5d02f22c71c86fc57d02315c069fc7fb4023492c86d92911f6f6",
+      "size": 4660
+    },
+    "state/skills/creative/baoyu-comic/references/presets/ohmsha.md": {
+      "sha256": "811ec3e61a4ba9b59be71e19f2ba571b4a4e331ab0d167c7a7a1d1b102f28d54",
+      "size": 4484
+    },
+    "state/skills/creative/baoyu-comic/references/presets/shoujo.md": {
+      "sha256": "194353514a875356432514db25c299bbe0aaf01c1e4bfc8a36b98e129533e8bf",
+      "size": 3273
+    },
+    "state/skills/creative/baoyu-comic/references/presets/wuxia.md": {
+      "sha256": "8f4df8d695a337afb5f1b84803bbcc3d84ee3131135323311682f237a77a9846",
+      "size": 2972
+    },
+    "state/skills/creative/baoyu-comic/references/storyboard-template.md": {
+      "sha256": "917836d5fa0e2c19e52dc827c994e5773a56a2d15e44f89805e05259e8747b34",
+      "size": 3982
+    },
+    "state/skills/creative/baoyu-comic/references/tones/action.md": {
+      "sha256": "c62c2f2a64557a20d1d3c29bf60f2cab0f144b5be423fec0d6cddbebf71e7ec4",
+      "size": 2269
+    },
+    "state/skills/creative/baoyu-comic/references/tones/dramatic.md": {
+      "sha256": "02fe6d7dd1b7c49e9f1b12f39f25b570b625567bd52a7a5b3ddf4a11e4f745d7",
+      "size": 1913
+    },
+    "state/skills/creative/baoyu-comic/references/tones/energetic.md": {
+      "sha256": "f2ab2580fa60f03ac69155d6af712322841875b2c0bbbb84bc5d8f3185210571",
+      "size": 2173
+    },
+    "state/skills/creative/baoyu-comic/references/tones/neutral.md": {
+      "sha256": "fc0cd10f068cd5adfba703f903867dd08dbbaf6d1f4eee7a98a107e8e5db68a7",
+      "size": 1356
+    },
+    "state/skills/creative/baoyu-comic/references/tones/romantic.md": {
+      "sha256": "7d51adc7c5b2ae681b64d4d7425900afe7ad38f22a0d30d887bc6e7e1d603c94",
+      "size": 2143
+    },
+    "state/skills/creative/baoyu-comic/references/tones/vintage.md": {
+      "sha256": "6cc33000124283d91c885059e7e7d933b8e7070a6887e412bd8c32c276372564",
+      "size": 2162
+    },
+    "state/skills/creative/baoyu-comic/references/tones/warm.md": {
+      "sha256": "a80705960f18d23f1717c52b51e2a681f300dcce1f827fc1a5890fbb16811d1d",
+      "size": 1862
+    },
+    "state/skills/creative/baoyu-comic/references/workflow.md": {
+      "sha256": "424bcbb2ddea8b6808ccacc8b21c870389dddf17c54c2153b6884799d069abe4",
+      "size": 16205
+    },
     "state/skills/creative/baoyu-infographic/PORT_NOTES.md": {
-      "sha256": "0af9566829593fca09a077b8d9f31ae024237721826769b889800f804ca7114e",
-      "size": 1712
+      "sha256": "5dd3dbe9e9e713af903c7b29d391e259d93491b1504223880d8296c7a7093d51",
+      "size": 1699
     },
     "state/skills/creative/baoyu-infographic/SKILL.md": {
-      "sha256": "2922677ca6d3c75646cc7bc455ea4f5f6314fc148060ca84d679d624bfdc52ee",
-      "size": 10490
+      "sha256": "89e25da6d8ea1cac79b18d9e6c4c3b8d7a522df2eef559f151f19c6ce5b2a002",
+      "size": 10434
     },
     "state/skills/creative/baoyu-infographic/references/analysis-framework.md": {
       "sha256": "666d5682334ffde15bbd095a19d0720aa877b0f8c411cafbb60889f3f16fe71a",
@@ -1343,49 +527,193 @@
       "sha256": "9a27502ab6bba76ad042cfa08834053f9e563c76cc8ffb46456cd3db2a6523a3",
       "size": 596
     },
-    "state/skills/creative/browser-game-development/SKILL.md": {
-      "sha256": "598c4d8c0bd99e682e4f666d1c4f3a258eb0917fe62d1981e2d031db52a4ef02",
-      "size": 16060
-    },
-    "state/skills/creative/browser-game-development/references/headless-verification.md": {
-      "sha256": "e67c7d2a02fb3723841b19425cab04a35e10afbeb98fdff1c4632f2eabdbe190",
-      "size": 7300
-    },
-    "state/skills/creative/browser-game-development/references/raycasting-fps.md": {
-      "sha256": "c840a8bd1e5f2e48d67538d7b39bace75cc0dbc4d4df8de9c43fbc07f2185dac",
-      "size": 5037
-    },
-    "state/skills/creative/browser-game-development/scripts/cdp-playtest.js": {
-      "sha256": "10e732dbc447e059d02d6c571147e008874690932249730dc5e112c8409d129c",
-      "size": 10864
-    },
     "state/skills/creative/claude-design/SKILL.md": {
-      "sha256": "1582b0d49e48bdf937b2f555098484e0979cdfa285c6cc9fa329ba8e416d347a",
-      "size": 25117
+      "sha256": "4c24fb9579a06f165205b212105f7eb906cada8cce1290319d677195da2d45a7",
+      "size": 19859
+    },
+    "state/skills/creative/comfyui/SKILL.md": {
+      "sha256": "fc9514a3b888b35226a3d2276955bfcf1778fd1e61f4000d79c8c0c53e7905c3",
+      "size": 24287
+    },
+    "state/skills/creative/comfyui/references/official-cli.md": {
+      "sha256": "9d62db1d40af7a4639ede8b9ac599c4e180451342570b08b125d656f4b68e1bc",
+      "size": 7531
+    },
+    "state/skills/creative/comfyui/references/rest-api.md": {
+      "sha256": "01077c38f6d5d737e2f0ec126ccce7eceef64fc754f15c852a63dbcd58da493c",
+      "size": 10363
+    },
+    "state/skills/creative/comfyui/references/template-integrity.md": {
+      "sha256": "746caa050d4e321b142efecf5a16c72d609e3c08cec9061ba4108781d14aa7d9",
+      "size": 8821
+    },
+    "state/skills/creative/comfyui/references/workflow-format.md": {
+      "sha256": "c5749b962b8e438b777e7f4d6529469c53b945728cc847083110e5a742fd0af4",
+      "size": 8025
+    },
+    "state/skills/creative/comfyui/scripts/_common.py": {
+      "sha256": "a5d5e24b463bb5f8a6df5beb9254dfc67780aadf78acadbddf033eef973e1f90",
+      "size": 33742
+    },
+    "state/skills/creative/comfyui/scripts/auto_fix_deps.py": {
+      "sha256": "59eddb1478afcebd2b0a34efcdd4d5f4f869b07c5e6d391f0a3431ae15ed6f0f",
+      "size": 8279
+    },
+    "state/skills/creative/comfyui/scripts/check_deps.py": {
+      "sha256": "319d18c9a24b96d801d03eb970a4cdd1ca94edeab97f8cda36a3cdfd26d405e5",
+      "size": 17164
+    },
+    "state/skills/creative/comfyui/scripts/comfyui_setup.sh": {
+      "sha256": "9284df8240cc5c626bb02d865ace02fd49ccdd35e9583ed34de8f9e417f5e74d",
+      "size": 10447
+    },
+    "state/skills/creative/comfyui/scripts/extract_schema.py": {
+      "sha256": "280c53a95ae54604e757b9fabe132e0dfcc1b393b8c6dc2d978fc301eeece6c9",
+      "size": 11289
+    },
+    "state/skills/creative/comfyui/scripts/fetch_logs.py": {
+      "sha256": "5dad70cd09b7fc49e435cd28dd40aea114567e1202377b6026e099dc9c195fa9",
+      "size": 5702
+    },
+    "state/skills/creative/comfyui/scripts/hardware_check.py": {
+      "sha256": "34bd3d2d4d9d7264d9b1f9c2c815729061ea2f867197a7ecb1f6c168f305c498",
+      "size": 17833
+    },
+    "state/skills/creative/comfyui/scripts/health_check.py": {
+      "sha256": "b4e2abb14224094dccef494f25b2b060151a77f0cd01befba86e699af31c3f9e",
+      "size": 8188
+    },
+    "state/skills/creative/comfyui/scripts/run_batch.py": {
+      "sha256": "6939ff0eb07144443c91fd025c9fdb429c6c8119f1185ca91c1b4d58c2192bdd",
+      "size": 9080
+    },
+    "state/skills/creative/comfyui/scripts/run_workflow.py": {
+      "sha256": "ecdb5515c79e1c8c8958bf6db71e69d76a36d54f13a9c99b343ecb415ee471cd",
+      "size": 31591
+    },
+    "state/skills/creative/comfyui/scripts/ws_monitor.py": {
+      "sha256": "b4144c716cf67223cd4d14a883c7fef60699ccfdc7f9f8a50016bfa21fa3fb57",
+      "size": 10512
+    },
+    "state/skills/creative/comfyui/tests/README.md": {
+      "sha256": "88cbd358ddb132c3b1f9a36f6382d17b3783ba5900aa4f14dd06b320626c3959",
+      "size": 2124
+    },
+    "state/skills/creative/comfyui/tests/conftest.py": {
+      "sha256": "b3cedf4b285c1e93ee90a354206451fdb6fec7803706d583827ba4e1b6ea34fe",
+      "size": 1480
+    },
+    "state/skills/creative/comfyui/tests/pytest.ini": {
+      "sha256": "9cb092ce40432ff6caf766ceb1b9f32ff4d0f91de693bdbeec8d9916a9839ce8",
+      "size": 132
+    },
+    "state/skills/creative/comfyui/tests/test_check_deps.py": {
+      "sha256": "82e250c9d8d42132408f3869f0229d845bffdf6ccc5d2a8539d83c951db3d08a",
+      "size": 2362
+    },
+    "state/skills/creative/comfyui/tests/test_cloud_integration.py": {
+      "sha256": "a2f0d4cb6ec289baa5ad3c910fbb27d680370ca47b79eae18e10ac91f6526393",
+      "size": 4324
+    },
+    "state/skills/creative/comfyui/tests/test_common.py": {
+      "sha256": "bb6b3ae0ff1c3afefb7fe151250f18de483434353cdb5b1353d8008ec6aa93f2",
+      "size": 16433
+    },
+    "state/skills/creative/comfyui/tests/test_extract_schema.py": {
+      "sha256": "6ce71010807db07392ede81d49c814e4fe87e36792b1161d7772994b84c00a53",
+      "size": 7986
+    },
+    "state/skills/creative/comfyui/tests/test_run_workflow.py": {
+      "sha256": "5b2e79537f136a9c15bda215e4ec5b09c914e75105e263c80d0342684e3904e6",
+      "size": 8746
+    },
+    "state/skills/creative/comfyui/workflows/README.md": {
+      "sha256": "2e1cd819ff6da81b1c41daa74f95f3c4df564bf512d18a63e566890cea4c6bbd",
+      "size": 3932
+    },
+    "state/skills/creative/comfyui/workflows/animatediff_video.json": {
+      "sha256": "96742617937e0294d421e1b3dc53c44c431081577598257bfd6121abe1c3ada2",
+      "size": 2071
+    },
+    "state/skills/creative/comfyui/workflows/flux_dev_txt2img.json": {
+      "sha256": "db0afca70c46f552b7bc4c4b9d63761da81232f6ce78e3dd98b2af0488bfb16c",
+      "size": 2232
+    },
+    "state/skills/creative/comfyui/workflows/sd15_txt2img.json": {
+      "sha256": "db6ef4f9bf3b8e0f0c88c08ab8f0a45ae3816fb2ea2ad4460443b1ac424052a5",
+      "size": 1474
+    },
+    "state/skills/creative/comfyui/workflows/sdxl_img2img.json": {
+      "sha256": "0b6888ec7e55310020d6d12f6af32502eb3374b7ebefaad3734df8b5596bdac5",
+      "size": 1652
+    },
+    "state/skills/creative/comfyui/workflows/sdxl_inpaint.json": {
+      "sha256": "c9cd10adb7ce9e3c17df3c38c1a597229dc939ff5ae6f8a24d505ea8a053b54c",
+      "size": 1873
+    },
+    "state/skills/creative/comfyui/workflows/sdxl_txt2img.json": {
+      "sha256": "5266fa4f35fb9a0fa485e8d7700a23ba4917f1a91c0abe17c1b4f6beb68a8e1f",
+      "size": 1449
+    },
+    "state/skills/creative/comfyui/workflows/upscale_4x.json": {
+      "sha256": "9f97b0da2826cf2afb8347f8099c691dd7682143eb6966ad874572b91d560ebe",
+      "size": 864
+    },
+    "state/skills/creative/comfyui/workflows/wan_video_t2v.json": {
+      "sha256": "29425bee0ffbb2d558de19ca787d23b76f91257f663098041a81931fe623441b",
+      "size": 2189
+    },
+    "state/skills/creative/creative-ideation/SKILL.md": {
+      "sha256": "a0768ddf7685e2a3a4a69e4008bb42d812773c3efa3bcc1e0c7c073bacbdfda6",
+      "size": 6318
+    },
+    "state/skills/creative/creative-ideation/references/full-prompt-library.md": {
+      "sha256": "2e193b9868a4d7de2171414650ec5e1c89dd132b93eea25fd06a0e00bd841ea8",
+      "size": 4215
     },
     "state/skills/creative/design-md/SKILL.md": {
-      "sha256": "7ed56bba40ffc9573fa51b33b2424f37fb5f774e9ecb7e76e737797afd0b62ae",
-      "size": 8477
+      "sha256": "38ed14bc712a413fdd2514ea9acf6864ffb64fcbaffe6b5cc608021a75ff89fa",
+      "size": 7023
     },
     "state/skills/creative/design-md/templates/starter.md": {
       "sha256": "587571ab914ebe6c228d786aeb3b531d88b5b53dcffd5295333d609275a0b2d4",
       "size": 2566
+    },
+    "state/skills/creative/excalidraw/SKILL.md": {
+      "sha256": "beef7b8ea01e73a3fe95f9562beaf262c9f51712e1e00e507c6d41b1b00e49ba",
+      "size": 7300
+    },
+    "state/skills/creative/excalidraw/references/colors.md": {
+      "sha256": "4546bb6756acb1ea2fd3a917c6883b2cee054345d3268fe8b377275fa590092c",
+      "size": 1777
+    },
+    "state/skills/creative/excalidraw/references/dark-mode.md": {
+      "sha256": "ef1ceeea938fe62ec745a4abec478188098f99573cac6f38db3992eacedbe6df",
+      "size": 2282
+    },
+    "state/skills/creative/excalidraw/references/examples.md": {
+      "sha256": "411e4c571135a94264becb365b7963f4370c7564aa7fb6eefa822b4538a1c399",
+      "size": 14226
+    },
+    "state/skills/creative/excalidraw/scripts/upload.py": {
+      "sha256": "d3d88dfd8930942a5f4ab51f830dbcf245939bfb546dd00d073205d888996a65",
+      "size": 3817
     },
     "state/skills/creative/humanizer/LICENSE": {
       "sha256": "4ac4810254ab36d45419141aeb8e69bf50652cfafe5b2dab947d06d44e5cbf96",
       "size": 1066
     },
     "state/skills/creative/humanizer/SKILL.md": {
-      "sha256": "887d5e3467a682da9b166e5293007f8bbbc299f8a6718ae00f26161b7d062b04",
-      "size": 34463
+      "sha256": "4f2eece5122e8296e65930225d744f4fbaf50747e91031c1e17c5ea273911c35",
+      "size": 30025
     },
     "state/skills/creative/manim-video/README.md": {
       "sha256": "a30f3ec6105d5b23bc5ec28e8e2809e9ceed49f1fd816570d5b5656d0aa65819",
       "size": 886
     },
     "state/skills/creative/manim-video/SKILL.md": {
-      "sha256": "467376469fc2043e2674a843509f8eea52660791e76fb2e142074ecd4abc7e69",
-      "size": 12150
+      "sha256": "3459a6af999f0c9bfd61eb867836c8de90b33253493eb1b6aa4118d82fd320f4",
+      "size": 12023
     },
     "state/skills/creative/manim-video/references/animation-design-thinking.md": {
       "sha256": "87812340f4756f5e2cc653e6e13ec922562a58483bcd66a5317c19ace5e08220",
@@ -1452,8 +780,8 @@
       "size": 3316
     },
     "state/skills/creative/p5js/SKILL.md": {
-      "sha256": "3b39b75303e082af69b3f4e2deab7a55b27d60293eff6a561fb627188194a33e",
-      "size": 27534
+      "sha256": "6a9722e2633ecdb3736e304f56c646258c5e777fd2c15a59c0d2b3ffa91b665a",
+      "size": 27494
     },
     "state/skills/creative/p5js/references/animation.md": {
       "sha256": "7b71c1fd7c7778bfe3e348e49ae8b4cae59c5eb730a42d9b603acce7801bbe57",
@@ -1500,20 +828,48 @@
       "size": 5398
     },
     "state/skills/creative/p5js/scripts/render.sh": {
-      "sha256": "76aeb8a5036b3927869f18e03742e591cb7ff3f9984c65d7ba6f63428b9fe0c8",
-      "size": 2919
+      "sha256": "10a5e45d1a9d3dc867fbd7cea3b744f8d335ec03bf85a77d3a1852f315adf9e2",
+      "size": 2911
     },
     "state/skills/creative/p5js/scripts/serve.sh": {
-      "sha256": "e8107c5344e674198a0e4a4ec98777815856c37e51b69f193dedfd1b6b553a36",
-      "size": 841
+      "sha256": "65c28a2bff1dbf74f86fe027ead37eaa02da02a146c33cef4af36bc0b51c9917",
+      "size": 833
     },
     "state/skills/creative/p5js/scripts/setup.sh": {
-      "sha256": "890e0470b339e73dc095337b286accf660d27f912fc684e8cf86a99aa5695d17",
-      "size": 2483
+      "sha256": "27750af377cec00485ffa26fcc7bd2452167bdf73f15d4997bda49a8f4b780c3",
+      "size": 2475
     },
     "state/skills/creative/p5js/templates/viewer.html": {
       "sha256": "6a0f3f42fbc6a52cc82cd5990a856474cdbf43d2f157d2183a09b9cec91a331a",
       "size": 10858
+    },
+    "state/skills/creative/pixel-art/ATTRIBUTION.md": {
+      "sha256": "16e33382764250a5da332c3727e2383ae27ea5ddd05c0ef52071cb94d3562c22",
+      "size": 2210
+    },
+    "state/skills/creative/pixel-art/SKILL.md": {
+      "sha256": "01f351726675bb5ec258ca891bcd03ad6dbb51d4c16fe8e4ed25621ec2f1de04",
+      "size": 7581
+    },
+    "state/skills/creative/pixel-art/references/palettes.md": {
+      "sha256": "ee2f510b1b3a6913f6ec19fb716573c173d8d251413fde4a8622009d6b5934fa",
+      "size": 1711
+    },
+    "state/skills/creative/pixel-art/scripts/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "state/skills/creative/pixel-art/scripts/palettes.py": {
+      "sha256": "102f8fa198ab00eb14ef37dcfc4db274a81e0522cd311e24f08ba24eb7e0962a",
+      "size": 7455
+    },
+    "state/skills/creative/pixel-art/scripts/pixel_art.py": {
+      "sha256": "16835553dc7350f32c03c600c5ff8811b4ea08fc324713b2ebd5f23f72bc5a22",
+      "size": 5811
+    },
+    "state/skills/creative/pixel-art/scripts/pixel_art_video.py": {
+      "sha256": "7467702033e9fcdf2eb9eebe6b42ed6124f3f1f3d10f8ef62fc3d813f814dedc",
+      "size": 12117
     },
     "state/skills/creative/popular-web-designs/SKILL.md": {
       "sha256": "cd89bdb86008bb30b35d9bdd30e06587f75ee54055c54e1a79afb20418264b3d",
@@ -1735,49 +1091,173 @@
       "sha256": "9aac8e73a4a471fecb2d252afead66c82436e7525e7f9d1e6bbe64e375c65160",
       "size": 19484
     },
+    "state/skills/creative/pretext/SKILL.md": {
+      "sha256": "532570c95d1a0bf671a5565fa3c2a6131d3579f4378dd852012b39335a7668e3",
+      "size": 14168
+    },
+    "state/skills/creative/pretext/references/patterns.md": {
+      "sha256": "e8d50e198fefdeb83e68f84ef4fbe036583ff5f7d65a41a58e1ab8725027f13e",
+      "size": 10450
+    },
+    "state/skills/creative/pretext/templates/donut-orbit.html": {
+      "sha256": "8b0cd47880a9cc6ad16f90afe02b11aea1e2436c833924bb91e55dc460966fbe",
+      "size": 53211
+    },
+    "state/skills/creative/pretext/templates/hello-orb-flow.html": {
+      "sha256": "6a1c76b51e8e792fa2b00ed3a5bf1e314a17ada192289155dce6b33da149ddda",
+      "size": 3443
+    },
+    "state/skills/creative/sketch/SKILL.md": {
+      "sha256": "c643ff8657341b39284dbe1c70442b4ac746f5702d8457759376d4165d6879e5",
+      "size": 9304
+    },
     "state/skills/creative/songwriting-and-ai-music/SKILL.md": {
-      "sha256": "5dbf92dc336e9b17be45c35c92a5bb307e4655e39a86617f07b7654678f92583",
-      "size": 10963
+      "sha256": "093dfa88e5b3596a35463a516733d014c202d14b49643724dea65e9c09c970b1",
+      "size": 10206
     },
-    "state/skills/devops/github-first-storage/SKILL.md": {
-      "sha256": "df2a118ff9fffd3b8d73a7b9b93c60da0a977e61a63e65c442b50aa7840755b0",
-      "size": 29575
+    "state/skills/creative/touchdesigner-mcp/SKILL.md": {
+      "sha256": "70a4217786c49122b76f2247fe63b18a61f4a0feaf18f4a4b5d176f2125b3641",
+      "size": 15429
     },
-    "state/skills/devops/github-first-storage/references/disk-tiers.md": {
-      "sha256": "6e5eaa40e0ef43594215778be1e2c28aecb32eeb3ca98ca37ba01ea17122f045",
-      "size": 8460
+    "state/skills/creative/touchdesigner-mcp/references/3d-scene.md": {
+      "sha256": "f0b17b4383333198474da7a58ea8c4063f46f1465f0f1275053c5a538028456b",
+      "size": 10305
     },
-    "state/skills/devops/github-first-storage/references/project-retirement.md": {
-      "sha256": "5c9db6f6ca3d0d3d7909443296b81257275ae8c3128a54a62a1a6fd677019db5",
-      "size": 3943
+    "state/skills/creative/touchdesigner-mcp/references/animation.md": {
+      "sha256": "9c7482f38e86f80a89d0df98db8ec2e99c8227fdceab099667730a1000e14386",
+      "size": 7258
     },
-    "state/skills/devops/github-first-storage/scripts/disk-tier-check.sh": {
-      "sha256": "eac2ed833b0e48ccff5afb7edebb02afce5989364e17d1920774509c953884db",
-      "size": 6062
+    "state/skills/creative/touchdesigner-mcp/references/audio-reactive.md": {
+      "sha256": "3ea60c5954b4b1b682397a1f6bf85dccfc277354cc6f4e021b4ca68d18b623be",
+      "size": 5128
     },
-    "state/skills/devops/remote-ops-via-ci/SKILL.md": {
-      "sha256": "9a754d64bc4c1a6816f13e5f4ba7ed4413e1fd5c056eea3bfd9b5d36fc95f5df",
-      "size": 11755
+    "state/skills/creative/touchdesigner-mcp/references/dat-scripting.md": {
+      "sha256": "062ea3608ba9475d1c76bc59d8e4a5f0a0d1dd3a60006e2380e634367f460fe1",
+      "size": 11586
     },
-    "state/skills/devops/remote-ops-via-ci/references/pasarguard-deploy.md": {
-      "sha256": "31761e87af115d32010bfef9aee4dc6be3cc622506de8034d8ed0621f7b6513d",
-      "size": 6221
+    "state/skills/creative/touchdesigner-mcp/references/external-data.md": {
+      "sha256": "0d7b782cba9a3045bfb67e1a3150588e4889db3fd7938071fa367daf6afaa932",
+      "size": 9257
     },
-    "state/skills/devops/sdlc-review/SKILL.md": {
-      "sha256": "ce90e8a3e145cce69c62880dc85921700110879f9290952d6cec28218503155f",
-      "size": 9073
+    "state/skills/creative/touchdesigner-mcp/references/geometry-comp.md": {
+      "sha256": "f86b1e8333419ce23180cc7de06848744c4f3168124918745bfaa10b30479a42",
+      "size": 3572
+    },
+    "state/skills/creative/touchdesigner-mcp/references/glsl.md": {
+      "sha256": "53809b02394c797615601bfb541a43b14105087d8465d76c604ec24168257f88",
+      "size": 3537
+    },
+    "state/skills/creative/touchdesigner-mcp/references/layout-compositor.md": {
+      "sha256": "4e6dd1f86f5b85525554e4c33dbfa5f767326ae1eef0855a0aa6257bfb35bdcb",
+      "size": 3567
+    },
+    "state/skills/creative/touchdesigner-mcp/references/mcp-tools.md": {
+      "sha256": "d702a7353c76711a0797885da87a1adf1fd2640533aa415dab06eb6df6304eb1",
+      "size": 30497
+    },
+    "state/skills/creative/touchdesigner-mcp/references/midi-osc.md": {
+      "sha256": "1e9c8de828e6eda23425098cd9dd03edabf75d41b24484fca63d3f3b0cced192",
+      "size": 7384
+    },
+    "state/skills/creative/touchdesigner-mcp/references/network-patterns.md": {
+      "sha256": "fd519867cc2ed9b2de8fd07fcb928b55547f39fa4767bc5d33c3a300b7a17236",
+      "size": 33603
+    },
+    "state/skills/creative/touchdesigner-mcp/references/operator-tips.md": {
+      "sha256": "24ea49a21d78ddf7f5b40efc13e6a9d2705a6de0a0f40b51f8fac87444efa5f2",
+      "size": 3536
+    },
+    "state/skills/creative/touchdesigner-mcp/references/operators.md": {
+      "sha256": "ad67bbe2880eb479e0eccabd72f9513939e87ecc6158baf43a7ffe1cc01d719e",
+      "size": 14713
+    },
+    "state/skills/creative/touchdesigner-mcp/references/panel-ui.md": {
+      "sha256": "3acc029c90a1aab73b969380f96d987d41877dcba382e75d72166ca17a92a32d",
+      "size": 10088
+    },
+    "state/skills/creative/touchdesigner-mcp/references/particles.md": {
+      "sha256": "066bb5ccb4d396c444651b7e245cbc214810e22b2144cc98316713dea3ee9a8b",
+      "size": 8765
+    },
+    "state/skills/creative/touchdesigner-mcp/references/pitfalls.md": {
+      "sha256": "288f0da8ca0f1371b9d4bd6253c68f0de9f36c9aa2d89011e6b2eab30c040d0b",
+      "size": 31347
+    },
+    "state/skills/creative/touchdesigner-mcp/references/postfx.md": {
+      "sha256": "eef5fee9615fa76b9dfcd92fa815157e2a67dead31a78618c4b68565f537e2db",
+      "size": 4656
+    },
+    "state/skills/creative/touchdesigner-mcp/references/projection-mapping.md": {
+      "sha256": "b5ad7c4cb1c64360dcd1252f9868e4031b7e93eb1a4a726326ea89b84a86ff80",
+      "size": 8104
+    },
+    "state/skills/creative/touchdesigner-mcp/references/python-api.md": {
+      "sha256": "f898b84a6c2155c39a94ce60865676b9db78aac0147ae6e6d3c9b1b41644f269",
+      "size": 12533
+    },
+    "state/skills/creative/touchdesigner-mcp/references/replicator.md": {
+      "sha256": "b17907d2fb8a53447d854bb14e00295f37e1afff47693715b817163877e33317",
+      "size": 8232
+    },
+    "state/skills/creative/touchdesigner-mcp/references/troubleshooting.md": {
+      "sha256": "c01460dd47d2a59ebf6d221d717b7563df1f823ac9b8e574787fe39e12e4e876",
+      "size": 7442
+    },
+    "state/skills/creative/touchdesigner-mcp/scripts/setup.sh": {
+      "sha256": "173ef326c534751b38677e698f93a4baa76f9ae07bb0d26bec4beba565db45f7",
+      "size": 4468
+    },
+    "state/skills/data-science/DESCRIPTION.md": {
+      "sha256": "1311078585c2e122ffa920a54d71fbc244a218d72a242cc795f4fec8cb8fbd21",
+      "size": 137
+    },
+    "state/skills/data-science/jupyter-live-kernel/SKILL.md": {
+      "sha256": "d93c4b4f50e66c0c074d49e43e28bf5ab87531eaa48884d0083568db827f5869",
+      "size": 5285
+    },
+    "state/skills/devops/hermes-gateway-no-systemd/SKILL.md": {
+      "sha256": "2e3f00a5f3c062f69b8fe7522ad3f228f637574793322a9ba665335bcf4b854a",
+      "size": 8188
+    },
+    "state/skills/devops/kanban-orchestrator/SKILL.md": {
+      "sha256": "c60c7fcfb64157d76b6a266bbcf568a677a91bc7b1ce0763ebeeeb1c33a491ea",
+      "size": 14105
+    },
+    "state/skills/devops/kanban-worker/SKILL.md": {
+      "sha256": "aef52e7513b68e0fb2308cc0e3680e49dcb01badd9bc4a0ae428eed1958873fd",
+      "size": 10030
+    },
+    "state/skills/devops/webhook-subscriptions/SKILL.md": {
+      "sha256": "dfb4ddad9b7911dbbd72d33029c33235c39e2af5947fd35738094752eaed64a8",
+      "size": 6836
+    },
+    "state/skills/diagramming/DESCRIPTION.md": {
+      "sha256": "76d976d69859292bdb3fcb53b72971094be994a2034c8de0c0484b1324028cd1",
+      "size": 159
+    },
+    "state/skills/dogfood/SKILL.md": {
+      "sha256": "36b1a710c61727c2be3c43ba20d68605cfed199afc90e27bde9746f4b80b91dd",
+      "size": 6270
+    },
+    "state/skills/dogfood/references/issue-taxonomy.md": {
+      "sha256": "b90546fab5b59494ebea35b957ccc1d98bab8eaeaaa3529a142b15ea96df2b31",
+      "size": 3682
+    },
+    "state/skills/dogfood/templates/dogfood-report-template.md": {
+      "sha256": "6db9127715d3d1482542e48dd2d71fcb25238e614b1e5739ec193fa143962a26",
+      "size": 1528
+    },
+    "state/skills/domain/DESCRIPTION.md": {
+      "sha256": "b3a30c554bb5c0f8447ca785be95d48e602ba0b9cab18e8605cbdde6fec2df45",
+      "size": 1142
     },
     "state/skills/email/DESCRIPTION.md": {
       "sha256": "2c40e123f597ebbb4db9edf5fe8e5d63a1aacf8f00b59eca1b5af0748062ac24",
       "size": 101
     },
-    "state/skills/email/email-inbox-triage/SKILL.md": {
-      "sha256": "deeade1bb70f8835b2f3158980030b8aa41bb1ea6f798631451c89cfd632bcc8",
-      "size": 5447
-    },
     "state/skills/email/himalaya/SKILL.md": {
-      "sha256": "0f6c9bb4c0a5c4f4627e139b6beb2b1ba0addd7145895196528b8125929e3837",
-      "size": 7272
+      "sha256": "d8830e10696feefd54a846cf07e9f0c1bc205febe79b8086e2c6b0267afda2fc",
+      "size": 6902
     },
     "state/skills/email/himalaya/references/configuration.md": {
       "sha256": "ccd540fa964f843903b17400a5f45ef610a16f23fe1e0ca3e625f717fa951b89",
@@ -1787,553 +1267,1021 @@
       "sha256": "84d889972f5f4243d891405b83e67bddc7e835b2c4e434efd77fdc6bca9fe307",
       "size": 3799
     },
+    "state/skills/gaming/DESCRIPTION.md": {
+      "sha256": "67b3008c0945420e8ff90a4ae2290747763291ffa303917ff15a2f8a74201440",
+      "size": 129
+    },
+    "state/skills/gaming/minecraft-modpack-server/SKILL.md": {
+      "sha256": "858f64c0e67efb296f832e63fdd3aedd16e954a2da474619eeaafef3cafec821",
+      "size": 6559
+    },
+    "state/skills/gaming/pokemon-player/SKILL.md": {
+      "sha256": "fe8da8e6dc5599ef3f5a0d4ffb8cb03083227643e2ca9594b9e2be19e07e667c",
+      "size": 8709
+    },
+    "state/skills/gifs/DESCRIPTION.md": {
+      "sha256": "5e3ae313ef34319e4099d8a97dcb0fede1be349f3ee62b8ee7098a15ed94c323",
+      "size": 109
+    },
+    "state/skills/github/DESCRIPTION.md": {
+      "sha256": "51c160e23661890049042988073695110b1c1c88d00389f1abf05f5842b19ca4",
+      "size": 167
+    },
+    "state/skills/github/codebase-inspection/SKILL.md": {
+      "sha256": "87ddc0578d9bcbc80addb34ca045e4263689873ce02b1b73e3d57275ec6315c6",
+      "size": 3628
+    },
+    "state/skills/github/github-auth/SKILL.md": {
+      "sha256": "980888a5f4d4a184d5621b32110c4c370399e3633efdce486bbcf4f37e5fb453",
+      "size": 7546
+    },
+    "state/skills/github/github-auth/scripts/gh-env.sh": {
+      "sha256": "5c74ef2e93e8634d40097f69113a2a154bb5dc3b8836fa0d970ccbc23daf2e56",
+      "size": 2574
+    },
+    "state/skills/github/github-code-review/SKILL.md": {
+      "sha256": "3cd38e249223c801a91475b92dec39e2f0f33cb1624e321375a37f29ba6d74e6",
+      "size": 13565
+    },
+    "state/skills/github/github-code-review/references/review-output-template.md": {
+      "sha256": "4560662913e8f89d558c7ba4f34daf77a35a88367c2d480ad86de7085cbcaf34",
+      "size": 2465
+    },
+    "state/skills/github/github-issues/SKILL.md": {
+      "sha256": "31b932cb6c16e64ae2ce7850bf51ade1047f033943edd7c137b6088b9678b106",
+      "size": 9265
+    },
+    "state/skills/github/github-issues/templates/bug-report.md": {
+      "sha256": "4b3144ccf47a85dcec889c7610d6b739a7ae6f19aa8d4709942112ef09e11a5b",
+      "size": 469
+    },
+    "state/skills/github/github-issues/templates/feature-request.md": {
+      "sha256": "43962f5a398b4badeeb94280299ba4511940ad0e32afcfce5f2a6e1afd21c7a8",
+      "size": 598
+    },
+    "state/skills/github/github-pr-workflow/SKILL.md": {
+      "sha256": "f41117e2498e74d9423576f400f33b59fbbe6b5d40ec0f61f6f440fc269a165b",
+      "size": 9985
+    },
+    "state/skills/github/github-pr-workflow/references/ci-troubleshooting.md": {
+      "sha256": "c72b2301e9b85c545c4960722dbd4c0d49c5d883e6d86438e932bd47b1d8eee0",
+      "size": 4879
+    },
+    "state/skills/github/github-pr-workflow/references/conventional-commits.md": {
+      "sha256": "2d71a3b701b08c2e5ed5248d17928eb11e27d7b357f9e2dca27caee9cc017aab",
+      "size": 2417
+    },
+    "state/skills/github/github-pr-workflow/templates/pr-body-bugfix.md": {
+      "sha256": "e8c31915b87dba0454d7520a3aa45ef8650fd0e50e48e277db855ff919e6251a",
+      "size": 513
+    },
+    "state/skills/github/github-pr-workflow/templates/pr-body-feature.md": {
+      "sha256": "875e815da6e0e3df2763a85c9c2a56a776461da39d4181a1487333c0bf5b9276",
+      "size": 580
+    },
+    "state/skills/github/github-repo-management/SKILL.md": {
+      "sha256": "355bcef566988194a31bfe0d1099d2f31d6502d4e8f64b78edf7ae2f94618d92",
+      "size": 13683
+    },
+    "state/skills/github/github-repo-management/references/github-api-cheatsheet.md": {
+      "sha256": "a9081d4a108b67b4edd3c92c73d823fd1730e37e23be6f069d9bd67dd3b32486",
+      "size": 6092
+    },
+    "state/skills/inference-sh/DESCRIPTION.md": {
+      "sha256": "ac21c24bb4681d20d6fc3ad3016a14d17310ddfccd7dc638fe16a36a83a466fa",
+      "size": 706
+    },
+    "state/skills/mcp/DESCRIPTION.md": {
+      "sha256": "0c4965634fff4201d79cabada7877484ebd5d661322b59d1e16f4322e5128af1",
+      "size": 216
+    },
+    "state/skills/mcp/native-mcp/SKILL.md": {
+      "sha256": "f6124b5834ebe978fb5d4a39a9760f6c4b6cf12d98db1a5054a0d2bd00e39a76",
+      "size": 15639
+    },
+    "state/skills/mcp/native-mcp/references/npm-mcp-server-install.md": {
+      "sha256": "4c5409280e7af1715e52c5e4d698b74751805e1fc97392ba8abb45475a68eda2",
+      "size": 4706
+    },
     "state/skills/media/DESCRIPTION.md": {
       "sha256": "c27bb2f0f3acd71771de1e7dc2ec27311dced72cbdf3989577c6907928e52645",
       "size": 139
     },
     "state/skills/media/gif-search/SKILL.md": {
-      "sha256": "a8349043740a8805d4ebfeb3a21f67ec0e9a9733a84f96403ca142c88a312b5d",
-      "size": 2720
+      "sha256": "ee2d14e32314e083d2bb999f502ec409df5762f4c7429e03718fc8835a26abb6",
+      "size": 2704
+    },
+    "state/skills/media/heartmula/SKILL.md": {
+      "sha256": "d6f8322ba9ab47564ff73dc0ee8d8158d78cea4de557e5b0abe5c6921a12fa57",
+      "size": 6412
     },
     "state/skills/media/songsee/SKILL.md": {
       "sha256": "d9d8d1394c630bd83329cd54cd8f18e0e3cd140debe31c3ccf5d9667f054de07",
       "size": 2336
     },
+    "state/skills/media/spotify/SKILL.md": {
+      "sha256": "84b4c86e75f082882188bff3591eca78d222c0b337ef421a762e1a36139b66eb",
+      "size": 6319
+    },
     "state/skills/media/youtube-content/SKILL.md": {
-      "sha256": "b556a0d2a220b46b80eb011619f0c951404f4d6e2edcc8b4847faec512b55132",
-      "size": 4377
+      "sha256": "f6e573f84f3f62dadaa0839491d1558071b6e6da9db9878e7c765fe1311c66be",
+      "size": 3218
     },
     "state/skills/media/youtube-content/references/output-formats.md": {
       "sha256": "f24e6939b47511a7dfc1257f3087c9dafd027fe7836d0e65b0feb3214f598cd1",
       "size": 1259
     },
     "state/skills/media/youtube-content/scripts/fetch_transcript.py": {
-      "sha256": "c4edb9f4fdf68e609ed57f22a07f8ef80cf3c00dcb2395a53e6aca99ab177d81",
-      "size": 4107
+      "sha256": "558bed37630fb70aa77c1e79cdd47e15edee64675ea25f6c30d570a7e9c87dfc",
+      "size": 4041
+    },
+    "state/skills/mlops/DESCRIPTION.md": {
+      "sha256": "2cbbd46162c529fefacae77b43bbb47d3267f6124a30f4c03bd6cab4fe960253",
+      "size": 162
+    },
+    "state/skills/mlops/evaluation/DESCRIPTION.md": {
+      "sha256": "5e682e8f8f791d3378e34540395603a98b2803db76c80b86482e60a843cc33f8",
+      "size": 126
+    },
+    "state/skills/mlops/evaluation/lm-evaluation-harness/SKILL.md": {
+      "sha256": "5426016d51e3b49e85c0ddc53a837393463a4f77aaa52ae504b78ff5ed596a67",
+      "size": 12020
+    },
+    "state/skills/mlops/evaluation/lm-evaluation-harness/references/api-evaluation.md": {
+      "sha256": "433372d84b8bbd6c28e5b971c1aae7c5d2d032aae9ff23dd7d7a47a51277dc78",
+      "size": 11114
+    },
+    "state/skills/mlops/evaluation/lm-evaluation-harness/references/benchmark-guide.md": {
+      "sha256": "6f3e6daf78cee21453cebc1c4688ee126fbf0d4566782496dd5841dd669ae295",
+      "size": 10769
+    },
+    "state/skills/mlops/evaluation/lm-evaluation-harness/references/custom-tasks.md": {
+      "sha256": "c6b5591c77c16570b43fa5f497405a65f35ef73d1702a3871cc0c8a257c76aeb",
+      "size": 13125
+    },
+    "state/skills/mlops/evaluation/lm-evaluation-harness/references/distributed-eval.md": {
+      "sha256": "3ddc4551f25ce0d3cb09f971f27191331fb65b5b4c882efd4a9bde7bdfb82353",
+      "size": 11426
+    },
+    "state/skills/mlops/evaluation/weights-and-biases/SKILL.md": {
+      "sha256": "7cabb8bcc00797373ada06b51fcf7b504f51d79b8816829847635bbb03bb5d9c",
+      "size": 12395
+    },
+    "state/skills/mlops/evaluation/weights-and-biases/references/artifacts.md": {
+      "sha256": "3e4c2ebe70b310e74fdadb5e08af9822eba5b585ef6ad1e66012016b8fc6d461",
+      "size": 13425
+    },
+    "state/skills/mlops/evaluation/weights-and-biases/references/integrations.md": {
+      "sha256": "b11f806e19002e589d959d6f56d9d03986520923ee89ee4328822a6fff190251",
+      "size": 16219
+    },
+    "state/skills/mlops/evaluation/weights-and-biases/references/sweeps.md": {
+      "sha256": "c59012acf49ec73b0bbf4b2ff7713d0611d1372ba92a9e21337ae76d153a1f0d",
+      "size": 17675
+    },
+    "state/skills/mlops/huggingface-hub/SKILL.md": {
+      "sha256": "10d5bdf26e08ce4728923d8321493d1d18f7413f3a621e64c8feae6263cfe54c",
+      "size": 3674
+    },
+    "state/skills/mlops/inference/DESCRIPTION.md": {
+      "sha256": "f409a16dfccb4dca6aa5b8fd0b53005b053e2d13d26f53160f89252e5fc72640",
+      "size": 161
+    },
+    "state/skills/mlops/inference/llama-cpp/SKILL.md": {
+      "sha256": "9c1ef45f6197fbc08b643416d5f2c2e5469dbd45fb01e17cf48a0406ffacf8c2",
+      "size": 8880
+    },
+    "state/skills/mlops/inference/llama-cpp/references/advanced-usage.md": {
+      "sha256": "ee7ed3b7c06b393b85109d5aa4816cf7d6e6fd2f0a8fdbb90db5eb03ad301f88",
+      "size": 10887
+    },
+    "state/skills/mlops/inference/llama-cpp/references/hub-discovery.md": {
+      "sha256": "b53ab078551d41089c6af7180ce7bcaec469b05966bd2282804697043168e640",
+      "size": 5082
+    },
+    "state/skills/mlops/inference/llama-cpp/references/optimization.md": {
+      "sha256": "4e89811c0827f5eb9deb9fc609cd441eb197fb0fa85e79dd8c1f272b14a669fd",
+      "size": 1659
+    },
+    "state/skills/mlops/inference/llama-cpp/references/quantization.md": {
+      "sha256": "6e3039e2230d75d1d97a3d5712be3b31f6ed3b6feb58cbf313c84e1968f7f51b",
+      "size": 5888
+    },
+    "state/skills/mlops/inference/llama-cpp/references/server.md": {
+      "sha256": "bd1dadb7e72f6b98086ea57772263485008990e11309b31c2f84ef2cc7d20321",
+      "size": 2915
+    },
+    "state/skills/mlops/inference/llama-cpp/references/troubleshooting.md": {
+      "sha256": "a83f9df40a6db7857b4b3ce3a982da7e939680ee89079170d4d258392804e09c",
+      "size": 8904
+    },
+    "state/skills/mlops/inference/obliteratus/SKILL.md": {
+      "sha256": "9fb394a0af2a9733bc7e88919580a49c4a17108d0012543a839138ced5aac8d1",
+      "size": 15464
+    },
+    "state/skills/mlops/inference/obliteratus/references/analysis-modules.md": {
+      "sha256": "7f8e5320e97739e83bbbc4b3049a879cea4bcbb509e2aa93f9b95d130b49c13e",
+      "size": 6270
+    },
+    "state/skills/mlops/inference/obliteratus/references/methods-guide.md": {
+      "sha256": "e87c6e6fb9fdeec9c2d1921f07f49105bd80f1c52e382253c345d8ce39364f49",
+      "size": 6719
+    },
+    "state/skills/mlops/inference/obliteratus/templates/abliteration-config.yaml": {
+      "sha256": "11bdb66c6af528b4971cc56e35937268296dfee347879eba28bb6ddc784ac4e7",
+      "size": 1189
+    },
+    "state/skills/mlops/inference/obliteratus/templates/analysis-study.yaml": {
+      "sha256": "ae8cf7580c90d8228449c5cd7a0b2e5835b170bceb0445617caa213d0b4daba0",
+      "size": 1368
+    },
+    "state/skills/mlops/inference/obliteratus/templates/batch-abliteration.yaml": {
+      "sha256": "f635607584579b31cc119f76daff4f98a2445a7b9471b61732ed06efba0ab304",
+      "size": 1201
+    },
+    "state/skills/mlops/inference/vllm/SKILL.md": {
+      "sha256": "ab72192b7aee4e6d5db617a286ef2733911eb4f38313f67e1d0fe9cdba69fb3e",
+      "size": 9071
+    },
+    "state/skills/mlops/inference/vllm/references/optimization.md": {
+      "sha256": "0f860d337adb1d0723d4070d8b3144517f111ad7f653606927bc67a7a019b1ac",
+      "size": 5769
+    },
+    "state/skills/mlops/inference/vllm/references/quantization.md": {
+      "sha256": "5fb30ea9e8fbec4a7f3047f37d10c0900d10cd2df66555818ffd425a3b29b270",
+      "size": 6746
+    },
+    "state/skills/mlops/inference/vllm/references/server-deployment.md": {
+      "sha256": "7db618ec40b865fe2efacf46c04c3d5dc233fc64a3c63d26451afb97b795113e",
+      "size": 5252
+    },
+    "state/skills/mlops/inference/vllm/references/troubleshooting.md": {
+      "sha256": "307acd908e60674017bd2363726e6b9be19410062e3db0645290a69802976283",
+      "size": 9037
+    },
+    "state/skills/mlops/models/DESCRIPTION.md": {
+      "sha256": "97a8c2c6c7f4dcbb01a067b4f1df7d4ac790d1e134f449c604afc68695cd655d",
+      "size": 253
+    },
+    "state/skills/mlops/models/audiocraft/SKILL.md": {
+      "sha256": "eebe52632e3312a55a352d766828e7153b2ee23e2e67c0e4e874474e5c52198c",
+      "size": 16189
+    },
+    "state/skills/mlops/models/audiocraft/references/advanced-usage.md": {
+      "sha256": "5efe98c6ebcd0107e48c809cadc0e48591f9c235ac47014f39a40772fc45116d",
+      "size": 16953
+    },
+    "state/skills/mlops/models/audiocraft/references/troubleshooting.md": {
+      "sha256": "af0c56aca0902aca6f05350caab3750de608cf904a4e6bb9dd0967c664d8de0e",
+      "size": 11412
+    },
+    "state/skills/mlops/models/segment-anything/SKILL.md": {
+      "sha256": "86440d99e8ec3bd7f0a92640d62bf307915ec2a7154e45dd55a214d58ee6966d",
+      "size": 13372
+    },
+    "state/skills/mlops/models/segment-anything/references/advanced-usage.md": {
+      "sha256": "73a46290ac6986333e5ef65b785afc7c9463d6835d8a67c5f74f418fa284fb39",
+      "size": 15803
+    },
+    "state/skills/mlops/models/segment-anything/references/troubleshooting.md": {
+      "sha256": "cbab544d97ddc3813b4f74c805086579e7bd51547ccf9830dd44fa5936b07b4e",
+      "size": 11914
+    },
+    "state/skills/mlops/research/DESCRIPTION.md": {
+      "sha256": "50a304dcfae9ec92061a0edc8ea4368865c7d1ab4182627ae4b7f24a14949e66",
+      "size": 113
+    },
+    "state/skills/mlops/research/dspy/SKILL.md": {
+      "sha256": "67410a6b216d79eb257eba1c5d0fa945080b98998ffc131e2cf873bee77e3dd0",
+      "size": 15220
+    },
+    "state/skills/mlops/research/dspy/references/examples.md": {
+      "sha256": "a617b7ed15a81fc460eb8e98d19565ce843828554b926265bc8571721258d2d0",
+      "size": 18983
+    },
+    "state/skills/mlops/research/dspy/references/modules.md": {
+      "sha256": "a2a1ba76f0b808c40d8d64be689954538ea00e1d53cd413e2a4951758b5aed6f",
+      "size": 12363
+    },
+    "state/skills/mlops/research/dspy/references/optimizers.md": {
+      "sha256": "ddf19b520df9741b7f3b5e5c9993a1c381d282608b4e3b2b9359a6a0b8595a78",
+      "size": 14933
+    },
+    "state/skills/mlops/training/DESCRIPTION.md": {
+      "sha256": "408baf22effe5752a503a0efa68751b28fbdb0bd1cbaa8ca8401c5966bffad4e",
+      "size": 150
+    },
+    "state/skills/mlops/vector-databases/DESCRIPTION.md": {
+      "sha256": "dd8ee2370b6b01394b2c86818a679a108a9b5466d2c531428226c16feb5cccf8",
+      "size": 125
     },
     "state/skills/note-taking/DESCRIPTION.md": {
       "sha256": "fb28a609372460b2788d3b7dbc551985d24d4042057971f4d6345144d2d78caa",
       "size": 146
     },
     "state/skills/note-taking/obsidian/SKILL.md": {
-      "sha256": "7aea4e8f89f94ab2876d79898d10a5d4cdab31390c53f72ad6934b071179f826",
-      "size": 3092
+      "sha256": "d2d080f82893dac86190e3885720e27acb6730cbea8bbb1dd7c25aaa53231127",
+      "size": 2919
     },
     "state/skills/productivity/DESCRIPTION.md": {
       "sha256": "b5a494a45bfd430bfb3042ee0452a6b88c81481f147ce7fca2c29ed3e93c490a",
       "size": 114
     },
     "state/skills/productivity/airtable/SKILL.md": {
-      "sha256": "28253f1e20c4d250725eb7f475c886952a4c6a1ef43ef6900c2dc0e75ebb40e6",
-      "size": 11314
-    },
-    "state/skills/productivity/box/SKILL.md": {
-      "sha256": "e9672412333de4feff348e6dc387d9022d32005247360347a10a7131fb87eb13",
-      "size": 11697
-    },
-    "state/skills/productivity/box/references/bulk-operations.md": {
-      "sha256": "873a14840a01048004ca0dfa9fd3eb6015a9b4d5d5ed00c4701ac9235280e331",
-      "size": 2025
-    },
-    "state/skills/productivity/box/references/cli-guide.md": {
-      "sha256": "a94496da79df7aceb8d92bf285069cd3b80034649da62ce23eb076e2da39ae7e",
-      "size": 7515
-    },
-    "state/skills/productivity/box/references/content-workflows.md": {
-      "sha256": "703bc320272cc93d93d67330ab1c082f88985b1e0095117099c4693683d042ad",
-      "size": 4767
-    },
-    "state/skills/productivity/box/references/hubs.md": {
-      "sha256": "61909fa5e550f6cd51c8d2c069a95e01f79f28c24a5780fe16e63e3b1eee890a",
-      "size": 6189
-    },
-    "state/skills/productivity/box/references/oauth-setup.md": {
-      "sha256": "6506cef6a6e44c5b5f8e483642595feb2ca2b93799ebd5e60ba9f08ddd8459a5",
-      "size": 6569
-    },
-    "state/skills/productivity/box/references/rest-api.md": {
-      "sha256": "3afe53c5bcfda288f3727de3ff1fa05773e24b7fdd964373280831218bb6b5d2",
-      "size": 2227
-    },
-    "state/skills/productivity/box/references/sdk-development.md": {
-      "sha256": "96886f989937399fa80d1841be2c99eb006f180bc1f8538c628f23a4c584cb8c",
-      "size": 5727
-    },
-    "state/skills/productivity/box/references/search-and-ai.md": {
-      "sha256": "6bfca0afc9cd35d5312261f0c5947b9387d5ec100473f4739cda9d432e040e1a",
-      "size": 10746
-    },
-    "state/skills/productivity/box/references/troubleshooting.md": {
-      "sha256": "a7c394e219a429ff3b04e76a1cbe5a97ce71ae6a2a7eed1eea7888d2eeb8b922",
-      "size": 2970
-    },
-    "state/skills/productivity/box/references/webhooks-and-events.md": {
-      "sha256": "5c1382adf41d8b3cecfd922f815ed85b10740d826924cf33def5250da934c6c5",
-      "size": 2276
-    },
-    "state/skills/productivity/document-to-action-items/SKILL.md": {
-      "sha256": "8a7556754aca2a7d04d38847131fb4db8d6705fa2106fcb154279e26117b41ee",
-      "size": 3910
-    },
-    "state/skills/productivity/docx/LICENSE": {
-      "sha256": "8aa3c7717d57a68490c31eef4b57b6887e892f0566ff866078ebd76113d357e2",
-      "size": 1070
-    },
-    "state/skills/productivity/docx/SKILL.md": {
-      "sha256": "9678b14d5e7841d588b969f6a4696cd46bcc46c3e4ac1479edc7656a051aa5ff",
-      "size": 10395
-    },
-    "state/skills/productivity/docx/references/revisions-and-comments.md": {
-      "sha256": "cd861f6e9ea77767b1a5e2ec3f48dd620b0664811d8f204c59c61571b408e9ba",
-      "size": 3997
-    },
-    "state/skills/productivity/docx/scripts/docx_comments.py": {
-      "sha256": "1ab18ff6d84532f64d0a640c079ad37bee2d0e8ee91db203c438e5a98a1a5871",
-      "size": 10640
-    },
-    "state/skills/productivity/docx/scripts/docx_common.py": {
-      "sha256": "2f25c7b13aa9f5f12d7ac14eabade638bf9b2dc6b8e54739f73fb42b68a27029",
-      "size": 3314
-    },
-    "state/skills/productivity/docx/scripts/docx_create.py": {
-      "sha256": "8391869c97ab804374dddadff4fbebc060120c0b973d06133f84487cc2c442d5",
-      "size": 6387
-    },
-    "state/skills/productivity/docx/scripts/docx_edit.py": {
-      "sha256": "00feef0a58a318406077020a017dd0b2673daaef93e0bda81fa9437b237180ff",
-      "size": 8619
-    },
-    "state/skills/productivity/docx/scripts/docx_read.py": {
-      "sha256": "4760617eea1b17d648f7a46f6718c22ec4a76a359e8f0ee9f6ffe921df9129de",
-      "size": 5405
-    },
-    "state/skills/productivity/docx/scripts/docx_revisions.py": {
-      "sha256": "d0eed5c718ebc8a0d7e9f8ae80fe22b19e922202ba57a936db28092f2031e15b",
-      "size": 4550
-    },
-    "state/skills/productivity/docx/scripts/docx_template.py": {
-      "sha256": "aed1b1db212b72995bd47a28e6c9928a4d02d7596615f1dadf12cd43a4f34219",
-      "size": 2482
-    },
-    "state/skills/productivity/docx/scripts/docx_validate.py": {
-      "sha256": "66c1d307e940803e1505002477ced7ac156524566f16d29913807443a8d8826c",
-      "size": 6153
-    },
-    "state/skills/productivity/docx/tests/test_docx_skill.py": {
-      "sha256": "fdd0735fdbfdadf51afd36c092edf579b4fa24239eec4c4b8b73de8c77f905ca",
-      "size": 21306
+      "sha256": "537d440df7f23c58a7c4721dadd29636bab368cddb1e322863b611288835295a",
+      "size": 11302
     },
     "state/skills/productivity/google-workspace/SKILL.md": {
-      "sha256": "4ab062fe5131d123a6c4f1297e58c7f75b8d517fd282b68547da7ebfabb2a0b9",
-      "size": 14241
-    },
-    "state/skills/productivity/google-workspace/references/daily-brief.md": {
-      "sha256": "d4b78bad4121fea470dfe1aa92b2fc0ae2368af6ffbdd0b29ef40c7c8f99067c",
-      "size": 3217
+      "sha256": "014a4818ee1b363d11fafa2353bcea4fd4f8e0c0802322708023d3cd2e3f43b6",
+      "size": 13411
     },
     "state/skills/productivity/google-workspace/references/gmail-search-syntax.md": {
       "sha256": "340b78000fba67b9c5373978185446eb549a474870decf8c439edb03b3883bc5",
       "size": 2150
     },
     "state/skills/productivity/google-workspace/scripts/_hermes_home.py": {
-      "sha256": "190126d124bf673dbb1f4d082013d6f64bd90907ac4ffe89b871ab6c01a1d1b6",
-      "size": 1594
+      "sha256": "a8861702cefda8684e1bec353044dafc0c52dbdd85cf02bc21454126b596baf5",
+      "size": 1630
     },
     "state/skills/productivity/google-workspace/scripts/google_api.py": {
-      "sha256": "7e21f8b277fce049ab833b90b2e3421a40db09e57c3fca39d102905330a30fc8",
-      "size": 47034
+      "sha256": "2b7c1ab9f1d8fa0bfd9291a267d6de52963756476c95874f1d5ece88522e8eea",
+      "size": 43428
     },
     "state/skills/productivity/google-workspace/scripts/gws_bridge.py": {
-      "sha256": "dcc1541980b60c1b32b65da91e14900d7757cc53b1e3dc1cf8bbf6df721f5d94",
-      "size": 4336
+      "sha256": "a27fd9195ca4d84e0fbe4048d78fc1711ea7ba4e23fb45c751f98eaf31629272",
+      "size": 3483
     },
     "state/skills/productivity/google-workspace/scripts/setup.py": {
-      "sha256": "a5ba2941cca7e90d452ec08fb5ab8f5ed4bc5b50111f94acb7f56c6452c33f67",
-      "size": 17414
+      "sha256": "1ef899cea46b49a31011e8adfca732e3671e1731e196e61a759cacf4d09f307b",
+      "size": 17617
+    },
+    "state/skills/productivity/linear/SKILL.md": {
+      "sha256": "e7b6fbb8b55f84903759a4b01462938453d5ccc92318bdbdd637f6704a8726ff",
+      "size": 14782
+    },
+    "state/skills/productivity/linear/scripts/linear_api.py": {
+      "sha256": "370d306621fee29317f56eba26714e420aff171a4039b9a398d590dbe0632c2f",
+      "size": 15603
     },
     "state/skills/productivity/maps/SKILL.md": {
-      "sha256": "775ef9f79be9cd147bc81e0c4a4ef952230a04736a6082f44dbac78554ef89ab",
-      "size": 6705
+      "sha256": "8c961ecf662838e3ff287570d343db8b1587ca7a6d565ec53eeab13f89407b29",
+      "size": 6726
     },
     "state/skills/productivity/maps/scripts/maps_client.py": {
-      "sha256": "94960e451d549766070c999f4979bd69ea956381b40c4d5b05bfa6c0501e7ffb",
-      "size": 46678
+      "sha256": "5f4a216bc2652d049150a897353d95f1f7fa59a803746cd76da7e70fcc9fa953",
+      "size": 46688
     },
-    "state/skills/productivity/meeting-action-items/SKILL.md": {
-      "sha256": "1902f782551da96ee1f9b34d6f13af627f06150a498d874b0cc2a75d06d35aa8",
-      "size": 3808
+    "state/skills/productivity/nano-pdf/SKILL.md": {
+      "sha256": "4243b329789c6d7fcea95749438228e5f8cbc0234cd44d2d72cd86f837bf1f35",
+      "size": 1414
     },
     "state/skills/productivity/notion/SKILL.md": {
-      "sha256": "e5aaf194f2688223890cb2eb6cf5ce866e6390082f1dff845c9e37a25fe0bfee",
-      "size": 14621
+      "sha256": "6a97fc137b0bed3e0ee97be6f60113845c489a4bfbc79a957135360ffdf44c1f",
+      "size": 14597
     },
     "state/skills/productivity/notion/references/block-types.md": {
       "sha256": "530379beca84804b53fe71834628f8d80ca14a6763dcbf53ff654a246fe67a78",
       "size": 3021
     },
-    "state/skills/productivity/pdf/LICENSE": {
-      "sha256": "8aa3c7717d57a68490c31eef4b57b6887e892f0566ff866078ebd76113d357e2",
-      "size": 1070
+    "state/skills/productivity/ocr-and-documents/DESCRIPTION.md": {
+      "sha256": "0da2ba89cf066f7e554dc00fcfa05b2d10c300ec693394a9136d27ce3fc2d1e2",
+      "size": 147
     },
-    "state/skills/productivity/pdf/SKILL.md": {
-      "sha256": "694a01937abcd560ebb76c001ce7ab6b5b51ce172b82f03e3036c3cdedbda59c",
-      "size": 13070
+    "state/skills/productivity/ocr-and-documents/SKILL.md": {
+      "sha256": "720a1f1a534167ef29b563199e76e3146b2d77b3455a772c6eae5696ef7a384a",
+      "size": 5280
     },
-    "state/skills/productivity/pdf/references/forms.md": {
-      "sha256": "471517e0b154fb765d04416f089b7e999103804b964a84675af49e2d53ee8da0",
-      "size": 3950
+    "state/skills/productivity/ocr-and-documents/scripts/extract_marker.py": {
+      "sha256": "927bc7597d36c6f86b3d4d7ba8a674c771246774d1dfe71d74f67d74d7ee3959",
+      "size": 3034
     },
-    "state/skills/productivity/pdf/references/nano-pdf-editing.md": {
-      "sha256": "2f0b15bd1ebbd45cf37ed257723ad63aa70b623b97f5242c886c14f8968cd773",
-      "size": 1342
+    "state/skills/productivity/ocr-and-documents/scripts/extract_pymupdf.py": {
+      "sha256": "256aed934e95dff4c07f395a821c76697bd1a7728ceeef2b9f9c54379ddb721d",
+      "size": 3132
     },
-    "state/skills/productivity/pdf/references/ocr-extraction.md": {
-      "sha256": "1bba1451fbaa50842890e7b75a1ad226dfe9791619cb4df3d705e2a38b606da6",
-      "size": 5615
-    },
-    "state/skills/productivity/pdf/scripts/_raster.py": {
-      "sha256": "29b3544d56ab6217f3e4e1ed50fb4415212f8fa5503100c3dce2addf82ecbff4",
-      "size": 2613
-    },
-    "state/skills/productivity/pdf/scripts/extract_marker.py": {
-      "sha256": "a115ee1da5b88f7ab61c480ef9efb2b371350bed8f1cface7668898ba80aae38",
-      "size": 3458
-    },
-    "state/skills/productivity/pdf/scripts/extract_pymupdf.py": {
-      "sha256": "784d233ee9849ce78cddc8253c87172c06a0b62c41aff7215fd97b77766babc8",
-      "size": 3671
-    },
-    "state/skills/productivity/pdf/scripts/pdf_create.py": {
-      "sha256": "2a7a7c06c608e82cc11684bb67ff9cdb3bf8cbe6df38c6f4b1096dd2686f993c",
-      "size": 4562
-    },
-    "state/skills/productivity/pdf/scripts/pdf_fill_form.py": {
-      "sha256": "d66d504d7f7fcb85c28881065c47dfbc6ac9b47294471531a7f013178c72a1ad",
-      "size": 3887
-    },
-    "state/skills/productivity/pdf/scripts/pdf_form_layout.py": {
-      "sha256": "f654e386a8b1e5a26a1530b16d36177310dd48c6cb589ec6cf3dc1898a8ccdf9",
-      "size": 7131
-    },
-    "state/skills/productivity/pdf/scripts/pdf_make_form.py": {
-      "sha256": "a194791f2d6504da9e629976620ac227a18a6ea14784d428c4cf4f57fafd6c3d",
-      "size": 5988
-    },
-    "state/skills/productivity/pdf/scripts/pdf_merge.py": {
-      "sha256": "c1cf231f73b02790069227a4f711475b4b329c91e30e77826f24c05935674248",
-      "size": 1686
-    },
-    "state/skills/productivity/pdf/scripts/pdf_meta.py": {
-      "sha256": "989c2564bb31d8b20abd53a4d7f86a603c930bd868e0201ad4cdec92d5487460",
-      "size": 4458
-    },
-    "state/skills/productivity/pdf/scripts/pdf_page_image.py": {
-      "sha256": "40ad843fd50bd6bd91af1fd53de1cff1faf885921294afd304d0abf0fe93e4e2",
-      "size": 3589
-    },
-    "state/skills/productivity/pdf/scripts/pdf_read.py": {
-      "sha256": "7d623cbbb6319f9f161dd769972250b08c426c291ed0af1a8304bec20437bfb2",
-      "size": 5895
-    },
-    "state/skills/productivity/pdf/scripts/pdf_secure.py": {
-      "sha256": "65d0ba6733cb945e6147e4b46e0b6db0816096440b0f4fe24cc953307805e01b",
-      "size": 2679
-    },
-    "state/skills/productivity/pdf/scripts/pdf_split.py": {
-      "sha256": "1e3d8f8e9aa8aa5445f8587e402e3bab65c785eb5b4aea120bc5b6216cb57cba",
-      "size": 3045
-    },
-    "state/skills/productivity/pdf/scripts/pdf_stamp.py": {
-      "sha256": "e3bf6e29634be35ff99fee8a21a3e5f4f610298cb158942496d0949f0a941390",
-      "size": 5779
-    },
-    "state/skills/productivity/pdf/scripts/pdf_watermark.py": {
-      "sha256": "d903977ee37194ad18bba205d2d96eefbbe6670519bcd8ae285f619645005ae2",
-      "size": 1852
-    },
-    "state/skills/productivity/pdf/tests/test_pdf_skill.py": {
-      "sha256": "3715252149b888c87b5d17d1cc683a52f0951da782dbfa56147a3a99f762efb8",
-      "size": 17440
-    },
-    "state/skills/productivity/powerpoint/LICENSE": {
-      "sha256": "8aa3c7717d57a68490c31eef4b57b6887e892f0566ff866078ebd76113d357e2",
-      "size": 1070
+    "state/skills/productivity/powerpoint/LICENSE.txt": {
+      "sha256": "79f6d8f5b427252fa3b1c11ecdbdb6bf610b944f7530b4de78f770f38741cfaa",
+      "size": 1467
     },
     "state/skills/productivity/powerpoint/SKILL.md": {
-      "sha256": "b71d29d9809c4464d7f8d10afabf4f22f6a26c647cf7aacb6f9faf196ebe82f2",
-      "size": 10781
+      "sha256": "bb2084f5da312eec50f8ab3b1cb0f6ad3a86f4933f521b273fdc4dd1d4f52ada",
+      "size": 9298
     },
-    "state/skills/productivity/powerpoint/scripts/pptx_create.py": {
-      "sha256": "90e60c1fad8c5e7c209acf6ecdebee43c26609bbcf9a7dc063207ad8a3091485",
-      "size": 8579
+    "state/skills/productivity/powerpoint/editing.md": {
+      "sha256": "6cb47c3ab17e60b7de37e83131c409ef5a90a01bfb54e999905a9c9f7dd88e68",
+      "size": 6885
     },
-    "state/skills/productivity/powerpoint/scripts/pptx_edit.py": {
-      "sha256": "edba76ade302c9889ffbe78b1ff8512f7b898b7871b60c24a6affa57c5ec403a",
-      "size": 17225
+    "state/skills/productivity/powerpoint/pptxgenjs.md": {
+      "sha256": "9539534d92b7170813b735a448750df3580390da2da6c52a02b687ed53ecba86",
+      "size": 12819
     },
-    "state/skills/productivity/powerpoint/scripts/pptx_from_template.py": {
-      "sha256": "6a69864240710e813164416f9447e3118534ae307d1b39a3a35e718ad4710774",
-      "size": 3433
+    "state/skills/productivity/powerpoint/scripts/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
     },
-    "state/skills/productivity/powerpoint/scripts/pptx_read.py": {
-      "sha256": "b2a6e246e40a6728e5e0e8bf2c4cbe4f788ab8c40bdb1b89e339571a34fdbc71",
-      "size": 4761
+    "state/skills/productivity/powerpoint/scripts/add_slide.py": {
+      "sha256": "04233ba3932c6b8611677347891616456e243cc09b7f9769408b8c83d9acfe64",
+      "size": 6872
     },
-    "state/skills/productivity/powerpoint/scripts/pptx_render.py": {
-      "sha256": "c50e972b35ad1586e2a73d80c31d8744dda0a60c9d25e888fe04c349ecc1e7af",
-      "size": 3562
+    "state/skills/productivity/powerpoint/scripts/clean.py": {
+      "sha256": "3e3966a17f488a1ddc7145f0b7ec9f25595afa1f3a427ab05e610f1a328feea9",
+      "size": 9583
     },
-    "state/skills/productivity/powerpoint/tests/test_powerpoint_skill.py": {
-      "sha256": "a65edcd5f29afb6096e6f8e6aec4f8cc15a3ec35509190a57d26edafd018339d",
-      "size": 19553
+    "state/skills/productivity/powerpoint/scripts/office/helpers/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
     },
-    "state/skills/productivity/product-price-monitor/SKILL.md": {
-      "sha256": "b87bf2102fed13d2c7c64759fa153f24f5e43a0afcf6f8ec5e13def92a6642ef",
-      "size": 4400
+    "state/skills/productivity/powerpoint/scripts/office/helpers/merge_runs.py": {
+      "sha256": "7c40ed838b88639c51f9ffdcfd564b568f26832b78fe44008c0e01b742669ca7",
+      "size": 5567
+    },
+    "state/skills/productivity/powerpoint/scripts/office/helpers/simplify_redlines.py": {
+      "sha256": "560cb55978a834c505406eb18e2c61f62f998fc7a2d8e9721b9c563b42597896",
+      "size": 5754
+    },
+    "state/skills/productivity/powerpoint/scripts/office/pack.py": {
+      "sha256": "b1800987e568261a31f462df8e1303d386e9e6ccc11a75ef46e60cc528c20683",
+      "size": 4991
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/ISO-IEC29500-4_2016/dml-chart.xsd": {
+      "sha256": "41b93bd8857cc68b1e43be2806a872d736a9bdd6566900062d8fdb57d7bbb354",
+      "size": 74984
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/ISO-IEC29500-4_2016/dml-chartDrawing.xsd": {
+      "sha256": "3fd0586f2637b98bb9886f0e0b67d89e1cc987c2d158cc7deb5f5b9890ced412",
+      "size": 6956
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/ISO-IEC29500-4_2016/dml-diagram.xsd": {
+      "sha256": "29b254ee0d10414a8504b5a08149c7baec35a60d5ff607d6b3f492aa36815f40",
+      "size": 51302
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/ISO-IEC29500-4_2016/dml-lockedCanvas.xsd": {
+      "sha256": "5cb76dabd8b97d1e9308a1700b90c20139be4d50792d21a7f09789f5cccd6026",
+      "size": 624
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/ISO-IEC29500-4_2016/dml-main.xsd": {
+      "sha256": "5375417f0f5394b8dd1a7035b9679151f19a6b65df309dec10cfb4a420cb00e9",
+      "size": 152039
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/ISO-IEC29500-4_2016/dml-picture.xsd": {
+      "sha256": "5d389d42befbebd91945d620242347caecd3367f9a3a7cf8d97949507ae1f53c",
+      "size": 1231
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/ISO-IEC29500-4_2016/dml-spreadsheetDrawing.xsd": {
+      "sha256": "b4532b6d258832953fbb3ee4c711f4fe25d3faf46a10644b2505f17010d01e88",
+      "size": 8862
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/ISO-IEC29500-4_2016/dml-wordprocessingDrawing.xsd": {
+      "sha256": "bdad416b096b61d37b71603b2c949484f9070c830bdaeba93bf35e15c8900614",
+      "size": 14795
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/ISO-IEC29500-4_2016/pml.xsd": {
+      "sha256": "d173c3e5d61e42e2e3a97226c632fd2ab7cc481fc4e492365b87024ab546daff",
+      "size": 83612
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/ISO-IEC29500-4_2016/shared-additionalCharacteristics.xsd": {
+      "sha256": "3c6709101c6aaa82888df5d8795c33f9e857196790eb320d9194e64be2b6bdd8",
+      "size": 1269
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/ISO-IEC29500-4_2016/shared-bibliography.xsd": {
+      "sha256": "0b364451dc36a48dd6dae0f3b6ada05fd9b71e5208211f8ee5537d7e51a587e2",
+      "size": 7328
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/ISO-IEC29500-4_2016/shared-commonSimpleTypes.xsd": {
+      "sha256": "e2abacbb9a55ce1365f8961bc1b1395bbc811e512b111000d8c333f98458dece",
+      "size": 6382
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/ISO-IEC29500-4_2016/shared-customXmlDataProperties.xsd": {
+      "sha256": "0ef4bb354ff44b923564c4ddbdda5987919d220225129ec94614a618ceafc281",
+      "size": 1248
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/ISO-IEC29500-4_2016/shared-customXmlSchemaProperties.xsd": {
+      "sha256": "0d103b99a4a8652f8871552a69d42d2a3760ac6a5e3ef02d979c4273257ff6a4",
+      "size": 880
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesCustom.xsd": {
+      "sha256": "9c085407751b9061c1f996f6c39ce58451be22a8d334f09175f0e89e42736285",
+      "size": 2608
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesExtended.xsd": {
+      "sha256": "bc92e36ccd233722d4c5869bec71ddc7b12e2df56059942cce5a39065cc9c368",
+      "size": 3507
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesVariantTypes.xsd": {
+      "sha256": "7b5b7413e2c895b1e148e82e292a117d53c7ec65b0696c992edca57b61b4a74b",
+      "size": 7507
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/ISO-IEC29500-4_2016/shared-math.xsd": {
+      "sha256": "3213ef1631606250f5010b42cad7ef716f7c59426367798e33c374c0ec391d3a",
+      "size": 23313
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/ISO-IEC29500-4_2016/shared-relationshipReference.xsd": {
+      "sha256": "12264f3c03d738311cd9237d212f1c07479e70f0cbe1ae725d29b36539aef637",
+      "size": 1367
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/ISO-IEC29500-4_2016/sml.xsd": {
+      "sha256": "beffeed56945c22a77440122c8bdc426f3fcbe7f3b12ea0976c770d1f8d54578",
+      "size": 242277
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/ISO-IEC29500-4_2016/vml-main.xsd": {
+      "sha256": "f5ee623b08b6a66935e5aced2f5d8ad0fc71bf9e8e833cd490150c0fa94b8763",
+      "size": 26148
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/ISO-IEC29500-4_2016/vml-officeDrawing.xsd": {
+      "sha256": "585bedc1313b40888dcc544cb74cd939a105ee674f3b1d3aa1cc6d34f70ff155",
+      "size": 25279
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/ISO-IEC29500-4_2016/vml-presentationDrawing.xsd": {
+      "sha256": "133c9f64a5c5d573b78d0a474122b22506d8eadb5e063f67cdbbb8fa2f161d0e",
+      "size": 535
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/ISO-IEC29500-4_2016/vml-spreadsheetDrawing.xsd": {
+      "sha256": "6bdeb169c3717eb01108853bd9fc5a3750fb1fa5b82abbdd854d49855a40f519",
+      "size": 5712
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/ISO-IEC29500-4_2016/vml-wordprocessingDrawing.xsd": {
+      "sha256": "475dcae1e7d1ea46232db6f8481040c15e53a52a3c256831d3df204212b0e831",
+      "size": 4010
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/ISO-IEC29500-4_2016/wml.xsd": {
+      "sha256": "c2dd9f61f892deae6acd8d20771ea79b12018af25f3bf8d06639c8542d218cfd",
+      "size": 171367
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/ISO-IEC29500-4_2016/xml.xsd": {
+      "sha256": "a539aa2fb154fa50e0f5cc97e6ad7cbc66f8ec3e3746f61ec6a8b0d5d15ecdf2",
+      "size": 4646
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/ecma/fourth-edition/opc-contentTypes.xsd": {
+      "sha256": "9e0b7209fc69ab11987900404540969976000c5ebe4d4f58c43dc3842886bf3a",
+      "size": 1963
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/ecma/fourth-edition/opc-coreProperties.xsd": {
+      "sha256": "451958454e8588dfc7cd945981ada142ca06ff3307937f5700df059c2b307fa8",
+      "size": 2515
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/ecma/fourth-edition/opc-digSig.xsd": {
+      "sha256": "6de111e11403f7cd49027400755bae0ea1cabef2815f09bd40a24f0017613b24",
+      "size": 2856
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/ecma/fourth-edition/opc-relationships.xsd": {
+      "sha256": "f565adfef5a502044abc3a9153e157edc25af78304d335994afb958874b15e26",
+      "size": 1344
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/mce/mc.xsd": {
+      "sha256": "3a37e461ecf5a8670fdec34029703401f8728ab9c96ec1739a6ae58d55212413",
+      "size": 3127
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/microsoft/wml-2010.xsd": {
+      "sha256": "568b26ee156cb9549aa439ca2158965f77b7c1602b7e0316f40ac6cf586e35f2",
+      "size": 26549
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/microsoft/wml-2012.xsd": {
+      "sha256": "0fa75578a000439a7988ba0c59fdc69f774bbd416cbacc14d07125b3f686cb74",
+      "size": 3745
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/microsoft/wml-2018.xsd": {
+      "sha256": "be0ff793a22dd31384650c3a4da14c2fa8062751c2e97b0e5ee852bda13c60ad",
+      "size": 901
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/microsoft/wml-cex-2018.xsd": {
+      "sha256": "fddc2b880cabb9005aebbc7e783e53c19fec1c03df7d0e2f2076a33a0fdfd081",
+      "size": 1778
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/microsoft/wml-cid-2016.xsd": {
+      "sha256": "127ca209fa73d7cb708449cb355c871867948a96e4a74f7bf5811ef62d17991d",
+      "size": 1002
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/microsoft/wml-sdtdatahash-2020.xsd": {
+      "sha256": "842e7163409c8d74f4d7088a8bc99500d80bc75332681a0980055b08f374a604",
+      "size": 600
+    },
+    "state/skills/productivity/powerpoint/scripts/office/schemas/microsoft/wml-symex-2015.xsd": {
+      "sha256": "16f6f8072249f431370723c2cd8974672e0d9c897e00e97dd918079df934871b",
+      "size": 745
     },
     "state/skills/productivity/teams-meeting-pipeline/SKILL.md": {
-      "sha256": "ae1b08f044d7dfd9abb01c643cac3b69e4a3a1cbe7fd5782dd17785964cdc441",
-      "size": 7206
+      "sha256": "472e8772146f571fadbe3ea27ff71f0be4b0946f8263a7e5419cfee818168591",
+      "size": 6867
     },
-    "state/skills/productivity/weekly-review-planning/SKILL.md": {
-      "sha256": "a689257facb937cfca9bc5507dd9e729f287f0cd3f6abbf73448eb25f73fbaab",
-      "size": 3975
+    "state/skills/red-teaming/godmode/SKILL.md": {
+      "sha256": "5ab1757d1b638258c5189e39c9405ac31c9733c738c54d57af1480b2bb4f6f98",
+      "size": 20059
     },
-    "state/skills/productivity/xlsx/LICENSE": {
-      "sha256": "8aa3c7717d57a68490c31eef4b57b6887e892f0566ff866078ebd76113d357e2",
-      "size": 1070
+    "state/skills/red-teaming/godmode/references/jailbreak-templates.md": {
+      "sha256": "4978c900ebd6058e2bcc6f6beea53d1a4517009869124bab5a10fec47a4421af",
+      "size": 7395
     },
-    "state/skills/productivity/xlsx/SKILL.md": {
-      "sha256": "b302d7ac997843a757ab3c11513ea012889ebdae32f842edb44faa9a4485f19b",
-      "size": 9655
+    "state/skills/red-teaming/godmode/references/refusal-detection.md": {
+      "sha256": "1347f7cbfe9eac573a8be279495aecb89dc3a9db3729f402bf552d39d261bdc3",
+      "size": 6245
     },
-    "state/skills/productivity/xlsx/references/restructuring.md": {
-      "sha256": "cef18a6ce1835c0c95c447db57491ec9b84a75d6137e0002499eb626abc77626",
-      "size": 3688
+    "state/skills/red-teaming/godmode/scripts/auto_jailbreak.py": {
+      "sha256": "ca75900004418d347a2099e9d82861d0ec1c137b8ebc797dbf01ca7cb446759f",
+      "size": 33459
     },
-    "state/skills/productivity/xlsx/scripts/csv_to_xlsx.py": {
-      "sha256": "4fb97f8e656d50c02d3c890c53b7864d5066a282b2568e552e168bd297c27c91",
-      "size": 3430
+    "state/skills/red-teaming/godmode/scripts/godmode_race.py": {
+      "sha256": "4045b7207ecf05070e8b118fb92f2ea71078f1a0799d631046d5e1fb51f0aa2d",
+      "size": 25937
     },
-    "state/skills/productivity/xlsx/scripts/xlsx_create.py": {
-      "sha256": "f6be8af8dfe1ad70c3456cf3063276e74d9453b7f1d2b65e08b0dad5bfeed417",
-      "size": 9842
+    "state/skills/red-teaming/godmode/scripts/load_godmode.py": {
+      "sha256": "864a7209d75efebf55e9e7737661ce81cdd708ca4c7cb8b9a610f3d63e65a0cf",
+      "size": 1576
     },
-    "state/skills/productivity/xlsx/scripts/xlsx_edit.py": {
-      "sha256": "f689b1c3ae284656a95b149cef95c0599b2774cb639c0103926bf25fa4c4a9cc",
-      "size": 10812
+    "state/skills/red-teaming/godmode/scripts/parseltongue.py": {
+      "sha256": "f76c6c1aefc21e359943d81e6c813cb7d8f27fc6c23600e6e9f6e63ab7d2b12d",
+      "size": 23149
     },
-    "state/skills/productivity/xlsx/scripts/xlsx_read.py": {
-      "sha256": "5ab31b1b417efea11a8af7b15c6aa5f26d6d966effefaa19af604c1fa0ca0916",
-      "size": 5790
+    "state/skills/red-teaming/godmode/templates/prefill-subtle.json": {
+      "sha256": "1ae0ea27dff040a8da6b5e1a0557d3ee8f6355b5f5ce5e4dacfd533e4259669f",
+      "size": 654
     },
-    "state/skills/productivity/xlsx/scripts/xlsx_recalc.py": {
-      "sha256": "33b4143ce9dcf73e7f98c2a62030c6449fe7263d87254f916050d552b32bd496",
-      "size": 4170
-    },
-    "state/skills/productivity/xlsx/scripts/xlsx_restructure.py": {
-      "sha256": "c8b01fdc706c1e0815549f7b28199602c8988df01aa9f5cd848115333875f8ae",
-      "size": 13723
-    },
-    "state/skills/productivity/xlsx/scripts/xlsx_to_csv.py": {
-      "sha256": "a141b37a01bad031970177fc48aa501524067cd882b58c9a4cf4e543e52fc896",
-      "size": 2351
-    },
-    "state/skills/productivity/xlsx/tests/test_xlsx_skill.py": {
-      "sha256": "ee8d662af6a2bec9387a3be12749a61a1bbd6f0a84ee3632e992bb611597d1f4",
-      "size": 21986
-    },
-    "state/skills/python-telegram-bots/SKILL.md": {
-      "sha256": "7640f2ed0d62dd7e91b37c0c2473536ccc557053e03eba58d51726232199189f",
-      "size": 10814
-    },
-    "state/skills/python-telegram-bots/references/offline-selftest.md": {
-      "sha256": "8b85e23601b143872d6928f990712e672c1240ceacd9d258e101c9876730f4f7",
-      "size": 5584
-    },
-    "state/skills/python-telegram-bots/references/platform-reseller-model.md": {
-      "sha256": "e2987ab1aedd65aed64c61577859154b561c52beaa8b153893ce2446332309a3",
-      "size": 6282
+    "state/skills/red-teaming/godmode/templates/prefill.json": {
+      "sha256": "834a066c5fcf3d82db2e919d6f28d4be1a880c27df139e6cefeca5565524f2ab",
+      "size": 907
     },
     "state/skills/research/DESCRIPTION.md": {
       "sha256": "a7bc842330a491de5f73cd63e87521e53724d94d4f53949bfa2171beb8200e18",
       "size": 179
     },
     "state/skills/research/arxiv/SKILL.md": {
-      "sha256": "9b41877bcb64166dc2355a43aedd3198c3e5214af67f09e1d1b717a989d92f72",
-      "size": 10061
+      "sha256": "2a6073a1ad08823dbdf26be64440b54155298db38fdee52c7b0a5d1cd0cfb05d",
+      "size": 10085
     },
     "state/skills/research/arxiv/scripts/search_arxiv.py": {
-      "sha256": "68f0bcc09ef1f59ecd9be8a7693e47239fd99b19d62cecb80a92b8c476cca371",
+      "sha256": "58e1ec809be26ed6cdb0dfe96af2c69e17a4896942e743d8949b0c0b4e911d71",
       "size": 4272
     },
-    "state/skills/research/competitor-news-monitor/SKILL.md": {
-      "sha256": "d8fd2a3a26ff45455709595132a092825a48f6c9dd3bcc98b06c1a43eaa7fcca",
-      "size": 4619
-    },
-    "state/skills/research/grounded-citations/SKILL.md": {
-      "sha256": "19fba3a4ceedf768af6851e094b268a66b62af750d4d0689c5d62d5d50c032b6",
-      "size": 12652
-    },
-    "state/skills/research/grounded-citations/references/citation-formats.md": {
-      "sha256": "209312a46dd9516e44e78f617589f789e07d54660e347b6b3882e8ac60097d04",
-      "size": 2418
-    },
-    "state/skills/research/grounded-citations/references/grounding-rationale.md": {
-      "sha256": "2835754857ea05a1c801e88a50d4c2b4cc6ebd52cc4cc1f5741dba05f5af73c1",
-      "size": 3127
-    },
-    "state/skills/research/grounded-citations/scripts/_hermes_home.py": {
-      "sha256": "e2fba7b30ee22afdb21e8411b6a18431da6efc9ec3ef55e2223481bf906f4376",
-      "size": 817
-    },
-    "state/skills/research/grounded-citations/scripts/sources.py": {
-      "sha256": "0c216e29e092faedcaa1ebae129db15dfc100465169490704b3628446db96788",
-      "size": 25790
+    "state/skills/research/blogwatcher/SKILL.md": {
+      "sha256": "b85be5a9b86b90287266dd142a0ae9740be926298fbcb772f56b8a4d6451bb12",
+      "size": 5111
     },
     "state/skills/research/llm-wiki/SKILL.md": {
-      "sha256": "0229e37c1783fcac5b77cfb3242703666cf4aa472d2ae85b6bd5279756b515b6",
-      "size": 20121
+      "sha256": "eb13a2b8c654eeee8bae2d218a8131f53f199065f61c4ac29c18b8b79eb85869",
+      "size": 20113
+    },
+    "state/skills/research/polymarket/SKILL.md": {
+      "sha256": "becfa71e730b482c3f087c4de4071fd25f0feb475aec1293aee0b845c10fa190",
+      "size": 2985
+    },
+    "state/skills/research/polymarket/references/api-endpoints.md": {
+      "sha256": "d000b3c89c51fee874d5e097f9b9f057c353734710b567915b4189e54ca176a3",
+      "size": 4542
+    },
+    "state/skills/research/polymarket/scripts/polymarket.py": {
+      "sha256": "433e1a7084cd5795b8108453275a4250bf0bf2b957ee8372cc8520fcbaa7cee7",
+      "size": 10214
+    },
+    "state/skills/research/research-paper-writing/SKILL.md": {
+      "sha256": "5bc92cec8357a19d71b1c10c5590ab605e846e4ddd914512511f8281a6053186",
+      "size": 103375
+    },
+    "state/skills/research/research-paper-writing/references/autoreason-methodology.md": {
+      "sha256": "d3a68438f903c0ba78228ead3e2409cf17932da3390575a51aa2b9050f80a356",
+      "size": 19146
+    },
+    "state/skills/research/research-paper-writing/references/checklists.md": {
+      "sha256": "f0be3d5259a7527f7b03788eacf0f3739c319f61bdd0de708ca5f5d0b9dfd62f",
+      "size": 13622
+    },
+    "state/skills/research/research-paper-writing/references/citation-workflow.md": {
+      "sha256": "febafc1818a5bfe8ff051d068401233f3a14c2b03c6a14c2e772871de272853a",
+      "size": 15433
+    },
+    "state/skills/research/research-paper-writing/references/experiment-patterns.md": {
+      "sha256": "1904faa8ac220fb042706aebe751b685795e9aa144d4b87712687ad13b28a192",
+      "size": 25742
+    },
+    "state/skills/research/research-paper-writing/references/human-evaluation.md": {
+      "sha256": "073275dbe8547cd55e9513ea60b2b51d27f168d9b253485b9c7a63118b8df48a",
+      "size": 18221
+    },
+    "state/skills/research/research-paper-writing/references/paper-types.md": {
+      "sha256": "970956d940b7d64182c90f3efff52b641e779cfdaab9ae1f821c0d08bfee5488",
+      "size": 16214
+    },
+    "state/skills/research/research-paper-writing/references/reviewer-guidelines.md": {
+      "sha256": "c1786ab39e3d60bb745a3f5493d11a71dce0fbd1cd4a4327d95f47f5a9bdaf81",
+      "size": 13738
+    },
+    "state/skills/research/research-paper-writing/references/sources.md": {
+      "sha256": "665ebbff77ed914ece70cc8f2fc8be717d394add1ddd6a9aa308547acfded6ea",
+      "size": 9460
+    },
+    "state/skills/research/research-paper-writing/references/writing-guide.md": {
+      "sha256": "5cc19317073471d8ece264764f8b7b700772d59dd1faec99027583d12e11757f",
+      "size": 16292
+    },
+    "state/skills/research/research-paper-writing/templates/README.md": {
+      "sha256": "e65dc1a22cb150da124dbd4dfb08ec3a4b68978436918a880e8581d6f74e39e5",
+      "size": 6707
+    },
+    "state/skills/research/research-paper-writing/templates/aaai2026/README.md": {
+      "sha256": "ee2c61a8b06e1471c0df7c774074d2ff1be824e6377a9e38f6adca5c68ddbb60",
+      "size": 17987
+    },
+    "state/skills/research/research-paper-writing/templates/aaai2026/aaai2026-unified-supp.tex": {
+      "sha256": "35adcff419efc25a032140c520d40520d0d0fc69123e9d8e38ad161c40ad07b7",
+      "size": 4548
+    },
+    "state/skills/research/research-paper-writing/templates/aaai2026/aaai2026-unified-template.tex": {
+      "sha256": "bed12c50b5e027fd88097d238ec4e7ebf1ae7b450cb06d6df7c8ae126a620aea",
+      "size": 63140
+    },
+    "state/skills/research/research-paper-writing/templates/aaai2026/aaai2026.bib": {
+      "sha256": "d8fcf3dc09b9d489aeff13631174c5998a48cb0d0800ac8a00a2f7bdbc40295b",
+      "size": 4766
+    },
+    "state/skills/research/research-paper-writing/templates/aaai2026/aaai2026.bst": {
+      "sha256": "ac26e2c66047435c0ed25f21ae36ad42d731cf3d794c4a8b5f05a62141a27294",
+      "size": 30207
+    },
+    "state/skills/research/research-paper-writing/templates/aaai2026/aaai2026.sty": {
+      "sha256": "a39f1866a04dd1e2603613c876fa446aaea2c2f3e34d02be868fd21520bfade5",
+      "size": 11802
+    },
+    "state/skills/research/research-paper-writing/templates/acl/README.md": {
+      "sha256": "e55608f9bc0b564f58d864d43197547785ef021c3ec1c5f0a6d2057aa615681e",
+      "size": 2126
+    },
+    "state/skills/research/research-paper-writing/templates/acl/acl.sty": {
+      "sha256": "19dfeddc2c0e448f3926a0bef048a9db3f3611b46265b760caabd7ada4f361de",
+      "size": 11615
+    },
+    "state/skills/research/research-paper-writing/templates/acl/acl_latex.tex": {
+      "sha256": "339c9ee9705c1767d44ef24b85365c0bb8619ecc3fcf66172bf1356292389614",
+      "size": 14533
+    },
+    "state/skills/research/research-paper-writing/templates/acl/acl_lualatex.tex": {
+      "sha256": "0d9987ba833331a996f9abcd1a03eebba7d7ae331145793e7ddb6b5ae8db27b3",
+      "size": 3050
+    },
+    "state/skills/research/research-paper-writing/templates/acl/acl_natbib.bst": {
+      "sha256": "e332fd51dcea48e2a8a89754892c3cb99674a1cd70b527b661e9aaffc235e83c",
+      "size": 45186
+    },
+    "state/skills/research/research-paper-writing/templates/acl/anthology.bib.txt": {
+      "sha256": "2b78d2d9aeda62e14c4e46099e8225b5fc116387d8e0a54aad776485e249ceff",
+      "size": 1169
+    },
+    "state/skills/research/research-paper-writing/templates/acl/custom.bib": {
+      "sha256": "d76ccb30ddceb70c9e1ad0be3f43dfe301ad5765aab2c960fc830ef67bf8232a",
+      "size": 2071
+    },
+    "state/skills/research/research-paper-writing/templates/acl/formatting.md": {
+      "sha256": "9e004a136c5dd43300d97e5bef5eb3a77d0e2a2d3502f0f2436ec011d1c49e9c",
+      "size": 17923
+    },
+    "state/skills/research/research-paper-writing/templates/colm2025/README.md": {
+      "sha256": "7c2c585d565482357dffdf499b567929e07a9f09619608c19ce9eb2984697ea1",
+      "size": 51
+    },
+    "state/skills/research/research-paper-writing/templates/colm2025/colm2025_conference.bib": {
+      "sha256": "c5fabf46cc7d7a6e527b82860b9a9d658eb07f63abaafa9b7beb631d8abb91bd",
+      "size": 496
+    },
+    "state/skills/research/research-paper-writing/templates/colm2025/colm2025_conference.bst": {
+      "sha256": "2d67552db7ed38ccfccb5957b52f95656e25c249724761d3cf5f7922ad1844c5",
+      "size": 26973
+    },
+    "state/skills/research/research-paper-writing/templates/colm2025/colm2025_conference.pdf": {
+      "sha256": "d8b3d74bc81aec9ba9d6b739b4922adc93ae002d7c82522b9c6064014bec1d16",
+      "size": 122635
+    },
+    "state/skills/research/research-paper-writing/templates/colm2025/colm2025_conference.sty": {
+      "sha256": "79df8b2a1b142dfb324a0a7e87fabcd9d5dc2a34700e1c6c083a9bbb9e5daa8e",
+      "size": 7727
+    },
+    "state/skills/research/research-paper-writing/templates/colm2025/colm2025_conference.tex": {
+      "sha256": "baf01cd056ccd1b35165d190019414946217de1683f8ae3ddc66b11e3c653dbc",
+      "size": 12830
+    },
+    "state/skills/research/research-paper-writing/templates/colm2025/fancyhdr.sty": {
+      "sha256": "b56ec4434b9f4607529a4b23dc68ad8d4b94f1f631c8cddaf7da78140d53a5ea",
+      "size": 20521
+    },
+    "state/skills/research/research-paper-writing/templates/colm2025/math_commands.tex": {
+      "sha256": "90473c4d0542070db244cea73ef962d6cddc5b2a746757e6a40ddf5fdfb90ba9",
+      "size": 12284
+    },
+    "state/skills/research/research-paper-writing/templates/colm2025/natbib.sty": {
+      "sha256": "88bc70c0e48461934cab5b2accef06b74a8b3ac45ad03ccd3f2a6b7e0d6d530d",
+      "size": 45154
+    },
+    "state/skills/research/research-paper-writing/templates/iclr2026/fancyhdr.sty": {
+      "sha256": "b56ec4434b9f4607529a4b23dc68ad8d4b94f1f631c8cddaf7da78140d53a5ea",
+      "size": 20521
+    },
+    "state/skills/research/research-paper-writing/templates/iclr2026/iclr2026_conference.bib": {
+      "sha256": "cdd86e7d4c31854dcf2145871657c944588a6d44c3b72e160ff4baa8df1a52fb",
+      "size": 629
+    },
+    "state/skills/research/research-paper-writing/templates/iclr2026/iclr2026_conference.bst": {
+      "sha256": "2d67552db7ed38ccfccb5957b52f95656e25c249724761d3cf5f7922ad1844c5",
+      "size": 26973
+    },
+    "state/skills/research/research-paper-writing/templates/iclr2026/iclr2026_conference.pdf": {
+      "sha256": "cb3d414cfa4702d52de94de1c8123c34b2cf46b7a5510df49dcc1014a6c266cf",
+      "size": 200508
+    },
+    "state/skills/research/research-paper-writing/templates/iclr2026/iclr2026_conference.sty": {
+      "sha256": "a4852f68e080d6c5245057ca2039100b409e31727898aa93c03d78ddb84374a3",
+      "size": 9025
+    },
+    "state/skills/research/research-paper-writing/templates/iclr2026/iclr2026_conference.tex": {
+      "sha256": "941b58de6e52f5538de0ebfe2d20425a79e1768cb271d453b7436904b5159859",
+      "size": 16899
+    },
+    "state/skills/research/research-paper-writing/templates/iclr2026/math_commands.tex": {
+      "sha256": "90473c4d0542070db244cea73ef962d6cddc5b2a746757e6a40ddf5fdfb90ba9",
+      "size": 12284
+    },
+    "state/skills/research/research-paper-writing/templates/iclr2026/natbib.sty": {
+      "sha256": "88bc70c0e48461934cab5b2accef06b74a8b3ac45ad03ccd3f2a6b7e0d6d530d",
+      "size": 45154
+    },
+    "state/skills/research/research-paper-writing/templates/icml2026/algorithm.sty": {
+      "sha256": "93fd0eb31c112eb405833db8f1d7f5d238c7e691b1c05680d7276e68f36d564a",
+      "size": 2223
+    },
+    "state/skills/research/research-paper-writing/templates/icml2026/algorithmic.sty": {
+      "sha256": "48d18794a5d97c0479a588cc2eac0917992feb9da83acc4631b8f55757d80f9b",
+      "size": 7414
+    },
+    "state/skills/research/research-paper-writing/templates/icml2026/example_paper.bib": {
+      "sha256": "df950103d38f9cfc81b1f40d84c9be2a3525d046d2991a6973a4446922c06bd1",
+      "size": 2051
+    },
+    "state/skills/research/research-paper-writing/templates/icml2026/example_paper.pdf": {
+      "sha256": "3e8fe0e952de8702ca4697dba09ca52e83bd649767b92a8340d34a591caa4d1b",
+      "size": 193509
+    },
+    "state/skills/research/research-paper-writing/templates/icml2026/example_paper.tex": {
+      "sha256": "c2ca8140bf255d1ff77d1278eb3eefed4018b4b1e71065b8e1ccbc68b74c8acf",
+      "size": 29714
+    },
+    "state/skills/research/research-paper-writing/templates/icml2026/fancyhdr.sty": {
+      "sha256": "9130c52f91087abc6d223164ffa587e207e3257fcbcd069ef09ecb5391043f14",
+      "size": 31715
+    },
+    "state/skills/research/research-paper-writing/templates/icml2026/icml2026.bst": {
+      "sha256": "0ec3d5eb9b02efb7e0b44a32f3775882f42a743d0bdc618f34e6936309b98764",
+      "size": 27147
+    },
+    "state/skills/research/research-paper-writing/templates/icml2026/icml2026.sty": {
+      "sha256": "7cdcf90f6a59c5219e7f15c88f7ed09fcaf598dad91e6cdddc4dc3cb0e397a95",
+      "size": 27344
+    },
+    "state/skills/research/research-paper-writing/templates/icml2026/icml_numpapers.pdf": {
+      "sha256": "d34e8da982296363627996e6e18850c11fbd616e6946061237051e7a8f7080bb",
+      "size": 2823
+    },
+    "state/skills/research/research-paper-writing/templates/neurips2025/Makefile": {
+      "sha256": "0983425d74e769f2457f6ff0654cf76fc0c95f8d158fc8eaec66c5697ba0594f",
+      "size": 1054
+    },
+    "state/skills/research/research-paper-writing/templates/neurips2025/extra_pkgs.tex": {
+      "sha256": "fcd6b09156fa193c347f6acd8188d430fa28f769fb6e2c2514cbbd215c39014a",
+      "size": 2837
+    },
+    "state/skills/research/research-paper-writing/templates/neurips2025/main.tex": {
+      "sha256": "366c093fbc3018c46de28f3fe0ecb063b4aba10a089afe037837bbf673a9c4d6",
+      "size": 574
+    },
+    "state/skills/research/research-paper-writing/templates/neurips2025/neurips.sty": {
+      "sha256": "ef7a55f0a7c9da12fea39af7990a6a314a721b74a23b1544f252e55fcba940cd",
+      "size": 11625
+    },
+    "state/skills/reverse-engineer-anything/SKILL.md": {
+      "sha256": "8818b645c9fd348399a50a8678b91cff20215690adad484e70282ff9f2ef91ee",
+      "size": 35216
+    },
+    "state/skills/reverse-engineer-anything/SKILL.md.rea.backup": {
+      "sha256": "27a1b427f2d3ad9968fd58331afbf49429c2d0e2c54d94e7ddba7887bb577f34",
+      "size": 34993
+    },
+    "state/skills/reverse-engineer-anything/references/android-applications.md": {
+      "sha256": "24ecaa1798eb4f28591884a7deb68df31e90313865515a23e3b466403f1abc39",
+      "size": 2584
+    },
+    "state/skills/reverse-engineer-anything/references/android-applications.md.rea.backup": {
+      "sha256": "1698a9a21eacc685b327059efee2e9cdb6ac1f55fa3875eed96b4b304ab155f3",
+      "size": 4077
+    },
+    "state/skills/reverse-engineer-anything/references/connection-and-recovery.md": {
+      "sha256": "4754441e63e4252a0b230cf5aa12b78c0716463905305059bb7dea6713ba0bfc",
+      "size": 17307
+    },
+    "state/skills/reverse-engineer-anything/references/connection-and-recovery.md.rea.backup": {
+      "sha256": "69aae4c8c2741cc745171a007257cf94fa65247bf73e4c4eb031a1361a06831e",
+      "size": 19004
+    },
+    "state/skills/reverse-engineer-anything/references/environments.md": {
+      "sha256": "83e041f0a5243172af69eaadf62da0699617add3ff1d46b294e4bba7ece9d95f",
+      "size": 10620
+    },
+    "state/skills/reverse-engineer-anything/references/environments.md.rea.backup": {
+      "sha256": "bb1065d7c0c96f82d6350c4f55071a883f99dd852fa1e6e62650b26782cdc95b",
+      "size": 14750
+    },
+    "state/skills/reverse-engineer-anything/references/evidence-workflows.md": {
+      "sha256": "f44b68acc6ebaa60c1f5d0670e4f9ff7212d351a0ecc6e6ca77ce38b9177ea57",
+      "size": 8091
+    },
+    "state/skills/reverse-engineer-anything/references/javascript-applications.md": {
+      "sha256": "619cfd15ffdf466452cc32002ae357fefec59d5dcad4c9dfc27630138f0f719d",
+      "size": 13860
+    },
+    "state/skills/reverse-engineer-anything/references/javascript-applications.md.rea.backup": {
+      "sha256": "15ae2177ef1c41e25095238c64b38f34d8ea53ea3c4c74f627096f90b8eaa54b",
+      "size": 14476
+    },
+    "state/skills/reverse-engineer-anything/references/native-and-artifacts.md": {
+      "sha256": "cf394568ae91e9017d63056adb8872fb1df9e2f6bbe544a95d0fd9f064b06dd5",
+      "size": 38322
+    },
+    "state/skills/reverse-engineer-anything/references/native-and-artifacts.md.rea.backup": {
+      "sha256": "159e6596df8942246b6a8e42efa9777a129196efeea87435c6505d4446d4b687",
+      "size": 42609
+    },
+    "state/skills/reverse-engineer-anything/references/runtime-observation.md": {
+      "sha256": "852bd1e25e9f83f0e8c7d4f8441a043e2b2a7d5e39f729bf22ac77259a0207bd",
+      "size": 11719
+    },
+    "state/skills/reverse-engineer-anything/references/runtime-observation.md.rea.backup": {
+      "sha256": "e207a912470a1a56dc02316eb7b040ac50b4d763f2273e97a6811863d9051d74",
+      "size": 11905
+    },
+    "state/skills/smart-home/DESCRIPTION.md": {
+      "sha256": "34a853f25b3ea6c6515fb0b4f6b5e36c6b1459e6d1396f6b345027d193f46ee1",
+      "size": 123
+    },
+    "state/skills/smart-home/openhue/SKILL.md": {
+      "sha256": "550f94848d10ab82619db8fec240a4d2b792c33606fba5d391bf3a78bc1119e9",
+      "size": 2713
     },
     "state/skills/social-media/DESCRIPTION.md": {
       "sha256": "2ea0d50444337de4809a62dc618d6d9c35bd2ba30f17ec6a138a20f53f9974a7",
       "size": 151
     },
     "state/skills/social-media/xurl/SKILL.md": {
-      "sha256": "5457319ee337284b1152dc9f60146c72685ade489299afed08e0b46ca5a97080",
-      "size": 16345
+      "sha256": "46a50c6f6d3fd233d5eaa8af829d5f78f81ad97472571fde7f233e069485a611",
+      "size": 13993
     },
-    "state/skills/software-development/codebase-inspection/SKILL.md": {
-      "sha256": "d62554263461919dff7d77c3c0c284c2190c894f312a84d7a770a030dab642dc",
-      "size": 3612
-    },
-    "state/skills/software-development/dogfood/SKILL.md": {
-      "sha256": "1b2793734493dbc624a1d1f1c0667cb510e191fa79b1c740d866706550190560",
-      "size": 6324
-    },
-    "state/skills/software-development/dogfood/references/issue-taxonomy.md": {
-      "sha256": "b90546fab5b59494ebea35b957ccc1d98bab8eaeaaa3529a142b15ea96df2b31",
-      "size": 3682
-    },
-    "state/skills/software-development/dogfood/templates/dogfood-report-template.md": {
-      "sha256": "6db9127715d3d1482542e48dd2d71fcb25238e614b1e5739ec193fa143962a26",
-      "size": 1528
-    },
-    "state/skills/software-development/github/SKILL.md": {
-      "sha256": "9d70e7c842fe7db75b5a50526552a69862f5bcfc1e59aa93785241649a09d5a3",
-      "size": 2446
-    },
-    "state/skills/software-development/github/references/auth.md": {
-      "sha256": "eba9d0edf896036718612bb557ec7a6432532a9395bd66277c3b7417d8960a37",
-      "size": 11586
-    },
-    "state/skills/software-development/github/references/ci-troubleshooting.md": {
-      "sha256": "ada022d91c8abff55a15505fe630ba02abdece5afa3751433fa4014a33defa23",
-      "size": 4936
-    },
-    "state/skills/software-development/github/references/code-review.md": {
-      "sha256": "11ad06e6d49bcfc3433530b40f95b72f568cae0a2d7ca6e2450b22d3e0626d7b",
-      "size": 13295
-    },
-    "state/skills/software-development/github/references/conventional-commits.md": {
-      "sha256": "2d71a3b701b08c2e5ed5248d17928eb11e27d7b357f9e2dca27caee9cc017aab",
-      "size": 2417
-    },
-    "state/skills/software-development/github/references/github-api-cheatsheet.md": {
-      "sha256": "a9081d4a108b67b4edd3c92c73d823fd1730e37e23be6f069d9bd67dd3b32486",
-      "size": 6092
-    },
-    "state/skills/software-development/github/references/issue-to-pr.md": {
-      "sha256": "9fc6de82f9b8e65a1611a5e3eee9f6f35cc9118a90a9df3de547cb65f2766dab",
-      "size": 5638
-    },
-    "state/skills/software-development/github/references/issues.md": {
-      "sha256": "86cf4a98232ee6362cd7893e76bed6ed25c21eb660e878432c6df3286c02d6d8",
-      "size": 8981
-    },
-    "state/skills/software-development/github/references/pr-workflow.md": {
-      "sha256": "f75f8cc23266a3675a67c8d06385c561befab23a8e6a9683b5418c8b656bb2b5",
-      "size": 9746
-    },
-    "state/skills/software-development/github/references/repo-management.md": {
-      "sha256": "e5b92a6d2edf1dc317ed4d4ba1b37734b78f391438d58f3f86139df398996301",
-      "size": 13416
-    },
-    "state/skills/software-development/github/references/review-output-template.md": {
-      "sha256": "4560662913e8f89d558c7ba4f34daf77a35a88367c2d480ad86de7085cbcaf34",
-      "size": 2465
-    },
-    "state/skills/software-development/github/scripts/gh-env.sh": {
-      "sha256": "eb04179d859635b56cdd0da71da59cd5d94d7a69c9a856f9f562d1cd5cb9412f",
-      "size": 2556
-    },
-    "state/skills/software-development/github/scripts/git-credential-token.py": {
-      "sha256": "4c0f3dfdc75df9043fe7b62b0807e7b4392c59ee81082d2fcc8d39b75c593efb",
-      "size": 1788
-    },
-    "state/skills/software-development/github/templates/bug-report.md": {
-      "sha256": "4b3144ccf47a85dcec889c7610d6b739a7ae6f19aa8d4709942112ef09e11a5b",
-      "size": 469
-    },
-    "state/skills/software-development/github/templates/feature-request.md": {
-      "sha256": "43962f5a398b4badeeb94280299ba4511940ad0e32afcfce5f2a6e1afd21c7a8",
-      "size": 598
-    },
-    "state/skills/software-development/github/templates/pr-body-bugfix.md": {
-      "sha256": "e8c31915b87dba0454d7520a3aa45ef8650fd0e50e48e277db855ff919e6251a",
-      "size": 513
-    },
-    "state/skills/software-development/github/templates/pr-body-feature.md": {
-      "sha256": "875e815da6e0e3df2763a85c9c2a56a776461da39d4181a1487333c0bf5b9276",
-      "size": 580
+    "state/skills/software-development/debugging-hermes-tui-commands/SKILL.md": {
+      "sha256": "55d5811c0b2d872dc59d87432720a113150dbbce2872524a36b3860a8967095d",
+      "size": 7910
     },
     "state/skills/software-development/hermes-agent-skill-authoring/SKILL.md": {
-      "sha256": "1f8d0be987c7c2d6095849ebb6dc8ff908ca1a43bdcc300fa936922c14271ecd",
-      "size": 14537
-    },
-    "state/skills/software-development/inspecting-hermes-desktop-dom/SKILL.md": {
-      "sha256": "8dfdcf2fe3797beec4297ce629e62395d7a69ec2691fc00ef25bc6273139cbc4",
-      "size": 6250
+      "sha256": "4b564cbaf9f6ed6fad90a294f9855aa9d0f5398d48f51a6619d6790147192c6f",
+      "size": 7618
     },
     "state/skills/software-development/node-inspect-debugger/SKILL.md": {
-      "sha256": "422eed9a0997182c5b197a8879ab194647799d69e573000e53b65b8708cf3a77",
-      "size": 11065
+      "sha256": "f2f72c0c9e67143effc8cb9871a242309813af72c61b8d62548ae275c86f2d08",
+      "size": 10929
+    },
+    "state/skills/software-development/plan/SKILL.md": {
+      "sha256": "9a4de28156f74cc1e099422a71db6bcb7c256ec09c9dbd0bb88eaacb07534d05",
+      "size": 2016
     },
     "state/skills/software-development/python-debugpy/SKILL.md": {
-      "sha256": "cb1b8b0795a56fa0fd79f80f3363f1ad79d404a6757d6cf547971cf89f21155e",
-      "size": 14984
+      "sha256": "ce7e38367ea54fb86e32d41be2fb3682482b7e3d748316cb666b3d4e3ca51a40",
+      "size": 13172
     },
     "state/skills/software-development/requesting-code-review/SKILL.md": {
-      "sha256": "1e26ced9f05e357950e035b93ad1a937dd8a9e578a44d3c8d4fa734a09b7f814",
-      "size": 8781
-    },
-    "state/skills/software-development/simplify-code/SKILL.md": {
-      "sha256": "9ee977c3362a1c07f2e327198e066ddb3c0ed67709706fc410165ee820b2ca01",
-      "size": 14696
+      "sha256": "0de2bc3923c28bb2e6fdf7f60c7a745e7d7123d520e63c8b173fcbc421865f4a",
+      "size": 8483
     },
     "state/skills/software-development/spike/SKILL.md": {
-      "sha256": "573d8fc0d6699eaf5308e742402bc02c883152ffeebe14607f164c6c538495c2",
-      "size": 8723
+      "sha256": "d301bdb6e90a96d0f214e5c8a0f38e1202e88da410fc88fd42eaea18817be770",
+      "size": 8753
+    },
+    "state/skills/software-development/subagent-driven-development/SKILL.md": {
+      "sha256": "3fe606f9b2f5127905e06812bbff2b8708a5b0e66a8330207ce3546792b33102",
+      "size": 10742
+    },
+    "state/skills/software-development/subagent-driven-development/references/context-budget-discipline.md": {
+      "sha256": "325d4f3b16db3215a1d7d8771b4c03af40cad62a468df5c44757c1e6366f2c9c",
+      "size": 4209
+    },
+    "state/skills/software-development/subagent-driven-development/references/gates-taxonomy.md": {
+      "sha256": "2740dbfb83cb58d2e8bffd6d2dca95c2dbccca3b60138dcb81b9be905554043a",
+      "size": 4668
     },
     "state/skills/software-development/systematic-debugging/SKILL.md": {
-      "sha256": "bd480f51a2e9969c88544003c30b7539b7df0b7358703f99b0495514c2dd878a",
-      "size": 14059
+      "sha256": "c1d66056ce0b4ec839bb69358c39e73bdde000cf3a99d2f53ab3d7e116f089ef",
+      "size": 10480
     },
     "state/skills/software-development/test-driven-development/SKILL.md": {
-      "sha256": "649e6ab89bd8aaad2f9b162c60321f227cff8a8cda56393f07a81d1c6825a692",
-      "size": 10300
+      "sha256": "6896c8f090b4bf758ddfc92c50f383da73bd8672cc39359ecaec083ec58999eb",
+      "size": 9573
     },
-    "state/skills/web/DESCRIPTION.md": {
-      "sha256": "1cee33fe7aaddc9d8ce9319f4452dc9a357952feba049810e392a8ecf67ea28e",
-      "size": 137
+    "state/skills/software-development/writing-plans/SKILL.md": {
+      "sha256": "b930d5746acc1b0c092ab8522df559723dcfd1dfcb5323a7da85c7c2dd872d0d",
+      "size": 7229
     },
-    "state/skills/web/blocked-page-recovery/SKILL.md": {
-      "sha256": "b71179e82ff27c002e6593e792d9a64dad9a444901b8938f30204fa115592061",
-      "size": 5175
-    },
-    "state/skills/web/blocked-page-recovery/scripts/recover_page.py": {
-      "sha256": "22b996996ae2bf252b31cfd2636231f08936729a381dce7ba8bfa4afb8ffe8c6",
-      "size": 8481
+    "state/skills/yuanbao/SKILL.md": {
+      "sha256": "239e4875f511124fab06e94ff21511fd8f857554c6ffd82dfb796ed275b4ff32",
+      "size": 3795
     },
     "tool/ARCHITECTURE.md": {
       "sha256": "c44ecb4320313d20e6d83be3a826d61c3b449f6784bf820f85b60a6be2adb52d",
@@ -2356,8 +2304,8 @@
       "size": 10081
     },
     "tool/ghstore.py": {
-      "sha256": "84fff4480a0d5742a7c41bc0388c3d7ff9665ee43cee60b147c685212896a3d1",
-      "size": 67462
+      "sha256": "0b3272c2f56f477737d174c2607899678dc0700ee78db81b4ea70b9297dd304a",
+      "size": 72037
     },
     "tool/offload-boot.sh": {
       "sha256": "a922425a54df9a76d385db860b9cf3744705bd21ec56eb7594c78d1c46f1c6e8",
@@ -2384,15 +2332,28 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-28T15:38:18.557597Z",
-  "host": "ddab4be9dacf",
+  "generated_at": "2026-10-28T15:39:59.437270Z",
+  "host": "sandbox-b1e0eab0",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
-    "Live SQLite state (state.db: sessions, kanban, cron executions) is not Git-suitable and is deliberately absent."
+    "Live SQLite state (state.db: sessions, kanban, cron executions) is not Git-suitable and is deliberately absent.",
+    "Inline credential values inside synced text files (for example provider api_key entries in config.yaml) are blanked before commit; the manifest's redactions list names those files, and a restore needs the credential re-entered."
+  ],
+  "redaction_count": 1,
+  "redactions": [
+    {
+      "path": "state/config.yaml",
+      "patterns": [
+        "credential-assignment",
+        "openai-anthropic-key"
+      ],
+      "reason": "inline-credential-value-blanked",
+      "values_blanked": 3
+    }
   ],
   "schema": 1,
-  "skipped_count": 1,
+  "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 7475328
+  "total_bytes": 6639963
 }
