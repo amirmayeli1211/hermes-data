@@ -12,7 +12,11 @@ name: Android build (NetCheck)
 on:
   workflow_dispatch:
   push:
-    branches: [main, sandbox-b1e0eab0]
+    # Only the default branch. The safety branch (sandbox-b1e0eab0) is moved to
+    # main's tip after every sync, and a ref update there also counts as a push —
+    # listing it here built every change twice. Dispatching it by hand still
+    # works: ci_android_build.py --branch sandbox-b1e0eab0.
+    branches: [main]
     paths:
       - "projects/netcheck/**"
       - ".github/workflows/android.yml"

@@ -4,8 +4,8 @@
   "file_count": 643,
   "files": {
     ".github/workflows/android.yml": {
-      "sha256": "5b8e7a58eaa22711e837b96e83ac8e0becc32a4724a3a394cd6312f4b0dda77c",
-      "size": 2658
+      "sha256": "13b11aea2fe8648ec5907b863faf50749a1867b328569ca33ec24f3cc8d1906c",
+      "size": 2941
     },
     "projects/netcheck/.gitignore": {
       "sha256": "1d2d027f975433e9331c106d6f7d3023d93c4d341c4917b072a8404c8d7222ec",
@@ -2576,7 +2576,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-28T16:48:28.636841Z",
+  "generated_at": "2026-10-28T16:49:45.706289Z",
   "host": "sandbox-b1e0eab0",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -2599,5 +2599,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 6906010
+  "total_bytes": 6906293
 }
