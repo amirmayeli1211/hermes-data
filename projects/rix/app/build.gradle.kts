@@ -14,6 +14,8 @@ val rixAbis: List<String> = ((findProperty("rixAbis") as String?) ?: "arm64-v8a"
 android {
     namespace = "com.rix.vpn"
     compileSdk = 35
+    // Pinned so AGP finds the NDK that CI installs under $ANDROID_HOME/ndk/.
+    ndkVersion = "26.1.10909125"
 
     defaultConfig {
         applicationId = "com.rix.vpn"
