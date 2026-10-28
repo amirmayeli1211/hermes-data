@@ -105,7 +105,12 @@ def cache_file() -> Path:
 # wherever the tool must recognise "a path this repo owns" (verify read-back,
 # manifest cross-check, drift). `projects/` was added for product source code;
 # forgetting it here made `push` commit successfully and then crash in verify.
-REPO_ROOTS = ("state/", "tool/", "projects/")
+# Top-level prefixes this repository is allowed to contain. The remote tree is
+# filtered by this tuple, so a path the map does not know is invisible to
+# verification — that is exactly what happened when `.github/` was added: the
+# push succeeded, then verify read the tree, did not find its own new file, and
+# died with a KeyError instead of reporting a mismatch.
+REPO_ROOTS = ("state/", "tool/", "projects/", ".github/")
 
 SYNC_MAP = [
     ("config.yaml", "state/config.yaml"),
@@ -1450,6 +1455,11 @@ def _verify_remote_once(gh: GitHub, branch: str, manifest: dict, quiet: bool,
         step = len(sample) / 25.0
         sample = [sample[int(i * step)] for i in range(25)]
     for path in sample:
+        # A path missing from the committed tree is already recorded as a
+        # mismatch above; reading its blob would only raise KeyError and hide
+        # the report behind a traceback.
+        if path not in blobs:
+            continue
         blob = gh.get_blob(blobs[path])
         raw = base64.b64decode(blob["content"])
         if sha256_hex(raw) != manifest["files"][path]["sha256"]:

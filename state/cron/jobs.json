@@ -20,15 +20,15 @@
       "schedule_display": "*/5 * * * *",
       "repeat": {
         "times": null,
-        "completed": 20
+        "completed": 22
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-10-28T14:50:46.666568+00:00",
-      "next_run_at": "2026-10-28T16:35:00+00:00",
-      "last_run_at": "2026-10-28T16:31:52.679732+00:00",
+      "next_run_at": "2026-10-28T16:45:00+00:00",
+      "last_run_at": "2026-10-28T16:40:16.405915+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -62,7 +62,7 @@
       "schedule_display": "*/30 * * * *",
       "repeat": {
         "times": null,
-        "completed": 1
+        "completed": 2
       },
       "enabled": true,
       "state": "scheduled",
@@ -70,9 +70,9 @@
       "paused_reason": null,
       "created_at": "2026-10-28T15:38:41.407749+00:00",
       "next_run_at": "2026-10-28T17:00:00+00:00",
-      "last_run_at": "2026-10-28T16:00:44.964907+00:00",
-      "last_status": "ok",
-      "last_error": null,
+      "last_run_at": "2026-10-28T16:32:16.360919+00:00",
+      "last_status": "error",
+      "last_error": "Script exited with code 1\nstdout:\nhermes-data sync FAILED (exit 1)\n    return _verify_remote(gh, args.branch, manifest, quiet=False)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/user/hermes-data/tool/ghstore.py\", line 1419, in _verify_remote\n    result = _verify_remote_once(gh, branch, manifest, quiet, allow_retry=True)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/user/hermes-data/tool/ghstore.py\", line 1436, in _verify_remote_once\n    retry_rc = _verify_remote_once(gh, branch, manifest, quiet, allow_retry=False)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/user/hermes-data/tool/ghstore.py\", line 1453, in _verify_remote_once\n    blob = gh.get_blob(blobs[path])\n                       ~~~~~^^^^^^\nKeyError: '.github/workflows/android.yml'",
       "last_delivery_error": null,
       "deliver": "origin",
       "origin": {
@@ -104,7 +104,7 @@
       "schedule_display": "*/15 * * * *",
       "repeat": {
         "times": null,
-        "completed": 2
+        "completed": 3
       },
       "enabled": true,
       "state": "scheduled",
@@ -112,7 +112,7 @@
       "paused_reason": null,
       "created_at": "2026-10-28T15:54:09.945961+00:00",
       "next_run_at": "2026-10-28T16:45:00+00:00",
-      "last_run_at": "2026-10-28T16:16:41.050766+00:00",
+      "last_run_at": "2026-10-28T16:31:54.595200+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -127,5 +127,5 @@
       "workdir": null
     }
   ],
-  "updated_at": "2026-10-28T16:31:52.680247+00:00"
+  "updated_at": "2026-10-28T16:40:16.406297+00:00"
 }
