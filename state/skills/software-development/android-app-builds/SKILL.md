@@ -13,6 +13,53 @@ metadata:
 
 # Android app builds from the shell
 
+## Pitfalls that cost CI cycles (verified the hard way)
+
+**`android-actions/setup-android@v3` is broken.** It runs `sdkmanager tools` and
+the deprecated `tools` package no longer exists in the SDK repository
+(`Warning: Failed to find package 'tools'`, exit 1). On `ubuntu-latest` an SDK is
+already present — drive `sdkmanager` yourself:
+
+```bash
+export ANDROID_HOME="${ANDROID_HOME:-/usr/local/lib/android/sdk}"
+SDKMGR="${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager"
+[ -x "$SDKMGR" ] || SDKMGR=$(ls -d "${ANDROID_HOME}"/cmdline-tools/*/bin/sdkmanager | head -1)
+yes | "$SDKMGR" --licenses >/dev/null 2>&1 || true
+"$SDKMGR" "platforms;android-35" "build-tools;35.0.0" "cmake;3.22.1" "ndk;26.1.10909125" >/dev/null
+```
+
+Then pin `ndkVersion = "26.1.10909125"` in `android {}` so AGP looks under
+`$ANDROID_HOME/ndk/`. `nttld/setup-ndk` installs elsewhere and AGP will not find it.
+
+**Compose 1.7 needs `compileSdk = 35`.** `androidx.compose.ui:ui:1.7.x` refuses to
+compile against 34.
+
+**Add a `kotlin` job that runs `:app:compileDebugKotlin` and gate the native build
+on it.** A 40-minute native build that dies on a Kotlin typo is the single most
+expensive mistake in this workflow; the check job fails in ~4 minutes.
+
+**Kotlin/Compose errors seen and their fixes:**
+
+| Error | Cause / fix |
+|---|---|
+| `State<Color> has no method getValue ... cannot serve as a delegate` | missing `import androidx.compose.runtime.getValue` for `by animate*AsState` |
+| `None of the following candidates is applicable` on `Text(...)` | `Text` has **no** `textDirection` parameter; pass `style = TextStyle(textDirection = TextDirection.Ltr)` |
+| `Unresolved reference 'PowerSettingsNew'` | material icons are **extension properties**, so `Icons.Rounded.X` needs `import androidx.compose.material.icons.rounded.X`; a fully-qualified path cannot reach them |
+| `EnumEntries<E>` vs `Array<T>` | `E.entries` is a `List`, so helper params must be `List<T>`, not `Array<T>` |
+| `@OptIn(ExperimentalLayoutApi::class)` needed | `FlowRow`/`FlowColumn` still require it |
+
+**`abiFilters` must come from CI.** Pass `-PrixAbis=arm64-v8a` and read it in
+`defaultConfig.ndk`, otherwise the APK can advertise an ABI whose native library
+was never built — it installs and then crashes on launch.
+
+**Don't try to run Gradle on a 2 GB host.** `-Xmx3072m` gets the daemon OOM-killed
+mid-build (`Daemon disappeared unexpectedly`, `out of memory: Killed process`).
+Use the CI runner.
+
+**Verify the APK, don't trust the build.** `unzip -l` for every expected `.so`,
+`aapt2 dump badging` for `launchable-activity` / `native-code`, and
+`apksigner verify --print-certs` for the signing scheme.
+
 ## When to use this
 
 The user asks for an Android app, an APK, "build/run my app", or hands over a spec
