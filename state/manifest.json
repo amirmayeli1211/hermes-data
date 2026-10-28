@@ -1,7 +1,7 @@
 {
   "commit": null,
   "excluded_count": 5,
-  "file_count": 583,
+  "file_count": 595,
   "files": {
     "state/SOUL.md": {
       "sha256": "2765a846e1bb371d78d3b93b403dfb0f8d1ba1a9895edb5f608367abfe81194d",
@@ -12,8 +12,8 @@
       "size": 10103
     },
     "state/cron/jobs.json": {
-      "sha256": "773f016f8e7fb0e1688c76609e79ae37aef960b60ab5631425d937b23bda2ee0",
-      "size": 2565
+      "sha256": "02a35c30e21da31cf15d564001cc761fd5dffb900d9f00daa340b9c12e1e15f2",
+      "size": 3806
     },
     "state/cron/output/9a1f44193ab7/2026-10-28_14-55-17.md": {
       "sha256": "4c8c17b620fa9ce6d20c49885f63858e88353a5b4f565b9776fb5d2e9a60149e",
@@ -55,6 +55,14 @@
       "sha256": "5de21306b81e0bbba9ddfe84a6b8e89a7a2ce24c204c9235d376d4e406d7f23e",
       "size": 163
     },
+    "state/cron/output/9a1f44193ab7/2026-10-28_15-45-54.md": {
+      "sha256": "eca6c88f53177dcefe6b1b902af6e93d6ac426add9de7f7a0ef769a5b1c820c1",
+      "size": 163
+    },
+    "state/cron/output/9a1f44193ab7/2026-10-28_15-50-54.md": {
+      "sha256": "518de5239570fea95f87201ab156f06a67be5a1b42bf15dda66bbd54d1a36bc6",
+      "size": 163
+    },
     "state/lsp/package-lock.json": {
       "sha256": "71041d784c03be589fa39281e05fc59180171486f386349a6bc18fd06f8aca39",
       "size": 1135
@@ -64,28 +72,52 @@
       "size": 54
     },
     "state/memories/MEMORY.md": {
-      "sha256": "80dc5ba4876e23e688a494cfdb8c57dc352415f07ea94fc0595dbcadf021d707",
-      "size": 1714
+      "sha256": "a7b9fe613b90934cc8d3b191a09706be9356cc3521ab38fe4641d78c874550d5",
+      "size": 1883
     },
     "state/memories/USER.md": {
-      "sha256": "86e13c4c089abf4292c168d832c7a666066436ffa42df9b2a8de73d27815b701",
-      "size": 230
+      "sha256": "400fac6e2ad03bb50aa867058ea4cd86d4bcf83aa8c1cdd13980595db4807799",
+      "size": 543
+    },
+    "state/scripts/archive.sh": {
+      "sha256": "6cac8ffd161f2c51aac4a728de7bf33918f3d00bc5f577b1cbbd6d8425a5273f",
+      "size": 16988
     },
     "state/scripts/count_rea_tools.sh": {
       "sha256": "375f92764e073f02519f39cb44253dffa446bd2f81143a9aff727d7165a4246a",
       "size": 1536
+    },
+    "state/scripts/disk-guard.sh": {
+      "sha256": "256d707dd6f03a8cc46ee2734750250a6c18c6e52ba6dbea690f0ec8a67093da",
+      "size": 10304
+    },
+    "state/scripts/disk_guard_watch.sh": {
+      "sha256": "71d0909a39c5c91f73c66c22a0e3076ddef955b67d82316f55eece972bdcd8fe",
+      "size": 1601
     },
     "state/scripts/gateway_keepalive.sh": {
       "sha256": "1705b673e18cf60d0649601eb303431a4c331e18dc21a303f86710868e1507cd",
       "size": 1898
     },
     "state/scripts/gateway_supervisor.sh": {
-      "sha256": "9957ddb9415c52e713e4b3b99a967f27a91b235e9d03457ba70861ab44133a78",
-      "size": 3832
+      "sha256": "90faa428f76134b3736dd087acb36ce36ad73a8db7446ebeaef53c82b2d77df7",
+      "size": 4736
     },
     "state/scripts/ghstore_sync.sh": {
       "sha256": "00f1c7808adfd79af888c1528edaa58527aef6dfda550580f6b8a0a6a4a61f86",
       "size": 1322
+    },
+    "state/scripts/offload-boot.sh": {
+      "sha256": "a922425a54df9a76d385db860b9cf3744705bd21ec56eb7594c78d1c46f1c6e8",
+      "size": 8489
+    },
+    "state/scripts/offload.sh": {
+      "sha256": "88322ce9c6c4ef7ac7799a6682f0dd6818462accb31a1e0903e6184b53cfefc7",
+      "size": 8034
+    },
+    "state/scripts/skill-fetch.sh": {
+      "sha256": "8edc840abd8033574444b4f59e413bb8d656e8304113547ef8536ff7c774d18a",
+      "size": 10813
     },
     "state/scripts/start_gateway_supervisor.sh": {
       "sha256": "5472b561503b61e2e204cb0828f1807988112096f4829a7bacf4fdb363e55027",
@@ -100,8 +132,8 @@
       "size": 337
     },
     "state/skills/.usage.json": {
-      "sha256": "e951ec8853bf653b22299a33b9b70d7dc458e6050c8b9f15836c72c5fa5f6f9c",
-      "size": 782
+      "sha256": "23c0945ee696af12cc5daf845e3b03ed7e5025aaab1116d127db66f2e790a472",
+      "size": 1172
     },
     "state/skills/apple/DESCRIPTION.md": {
       "sha256": "c9537e578d68950224dbc09a425497a780e8c3956db9cb38a97b4a9e985516b3",
@@ -140,8 +172,12 @@
       "size": 4557
     },
     "state/skills/autonomous-ai-agents/hermes-agent/SKILL.md": {
-      "sha256": "8b6a1e16ef86a8f91ed85e5ab055792a9dfb64e44b2db4dba81cb734f91cdea7",
-      "size": 49941
+      "sha256": "48714e6679e7b030dd9aec273b3636de5a2902e9800eaee8f884dd64891ce094",
+      "size": 52056
+    },
+    "state/skills/autonomous-ai-agents/hermes-agent/references/ghstore-github-state-sync.md": {
+      "sha256": "dd04c14c5ceb5b8500f60df6b6b2f23ca3a58a3586511220c83f94e6705a1c60",
+      "size": 6942
     },
     "state/skills/autonomous-ai-agents/opencode/SKILL.md": {
       "sha256": "afb3ea1f1b4300705f4a44f41ef2bb6f36c45e474b677dcb3c0aa4e6b3740595",
@@ -1220,8 +1256,8 @@
       "size": 5285
     },
     "state/skills/devops/hermes-gateway-no-systemd/SKILL.md": {
-      "sha256": "2e3f00a5f3c062f69b8fe7522ad3f228f637574793322a9ba665335bcf4b854a",
-      "size": 8188
+      "sha256": "a5489b873c53f2935a81a28e2ead62538eb312ff669e8b22b4581d7f3b80929e",
+      "size": 9981
     },
     "state/skills/devops/kanban-orchestrator/SKILL.md": {
       "sha256": "c60c7fcfb64157d76b6a266bbcf568a677a91bc7b1ce0763ebeeeb1c33a491ea",
@@ -1360,8 +1396,12 @@
       "size": 216
     },
     "state/skills/mcp/native-mcp/SKILL.md": {
-      "sha256": "f6124b5834ebe978fb5d4a39a9760f6c4b6cf12d98db1a5054a0d2bd00e39a76",
-      "size": 15639
+      "sha256": "8821eee16a3bfa3d73cc1c7871b97d41fe9648fb3d6807fe8910e989d700df99",
+      "size": 18659
+    },
+    "state/skills/mcp/native-mcp/references/mcp-server-engine-toolchain.md": {
+      "sha256": "ded349739080f3965cb08c3798e7c6aaca92c45c85f4cfa385e34192264dbcea",
+      "size": 7048
     },
     "state/skills/mcp/native-mcp/references/npm-mcp-server-install.md": {
       "sha256": "4c5409280e7af1715e52c5e4d698b74751805e1fc97392ba8abb45475a68eda2",
@@ -2163,6 +2203,14 @@
       "sha256": "27a1b427f2d3ad9968fd58331afbf49429c2d0e2c54d94e7ddba7887bb577f34",
       "size": 34993
     },
+    "state/skills/reverse-engineer-anything/rea-analysis-toolchain/SKILL.md": {
+      "sha256": "246e32db013804f4bd9e9d698e06ebb0969e0d084dfa96834401ef2fb440f8b8",
+      "size": 7115
+    },
+    "state/skills/reverse-engineer-anything/rea-analysis-toolchain/references/verified-install-recipe.md": {
+      "sha256": "ee178995e8a550dcacd4207522c407e9160580c82be7e63014c35f6ce0102463",
+      "size": 7128
+    },
     "state/skills/reverse-engineer-anything/references/android-applications.md": {
       "sha256": "24ecaa1798eb4f28591884a7deb68df31e90313865515a23e3b466403f1abc39",
       "size": 2584
@@ -2336,7 +2384,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-28T15:44:33.298114Z",
+  "generated_at": "2026-10-28T15:54:15.314133Z",
   "host": "sandbox-b1e0eab0",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -2359,5 +2407,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 6640517
+  "total_bytes": 6735250
 }

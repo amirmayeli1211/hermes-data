@@ -260,6 +260,67 @@ mcp_servers:
       GITHUB_PERSONAL_ACCESS_TOKEN: "ghp_..."
 ```
 
+### Giving a server a toolchain through `env`
+
+stdio servers are spawned with the filtered baseline above, so anything the
+server needs beyond `PATH`/`HOME` must be listed under `env`. Three behaviours
+matter in practice:
+
+- `env` is **merged over** the baseline, so adding keys never drops `PATH`.
+  Overriding `PATH` *does* replace the inherited one — list every directory the
+  server and its engines need. A trimmed `PATH` is the most common cause of
+  "works in my shell, never from MCP".
+- Environment is read **once, at server start**. Editing
+  `mcp_servers.<name>.env` changes nothing for the already-running process; the
+  client must restart before the change exists.
+- Many servers are bring-your-own-engine: they install nothing and read their
+  engine locations from the environment.
+
+```yaml
+mcp_servers:
+  rea:
+    command: /usr/local/bin/node
+    args: [/usr/local/bin/rea, mcp]
+    env:
+      PATH: /usr/local/bin:/usr/bin:/bin:/opt/jadx/bin
+      JAVA_HOME: /usr/lib/jvm/java-21-openjdk-amd64   # a Java engine needs its own JDK
+      GHIDRA_INSTALL_DIR: /opt/ghidra
+      REA_JADX_MCP_JAR: /opt/jadx-headless-mcp/jadx-headless-mcp-0.7.1-all.jar
+```
+
+A Java-based engine needs `JAVA_HOME` even when `java` is already on `PATH`: the
+distro default is often older than the engine's declared minimum (Ghidra 12.x
+requires 21 while `/usr/bin/java` can still be 17).
+
+**Verify in two steps, and check identity — not liveness:**
+
+1. Before restarting, run the server's own doctor/version probe in a shell with
+   the *same* variables exported (`env A=1 B=2 <server> doctor`). That proves
+   the values themselves are right.
+2. After the restart, make one real tool call and read the engine identity out
+   of the result (provider id/version, resolved path). A call that merely
+   returns a value is not proof the engine was found.
+
+Restarting a client that has no service manager (`systemd`) — see
+`hermes-gateway-no-systemd`.
+
+**Never replace a server's files while it is running.** Deleting or
+reinstalling the package directory under a live MCP connection kills it; the
+client then reports a startup failure for that server and every later call fails
+identically until the client restarts (retrying the same call cannot help).
+Also check what "installed" means: a global install made from a local path
+(`npm i -g /path/to/repo`) leaves `.../lib/node_modules/<pkg>` as a **symlink**
+to that source tree, so deleting the tree's `node_modules` breaks the "global"
+binary. Prefer the registry (`npm i -g <pkg>@<version>`) and confirm with
+`readlink -f "$(which <bin>)"`. Some packages need a postinstall that an npm
+allowlist can silently skip (`npm i -g --allow-scripts=<dep> <pkg>@<version>`),
+leaving a native feature unavailable with no error at call time.
+
+A worked example of wiring a full engine toolchain (Ghidra + JDK, jadx,
+packet/signal/WASM helpers) into one MCP server, with the verified versions and
+the `doctor` output that proves it, is in
+`references/mcp-server-engine-toolchain.md`.
+
 ### Credential Stripping in Error Messages
 
 If an MCP tool call fails, any credential-like patterns in the error message are automatically redacted before being shown to the LLM. This covers:

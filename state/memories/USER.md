@@ -1,1 +1,3 @@
 Communicates in Persian (Farsi) — writes messages and requests in Persian and expects replies in Persian. Gives short imperative instructions (e.g. "تست کن" = "test it") and wants the action taken, not a plan narrated back.
+§
+On long installs/setups: wants ONE consolidated report at the end (what was installed with versions, where, what was verified, what could not be done and why) — not step-by-step progress chatter. When joining a task mid-stream or after a lost session, state the plan/status up front. Actions over proposals.

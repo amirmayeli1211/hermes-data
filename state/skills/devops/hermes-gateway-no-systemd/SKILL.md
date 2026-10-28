@@ -191,6 +191,46 @@ Then run `bash /path/kick_cutover.sh`, reply to the user, and warn them that
 the SessionDB, so the new gateway keeps the same session and the user's next
 message lands normally.
 
+### Deliberate restart (picking up config edit / MCP `env` changes)
+
+With a supervisor in place you don't need a service manager to restart *on
+purpose*: kill the gateway and the loop brings it back in ~5s. Arm it as a
+**background** command so the current turn can still deliver its reply:
+
+```bash
+# ~/.hermes/scripts/restart_gateway.sh
+#!/bin/bash
+sleep 25                                   # let the in-flight reply go out first
+pkill -TERM -f "venv/bin/hermes gateway run"
+for _ in $(seq 12); do
+    pgrep -f "venv/bin/hermes gateway run" >/dev/null && exit 0
+    sleep 5
+done
+exit 1
+```
+
+```
+terminal(command="bash ~/.hermes/scripts/restart_gateway.sh", background=true)
+```
+
+- Run it with `background=true`. A trailing `&`, `setsid`, `nohup`, or `disown`
+  in a *foreground* command string is rejected by the terminal tool, and inside
+  this script the wrapper is unnecessary anyway — the supervisor already
+  launches the gateway detached.
+- Expect `gateway exited rc=1 ... restarting in 5s`, then `launching:` in
+  `~/.hermes/logs/gateway-supervisor.log`. Exit code 1 is **by design** on
+  SIGTERM, not a failure.
+- Verify with `tail -6 ~/.hermes/logs/gateway-supervisor.log` and
+  `pgrep -af "venv/bin/hermes gateway ru[n]"` — bracket one character so the
+  pattern cannot match your own shell.
+- The conversation survives (sessions live in the SessionDB, so the new gateway
+  reattaches and the user's next message lands normally). Anything already
+  composed but unsent can be lost, so **send important output before arming the
+  restart** and tell the user a few seconds of silence follow.
+- Do this after editing `mcp_servers.<name>.env`: that environment is read at
+  server start, so the running server keeps the old values until the client
+  restarts (see `native-mcp`).
+
 ## Verify
 
 ```bash

@@ -28,6 +28,21 @@ GW_PATTERN="venv/bin/hermes gateway run"
 
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
 
+# ── Offload area (big scratch on the real disk, never tmpfs) ────────────────
+# /tmp is a 996 MB tmpfs: contents are RAM, so a large temp job both fails and
+# starves the gateway. /var/tmp-style paths do not survive a container restart,
+# so the tree is re-created before every launch — a TMPDIR that points at a
+# missing directory is worse than unset, because Python silently falls back to
+# a candidate inside HERMES_HOME. See scripts/offload.sh.
+export HERMES_OFFLOAD_ROOT="${HERMES_OFFLOAD_ROOT:-/home/user/hermes-offload}"
+mkdir -p "$HERMES_OFFLOAD_ROOT"/tmp "$HERMES_OFFLOAD_ROOT"/work \
+         "$HERMES_OFFLOAD_ROOT"/downloads "$HERMES_OFFLOAD_ROOT"/clones \
+         "$HERMES_OFFLOAD_ROOT"/skills 2>/dev/null || true
+export TMPDIR="$HERMES_OFFLOAD_ROOT/tmp"
+export TMP="$TMPDIR"
+export TEMP="$TMPDIR"
+export HERMES_WORKBENCH="$HERMES_OFFLOAD_ROOT/work"
+
 mkdir -p "$LOG_DIR"
 
 log() { printf '[%s] %s\n' "$(date -u +%FT%TZ)" "$*" >> "$SUP_LOG"; }
