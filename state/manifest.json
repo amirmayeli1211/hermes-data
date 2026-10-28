@@ -1,8 +1,180 @@
 {
   "commit": null,
-  "excluded_count": 52,
-  "file_count": 632,
+  "excluded_count": 59,
+  "file_count": 676,
   "files": {
+    ".github/workflows/android-rix.yml": {
+      "sha256": "ce2b1286421174ea3732582887eb47d9bccdff23021e0d99ba135c4e81057944",
+      "size": 8865
+    },
+    "projects/rix/.gitignore": {
+      "sha256": "38da4f8561c335c45a00b7349e5477b707ac382df4af22e7a8160553fb54ea82",
+      "size": 117
+    },
+    "projects/rix/LICENSE": {
+      "sha256": "8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef",
+      "size": 34523
+    },
+    "projects/rix/NOTICE": {
+      "sha256": "83b0edf3b76070bf5743304f671f7684fb2944721f22b026394f37c1d94860df",
+      "size": 1878
+    },
+    "projects/rix/README.md": {
+      "sha256": "7b03f30bf07c4a92b3655f9ecfa6570a79d17b8a6c39042df2cc80f350b4354c",
+      "size": 3657
+    },
+    "projects/rix/app/build.gradle.kts": {
+      "sha256": "8280135a4092fc9dc7457a1bf2ec8da811a05d7fdd9014ac0b7684af3407f6bd",
+      "size": 3172
+    },
+    "projects/rix/app/src/main/AndroidManifest.xml": {
+      "sha256": "2d82bbc6adc3dc164c5056760bb03484a12e6f944edec16a61c3f8238ac91df4",
+      "size": 3011
+    },
+    "projects/rix/app/src/main/cpp/CMakeLists.txt": {
+      "sha256": "6838143fa8967e4e424a2e031d47967cd714fea5ec20e40bc60b01bcd41f3c2b",
+      "size": 857
+    },
+    "projects/rix/app/src/main/cpp/jni_bridge.c": {
+      "sha256": "c493433a11a121e8ba65155489f06dfce30089b869eb327d43c3a3e4532b304b",
+      "size": 10053
+    },
+    "projects/rix/app/src/main/java/com/rix/vpn/MainActivity.kt": {
+      "sha256": "e1c1375659f31aec7e176d1356b0aba0904a027972382d39ed04d57576f6e019",
+      "size": 5945
+    },
+    "projects/rix/app/src/main/java/com/rix/vpn/RixApp.kt": {
+      "sha256": "9cdc59ee524d4d722a5bc076b6e806101c4a3150658d4cfd66ebebf5efe3db00",
+      "size": 1131
+    },
+    "projects/rix/app/src/main/java/com/rix/vpn/core/Native.kt": {
+      "sha256": "6b026bca9ce89cabaaf584707586394ad232e7acf89b1a2a3e010b2001023a95",
+      "size": 3364
+    },
+    "projects/rix/app/src/main/java/com/rix/vpn/core/RixOptions.kt": {
+      "sha256": "4c3845da480ff8a241d4119489a2a7e2e184af4c0492e448247a806e3b57b98b",
+      "size": 9995
+    },
+    "projects/rix/app/src/main/java/com/rix/vpn/core/RixRuntime.kt": {
+      "sha256": "da33ff2a13e966862be2fa5728c6f0d8417cef28e19823ee792c218da4edc8f2",
+      "size": 9582
+    },
+    "projects/rix/app/src/main/java/com/rix/vpn/data/LogBus.kt": {
+      "sha256": "4f6f9a0a70fbd5b7136fb31fe8fcf291835c8de27bb4ac3a58bd27ae60017280",
+      "size": 1367
+    },
+    "projects/rix/app/src/main/java/com/rix/vpn/data/Prefs.kt": {
+      "sha256": "43df8e15bd0f1362b7e1523f65f7e8bc5e61e09e4014d6dfe162e099612aa21d",
+      "size": 1319
+    },
+    "projects/rix/app/src/main/java/com/rix/vpn/service/RixProxyService.kt": {
+      "sha256": "32ca45a340ffdea57fd137eec64698bb53a15ce8bbc6e255d3bfbfff1a865d3f",
+      "size": 5571
+    },
+    "projects/rix/app/src/main/java/com/rix/vpn/service/RixVpnService.kt": {
+      "sha256": "a4a5faa1c86cccae465c317a8876113721d2f29345c36a751c9d527eb7c8987c",
+      "size": 11111
+    },
+    "projects/rix/app/src/main/java/com/rix/vpn/ui/AppPicker.kt": {
+      "sha256": "1d8ac94ffa82df3876bdaf14cea8f18e7c879a54698e889763370ae0134e3875",
+      "size": 6701
+    },
+    "projects/rix/app/src/main/java/com/rix/vpn/ui/Components.kt": {
+      "sha256": "2a7050dd807b2a424c2fbd333c0572243b086e7e44f6e61c6669d41f05e7b8ae",
+      "size": 12421
+    },
+    "projects/rix/app/src/main/java/com/rix/vpn/ui/HomeScreen.kt": {
+      "sha256": "0fa1fe7f3a894056d2868eb854b88b3ce3933aae3d57fbff20bcd590b1f8e357",
+      "size": 12390
+    },
+    "projects/rix/app/src/main/java/com/rix/vpn/ui/LogScreen.kt": {
+      "sha256": "9d48a0612246ff10dfb3ab1d7467731eb24836adde6592738ec2e6a62666627a",
+      "size": 5786
+    },
+    "projects/rix/app/src/main/java/com/rix/vpn/ui/OptionsScreen.kt": {
+      "sha256": "2cd7a23a79c279d3652fe1021b360ed1e4ae5e69212d6dad49ac8f26e1001e35",
+      "size": 21151
+    },
+    "projects/rix/app/src/main/java/com/rix/vpn/ui/Theme.kt": {
+      "sha256": "3814fc0641fa1e623a28beca4c37f86e478945e10b466f71fe16415fa558c5fc",
+      "size": 2932
+    },
+    "projects/rix/app/src/main/res/drawable/ic_launcher_foreground.xml": {
+      "sha256": "197c9498a1374ba2cf2a978c396846245ba5701d4bb4ca80d8451cf1001d75ce",
+      "size": 600
+    },
+    "projects/rix/app/src/main/res/drawable/ic_stat_rix.xml": {
+      "sha256": "b31ceaa42e41d6ecdd73406c5274c51f592ed676829e342107f922de1b284feb",
+      "size": 430
+    },
+    "projects/rix/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml": {
+      "sha256": "0864103c12feebd0ca4e9768df7027fcc6f1f3c6dd73fded1825517d21f8d5a2",
+      "size": 270
+    },
+    "projects/rix/app/src/main/res/mipmap-hdpi/ic_launcher.png": {
+      "sha256": "3cd9976d0f194efdd3c1bf04eba4a38889be3fdad59dab8e33f13b090971605e",
+      "size": 862
+    },
+    "projects/rix/app/src/main/res/mipmap-hdpi/ic_launcher_round.png": {
+      "sha256": "3cd9976d0f194efdd3c1bf04eba4a38889be3fdad59dab8e33f13b090971605e",
+      "size": 862
+    },
+    "projects/rix/app/src/main/res/mipmap-mdpi/ic_launcher.png": {
+      "sha256": "8b7117a3b4ab7cbad55ddf01ed8983d86bd178416cc28659f351ac990a74897d",
+      "size": 645
+    },
+    "projects/rix/app/src/main/res/mipmap-mdpi/ic_launcher_round.png": {
+      "sha256": "8b7117a3b4ab7cbad55ddf01ed8983d86bd178416cc28659f351ac990a74897d",
+      "size": 645
+    },
+    "projects/rix/app/src/main/res/mipmap-xhdpi/ic_launcher.png": {
+      "sha256": "3c2fc0a696e141c778f3eb7a6c8f8a1d5a9d64d22b84327b490896dbf3707274",
+      "size": 1162
+    },
+    "projects/rix/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png": {
+      "sha256": "3c2fc0a696e141c778f3eb7a6c8f8a1d5a9d64d22b84327b490896dbf3707274",
+      "size": 1162
+    },
+    "projects/rix/app/src/main/res/mipmap-xxhdpi/ic_launcher.png": {
+      "sha256": "07a535a7ff5bde457130ca355c7ac0f27ba44219ba4392db3dd236ad4fc7d428",
+      "size": 2016
+    },
+    "projects/rix/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png": {
+      "sha256": "07a535a7ff5bde457130ca355c7ac0f27ba44219ba4392db3dd236ad4fc7d428",
+      "size": 2016
+    },
+    "projects/rix/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png": {
+      "sha256": "da230150a516943ccd97b7ad205e430409b2f876a3a11492f76429ae922fe823",
+      "size": 2678
+    },
+    "projects/rix/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png": {
+      "sha256": "da230150a516943ccd97b7ad205e430409b2f876a3a11492f76429ae922fe823",
+      "size": 2678
+    },
+    "projects/rix/app/src/main/res/values/colors.xml": {
+      "sha256": "a647f7359fd8716abc9571b1c32f1b4389455f7dec5eb42545eb16b38ac66712",
+      "size": 174
+    },
+    "projects/rix/app/src/main/res/values/strings.xml": {
+      "sha256": "cecae47459dfdb7a34e0cf3ab302734e99540c7fcb95aab6fa51daad852bad7b",
+      "size": 1181
+    },
+    "projects/rix/app/src/main/res/values/themes.xml": {
+      "sha256": "73140b43ea136adb2fdb7e7479349d4bdf661d736635b3d5f1aa1373be62486a",
+      "size": 596
+    },
+    "projects/rix/build.gradle.kts": {
+      "sha256": "083f26663012b5108b0037cd8707b4d412d543b364ed4d71c2bc2a9a97d39838",
+      "size": 216
+    },
+    "projects/rix/gradle.properties": {
+      "sha256": "a6b27c9eae0e0ab05270ac69655d653f90a3c4418fd76c2814e61837f632f721",
+      "size": 247
+    },
+    "projects/rix/settings.gradle.kts": {
+      "sha256": "b46fcaa4f7b7bae4ecb3b79835877f90ae8dce52075e080a7aaf492675363b68",
+      "size": 322
+    },
     "state/SOUL.md": {
       "sha256": "2765a846e1bb371d78d3b93b403dfb0f8d1ba1a9895edb5f608367abfe81194d",
       "size": 513
@@ -12,28 +184,8 @@
       "size": 10155
     },
     "state/cron/jobs.json": {
-      "sha256": "f86e436535dfb4e995b1af2aad3bea1b7417b1de257645e9db69848507839e7c",
+      "sha256": "8995ef58dca1c7ccab8f7d4b21d743262f0b2745fea197ac22b80c0ef2466a56",
       "size": 3867
-    },
-    "state/cron/output/9a1f44193ab7/2026-10-28_16-45-16.md": {
-      "sha256": "746d14adc7cc3e9d1ac02e70211aeb391323be317ed183095a452661e91cda07",
-      "size": 163
-    },
-    "state/cron/output/9a1f44193ab7/2026-10-28_16-50-16.md": {
-      "sha256": "1afca220b00674da6f6eb1f8f5c6fb12f135b2436f58a4d03b8179e76687ecce",
-      "size": 163
-    },
-    "state/cron/output/9a1f44193ab7/2026-10-28_16-55-16.md": {
-      "sha256": "6b4073318c91498b54e6ef8fc839f673fc5195ef275607eeb3c21f61eb6cc9ba",
-      "size": 163
-    },
-    "state/cron/output/9a1f44193ab7/2026-10-28_17-00-16.md": {
-      "sha256": "021c893a20f87ad93340de6c00636d236cd946f6815b555af193d3d190b61417",
-      "size": 163
-    },
-    "state/cron/output/9a1f44193ab7/2026-10-28_17-05-30.md": {
-      "sha256": "c98ffbb8e5a1b980bd4780081c0bfc6b3ba23305b3e00392c118d2e1fa1c2814",
-      "size": 163
     },
     "state/cron/output/9a1f44193ab7/2026-10-28_17-10-30.md": {
       "sha256": "60f598fb8c5c4add21a978f265d39f2679b0efc5f4bb91b0dacaa1a75c036cd3",
@@ -175,6 +327,26 @@
       "sha256": "43a4b1c3832eee0950d2fba128da9a11136f19971d969a7a91f18da92c7262b2",
       "size": 163
     },
+    "state/cron/output/9a1f44193ab7/2026-10-28_20-05-13.md": {
+      "sha256": "c631ce424b101b7a11e2951863db47df5b644a61dd9039f634d822644bef1ffb",
+      "size": 163
+    },
+    "state/cron/output/9a1f44193ab7/2026-10-28_20-10-13.md": {
+      "sha256": "49a6042d88574bc35d49ce8e6fda3ee8999e7fbfec50879f1bfa431070dfdb37",
+      "size": 163
+    },
+    "state/cron/output/9a1f44193ab7/2026-10-28_20-15-13.md": {
+      "sha256": "72667519887b8e80ac156116c67f8f38706081d0815a6f04c82c5818651a7c7b",
+      "size": 163
+    },
+    "state/cron/output/9a1f44193ab7/2026-10-28_20-20-13.md": {
+      "sha256": "b1354799235d106e0a2b3b2f914bb86746de6e16603514c60f30431a76e28216",
+      "size": 163
+    },
+    "state/cron/output/9a1f44193ab7/2026-10-28_20-25-13.md": {
+      "sha256": "e7c32ae65cc65187f262a20cd11b03c2d1c7892805dd445ccdf5ad7c02885b6d",
+      "size": 163
+    },
     "state/lsp/package-lock.json": {
       "sha256": "71041d784c03be589fa39281e05fc59180171486f386349a6bc18fd06f8aca39",
       "size": 1135
@@ -194,6 +366,10 @@
     "state/scripts/archive.sh": {
       "sha256": "6cac8ffd161f2c51aac4a728de7bf33918f3d00bc5f577b1cbbd6d8425a5273f",
       "size": 16988
+    },
+    "state/scripts/ci_rix_build.py": {
+      "sha256": "4abfe15f4b8fff73c94cb8f6f91f798b08de781b267dfdc8609899e58d6ab7fc",
+      "size": 7216
     },
     "state/scripts/count_rea_tools.sh": {
       "sha256": "375f92764e073f02519f39cb44253dffa446bd2f81143a9aff727d7165a4246a",
@@ -2532,7 +2708,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-28T20:01:02.295782Z",
+  "generated_at": "2026-10-28T20:28:32.536947Z",
   "host": "sandbox-b1e0eab0",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -2555,5 +2731,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 6819221
+  "total_bytes": 7022098
 }
