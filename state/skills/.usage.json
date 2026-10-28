@@ -1,4 +1,17 @@
 {
+  "hermes-gateway-no-systemd": {
+    "archived_at": null,
+    "created_at": "2026-10-28T15:43:35.656771+00:00",
+    "created_by": null,
+    "last_patched_at": null,
+    "last_used_at": "2026-10-28T15:43:35.657607+00:00",
+    "last_viewed_at": "2026-10-28T15:43:35.656782+00:00",
+    "patch_count": 0,
+    "pinned": false,
+    "state": "active",
+    "use_count": 1,
+    "view_count": 1
+  },
   "reverse-engineer-anything": {
     "archived_at": null,
     "created_at": "2026-10-28T15:10:05.819419+00:00",
