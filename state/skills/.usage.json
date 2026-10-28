@@ -42,27 +42,27 @@
     "archived_at": null,
     "created_at": "2026-10-28T15:45:07.062658+00:00",
     "created_by": "agent",
-    "last_patched_at": "2026-10-28T17:50:25.847499+00:00",
-    "last_used_at": "2026-10-28T21:16:49.682351+00:00",
-    "last_viewed_at": "2026-10-28T21:16:49.681637+00:00",
-    "patch_count": 14,
+    "last_patched_at": "2026-10-28T21:47:26.723045+00:00",
+    "last_used_at": "2026-10-28T21:35:22.956058+00:00",
+    "last_viewed_at": "2026-10-28T21:35:22.953791+00:00",
+    "patch_count": 17,
     "pinned": false,
     "state": "active",
-    "use_count": 3,
-    "view_count": 3
+    "use_count": 4,
+    "view_count": 4
   },
   "reverse-engineer-anything": {
     "archived_at": null,
     "created_at": "2026-10-28T15:10:05.819419+00:00",
     "created_by": null,
     "last_patched_at": null,
-    "last_used_at": "2026-10-28T15:10:05.820089+00:00",
-    "last_viewed_at": "2026-10-28T15:10:05.819437+00:00",
+    "last_used_at": "2026-10-28T21:35:22.956856+00:00",
+    "last_viewed_at": "2026-10-28T21:35:22.955409+00:00",
     "patch_count": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 1,
-    "view_count": 1
+    "use_count": 2,
+    "view_count": 2
   },
   "reverse-engineer-anything:rea-analysis-toolchain": {
     "archived_at": null,

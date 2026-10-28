@@ -1,7 +1,7 @@
 {
   "commit": null,
-  "excluded_count": 79,
-  "file_count": 677,
+  "excluded_count": 88,
+  "file_count": 678,
   "files": {
     ".github/workflows/android-rix.yml": {
       "sha256": "58d833d46be39a218f9046a01da52f7240dd2f7ca80eebc751f19ec8b9e2cc25",
@@ -188,32 +188,8 @@
       "size": 10241
     },
     "state/cron/jobs.json": {
-      "sha256": "bfb4e9ea3fecfd5191939dee0860ebb1406ed57b1912ba942595f741ad1b8507",
+      "sha256": "cc0825099f48779e2fb98b3b0a157e574664f6e68979fff226cbcf03541da582",
       "size": 3868
-    },
-    "state/cron/output/9a1f44193ab7/2026-10-28_18-15-10.md": {
-      "sha256": "11b3283c5687893ccef216e2e3004ddec4fe6c65086ebd4f46a1fb35b60ac7df",
-      "size": 163
-    },
-    "state/cron/output/9a1f44193ab7/2026-10-28_18-20-10.md": {
-      "sha256": "fae4901e197c65dc62e480e244abb318f60a78eddbaa9fa5b2ddd39ef0727dbc",
-      "size": 163
-    },
-    "state/cron/output/9a1f44193ab7/2026-10-28_18-25-10.md": {
-      "sha256": "0949fde62a497b39ac07ae379c8c5338280a0be07b1c55371af3f51c3d8a00ca",
-      "size": 163
-    },
-    "state/cron/output/9a1f44193ab7/2026-10-28_18-30-10.md": {
-      "sha256": "3367ab29082979e6423af31cca1677934a8a2a788d5578c40c845da9c0ee69d8",
-      "size": 163
-    },
-    "state/cron/output/9a1f44193ab7/2026-10-28_18-35-26.md": {
-      "sha256": "6fa485c6f0ca65e3d495acbfd21bd09eb64bdd26639c6bd25641038ef7599a47",
-      "size": 163
-    },
-    "state/cron/output/9a1f44193ab7/2026-10-28_18-40-26.md": {
-      "sha256": "9ef846906b68ff8472e9d6bcc3bee0e4c8be1be394cd9f0aa1a407cbdd1db08c",
-      "size": 163
     },
     "state/cron/output/9a1f44193ab7/2026-10-28_18-45-26.md": {
       "sha256": "f5f2bf79953d2c3651ef1b8b44a3e208369a24e7439544361445f3ada9050811",
@@ -351,6 +327,30 @@
       "sha256": "a11b696dbc1368163b278aabc814d14d9e8799c8208f74b9409c8ea7b3b36797",
       "size": 163
     },
+    "state/cron/output/9a1f44193ab7/2026-10-28_21-35-56.md": {
+      "sha256": "91a0f1ee6016d7eadce0242224e14a05db6929cc5029eedc1112817f29c9bb74",
+      "size": 163
+    },
+    "state/cron/output/9a1f44193ab7/2026-10-28_21-40-56.md": {
+      "sha256": "2385a74049f44bd127e6674662efefbd872f305844aaeec90878bcbfe276ad7b",
+      "size": 163
+    },
+    "state/cron/output/9a1f44193ab7/2026-10-28_21-45-56.md": {
+      "sha256": "79a876a5f3c9db6170514e471593a2862020931e2dccabf031a98038f0109afd",
+      "size": 163
+    },
+    "state/cron/output/9a1f44193ab7/2026-10-28_21-50-56.md": {
+      "sha256": "74b64a1774ef7e17587a4a7a3fa44c8ece3985235cf688be60c16a3d066c4da8",
+      "size": 163
+    },
+    "state/cron/output/9a1f44193ab7/2026-10-28_21-55-56.md": {
+      "sha256": "105a19e92facd52b181cfcc422eeafaca9e0558a6741635a385e62415b3cd7d4",
+      "size": 163
+    },
+    "state/cron/output/9a1f44193ab7/2026-10-28_22-00-56.md": {
+      "sha256": "4d89b381288f7edd2ad1d40ab5dcf8464a15214086e979cbe0a51c1e46c7ac73",
+      "size": 163
+    },
     "state/lsp/package-lock.json": {
       "sha256": "71041d784c03be589fa39281e05fc59180171486f386349a6bc18fd06f8aca39",
       "size": 1135
@@ -428,7 +428,7 @@
       "size": 337
     },
     "state/skills/.usage.json": {
-      "sha256": "80322d9aa77cbbe7de4b9a4812922b4a65ff3e0ec0a6291865766512709c5ed3",
+      "sha256": "b028c2c3a24ab360db08cb56ef11dc867e5426ee9fad0abdb8a7f2043f089c0b",
       "size": 2426
     },
     "state/skills/apple/DESCRIPTION.md": {
@@ -2520,8 +2520,12 @@
       "size": 34993
     },
     "state/skills/reverse-engineer-anything/rea-analysis-toolchain/SKILL.md": {
-      "sha256": "85df953f712dc055a00e9fc92567937a9d0e6c9bb42ebde0242ee2f27498c938",
-      "size": 7541
+      "sha256": "89fd313aeee727c293ad94147f96a5c86da96c5179b2ba519c95f264672339a3",
+      "size": 8154
+    },
+    "state/skills/reverse-engineer-anything/rea-analysis-toolchain/references/source-distributed-helpers.md": {
+      "sha256": "72ddff3a4eb68a79ca0034d18f2cebe99a05ad3d25608d1465ccac224a539fa5",
+      "size": 682
     },
     "state/skills/reverse-engineer-anything/rea-analysis-toolchain/references/verified-install-recipe.md": {
       "sha256": "8aa90d963003416f8d28e1a4e851134680c294e93ff398040fce0a1028009228",
@@ -2712,7 +2716,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-28T21:30:45.189463Z",
+  "generated_at": "2026-10-28T22:01:00.241128Z",
   "host": "sandbox-b1e0eab0",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -2735,5 +2739,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 7045004
+  "total_bytes": 7046299
 }

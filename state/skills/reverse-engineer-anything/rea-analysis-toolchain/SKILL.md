@@ -117,6 +117,13 @@ release assets; needs a Rust build — Unblob usually covers extraction anyway).
 - **`pip` on Ubuntu 24.04 is externally managed** — use
   `--break-system-packages` for the pinned REA lane, and install `libmagic1`
   or `unblob` fails at import.
+- **Source-built helpers can fail on second start inside their wrapper layer.**
+  Helpers installed from a source tarball (e.g. `hev-socks5-tunnel`: source at
+  `/root/hevsrc/hev-socks5-tunnel-2.19.3/`, archive `hev.tar.xz`) keep runtime
+  state in a service/tun2socks layer. A failure that only appears on the second
+  start (e.g. exit code 0 on re-connect) usually traces there, not to the entry
+  binary — fix/inspect the service and tun2socks layer before retrying the
+  binary.
 
 ## Reporting (this user)
 
@@ -133,3 +140,5 @@ and they expect the action to be taken rather than proposed.
 - `references/verified-install-recipe.md` — exact versions, URLs, apt list,
   `/opt` layout, the `mcp_servers.rea.env` block, and the verification
   transcript from a full provision on Ubuntu 24.04.
+- `references/source-distributed-helpers.md` — install/resume notes for source
+  tarball helpers such as `hev-socks5-tunnel`.
