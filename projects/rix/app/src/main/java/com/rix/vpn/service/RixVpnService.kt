@@ -39,6 +39,7 @@ class RixVpnService : VpnService() {
     private var tun: ParcelFileDescriptor? = null
     private var worker: Job? = null
     private var ticker: Job? = null
+    private var watch: Job? = null
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         when (intent?.action) {
@@ -105,6 +106,13 @@ class RixVpnService : VpnService() {
                 if (RixRuntime.state.value.phase == RixRuntime.Phase.RUNNING) {
                     scope.launch { failAndStop(getString(R.string.error_engine_stopped)) }
                 }
+            }
+
+            // hev can return within milliseconds (see the SYNC_STOP note in
+            // RixRuntime.startTun2Socks). Reporting "connected" before proving
+            // the engine survived would show a green screen over a dead tunnel.
+            if (!RixRuntime.awaitHevAlive()) {
+                throw IllegalStateException(getString(R.string.error_engine_stopped))
             }
 
             RixRuntime.markRunning(options.bindPort, tun2socks = true)
@@ -174,7 +182,8 @@ class RixVpnService : VpnService() {
     }
 
     private fun startCoreWatch(options: RixOptions) {
-        scope.launch {
+        watch?.cancel()
+        watch = scope.launch {
             while (isActive) {
                 delay(2000)
                 val report = runCatching { RixRuntime.poll() }.getOrNull() ?: continue
@@ -200,10 +209,14 @@ class RixVpnService : VpnService() {
 
     // --------------------------------------------------------------- shutdown
 
-    private fun shutdown() {
+    fun shutdown() {
         RixRuntime.markStopping()
         ticker?.cancel()
         ticker = null
+        // Without this a failed attempt leaves its poll loop running; it then
+        // reports "core closed" over the *next* connection's error state.
+        watch?.cancel()
+        watch = null
 
         // tun2socks first: it is the only reader of the TUN fd, so stopping the
         // core before it would leave the engine spinning on dead sockets.

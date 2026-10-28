@@ -460,5 +460,7 @@ mcp_servers:
       REA_GDB_COMMAND: /usr/bin/gdb
       REA_RIZIN_COMMAND: /usr/local/bin/rizin
       REA_PWNTOOLS_PYTHON: /usr/bin/python3
+      REA_KUNA_COMMAND: /usr/local/bin/kuna
+      REA_KUNA_CACHE_DIR: /opt/kuna/cache
       ANDROID_HOME: /opt/android-sdk
       ANDROID_SDK_ROOT: /opt/android-sdk

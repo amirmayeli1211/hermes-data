@@ -41,6 +41,12 @@ object RixRuntime {
     /** Thrown for a refused/failed start; carries the core's own message. */
     class CoreException(message: String) : Exception(message)
 
+    /**
+     * How many extra times a start is retried when hev returns immediately.
+     * One retry is enough to burn a latched SYNC_STOP; two is belt and braces.
+     */
+    private const val HEV_START_ATTEMPTS = 2
+
     private val _state = MutableStateFlow(State())
     val state: StateFlow<State> = _state.asStateFlow()
 
@@ -51,7 +57,11 @@ object RixRuntime {
 
     fun idle() {
         jobId = 0L
-        hevThread = null
+        synchronized(hevLock) {
+            hevThread = null
+            hevInFlight = false
+            hevStopRequested = false
+        }
         _state.value = State()
     }
 
@@ -212,38 +222,139 @@ object RixRuntime {
 
     // ------------------------------------------------------------ tun2socks
 
+    /**
+     * hev keeps its run/stop handshake in one module-global `tsync` word:
+     *
+     *   stop()  -> if SYNC_SEND is set it kicks the event loop, ELSE it leaves
+     *              SYNC_STOP latched in the word
+     *   fini()  -> clears SYNC_SEND (so a later stop() takes the latching path)
+     *   run()   -> if SYNC_STOP is latched it clears it and returns immediately,
+     *              and main_inner() then returns the *init* result, i.e. 0
+     *
+     * A stop() issued after teardown therefore poisons the next start: it dies
+     * instantly with rc=0 and looks like "the engine stopped by itself", and the
+     * error path's own stop() latches the bit again, so every retry fails too.
+     *
+     * Two defences, because the bit is not reachable through the public API:
+     *  1. never call stop() unless a run() call is actually in flight;
+     *  2. if run() returns 0 and we did not ask it to stop, treat it as a
+     *     consumed latch and call run() once more (that call clears the bit).
+     */
+    private val hevLock = Any()
+
+    @Volatile
+    private var hevThread: Thread? = null
+
+    /** True only while [NativeHev.run] is executing inside the library. */
+    @Volatile
+    private var hevInFlight = false
+
+    @Volatile
+    private var hevStopRequested = false
+
+    private var hevGeneration = 0
+
+    /** Whether a tunnel engine is currently blocking inside hev. */
+    fun hevActive(): Boolean = hevInFlight
+
     fun startTun2Socks(context: Context, options: RixOptions, tunFd: Int, onExit: (Int) -> Unit) {
         val config = writeHevConfig(context, options)
+        val generation: Int
+        synchronized(hevLock) {
+            hevGeneration += 1
+            generation = hevGeneration
+            hevStopRequested = false
+        }
+
         val thread = Thread({
-            val rc = try {
-                NativeHev.run(config.absolutePath, tunFd)
-            } catch (t: Throwable) {
-                LogBus.e("hev", t.message ?: "خطای اجرای tun2socks")
-                -1
+            var rc = -1
+            var attempt = 0
+            while (attempt <= HEV_START_ATTEMPTS) {
+                // A stop that arrived before we entered the library needs no
+                // signal: hev was never started, so nothing is running.
+                if (hevStopRequested && !hevInFlight) {
+                    rc = 0
+                    break
+                }
+                hevInFlight = true
+                rc = try {
+                    NativeHev.run(config.absolutePath, tunFd)
+                } catch (t: Throwable) {
+                    LogBus.e("hev", t.message ?: "خطای اجرای tun2socks")
+                    -1
+                }
+                hevInFlight = false
+
+                val stoppedOnPurpose = hevStopRequested
+                if (rc != 0 || stoppedOnPurpose) break
+                if (attempt >= HEV_START_ATTEMPTS) break
+
+                attempt += 1
+                LogBus.i("hev", "engine returned at once; starting again (retry $attempt)")
+                try {
+                    Thread.sleep(120)
+                } catch (ignored: InterruptedException) {
+                    Thread.currentThread().interrupt()
+                    break
+                }
             }
-            onExit(rc)
+
+            if (generation == hevGeneration) onExit(rc)
         }, "rix-tun2socks")
+
         thread.isDaemon = true
-        hevThread = thread
+        synchronized(hevLock) { hevThread = thread }
         thread.start()
         LogBus.i("hev", "tun2socks started on fd $tunFd")
     }
 
-    fun stopTun2Socks() {
-        try {
-            NativeHev.stop()
-        } catch (t: Throwable) {
-            LogBus.e("hev", t.message ?: "توقف tun2socks ناموفق بود")
+    /** Waits briefly for the engine to stay alive; false means it died at once. */
+    suspend fun awaitHevAlive(timeoutMs: Long = 2000): Boolean {
+        val deadline = System.currentTimeMillis() + timeoutMs
+        while (System.currentTimeMillis() < deadline) {
+            val thread = hevThread ?: return false
+            if (thread.isAlive && hevInFlight) return true
+            if (!thread.isAlive) return false
+            delay(50)
         }
-        val thread = hevThread
-        if (thread != null) {
+        return hevInFlight
+    }
+
+    fun stopTun2Socks() {
+        val thread: Thread?
+        synchronized(hevLock) {
+            hevStopRequested = true
+            thread = hevThread
+        }
+        // Nothing was ever started: calling stop() here is exactly what latches
+        // SYNC_STOP and breaks the next connection.
+        if (thread == null) return
+
+        // Give the worker a moment to either enter run() or honour the
+        // stop request on its own, then signal hev only if it is really inside.
+        var waited = 0
+        while (waited < 400 && thread.isAlive && !hevInFlight) {
             try {
-                thread.join(2500)
+                Thread.sleep(10)
             } catch (ignored: InterruptedException) {
                 Thread.currentThread().interrupt()
+                break
             }
+            waited += 10
         }
-        hevThread = null
+        if (hevInFlight) {
+            runCatching { NativeHev.stop() }
+                .onFailure { LogBus.e("hev", it.message ?: "توقف tun2socks ناموفق بود") }
+        }
+
+        try {
+            thread.join(2500)
+        } catch (ignored: InterruptedException) {
+            Thread.currentThread().interrupt()
+        }
+        synchronized(hevLock) {
+            if (hevThread === thread) hevThread = null
+        }
     }
 
     fun stats(): LongArray = try {
