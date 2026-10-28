@@ -1,8 +1,112 @@
 {
   "commit": null,
-  "excluded_count": 5,
-  "file_count": 598,
+  "excluded_count": 6,
+  "file_count": 636,
   "files": {
+    ".github/workflows/android.yml": {
+      "sha256": "5b8e7a58eaa22711e837b96e83ac8e0becc32a4724a3a394cd6312f4b0dda77c",
+      "size": 2658
+    },
+    "projects/netcheck/.gitignore": {
+      "sha256": "1d2d027f975433e9331c106d6f7d3023d93c4d341c4917b072a8404c8d7222ec",
+      "size": 105
+    },
+    "projects/netcheck/README.md": {
+      "sha256": "7248af3ab7d68911267be4c12aa93cbfe7377b2b0a2ff541c9ae1695628e995c",
+      "size": 2159
+    },
+    "projects/netcheck/app/build.gradle.kts": {
+      "sha256": "4c8391430f3e83fd35b1fcdbd214b9c85b155c55cd9e035393170de9c2347a43",
+      "size": 2048
+    },
+    "projects/netcheck/app/proguard-rules.pro": {
+      "sha256": "54bab918d7d5d2c9984ff490026a09fcd4119af09720b66f0e952ac93b29999e",
+      "size": 64
+    },
+    "projects/netcheck/app/src/main/AndroidManifest.xml": {
+      "sha256": "b1185cf735269dd3cf4f3967d90c304afbc48c6916c2bbf33dbfa1c752f055f2",
+      "size": 1066
+    },
+    "projects/netcheck/app/src/main/java/com/example/netcheck/MainActivity.kt": {
+      "sha256": "4b16177e704185b2565db394e28f0c23b0c65e250a39d98f7d0da25dc996ddcd",
+      "size": 1207
+    },
+    "projects/netcheck/app/src/main/java/com/example/netcheck/data/Database.kt": {
+      "sha256": "962e25b4d7d47bd9f799e9e64610a561d54ff5e87641a1e0f00fc6f7e3630b40",
+      "size": 1840
+    },
+    "projects/netcheck/app/src/main/java/com/example/netcheck/domain/Models.kt": {
+      "sha256": "04298390f789b818d12f93fdc964978663f89d36d1e26ebb6bf8726fc487ce0b",
+      "size": 1960
+    },
+    "projects/netcheck/app/src/main/java/com/example/netcheck/domain/QualityClassifier.kt": {
+      "sha256": "549e25993bc962ef79866b7142c7306b25cd0692f2abb559dcaaf8eef714f212",
+      "size": 1143
+    },
+    "projects/netcheck/app/src/main/java/com/example/netcheck/network/NetworkInfoProvider.kt": {
+      "sha256": "20e9e92116f12a822fa026797b36132ae005f38cdee47b77ceaba5e2f23f9fa0",
+      "size": 3697
+    },
+    "projects/netcheck/app/src/main/java/com/example/netcheck/network/PingTester.kt": {
+      "sha256": "ceec5f2cce241e5baf947cfdce42c375302e805e4f0171101306217a12ec619d",
+      "size": 3231
+    },
+    "projects/netcheck/app/src/main/java/com/example/netcheck/network/SiteChecker.kt": {
+      "sha256": "7b79e120fe7f02ccb2807405ddc59632f9644563f114072cb0c7457a999fefb2",
+      "size": 2527
+    },
+    "projects/netcheck/app/src/main/java/com/example/netcheck/ui/Screens.kt": {
+      "sha256": "771ba58ca70c55c8742939485c8328e519c7934ed1dac2643053c91eadbe2847",
+      "size": 11214
+    },
+    "projects/netcheck/app/src/main/java/com/example/netcheck/ui/Theme.kt": {
+      "sha256": "df4a8e723239d3af85fc1e3a1b8dec05078abdea4b267e9724a89fb1c16832e5",
+      "size": 718
+    },
+    "projects/netcheck/app/src/main/java/com/example/netcheck/viewmodel/NetCheckViewModel.kt": {
+      "sha256": "144a1431483ba284b53bfdfe72891c93ba0d568d9e3a0a2e0530758c011c3129",
+      "size": 5829
+    },
+    "projects/netcheck/app/src/test/java/com/example/netcheck/PingStatsTest.kt": {
+      "sha256": "f816054a96cd11b14331475d6abea695ed10c3c9f7326a8b37283efb13f80d12",
+      "size": 1723
+    },
+    "projects/netcheck/app/src/test/java/com/example/netcheck/QualityClassifierTest.kt": {
+      "sha256": "be5b015b8429e98f48f87cacca14c4b41a5c7cb89b0fde0de4416852309360ed",
+      "size": 1453
+    },
+    "projects/netcheck/build.gradle.kts": {
+      "sha256": "b615204fd6270149700d84a437ffd7280046a77c4dc837545acfd568df575370",
+      "size": 352
+    },
+    "projects/netcheck/docs/DOCUMENTATION.md": {
+      "sha256": "a1e9a695ab3b078bb6f99a8db7c24b71659edd678c8ef57cf81ae3cf644d3865",
+      "size": 13990
+    },
+    "projects/netcheck/gradle.properties": {
+      "sha256": "5ec46b3f019c4b9612f578fde292e3554b9261968592ce42dd906341746cac3a",
+      "size": 918
+    },
+    "projects/netcheck/gradle/wrapper/gradle-wrapper.jar": {
+      "sha256": "3b8a25775a69158b5ad2b1d17a80a88dc7b40a352a73eb27d06c612a7ce68e98",
+      "size": 48749
+    },
+    "projects/netcheck/gradle/wrapper/gradle-wrapper.properties": {
+      "sha256": "94c3a7cce4cdb7b52232c72acc2083ca2d35ae1951602448ce8d40dc59908a69",
+      "size": 279
+    },
+    "projects/netcheck/gradlew": {
+      "sha256": "a5a5c199ba02189ae8c46a334223371a20599d9c298ef65e7540ede4a3f72d59",
+      "size": 8656
+    },
+    "projects/netcheck/gradlew.bat": {
+      "sha256": "f17917f8dbe61182b149273ee78090fec1197442c3f38276af907bfa5190db16",
+      "size": 4888
+    },
+    "projects/netcheck/settings.gradle.kts": {
+      "sha256": "45d2ffa10f74cdca6dfd912ae4bdd76e275a12b34fc5f50ebb74898a23c296a8",
+      "size": 328
+    },
     "state/SOUL.md": {
       "sha256": "2765a846e1bb371d78d3b93b403dfb0f8d1ba1a9895edb5f608367abfe81194d",
       "size": 513
@@ -12,8 +116,20 @@
       "size": 10103
     },
     "state/cron/jobs.json": {
-      "sha256": "ea2cde5a6e3da1704b1e9fa6dc96fc387e32d5d0c14ee0e88af1bc6f48903b68",
-      "size": 3806
+      "sha256": "df956710278b0cf7a4a59b27df08567605c0ecb9846c8b14aed9d1920d9119d7",
+      "size": 3866
+    },
+    "state/cron/output/0686a8638e72/2026-10-28_16-00-44.md": {
+      "sha256": "99c61cc8d66c54d35d37da51a53f7747de75a65f0351f46cf61884a9bb9c0670",
+      "size": 151
+    },
+    "state/cron/output/57622ec1fb5b/2026-10-28_16-00-28.md": {
+      "sha256": "379fbd66a650e0a61aafee6fdd8585489bbb390a661c236766dffe38dae8c3be",
+      "size": 145
+    },
+    "state/cron/output/57622ec1fb5b/2026-10-28_16-16-39.md": {
+      "sha256": "8ef1390ed02cddc5832b22b04c0861ce95a610b40ccc40c98597951df2a90989",
+      "size": 218
     },
     "state/cron/output/9a1f44193ab7/2026-10-28_14-55-17.md": {
       "sha256": "4c8c17b620fa9ce6d20c49885f63858e88353a5b4f565b9776fb5d2e9a60149e",
@@ -71,6 +187,30 @@
       "sha256": "858d113584bf83cec1d508e69d239bcf1b9ec563f12084295528ded4e887ccbb",
       "size": 163
     },
+    "state/cron/output/9a1f44193ab7/2026-10-28_16-05-44.md": {
+      "sha256": "5e959673ba9de52be49494d91c01df67aacbfb7fa48ba00eb8de1a8c989b61cb",
+      "size": 163
+    },
+    "state/cron/output/9a1f44193ab7/2026-10-28_16-10-45.md": {
+      "sha256": "3d55d00b21e6c3bb9f27152c8008eeb72624f1c7cb1b1bb9bf0ee30f117e94a5",
+      "size": 163
+    },
+    "state/cron/output/9a1f44193ab7/2026-10-28_16-16-35.md": {
+      "sha256": "e355317cedd34eedb033b54a8023e3364e38af03aded3a9453e90fb89193e629",
+      "size": 163
+    },
+    "state/cron/output/9a1f44193ab7/2026-10-28_16-20-10.md": {
+      "sha256": "3a5357c2c2fd3c9e2cf44df22e1b646043cd307fe5e286c5605c1853c2c25a0c",
+      "size": 163
+    },
+    "state/cron/output/9a1f44193ab7/2026-10-28_16-25-11.md": {
+      "sha256": "7f6b228eaf615342aa79604f43b7b37a596a57555d4c96f0e1bb0d98c0f6e56d",
+      "size": 163
+    },
+    "state/cron/output/9a1f44193ab7/2026-10-28_16-31-52.md": {
+      "sha256": "ada9bb13cca0769da15075076b6e95d7e9a2188e9ba7f04d4fa2eec3b6f98b29",
+      "size": 163
+    },
     "state/lsp/package-lock.json": {
       "sha256": "71041d784c03be589fa39281e05fc59180171486f386349a6bc18fd06f8aca39",
       "size": 1135
@@ -80,8 +220,8 @@
       "size": 54
     },
     "state/memories/MEMORY.md": {
-      "sha256": "a7b9fe613b90934cc8d3b191a09706be9356cc3521ab38fe4641d78c874550d5",
-      "size": 1883
+      "sha256": "a6c3acd15824db690be3f1ba55ace29e39b1c4e0d3477f66f6302bcca426c519",
+      "size": 2143
     },
     "state/memories/USER.md": {
       "sha256": "400fac6e2ad03bb50aa867058ea4cd86d4bcf83aa8c1cdd13980595db4807799",
@@ -144,8 +284,8 @@
       "size": 337
     },
     "state/skills/.usage.json": {
-      "sha256": "c2856e210bfe15becf6c5206df782c5be801b505806b499f5850f7a5bb8312b8",
-      "size": 1172
+      "sha256": "e90eda2dbebd6360cbafdd0b4b051c2e9322be249273b304ca8fa64de46e3e77",
+      "size": 1861
     },
     "state/skills/apple/DESCRIPTION.md": {
       "sha256": "c9537e578d68950224dbc09a425497a780e8c3956db9cb38a97b4a9e985516b3",
@@ -1267,9 +1407,13 @@
       "sha256": "d93c4b4f50e66c0c074d49e43e28bf5ab87531eaa48884d0083568db827f5869",
       "size": 5285
     },
+    "state/skills/devops/github-backed-state-store/SKILL.md": {
+      "sha256": "6695c64bd2564b638d8e8fd05af505944b771fb8773bf8fef28fda29440fe7bf",
+      "size": 7378
+    },
     "state/skills/devops/hermes-gateway-no-systemd/SKILL.md": {
-      "sha256": "a5489b873c53f2935a81a28e2ead62538eb312ff669e8b22b4581d7f3b80929e",
-      "size": 9981
+      "sha256": "7e405aa5ee0f0aac53c805a896128bc46cf372afad0f75ae6bb53cdd5841c7ca",
+      "size": 12449
     },
     "state/skills/devops/kanban-orchestrator/SKILL.md": {
       "sha256": "c60c7fcfb64157d76b6a266bbcf568a677a91bc7b1ce0763ebeeeb1c33a491ea",
@@ -2291,6 +2435,14 @@
       "sha256": "46a50c6f6d3fd233d5eaa8af829d5f78f81ad97472571fde7f233e069485a611",
       "size": 13993
     },
+    "state/skills/software-development/android-app-builds/SKILL.md": {
+      "sha256": "1f369be1237371ac7ccd41d51d5d87fe87d62de3591fc7c82c86493e02da9edf",
+      "size": 6917
+    },
+    "state/skills/software-development/android-app-builds/templates/gradle-config-kotlin2-compose.md": {
+      "sha256": "4784ec69fd645b421ad209b5b54ecc39c1484640203ddddd9505829719aab4c7",
+      "size": 4951
+    },
     "state/skills/software-development/debugging-hermes-tui-commands/SKILL.md": {
       "sha256": "55d5811c0b2d872dc59d87432720a113150dbbce2872524a36b3860a8967095d",
       "size": 7910
@@ -2368,8 +2520,8 @@
       "size": 10081
     },
     "tool/ghstore.py": {
-      "sha256": "0b3272c2f56f477737d174c2607899678dc0700ee78db81b4ea70b9297dd304a",
-      "size": 72037
+      "sha256": "a0d03630448814c67e9da3591350065ca0e567b5fffcfb79998a79443a132c87",
+      "size": 72954
     },
     "tool/offload-boot.sh": {
       "sha256": "a922425a54df9a76d385db860b9cf3744705bd21ec56eb7594c78d1c46f1c6e8",
@@ -2396,7 +2548,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-28T16:00:32.551228Z",
+  "generated_at": "2026-10-28T16:31:56.892645Z",
   "host": "sandbox-b1e0eab0",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -2419,5 +2571,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 6743965
+  "total_bytes": 6891899
 }

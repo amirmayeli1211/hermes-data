@@ -125,6 +125,11 @@ SYNC_MAP = [
     # builds here. Mapped to a top-level `projects/` tree so product code stays
     # separate from Hermes runtime state; one directory per project, flat.
     ("projects", "projects"),
+    # Repository-level GitHub configuration: the Actions workflows that build
+    # the projects under projects/. Mapped at the top level because GitHub only
+    # reads workflows from `.github/workflows/`, and mapped at all so a sync
+    # cannot mistake them for files to delete.
+    ("github", ".github"),
     ("cron/jobs.json", "state/cron/jobs.json"),
     ("cron/output", "state/cron/output"),
     # The language-server tree itself (38 MB of npm node_modules) lives on the
@@ -141,6 +146,10 @@ EXCLUDE_DIRS = {
     "cache", "backups", "state-snapshots", "checkpoints",
     ".op.env", "pending_messages", "installs", "audio_cache",
     "image_cache", "plugin-update-checks", "cron-executions",
+    # Build output and tool caches of the software projects under projects/.
+    # These are machine-specific megabytes that CI rebuilds from source, and a
+    # committed `build/` tree would be re-committed as new blobs on every sync.
+    "build", ".gradle", ".kotlin", ".idea", ".cxx", "captures",
 }
 
 # Matched against the final path segment.
@@ -161,6 +170,11 @@ EXCLUDE_NAME_PATTERNS = [
     re.compile(r"^telegram_update_receipts_.*\.json$"),
     re.compile(r"^\.skills_prompt_snapshot\.json$"),
     re.compile(r"^state\.json$"),               # local-only sync bookkeeping
+    # Android SDK location for THIS container (sdk.dir=/opt/android-sdk). It is
+    # machine-specific, takes precedence over a CI runner's ANDROID_HOME, and
+    # would break every cloud build. The local file stays; it is not stored.
+    re.compile(r"^local\.properties$"),
+    re.compile(r"^\.DS_Store$"),
     # Append-only per-fire cron telemetry (timings, token counts, errors).
     # Found by `audit` on a live home; grows a line per job fire.
     re.compile(r"^usage_audit\.jsonl$"),

@@ -231,6 +231,49 @@ terminal(command="bash ~/.hermes/scripts/restart_gateway.sh", background=true)
   server start, so the running server keeps the old values until the client
   restarts (see `native-mcp`).
 
+## Give the gateway its environment in the supervisor, not by hand
+
+The supervisor is the only code that runs on *every* launch, so it is the right
+home for environment the gateway and every tool it spawns must inherit. Export it
+just before the launch line (order matters: before the `while true` loop, not
+inside it):
+
+```bash
+export HERMES_OFFLOAD_ROOT="${HERMES_OFFLOAD_ROOT:-/home/user/hermes-offload}"
+mkdir -p "$HERMES_OFFLOAD_ROOT"/{tmp,work,downloads,clones,skills} 2>/dev/null || true
+export TMPDIR="$HERMES_OFFLOAD_ROOT/tmp"; export TMP="$TMPDIR"; export TEMP="$TMPDIR"
+```
+
+- **Re-create the directories on every launch.** Paths chosen for the *ephemeral*
+  disk (`/var/tmp/...`) are wiped when the sandbox is recreated, and a `TMPDIR`
+  pointing at a **missing** directory is worse than unset: Python's `tempfile`
+  silently falls back to the next candidate — often inside `$HERMES_HOME`, i.e.
+  exactly the disk you were trying to keep free.
+- The gateway also loads `$HERMES_HOME/.env` into `os.environ` at startup
+  (`hermes_cli.env_loader.load_hermes_dotenv`), so a key there works too — but
+  only from the *next* start, which is why the supervisor export is the reliable
+  half and why both together survive either failure mode.
+- Verify from a tool call, not from the script: `echo "$TMPDIR"` and
+  `python3 -c "import tempfile;print(tempfile.gettempdir())"` run as children of
+  the gateway, so they show exactly what spawned processes see.
+
+## Disk exhaustion is an uptime failure too
+
+A full disk kills the gateway the same way SIGTERM does — it cannot write the
+session DB or its logs — and no supervisor can revive it while there is no room
+to write. On small sandboxes (single ~8 GB root, `/tmp` a ~1 GB **tmpfs**) two
+habits keep it away:
+
+- Scratch on the real disk, never in tmpfs. tmpfs contents are RAM, so a large
+  download hits a hard ceiling *and* starves the gateway and any analysis engine
+  running beside it. That is what the `TMPDIR` export above buys.
+- A scheduled reclaim guard that is silent unless it matters. Pattern: run a
+  tiered cleaner (SQLite WAL checkpoint → rebuildable caches → old history), then
+  report **only** when the level is critical, when a reclaim freed a lot, or when
+  the cleaner itself failed; anything else prints nothing so the cron stays quiet.
+  See `~/.hermes/scripts/disk_guard_watch.sh` (wrapper) and `offload.sh
+  status|verify` (proves where temp actually lands) on this host.
+
 ## Verify
 
 ```bash
