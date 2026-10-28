@@ -1,112 +1,8 @@
 {
   "commit": null,
-  "excluded_count": 44,
-  "file_count": 658,
+  "excluded_count": 49,
+  "file_count": 631,
   "files": {
-    ".github/workflows/android.yml": {
-      "sha256": "13b11aea2fe8648ec5907b863faf50749a1867b328569ca33ec24f3cc8d1906c",
-      "size": 2941
-    },
-    "projects/netcheck/.gitignore": {
-      "sha256": "1d2d027f975433e9331c106d6f7d3023d93c4d341c4917b072a8404c8d7222ec",
-      "size": 105
-    },
-    "projects/netcheck/README.md": {
-      "sha256": "7248af3ab7d68911267be4c12aa93cbfe7377b2b0a2ff541c9ae1695628e995c",
-      "size": 2159
-    },
-    "projects/netcheck/app/build.gradle.kts": {
-      "sha256": "4c8391430f3e83fd35b1fcdbd214b9c85b155c55cd9e035393170de9c2347a43",
-      "size": 2048
-    },
-    "projects/netcheck/app/proguard-rules.pro": {
-      "sha256": "54bab918d7d5d2c9984ff490026a09fcd4119af09720b66f0e952ac93b29999e",
-      "size": 64
-    },
-    "projects/netcheck/app/src/main/AndroidManifest.xml": {
-      "sha256": "b1185cf735269dd3cf4f3967d90c304afbc48c6916c2bbf33dbfa1c752f055f2",
-      "size": 1066
-    },
-    "projects/netcheck/app/src/main/java/com/example/netcheck/MainActivity.kt": {
-      "sha256": "4b16177e704185b2565db394e28f0c23b0c65e250a39d98f7d0da25dc996ddcd",
-      "size": 1207
-    },
-    "projects/netcheck/app/src/main/java/com/example/netcheck/data/Database.kt": {
-      "sha256": "962e25b4d7d47bd9f799e9e64610a561d54ff5e87641a1e0f00fc6f7e3630b40",
-      "size": 1840
-    },
-    "projects/netcheck/app/src/main/java/com/example/netcheck/domain/Models.kt": {
-      "sha256": "04298390f789b818d12f93fdc964978663f89d36d1e26ebb6bf8726fc487ce0b",
-      "size": 1960
-    },
-    "projects/netcheck/app/src/main/java/com/example/netcheck/domain/QualityClassifier.kt": {
-      "sha256": "549e25993bc962ef79866b7142c7306b25cd0692f2abb559dcaaf8eef714f212",
-      "size": 1143
-    },
-    "projects/netcheck/app/src/main/java/com/example/netcheck/network/NetworkInfoProvider.kt": {
-      "sha256": "20e9e92116f12a822fa026797b36132ae005f38cdee47b77ceaba5e2f23f9fa0",
-      "size": 3697
-    },
-    "projects/netcheck/app/src/main/java/com/example/netcheck/network/PingTester.kt": {
-      "sha256": "ceec5f2cce241e5baf947cfdce42c375302e805e4f0171101306217a12ec619d",
-      "size": 3231
-    },
-    "projects/netcheck/app/src/main/java/com/example/netcheck/network/SiteChecker.kt": {
-      "sha256": "7b79e120fe7f02ccb2807405ddc59632f9644563f114072cb0c7457a999fefb2",
-      "size": 2527
-    },
-    "projects/netcheck/app/src/main/java/com/example/netcheck/ui/Screens.kt": {
-      "sha256": "771ba58ca70c55c8742939485c8328e519c7934ed1dac2643053c91eadbe2847",
-      "size": 11214
-    },
-    "projects/netcheck/app/src/main/java/com/example/netcheck/ui/Theme.kt": {
-      "sha256": "df4a8e723239d3af85fc1e3a1b8dec05078abdea4b267e9724a89fb1c16832e5",
-      "size": 718
-    },
-    "projects/netcheck/app/src/main/java/com/example/netcheck/viewmodel/NetCheckViewModel.kt": {
-      "sha256": "144a1431483ba284b53bfdfe72891c93ba0d568d9e3a0a2e0530758c011c3129",
-      "size": 5829
-    },
-    "projects/netcheck/app/src/test/java/com/example/netcheck/PingStatsTest.kt": {
-      "sha256": "f816054a96cd11b14331475d6abea695ed10c3c9f7326a8b37283efb13f80d12",
-      "size": 1723
-    },
-    "projects/netcheck/app/src/test/java/com/example/netcheck/QualityClassifierTest.kt": {
-      "sha256": "be5b015b8429e98f48f87cacca14c4b41a5c7cb89b0fde0de4416852309360ed",
-      "size": 1453
-    },
-    "projects/netcheck/build.gradle.kts": {
-      "sha256": "b615204fd6270149700d84a437ffd7280046a77c4dc837545acfd568df575370",
-      "size": 352
-    },
-    "projects/netcheck/docs/DOCUMENTATION.md": {
-      "sha256": "a1e9a695ab3b078bb6f99a8db7c24b71659edd678c8ef57cf81ae3cf644d3865",
-      "size": 13990
-    },
-    "projects/netcheck/gradle.properties": {
-      "sha256": "22814971c02bd679b993cf5f067d3a3b2ddd09294e901593e2cfd3efb79e9f21",
-      "size": 753
-    },
-    "projects/netcheck/gradle/wrapper/gradle-wrapper.jar": {
-      "sha256": "3b8a25775a69158b5ad2b1d17a80a88dc7b40a352a73eb27d06c612a7ce68e98",
-      "size": 48749
-    },
-    "projects/netcheck/gradle/wrapper/gradle-wrapper.properties": {
-      "sha256": "94c3a7cce4cdb7b52232c72acc2083ca2d35ae1951602448ce8d40dc59908a69",
-      "size": 279
-    },
-    "projects/netcheck/gradlew": {
-      "sha256": "a5a5c199ba02189ae8c46a334223371a20599d9c298ef65e7540ede4a3f72d59",
-      "size": 8656
-    },
-    "projects/netcheck/gradlew.bat": {
-      "sha256": "f17917f8dbe61182b149273ee78090fec1197442c3f38276af907bfa5190db16",
-      "size": 4888
-    },
-    "projects/netcheck/settings.gradle.kts": {
-      "sha256": "45d2ffa10f74cdca6dfd912ae4bdd76e275a12b34fc5f50ebb74898a23c296a8",
-      "size": 328
-    },
     "state/SOUL.md": {
       "sha256": "2765a846e1bb371d78d3b93b403dfb0f8d1ba1a9895edb5f608367abfe81194d",
       "size": 513
@@ -116,24 +12,8 @@
       "size": 10155
     },
     "state/cron/jobs.json": {
-      "sha256": "7b00dd37d3e901f6da5172c30c2c908be6d590e62260b23d72d9d788c4efdbc6",
+      "sha256": "0da28f66f74b3d819f22a1a5972f2c4dd79715b3ea4a63cd3eeb32243e8a5315",
       "size": 3867
-    },
-    "state/cron/output/9a1f44193ab7/2026-10-28_16-16-35.md": {
-      "sha256": "e355317cedd34eedb033b54a8023e3364e38af03aded3a9453e90fb89193e629",
-      "size": 163
-    },
-    "state/cron/output/9a1f44193ab7/2026-10-28_16-20-10.md": {
-      "sha256": "3a5357c2c2fd3c9e2cf44df22e1b646043cd307fe5e286c5605c1853c2c25a0c",
-      "size": 163
-    },
-    "state/cron/output/9a1f44193ab7/2026-10-28_16-25-11.md": {
-      "sha256": "7f6b228eaf615342aa79604f43b7b37a596a57555d4c96f0e1bb0d98c0f6e56d",
-      "size": 163
-    },
-    "state/cron/output/9a1f44193ab7/2026-10-28_16-31-52.md": {
-      "sha256": "ada9bb13cca0769da15075076b6e95d7e9a2188e9ba7f04d4fa2eec3b6f98b29",
-      "size": 163
     },
     "state/cron/output/9a1f44193ab7/2026-10-28_16-35-16.md": {
       "sha256": "f92f5c39998aa260a634215c07abf45f8016437799be9cbbe7c6ee15733ffe6f",
@@ -279,6 +159,22 @@
       "sha256": "3912d173d7ade591ef262939f7126e29c992f2cc45345b51bf12c104a35b569e",
       "size": 163
     },
+    "state/cron/output/9a1f44193ab7/2026-10-28_19-35-58.md": {
+      "sha256": "9647097c099ba361e6433576ca6c42b91661ff0876756b42ddf05755d8252181",
+      "size": 163
+    },
+    "state/cron/output/9a1f44193ab7/2026-10-28_19-40-58.md": {
+      "sha256": "ac6d78bc74ab2fcd900e6bd621c7921739b6bc9b26b187ab587f99e85ab07620",
+      "size": 163
+    },
+    "state/cron/output/9a1f44193ab7/2026-10-28_19-45-58.md": {
+      "sha256": "2d48b29a9c4e03a27df3942180975d6be7eb6ede95bbb5e45993668e3b81882a",
+      "size": 163
+    },
+    "state/cron/output/9a1f44193ab7/2026-10-28_19-50-58.md": {
+      "sha256": "58d10723e846e108f96146545ba0050d79add42aab9d750624b923d62298d2f8",
+      "size": 163
+    },
     "state/lsp/package-lock.json": {
       "sha256": "71041d784c03be589fa39281e05fc59180171486f386349a6bc18fd06f8aca39",
       "size": 1135
@@ -298,10 +194,6 @@
     "state/scripts/archive.sh": {
       "sha256": "6cac8ffd161f2c51aac4a728de7bf33918f3d00bc5f577b1cbbd6d8425a5273f",
       "size": 16988
-    },
-    "state/scripts/ci_android_build.py": {
-      "sha256": "666d7990c46afb3ffe3d6bd32fb87c81fd2d7e1c0d8fc7c6350cf04470f8f99d",
-      "size": 7796
     },
     "state/scripts/count_rea_tools.sh": {
       "sha256": "375f92764e073f02519f39cb44253dffa446bd2f81143a9aff727d7165a4246a",
@@ -2636,7 +2528,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-28T19:30:47.430996Z",
+  "generated_at": "2026-10-28T19:51:58.925104Z",
   "host": "sandbox-b1e0eab0",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -2659,5 +2551,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 6940179
+  "total_bytes": 6809463
 }
