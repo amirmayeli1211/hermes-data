@@ -5,8 +5,8 @@ the Hermes instance it belongs to. The container filesystem is a rebuildable
 cache; a fresh container restores itself from here.
 
 - schema: `1` · tool `ghstore v1.0.0`
-- generated: `2026-10-28T23:00:28.671957Z` · host `sandbox-b1e0eab0`
-- files: `678` · bytes: `7046299`
+- generated: `2026-10-28T23:30:42.958888Z` · host `sandbox-b1e0eab0`
+- files: `678` · bytes: `7046300`
 
 ## Layout
 
