@@ -1,6 +1,6 @@
 {
   "commit": null,
-  "excluded_count": 61,
+  "excluded_count": 63,
   "file_count": 676,
   "files": {
     ".github/workflows/android-rix.yml": {
@@ -52,8 +52,8 @@
       "size": 3364
     },
     "projects/rix/app/src/main/java/com/rix/vpn/core/RixOptions.kt": {
-      "sha256": "4c3845da480ff8a241d4119489a2a7e2e184af4c0492e448247a806e3b57b98b",
-      "size": 9995
+      "sha256": "6525658f381c81ecd0763dcfe1299a953d5ac910fa4a3b55b49f0642b3a9b2b3",
+      "size": 9994
     },
     "projects/rix/app/src/main/java/com/rix/vpn/core/RixRuntime.kt": {
       "sha256": "da33ff2a13e966862be2fa5728c6f0d8417cef28e19823ee792c218da4edc8f2",
@@ -80,20 +80,20 @@
       "size": 6701
     },
     "projects/rix/app/src/main/java/com/rix/vpn/ui/Components.kt": {
-      "sha256": "2a7050dd807b2a424c2fbd333c0572243b086e7e44f6e61c6669d41f05e7b8ae",
-      "size": 12421
+      "sha256": "ebf192c9cfb13b277698a52f126d7a4b229a7ae28b5e20bb18db10d4441dea73",
+      "size": 12580
     },
     "projects/rix/app/src/main/java/com/rix/vpn/ui/HomeScreen.kt": {
-      "sha256": "0fa1fe7f3a894056d2868eb854b88b3ce3933aae3d57fbff20bcd590b1f8e357",
-      "size": 12390
+      "sha256": "98051804d66a82e0465caba5df50173a29e3c9800cac1982a5034d0c7dbdbea2",
+      "size": 12434
     },
     "projects/rix/app/src/main/java/com/rix/vpn/ui/LogScreen.kt": {
-      "sha256": "9d48a0612246ff10dfb3ab1d7467731eb24836adde6592738ec2e6a62666627a",
-      "size": 5786
+      "sha256": "f82eb0adb3ef44e750b8719cceb3fac8dec4ca665c8a1cdd991c085d2e7e7c36",
+      "size": 5830
     },
     "projects/rix/app/src/main/java/com/rix/vpn/ui/OptionsScreen.kt": {
-      "sha256": "2cd7a23a79c279d3652fe1021b360ed1e4ae5e69212d6dad49ac8f26e1001e35",
-      "size": 21151
+      "sha256": "098d07afb279bf084b7203cea27e64609850b503c72e6bd57c01e38348143867",
+      "size": 21239
     },
     "projects/rix/app/src/main/java/com/rix/vpn/ui/Theme.kt": {
       "sha256": "3814fc0641fa1e623a28beca4c37f86e478945e10b466f71fe16415fa558c5fc",
@@ -184,12 +184,8 @@
       "size": 10155
     },
     "state/cron/jobs.json": {
-      "sha256": "a93d375ad0955c5e6a25ff16406c897965efda107d6d30af2d13c816758d80e6",
-      "size": 3867
-    },
-    "state/cron/output/9a1f44193ab7/2026-10-28_17-15-30.md": {
-      "sha256": "2333c003623b7e933ac136ad0ceb74fceda041d9b9746f83898dfcf1a29db556",
-      "size": 163
+      "sha256": "7ca29c48aad2702f999b05e456d124a2df98d1b3dc3cfefb2938272097b125cd",
+      "size": 3868
     },
     "state/cron/output/9a1f44193ab7/2026-10-28_17-20-30.md": {
       "sha256": "d80371b22ff5c71688d12751a9d7c1dee671aa90c8de1047f2482a9e64da6ca3",
@@ -345,6 +341,10 @@
     },
     "state/cron/output/9a1f44193ab7/2026-10-28_20-30-13.md": {
       "sha256": "a1034a7c47de8a53181d0cae5a5c8ea4d304e7b7f5167bd3f4ee4dd3cd381fe0",
+      "size": 163
+    },
+    "state/cron/output/9a1f44193ab7/2026-10-28_20-35-26.md": {
+      "sha256": "934ce4f632599f27ec5e1e403b2c81a385f869d0a3955bb6fe5134c5f0c4fc87",
       "size": 163
     },
     "state/lsp/package-lock.json": {
@@ -2708,7 +2708,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-28T20:30:27.046132Z",
+  "generated_at": "2026-10-28T20:36:41.702973Z",
   "host": "sandbox-b1e0eab0",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -2731,5 +2731,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 7023717
+  "total_bytes": 7024052
 }

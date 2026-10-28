@@ -24,11 +24,15 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.PowerSettingsNew
+import androidx.compose.material.icons.rounded.Security
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -39,6 +43,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDirection
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -118,8 +123,9 @@ fun MonoText(
         modifier = modifier,
         color = color,
         fontSize = size.sp,
-        textDirection = TextDirection.Ltr,
-        textAlign = TextAlign.Start
+        textAlign = TextAlign.Start,
+        // Text has no textDirection parameter; direction lives on the style.
+        style = TextStyle(textDirection = TextDirection.Ltr)
     )
 }
 
@@ -342,7 +348,7 @@ fun PowerOrb(
         ) {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Icon(
-                    imageVector = if (active) IconsPower else IconsShield,
+                    imageVector = if (active) Icons.Rounded.PowerSettingsNew else Icons.Rounded.Security,
                     contentDescription = null,
                     tint = accent,
                     modifier = Modifier.size(40.dp)
@@ -358,9 +364,3 @@ fun PowerOrb(
         }
     }
 }
-
-private val IconsPower: ImageVector
-    get() = androidx.compose.material.icons.Icons.Rounded.PowerSettingsNew
-
-private val IconsShield: ImageVector
-    get() = androidx.compose.material.icons.Icons.Rounded.Security

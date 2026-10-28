@@ -406,7 +406,7 @@ fun OptionsScreen(
                                 "--no-grease --startup-secs 40",
                                 color = RixColors.TextMuted.copy(alpha = 0.6f),
                                 fontSize = 12.sp,
-                                textDirection = TextDirection.Ltr
+                                style = androidx.compose.ui.text.TextStyle(textDirection = TextDirection.Ltr)
                             )
                         },
                         textStyle = androidx.compose.ui.text.TextStyle(
@@ -467,7 +467,7 @@ private fun TextField(
                 hint,
                 color = RixColors.TextMuted.copy(alpha = 0.55f),
                 fontSize = 12.sp,
-                textDirection = TextDirection.Ltr
+                style = androidx.compose.ui.text.TextStyle(textDirection = TextDirection.Ltr)
             )
         },
         textStyle = androidx.compose.ui.text.TextStyle(

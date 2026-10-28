@@ -110,9 +110,9 @@ fun LogScreen(
                                 },
                                 fontSize = 10.5.sp,
                                 lineHeight = 15.sp,
-                                textDirection = TextDirection.Ltr,
                                 textAlign = TextAlign.Start,
-                                modifier = Modifier.fillMaxWidth()
+                                modifier = Modifier.fillMaxWidth(),
+                                style = androidx.compose.ui.text.TextStyle(textDirection = TextDirection.Ltr)
                             )
                         }
                     }

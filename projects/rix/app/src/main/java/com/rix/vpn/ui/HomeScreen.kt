@@ -227,9 +227,9 @@ fun HomeScreen(
                 text = diagnostics,
                 color = RixColors.TextMuted.copy(alpha = 0.75f),
                 fontSize = 10.sp,
-                textDirection = TextDirection.Ltr,
                 textAlign = TextAlign.Center,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                style = androidx.compose.ui.text.TextStyle(textDirection = TextDirection.Ltr)
             )
         }
     }

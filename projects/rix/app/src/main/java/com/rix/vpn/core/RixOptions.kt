@@ -236,7 +236,7 @@ data class RixOptions(
             }
         }
 
-        private fun <T : Enum<T>> JSONObject.optEnum(key: String, values: Array<T>, fallback: T): T {
+        private fun <T : Enum<T>> JSONObject.optEnum(key: String, values: List<T>, fallback: T): T {
             val name = optString(key, "")
             return values.firstOrNull { it.name == name } ?: fallback
         }
