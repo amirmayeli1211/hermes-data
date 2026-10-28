@@ -22,6 +22,13 @@ THRESHOLD_MIB="${DISK_GUARD_REPORT_MIB:-200}"
 [ -f "$GUARD" ] || { echo "disk-guard FAILED: $GUARD is missing"; exit 1; }
 
 free_before="$(df -P "$MOUNT" | tail -1 | awk '{print $4}')"
+OFFLOAD="$SCRIPTS_DIR/offload.sh"
+# Stale scratch in the offload area is the one cache disk-guard does not know
+# about (it only looks inside HERMES_HOME), so it is swept here. Its output is
+# captured, not printed: a synced-in wrapper must stay quiet on a normal run.
+if [ -f "$OFFLOAD" ]; then
+    HERMES_HOME="${HERMES_HOME:-/home/user/.hermes}" sh "$OFFLOAD" clean >/dev/null 2>&1 || true
+fi
 out="$(HERMES_HOME="${HERMES_HOME:-/home/user/.hermes}" sh "$GUARD" clean 2>&1)"
 rc=$?
 free_after="$(df -P "$MOUNT" | tail -1 | awk '{print $4}')"

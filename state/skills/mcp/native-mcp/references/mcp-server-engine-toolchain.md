@@ -145,5 +145,44 @@ binary_overview()               → analysis_profile.provider = ghidra 12.1.4,
   tooling.
 - **A dead engine means a live-server restart, not a retry.** Once the MCP
   server's files were replaced under it, calls returned
-  "REA could not start … ask them to restart the MCP client" — a startup
+  "REA could not start ... ask them to restart the MCP client" — a startup
   failure that repeating the call never fixes.
+
+## 8. Android/APK build toolchain (an engine toolchain is not a build toolchain)
+
+Asked to "install the tools for building an APK", the gap is almost always the
+*authoring* side: a JDK alone builds nothing, and nothing in the analysis lane
+supplies Gradle, build-tools or a signing path. What a CLI-only APK build needs:
+
+| Piece | Source | Note |
+|---|---|---|
+| JDK 21 | `openjdk-21-jdk-headless` (apt) | AGP/Gradle need 17+; 21 is the safe lane |
+| Gradle | `services.gradle.org/versions/current` → `downloadUrl` | 9.8.2 ships its own Kotlin — a standalone `kotlinc` is **not** required |
+| build-tools | `sdkmanager "build-tools;34.0.0"` | provides `aapt2`, `d8`, `zipalign`, `apksigner` |
+| platform | `sdkmanager "platforms;android-34"` | `ANDROID_HOME` + `ANDROID_SDK_ROOT` must point at the SDK root |
+| bundletool | GitHub release `bundletool-all-<ver>.jar` | optional (AAB) |
+| apktool | `apt apktool` (2.7.0 here) | decode / rebuild resources |
+
+Resolve the current Gradle URL without `jq`:
+
+```bash
+node -e 'fetch("https://services.gradle.org/versions/current").then(r=>r.json()).then(j=>console.log(j.version, j.downloadUrl))'
+unzip -q gradle-<ver>-bin.zip -d /opt/gradle_unpack && ln -sfn /opt/gradle_unpack/gradle-<ver> /opt/gradle
+/opt/android-sdk/cmdline-tools/latest/bin/sdkmanager "platforms;android-34" "build-tools;34.0.0"
+```
+
+- **Enumerate what you did *not* install** instead of leaving it implied: NDK
+  (native/C++ builds), emulator + system images (running the app), Android Studio
+  (not needed for `gradle assembleDebug`), extra API levels (any more via
+  `sdkmanager`). Say so in the report — "toolchain complete" without that caveat
+  misleads the user into a build that fails later.
+- `sdkmanager` needs `JAVA_HOME` on 17+ and accepted licenses; a prepared SDK
+  image usually already carries `licenses/`, so check before driving an
+  interactive prompt.
+- Verify each binary, not the aggregate: `aapt2 --version`, `d8 --version`,
+  `apksigner --version`, `zipalign -h`, and `gradle --version` (read the launcher
+  JVM back — it should report JDK 21, not the distro's 17).
+- Add `/opt/gradle/bin` and the build-tools directory to the MCP server's `PATH`;
+  anything that shells out to `gradle` finds nothing otherwise.
+- Budget disk: Gradle ~145 MB download / ~165 MB unpacked, build-tools ~55 MB,
+  bundletool ~32 MB. Free the archives after unpacking.

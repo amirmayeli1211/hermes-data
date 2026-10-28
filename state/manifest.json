@@ -1,7 +1,7 @@
 {
   "commit": null,
   "excluded_count": 5,
-  "file_count": 595,
+  "file_count": 598,
   "files": {
     "state/SOUL.md": {
       "sha256": "2765a846e1bb371d78d3b93b403dfb0f8d1ba1a9895edb5f608367abfe81194d",
@@ -12,7 +12,7 @@
       "size": 10103
     },
     "state/cron/jobs.json": {
-      "sha256": "02a35c30e21da31cf15d564001cc761fd5dffb900d9f00daa340b9c12e1e15f2",
+      "sha256": "ea2cde5a6e3da1704b1e9fa6dc96fc387e32d5d0c14ee0e88af1bc6f48903b68",
       "size": 3806
     },
     "state/cron/output/9a1f44193ab7/2026-10-28_14-55-17.md": {
@@ -63,6 +63,14 @@
       "sha256": "518de5239570fea95f87201ab156f06a67be5a1b42bf15dda66bbd54d1a36bc6",
       "size": 163
     },
+    "state/cron/output/9a1f44193ab7/2026-10-28_15-55-55.md": {
+      "sha256": "c6908c240fd0e5feaf7a1b1b4fe802e301ebf9f9a17666c73f48150a288d2254",
+      "size": 163
+    },
+    "state/cron/output/9a1f44193ab7/2026-10-28_16-00-28.md": {
+      "sha256": "858d113584bf83cec1d508e69d239bcf1b9ec563f12084295528ded4e887ccbb",
+      "size": 163
+    },
     "state/lsp/package-lock.json": {
       "sha256": "71041d784c03be589fa39281e05fc59180171486f386349a6bc18fd06f8aca39",
       "size": 1135
@@ -92,8 +100,8 @@
       "size": 10304
     },
     "state/scripts/disk_guard_watch.sh": {
-      "sha256": "71d0909a39c5c91f73c66c22a0e3076ddef955b67d82316f55eece972bdcd8fe",
-      "size": 1601
+      "sha256": "10588c5a4ca070d6b8c783ebbb449abcfe298bac9f859fc3026536514bf5098d",
+      "size": 1997
     },
     "state/scripts/gateway_keepalive.sh": {
       "sha256": "1705b673e18cf60d0649601eb303431a4c331e18dc21a303f86710868e1507cd",
@@ -103,9 +111,13 @@
       "sha256": "90faa428f76134b3736dd087acb36ce36ad73a8db7446ebeaef53c82b2d77df7",
       "size": 4736
     },
+    "state/scripts/ghstore_safety_branch.py": {
+      "sha256": "0cb0b26e9a3d073d553eb8cb8843dbfc1b07d0dc2de0e400a6f85b267e6fb725",
+      "size": 5007
+    },
     "state/scripts/ghstore_sync.sh": {
-      "sha256": "00f1c7808adfd79af888c1528edaa58527aef6dfda550580f6b8a0a6a4a61f86",
-      "size": 1322
+      "sha256": "0d585b4a0279e7c615b9cc3234939a1b10a8b3ffbb9ef7123ab4db1a624c2ff2",
+      "size": 1913
     },
     "state/scripts/offload-boot.sh": {
       "sha256": "a922425a54df9a76d385db860b9cf3744705bd21ec56eb7594c78d1c46f1c6e8",
@@ -132,7 +144,7 @@
       "size": 337
     },
     "state/skills/.usage.json": {
-      "sha256": "23c0945ee696af12cc5daf845e3b03ed7e5025aaab1116d127db66f2e790a472",
+      "sha256": "c2856e210bfe15becf6c5206df782c5be801b505806b499f5850f7a5bb8312b8",
       "size": 1172
     },
     "state/skills/apple/DESCRIPTION.md": {
@@ -1400,8 +1412,8 @@
       "size": 18659
     },
     "state/skills/mcp/native-mcp/references/mcp-server-engine-toolchain.md": {
-      "sha256": "ded349739080f3965cb08c3798e7c6aaca92c45c85f4cfa385e34192264dbcea",
-      "size": 7048
+      "sha256": "08966acfc9f458109508ff98686ae29b81f3c8b462443123f2722031757cb5e0",
+      "size": 9443
     },
     "state/skills/mcp/native-mcp/references/npm-mcp-server-install.md": {
       "sha256": "4c5409280e7af1715e52c5e4d698b74751805e1fc97392ba8abb45475a68eda2",
@@ -2384,7 +2396,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-28T15:54:15.314133Z",
+  "generated_at": "2026-10-28T16:00:32.551228Z",
   "host": "sandbox-b1e0eab0",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -2407,5 +2419,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 6735250
+  "total_bytes": 6743965
 }

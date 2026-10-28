@@ -13,6 +13,7 @@ REPO="${GHSTORE_REPO:-amirmayeli1211/hermes-data}"
 HOME_DIR="${HERMES_HOME:-/home/user/.hermes}"
 STORE="${GHSTORE_DIR:-/home/user/hermes-data}"
 LOG="${GHSTORE_LOG:-$HOME_DIR/logs/ghstore-sync.log}"
+SCRIPTS_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 mkdir -p "$(dirname "$LOG")"
 
@@ -32,6 +33,15 @@ fi
 
 if [ "$rc" -eq 0 ]; then
     # Quiet on success, including "no changes since the last sync".
+    #
+    # Safety net: the repository is shared with a second Hermes instance that
+    # pushes to main on its own schedule, so main's tip can become somebody
+    # else's tree. This re-points an independent ref at the newest commit that
+    # names THIS host (one API call, no re-upload). Best-effort by design: its
+    # failure must never turn a good sync into a reported failure.
+    if [ -f "$SCRIPTS_DIR/ghstore_safety_branch.py" ]; then
+        python3 "$SCRIPTS_DIR/ghstore_safety_branch.py" --repo "$REPO" >> "$LOG" 2>&1 || true
+    fi
     exit 0
 fi
 
