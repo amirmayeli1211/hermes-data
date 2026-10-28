@@ -21,6 +21,11 @@ asks to "restore into a fresh container"; or asks for something to be "always
 updated" off-host. The pattern: **the container filesystem is a rebuildable
 cache, the repo is the source of truth.**
 
+Also load this when the user asks to **delete or remove a project/app
+completely** — "پاک کن", "delete it all", "leave no data", "purge X". The repo
+tree, every other ref and the Actions artifacts each hold their own copy, so
+follow **Purging a project completely** below rather than `rm -rf` + one push.
+
 On the host this was built for, the working copy lives at `~/hermes-data` with
 `tool/ghstore.py` (plus `tool/*.sh`) and the automation in
 `~/.hermes/scripts/ghstore_sync.sh` + `ghstore_safety_branch.py`. Read the tool's
@@ -138,6 +143,37 @@ Two safe responses:
 Also verify what a push actually did rather than trusting its exit code: re-read
 the branch tip and the tree (paths under the old project/paths should be gone),
 and check the regenerated `README.md` header (files/bytes/host/generated_at).
+**Check every ref, not just the default branch** — a safety ref left a commit
+behind still carries the content you just removed, and a green default branch is
+not proof the content is gone.
+
+## Purging a project completely ("delete it, leave no data")
+
+One logical project lives in five places with five different removal paths: the
+local dir, the default branch's tree, **every other ref**, the GitHub Actions
+artifacts, and host scratch. Steps that are easy to get wrong, all verified on
+this host:
+
+- **Deleting the workflow file does not delete its artifacts.** Purge them with
+  `DELETE /repos/{o}/{r}/actions/artifacts/{id}` (204) and re-list to prove
+  `total_count == 0` — they are tens of MB each and otherwise stay downloadable.
+- **`push --allow-deletions` only fixes the branch it targets.** After it
+  reported `main` clean, the safety ref still exposed all 46 project paths plus
+  the workflow. Enumerate every branch's tree before reporting success.
+- **Clear the other refs by advancing them, never by force-pushing.** The safety
+  ref means "newest commit this instance produced", so running
+  `ghstore_safety_branch.py` forward makes the old tree unreachable in one API
+  call. Running `ghstore.py push` *directly* bypasses the wrapper that moves it —
+  that is why the ref lagged.
+- **History, run records and the agent's own logs survive.** Git history needs a
+  rewrite plus a force-push on a repo a second instance pushes to; runs have no
+  delete API; `state.db`/`sessions/` hold the conversation. Disclose all three
+  with their cost instead of claiming "nothing remains".
+- **Don't sweep reusables.** A generic skill or `/opt` toolchain born during the
+  project stays; `grep -ril <app>` first to separate the two.
+
+Full runbook with the verification snippets and the residue taxonomy:
+`references/purging-a-project.md`.
 
 ## Scheduling the sync so it stays quiet
 

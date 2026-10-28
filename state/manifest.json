@@ -1,7 +1,7 @@
 {
   "commit": null,
-  "excluded_count": 49,
-  "file_count": 631,
+  "excluded_count": 52,
+  "file_count": 632,
   "files": {
     "state/SOUL.md": {
       "sha256": "2765a846e1bb371d78d3b93b403dfb0f8d1ba1a9895edb5f608367abfe81194d",
@@ -12,16 +12,8 @@
       "size": 10155
     },
     "state/cron/jobs.json": {
-      "sha256": "0da28f66f74b3d819f22a1a5972f2c4dd79715b3ea4a63cd3eeb32243e8a5315",
+      "sha256": "f86e436535dfb4e995b1af2aad3bea1b7417b1de257645e9db69848507839e7c",
       "size": 3867
-    },
-    "state/cron/output/9a1f44193ab7/2026-10-28_16-35-16.md": {
-      "sha256": "f92f5c39998aa260a634215c07abf45f8016437799be9cbbe7c6ee15733ffe6f",
-      "size": 163
-    },
-    "state/cron/output/9a1f44193ab7/2026-10-28_16-40-16.md": {
-      "sha256": "1723fb13ad32feba94c052c67f95eefacce76fbf91549ad68825b0251b615848",
-      "size": 163
     },
     "state/cron/output/9a1f44193ab7/2026-10-28_16-45-16.md": {
       "sha256": "746d14adc7cc3e9d1ac02e70211aeb391323be317ed183095a452661e91cda07",
@@ -175,6 +167,14 @@
       "sha256": "58d10723e846e108f96146545ba0050d79add42aab9d750624b923d62298d2f8",
       "size": 163
     },
+    "state/cron/output/9a1f44193ab7/2026-10-28_19-55-58.md": {
+      "sha256": "4fbb2e19c8049602fee3ffe1d4b971ef9e3a19f7c378f85376b9b606b3c914c1",
+      "size": 163
+    },
+    "state/cron/output/9a1f44193ab7/2026-10-28_20-00-58.md": {
+      "sha256": "43a4b1c3832eee0950d2fba128da9a11136f19971d969a7a91f18da92c7262b2",
+      "size": 163
+    },
     "state/lsp/package-lock.json": {
       "sha256": "71041d784c03be589fa39281e05fc59180171486f386349a6bc18fd06f8aca39",
       "size": 1135
@@ -248,8 +248,8 @@
       "size": 337
     },
     "state/skills/.usage.json": {
-      "sha256": "5f6c91d4c01e86696591be81f00e5b7c300e46f83b45c19170326a79e7c34132",
-      "size": 2012
+      "sha256": "1e04b8a7f0e74b25cf47a7df36eff1f30955e26d5e14ce6ffedb21e2d4776d0b",
+      "size": 2013
     },
     "state/skills/apple/DESCRIPTION.md": {
       "sha256": "c9537e578d68950224dbc09a425497a780e8c3956db9cb38a97b4a9e985516b3",
@@ -1372,20 +1372,24 @@
       "size": 5285
     },
     "state/skills/devops/github-backed-state-store/SKILL.md": {
-      "sha256": "ea7548b65a45aa21fb2c39b4d18facd051124a9005f3b36972d406795870f8f9",
-      "size": 10169
+      "sha256": "c94fa485c1c0d798c79f2e83fa5a58c7e63208276ca09ec99ef11805a1614d7a",
+      "size": 12334
     },
     "state/skills/devops/github-backed-state-store/references/extending-the-store.md": {
       "sha256": "6b8c2f7a560390d9ba7a684901481bc381c73178f27e5bd393a2440f7226dc19",
       "size": 3452
+    },
+    "state/skills/devops/github-backed-state-store/references/purging-a-project.md": {
+      "sha256": "67816ef5123621adfc024c38b88f13c2d600a0ea11c15145e108ac378b37b50d",
+      "size": 6831
     },
     "state/skills/devops/hermes-gateway-no-systemd/SKILL.md": {
       "sha256": "e0b8ccdaee9ee8971f6fb9b43212b297d96790d86635b1dfc26e39ffef56e9d3",
       "size": 15462
     },
     "state/skills/devops/hermes-gateway-no-systemd/references/disk-reclamation.md": {
-      "sha256": "5d1d82399bec867903848783feb088bb372d532d35bbcc0438514bbe1c279c12",
-      "size": 7253
+      "sha256": "3fa145ef061071b5737dc54fb926a33e3fe9c4f061524d222644dedea13336d3",
+      "size": 8014
     },
     "state/skills/devops/hermes-gateway-no-systemd/scripts/disk-reclaim-survey.sh": {
       "sha256": "bf8aefa876081a43444c2e9aa0a0a068886ee8ec32465ba4fb5cefab61f183ce",
@@ -2528,7 +2532,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-28T19:51:58.925104Z",
+  "generated_at": "2026-10-28T20:01:02.295782Z",
   "host": "sandbox-b1e0eab0",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -2551,5 +2555,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 6809463
+  "total_bytes": 6819221
 }

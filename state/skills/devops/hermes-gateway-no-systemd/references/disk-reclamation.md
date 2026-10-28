@@ -154,6 +154,20 @@ and REA then reported a *launch* failure (`ENOENT`) rather than a missing tool �
 `ls -la` on the symlink still looked fine. Detect with `readlink -f` / `[ -x ... ]`,
 never with `ls`, and keep `/opt` out of every reclaim list.
 
+## Delivered artifacts are scratch and get reaped
+
+`$HERMES_OFFLOAD_ROOT/downloads` is scratch, not storage: the offload reaper
+deletes anything not touched inside its window (`offload.sh`, the
+`for d in tmp downloads clones` loop). An APK delivered to the user from that
+directory was silently gone a few hours later — and it was the only local copy,
+because the build itself had run in CI.
+
+- Copy a file out of the offload tree before promising it will still be there, or
+  point the user at the durable copy (a CI artifact, the repo).
+- When a file you expected turns up missing after *any* cleanup, check the scratch
+  reaper before assuming your own delete removed it — reporting a wrong cause
+  sends the next debugging pass in the wrong direction.
+
 ## Verify after a reclaim
 
 ```bash
