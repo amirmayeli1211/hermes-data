@@ -21,7 +21,7 @@ RAM / 7.8 GB disk), REA `rea-agents@6.8.0`, Node 24.22.1. Result:
 | wakaru | 1.14.0 (`wakaru-linux-x64.tar.gz`) | JS recovery |
 | unblob | 26.6.4 (pip) | needs `libmagic1` |
 | pwntools / pyelftools / unicorn | 4.15.0 / 0.33 / 2.1.2 (pip) | offline ELF + core dumps |
-| Gradle / bundletool / apksigner | 9.8.2 / 1.18.3 / 0.9 | Android build chain |
+| Gradle / bundletool / apksigner | 9.8.2 / 1.18.3 / 0.9 | Android build chain. Standalone `/opt/gradle` was later **removed to reclaim disk** — build through the project's `./gradlew` wrapper instead, and see `hermes-gateway-no-systemd` → `references/disk-reclamation.md` before defending a Gradle cache |
 | frida bindings | 17.23.2 via npm `--allow-scripts=frida` | ships inside the rea package |
 
 Unavailable by design: Hopper (macOS), IDA, JEB, Kuna (licensed/proprietary),
@@ -72,12 +72,16 @@ build the URL from tag + asset name directly
 Static archive layout — always list first:
 
 ```bash
-tar -tJf rizin.tar.xz | head -25     # bin/ include/ lib/ librz*.a …  → extract bin/ only
-tar -xJf rizin.tar.xz -C /opt/rizin bin
+tar -tJf rizin.tar.xz | head -25     # bin/ include/ lib/ librz*.a ... → list before extracting
+tar -xJf rizin.tar.xz -C /opt/rizin bin/rizin share    # ~114 MB, not 712 MB
 ```
 
-`--strip-components=1` on that archive produces a 712 MB mess with no runnable
-binary (it eats `bin/`), so verify `ls /opt/rizin/bin`.
+Extracting all of `bin/` costs ~650 MB (11 helpers × ~59 MB each, every one
+statically linked) and `lib/librz_*.a` is another ~600 MB — on a small disk that
+is the difference between a working toolchain and a full filesystem.
+`bin/rizin share` is the useful 114 MB. `--strip-components=1` instead produces a
+712 MB mess with **no runnable binary**, so verify with
+`[ -x /opt/rizin/bin/rizin ]`.
 
 ## Layout
 
@@ -88,7 +92,8 @@ binary (it eats `bin/`), so verify `ls /opt/rizin/bin`.
 /opt/wabt/wabt-1.0.42/bin
 /opt/rizin/bin         → rizin, rz-bin, rz-asm… (symlinked into /usr/local/bin)
 /usr/local/bin/wakaru
-/opt/gradle            → gradle 9.8.2
+/opt/apktool/apktool   → apktool 3.0.3 launcher (upstream JAR beside it)
+/opt/gradle            → REMOVED to reclaim disk; use the project's ./gradlew wrapper
 /opt/android-sdk       → build-tools 34.0.0 (aapt2, d8, zipalign, apksigner),
                          platforms;android-34, cmdline-tools, platform-tools,
                          bundletool/bundletool-all-1.18.3.jar
@@ -201,12 +206,31 @@ re-calling the MCP tool.
 The static tarball is **not** what `--strip-components=1` suggests. Its real
 layout is `bin/rizin`, `bin/rz-*` (11 executables, ~59 MB each), `lib/librz_*.a`
 (~600 MB), `include/`, `share/`. Extracting the whole archive costs ~712 MB and
-`--strip-components=1` *silently loses the main binary*: `share/rizin/…` becomes
+`--strip-components=1` *silently loses the main binary*: `share/rizin/...` becomes
 `/opt/rizin/rizin/` (a directory), which then collides with the `bin/rizin` file,
-so only the `rz-*` helpers survive and `/usr/local/bin/rizin` dangles. REA's
-symptom is `Could not launch the selected rizin executable … (ENOENT)` even
-though `ls -la /usr/local/bin/rizin` looks fine — check with
-`readlink -f` / `[ -x … ]`, never with `ls` alone.
+so only the `rz-*` helpers survive and `/usr/local/bin/rizin` dangles.
+
+**Two different causes produce the same `ENOENT` symptom**, so diagnose before
+reinstalling:
+
+1. **A dangling symlink with no target at all.** A disk sweep that reclaimed
+   `/opt/rizin` (see `hermes-gateway-no-systemd` → `references/disk-reclamation.md`)
+   leaves `/usr/local/bin/rizin` pointing at nothing.
+2. **The strip-components layout bug above** — the target directory exists but the
+   binary inside it does not.
+
+Both report `Could not launch the selected rizin executable ... (ENOENT)` while
+`ls -la /usr/local/bin/rizin` still looks fine. Discriminate with:
+
+```bash
+readlink -f /usr/local/bin/rizin        # empty → cause 1
+[ -x /usr/local/bin/rizin ] && echo ok  # never trust `ls` for this
+find -L /opt/rizin -maxdepth 1          # `find` needs -L to follow the symlink
+```
+
+`find` without `-L` does not follow the symlink and reports **0 files** on a
+perfectly healthy Ghidra-style `/opt/<tool>` → extract-dir layout — do not read
+that as "the tool is gone".
 
 Extract only what REA needs, keeping the standard layout:
 

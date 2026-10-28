@@ -1,13 +1,13 @@
 ---
 name: hermes-gateway-no-systemd
-description: "Keep the Hermes gateway permanently alive on hosts without systemd (Docker/tini/boxd sandboxes, WSL without systemd=true) using a detached supervisor loop."
+description: "Keep the Hermes gateway permanently alive on hosts without systemd (Docker/tini/boxd sandboxes, WSL without systemd=true) using a detached supervisor loop. Also covers the non-systemd failure modes that kill it: disk exhaustion (where the space actually goes, and the guard tier that is usually missing) and tmpfs scratch."
 version: 1.0.0
 author: Hermes Agent
 license: MIT
 platforms: [linux]
 metadata:
   hermes:
-    tags: [hermes, gateway, systemd, watchdog, supervisor, container, docker, wsl, uptime]
+    tags: [hermes, gateway, systemd, watchdog, supervisor, container, docker, wsl, uptime, disk, disk-space, reclaim, cleanup, duplicates, tmpfs]
     related_skills: [hermes-agent]
 ---
 
@@ -21,6 +21,10 @@ Load this skill when the user reports any of:
 - "The gateway keeps dying"
 - "Keep yourself always online"
 - You find the gateway running as a child of a TTY shell
+- "The disk is full" / "free up some space" / "remove the big duplicate files" —
+  go to **Disk exhaustion is an uptime failure too** below. That section applies on
+  **any** host, systemd or not; start from
+  `scripts/disk-reclaim-survey.sh` and `references/disk-reclamation.md`.
 
 …**and** the host has no systemd (`hermes gateway install` won't work).
 
@@ -279,10 +283,35 @@ habits keep it away:
   with thresholds for a disk that already runs near 85%, or it reports on a path
   that does not exist while the real disk fills. Re-read every hard-coded path
   (`grep -n "/data\|/var/tmp" disk-guard.sh`) before trusting the numbers.
-- **The guard only knows `$HERMES_HOME`.** Anything parked in the offload area
-  (scratch, downloads, clones) grows outside its view, so the wrapper must sweep
-  that tree too — otherwise the disk fills from the one directory the guard
-  never looks at.
+- **The guard only knows `$HERMES_HOME` — widen it before trusting it.** The
+  offload tree grows outside its view, and so do *developer* caches. On this host
+  the single largest reclaimable object was `/home/user/.gradle` at **1.1 GB —
+  three times the entire Hermes home** — which no tier could see, so the guard
+  kept reporting "OK" while the root filesystem went to 88%. Add a tier for the
+  build/package-manager caches: `~/.gradle/caches` + `~/.gradle/wrapper/dists`,
+  `~/.npm/_cacache`, `~/.cache/pip`, the `uv` cache, and each project's
+  `build/` + `.kotlin/sessions`. **Never point a reclaim at `/opt/*`** — the
+  analysis engines live there by absolute path, and a deleted one leaves a
+  dangling symlink that reports `ENOENT` rather than "missing" (see
+  `rea-analysis-toolchain`).
+- **Measure before you delete, and chase caches, not duplicates.** "Clean up the
+  big duplicate files" is usually the wrong instinct: a full hash-based scan here
+  found only ~15 MB of duplicates, every byte of it *inside* tool distributions
+  (Gradle's own dist, Android cmdline-tools, Ghidra jars) where deleting it breaks
+  the tool. Caches are the win. Say so plainly and report the duplicate number
+  honestly rather than shaving 15 MB and calling it a cleanup.
+- **Test the cleaner on a sandbox before it meets real data.** Point the guard's
+  home variable at a throwaway tree, create fake files of known size, stub the
+  destructive-history tier, then run `clean --force`. Two traps: a fixture on
+  **tmpfs proves nothing** (the delta is measured with `df <mount>`, so those
+  targets always report "nothing to reclaim" — put the fixture on the guarded
+  filesystem), and an unquoted glob in a cleanup loop can expand to nothing and
+  `rm -rf *`.
+
+Concrete targets, the tier-2b implementation and the sandbox harness are in
+`references/disk-reclamation.md`. `scripts/disk-reclaim-survey.sh` is the
+read-only survey (usage, top consumers, cache sizes, optional duplicate scan) that
+should run *before* any deletion.
 
 ## Verify
 

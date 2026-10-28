@@ -1,7 +1,7 @@
 {
   "commit": null,
-  "excluded_count": 13,
-  "file_count": 656,
+  "excluded_count": 17,
+  "file_count": 658,
   "files": {
     ".github/workflows/android.yml": {
       "sha256": "13b11aea2fe8648ec5907b863faf50749a1867b328569ca33ec24f3cc8d1906c",
@@ -116,27 +116,15 @@
       "size": 10155
     },
     "state/cron/jobs.json": {
-      "sha256": "3f68e559d303c66447a825117b4f60eaa25131311051c706797f8ffd1e19a66a",
+      "sha256": "9e62ef92bca57e6922e0ef9e2711ed6583d947a78a95f1534f7f34c0a7e33fd0",
       "size": 3866
-    },
-    "state/cron/output/57622ec1fb5b/2026-10-28_16-45-16.md": {
-      "sha256": "3066533726f65b68c8477c2f1ee72011a81977a2c546719caa8864ee81364cef",
-      "size": 145
-    },
-    "state/cron/output/57622ec1fb5b/2026-10-28_17-00-16.md": {
-      "sha256": "e87d48012c48547396e6abad5e5d4e15f6a5e675bfbc0c5df64c4f10306b7181",
-      "size": 262
-    },
-    "state/cron/output/57622ec1fb5b/2026-10-28_17-15-30.md": {
-      "sha256": "c0bc5a8eba4ac7a2b0575bbc7a1eef7c2547bab87c2cdfae6e44d383b997f2db",
-      "size": 218
-    },
-    "state/cron/output/57622ec1fb5b/2026-10-28_17-30-30.md": {
-      "sha256": "bb39e4491309abc1db8f70f028e000d44bcab5201eff3af636f706602be18678",
-      "size": 218
     },
     "state/cron/output/57622ec1fb5b/2026-10-28_17-45-52.md": {
       "sha256": "892f71d7626b789b72a16c980a6092938609484428a215928106f1d44f488b1b",
+      "size": 145
+    },
+    "state/cron/output/57622ec1fb5b/2026-10-28_18-00-52.md": {
+      "sha256": "ffb6e93a4fa7123de5aa775ceefde702445f2cb33241e5f384e563111d9c53ad",
       "size": 145
     },
     "state/cron/output/9a1f44193ab7/2026-10-28_14-55-17.md": {
@@ -279,6 +267,18 @@
       "sha256": "5c7b33c2ae7b0373acddcd49a79b60c600ff7afded6ca2f54995f53ae7ce86cb",
       "size": 163
     },
+    "state/cron/output/9a1f44193ab7/2026-10-28_17-50-52.md": {
+      "sha256": "359556bd19746196e5f9018a9b74c88783ae1b1b314b088ae27bb780874c20e3",
+      "size": 163
+    },
+    "state/cron/output/9a1f44193ab7/2026-10-28_17-55-52.md": {
+      "sha256": "97f36e6c84254375d74bcefe2440cf1ca81025c053a694f3ab98a5f70968f7c1",
+      "size": 163
+    },
+    "state/cron/output/9a1f44193ab7/2026-10-28_18-00-52.md": {
+      "sha256": "737b00772db2a9102bfe84400d7ede844370a49ad282a7ea03edd189e56e589d",
+      "size": 163
+    },
     "state/lsp/package-lock.json": {
       "sha256": "71041d784c03be589fa39281e05fc59180171486f386349a6bc18fd06f8aca39",
       "size": 1135
@@ -288,8 +288,8 @@
       "size": 54
     },
     "state/memories/MEMORY.md": {
-      "sha256": "a6c3acd15824db690be3f1ba55ace29e39b1c4e0d3477f66f6302bcca426c519",
-      "size": 2143
+      "sha256": "6e22bb1bfa3af9b269ec1d8b56dc790f6510e2885ed01efc0ec0635266c01148",
+      "size": 2179
     },
     "state/memories/USER.md": {
       "sha256": "61c7ff131cbf83acf75ddf1f3e36820eee773f3c53fb912ff5a2c507047442f5",
@@ -356,7 +356,7 @@
       "size": 337
     },
     "state/skills/.usage.json": {
-      "sha256": "81bf92e6fc2a4eb4332acddedad1b1e66a2c523b6f2ca2547a542e867bb36635",
+      "sha256": "5f6c91d4c01e86696591be81f00e5b7c300e46f83b45c19170326a79e7c34132",
       "size": 2012
     },
     "state/skills/apple/DESCRIPTION.md": {
@@ -1488,8 +1488,16 @@
       "size": 3452
     },
     "state/skills/devops/hermes-gateway-no-systemd/SKILL.md": {
-      "sha256": "9d668a89e42551daf21eedc2a61b221821ce7e8b1cc95a160f9ea91574fe3e98",
-      "size": 13181
+      "sha256": "e0b8ccdaee9ee8971f6fb9b43212b297d96790d86635b1dfc26e39ffef56e9d3",
+      "size": 15462
+    },
+    "state/skills/devops/hermes-gateway-no-systemd/references/disk-reclamation.md": {
+      "sha256": "5d1d82399bec867903848783feb088bb372d532d35bbcc0438514bbe1c279c12",
+      "size": 7253
+    },
+    "state/skills/devops/hermes-gateway-no-systemd/scripts/disk-reclaim-survey.sh": {
+      "sha256": "bf8aefa876081a43444c2e9aa0a0a068886ee8ec32465ba4fb5cefab61f183ce",
+      "size": 3426
     },
     "state/skills/devops/kanban-orchestrator/SKILL.md": {
       "sha256": "c60c7fcfb64157d76b6a266bbcf568a677a91bc7b1ce0763ebeeeb1c33a491ea",
@@ -2440,8 +2448,8 @@
       "size": 7541
     },
     "state/skills/reverse-engineer-anything/rea-analysis-toolchain/references/verified-install-recipe.md": {
-      "sha256": "27622b1887c796943b463732aa91c43dfe4dd1b0ed0520dcc030f4f82f635d6c",
-      "size": 12186
+      "sha256": "8aa90d963003416f8d28e1a4e851134680c294e93ff398040fce0a1028009228",
+      "size": 13630
     },
     "state/skills/reverse-engineer-anything/references/android-applications.md": {
       "sha256": "24ecaa1798eb4f28591884a7deb68df31e90313865515a23e3b466403f1abc39",
@@ -2628,7 +2636,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-28T17:47:13.514605Z",
+  "generated_at": "2026-10-28T18:00:57.259225Z",
   "host": "sandbox-b1e0eab0",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -2651,5 +2659,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 6925911
+  "total_bytes": 6940142
 }
