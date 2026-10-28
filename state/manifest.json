@@ -1,6 +1,6 @@
 {
   "commit": null,
-  "excluded_count": 7,
+  "excluded_count": 13,
   "file_count": 656,
   "files": {
     ".github/workflows/android.yml": {
@@ -116,28 +116,8 @@
       "size": 10155
     },
     "state/cron/jobs.json": {
-      "sha256": "2cd7f3b8700a22c4b538ef900a8157f978d3e4c438b182fd521fb19a28b9e5dc",
+      "sha256": "3f68e559d303c66447a825117b4f60eaa25131311051c706797f8ffd1e19a66a",
       "size": 3866
-    },
-    "state/cron/output/0686a8638e72/2026-10-28_16-32-16.md": {
-      "sha256": "d3b64164ff5f200bcdd34df0a226744342b3471d512b6be9b4641caf31a88e5c",
-      "size": 1026
-    },
-    "state/cron/output/0686a8638e72/2026-10-28_17-00-30.md": {
-      "sha256": "38247e080d6188f9759a546eb790951e37d4113405a46ef340b88f8b18992611",
-      "size": 151
-    },
-    "state/cron/output/57622ec1fb5b/2026-10-28_16-00-28.md": {
-      "sha256": "379fbd66a650e0a61aafee6fdd8585489bbb390a661c236766dffe38dae8c3be",
-      "size": 145
-    },
-    "state/cron/output/57622ec1fb5b/2026-10-28_16-16-39.md": {
-      "sha256": "8ef1390ed02cddc5832b22b04c0861ce95a610b40ccc40c98597951df2a90989",
-      "size": 218
-    },
-    "state/cron/output/57622ec1fb5b/2026-10-28_16-31-54.md": {
-      "sha256": "673871d6dd827455624a0d615b782cb798b000479b7114b70ecb87f4bebb977b",
-      "size": 262
     },
     "state/cron/output/57622ec1fb5b/2026-10-28_16-45-16.md": {
       "sha256": "3066533726f65b68c8477c2f1ee72011a81977a2c546719caa8864ee81364cef",
@@ -150,6 +130,14 @@
     "state/cron/output/57622ec1fb5b/2026-10-28_17-15-30.md": {
       "sha256": "c0bc5a8eba4ac7a2b0575bbc7a1eef7c2547bab87c2cdfae6e44d383b997f2db",
       "size": 218
+    },
+    "state/cron/output/57622ec1fb5b/2026-10-28_17-30-30.md": {
+      "sha256": "bb39e4491309abc1db8f70f028e000d44bcab5201eff3af636f706602be18678",
+      "size": 218
+    },
+    "state/cron/output/57622ec1fb5b/2026-10-28_17-45-52.md": {
+      "sha256": "892f71d7626b789b72a16c980a6092938609484428a215928106f1d44f488b1b",
+      "size": 145
     },
     "state/cron/output/9a1f44193ab7/2026-10-28_14-55-17.md": {
       "sha256": "4c8c17b620fa9ce6d20c49885f63858e88353a5b4f565b9776fb5d2e9a60149e",
@@ -279,6 +267,18 @@
       "sha256": "1fd10add3b20a6320e82593b74f830ec754e8e3c44de6b6043e48d5af3bc390d",
       "size": 163
     },
+    "state/cron/output/9a1f44193ab7/2026-10-28_17-35-52.md": {
+      "sha256": "1465643c01f59b1cd33891626ee00e243e52db5cdb96c7599459e811c3d76c1f",
+      "size": 163
+    },
+    "state/cron/output/9a1f44193ab7/2026-10-28_17-40-52.md": {
+      "sha256": "40ab1df28e7f1045376d9572c5d6e1299749181dac79c528c5bb2b669c0fb73a",
+      "size": 163
+    },
+    "state/cron/output/9a1f44193ab7/2026-10-28_17-45-52.md": {
+      "sha256": "5c7b33c2ae7b0373acddcd49a79b60c600ff7afded6ca2f54995f53ae7ce86cb",
+      "size": 163
+    },
     "state/lsp/package-lock.json": {
       "sha256": "71041d784c03be589fa39281e05fc59180171486f386349a6bc18fd06f8aca39",
       "size": 1135
@@ -308,8 +308,8 @@
       "size": 1536
     },
     "state/scripts/disk-guard.sh": {
-      "sha256": "256d707dd6f03a8cc46ee2734750250a6c18c6e52ba6dbea690f0ec8a67093da",
-      "size": 10304
+      "sha256": "949613d2d181f45de00b73527414fa30926cb4c2b6f97088d0cf916fd67b7893",
+      "size": 12806
     },
     "state/scripts/disk_guard_watch.sh": {
       "sha256": "10588c5a4ca070d6b8c783ebbb449abcfe298bac9f859fc3026536514bf5098d",
@@ -2628,7 +2628,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-28T17:30:34.925804Z",
+  "generated_at": "2026-10-28T17:47:13.514605Z",
   "host": "sandbox-b1e0eab0",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -2651,5 +2651,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 6924359
+  "total_bytes": 6925911
 }

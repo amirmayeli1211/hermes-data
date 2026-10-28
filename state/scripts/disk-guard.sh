@@ -138,6 +138,65 @@ tier2() {
     reclaim "usage snapshot" rm -f "${HERMES_HOME}/cache/usage_snapshot.json"
 }
 
+# --- tier 2b: developer/build caches OUTSIDE $HERMES_HOME ------------------
+#
+# WHY THIS EXISTS
+#   The single largest reclaimable object on this host is not inside
+#   $HERMES_HOME at all, so tiers 1-3 could never see it. /home/user/.gradle
+#   (Gradle module cache + a downloaded Gradle distribution) reached 1.1 GB —
+#   three times the whole Hermes home — and drove the 7.8 GB root to 88%.
+#
+#   Local Android/Gradle builds are not viable here (2 GB RAM; the build runs in
+#   GitHub Actions), so these caches are pure cost: deleting one only means a
+#   future local build re-downloads it. Verified reclaim 88% -> 70% on the
+#   first run.
+#
+# SAFETY
+#   Every target is an absolute path, must be an existing directory, must not be
+#   a symlink, and is never `/` or a home directory itself. Anything unexpected
+#   is skipped with a line of output rather than deleted.
+
+DEV_HOME="${HERMES_DEV_HOME:-/home/user}"
+
+drop_cache() {
+    label="$1"; target="$2"
+    case "$target" in
+        ""|/|"$DEV_HOME") log "    $label: refusing to delete $target"; return 0 ;;
+    esac
+    if [ -L "$target" ]; then
+        log "    $label: symlink, skipped"
+        return 0
+    fi
+    if [ ! -d "$target" ]; then
+        log "    $label: absent"
+        return 0
+    fi
+    reclaim "$label ($(du -sh "$target" 2>/dev/null | cut -f1))" rm -rf "$target"
+}
+
+tier2_dev() {
+    log "  tier 2b — developer build caches (outside \$HERMES_HOME):"
+
+    # Gradle: caches/ holds the resolved module cache; wrapper/dists holds a
+    # downloaded Gradle distribution. ./gradlew restores both on demand.
+    drop_cache "gradle module cache"  "${DEV_HOME}/.gradle/caches"
+    drop_cache "gradle wrapper dists" "${DEV_HOME}/.gradle/wrapper/dists"
+
+    # Content-addressed package-manager caches — rebuilt from the registries.
+    drop_cache "npm cache" "${DEV_HOME}/.npm/_cacache"
+    drop_cache "pip cache" "${DEV_HOME}/.cache/pip"
+    drop_cache "uv cache"  "/root/.local/share/uv"
+
+    # Per-project build output. The globs are quoted so an empty match stays a
+    # literal path that fails the -d test — this function can never rm -rf '*'.
+    for b in "${DEV_HOME}"/.hermes/projects/*/build \
+             "${DEV_HOME}"/.hermes/projects/*/app/build \
+             "${DEV_HOME}"/.hermes/projects/*/.kotlin/sessions; do
+        [ -d "$b" ] || continue
+        drop_cache "project build output (${b#"${DEV_HOME}"/.hermes/projects/})" "$b"
+    done
+}
+
 # --- tier 3: history, only when critical ----------------------------------
 
 tier3() {
@@ -206,11 +265,11 @@ case "${1:-check}" in
         log "disk-guard: $MOUNT ${PCT}% used ($(used_h) of $(total_h), $(free_h) free)"
         if [ "$PCT" -ge "$CRIT_PCT" ]; then
             log "  level: CRITICAL (>= ${CRIT_PCT}%)"
-            log "  would run: tier 1 + tier 2 + tier 3"
+            log "  would run: tier 1 + tier 2 + tier 2b + tier 3"
             exit 2
         elif [ "$PCT" -ge "$WARN_PCT" ]; then
             log "  level: WARNING (>= ${WARN_PCT}%)"
-            log "  would run: tier 1 + tier 2"
+            log "  would run: tier 1 + tier 2 + tier 2b"
             exit 1
         fi
         log "  level: OK (< ${WARN_PCT}%)"
@@ -236,6 +295,7 @@ case "${1:-check}" in
 
         tier1
         [ "$level" -ge 2 ] && tier2
+        [ "$level" -ge 2 ] && tier2_dev
         [ "$level" -ge 3 ] && tier3
 
         after="$(pct_used)"
