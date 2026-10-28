@@ -1,7 +1,7 @@
 {
   "commit": null,
-  "excluded_count": 67,
-  "file_count": 676,
+  "excluded_count": 70,
+  "file_count": 677,
   "files": {
     ".github/workflows/android-rix.yml": {
       "sha256": "58d833d46be39a218f9046a01da52f7240dd2f7ca80eebc751f19ec8b9e2cc25",
@@ -52,8 +52,8 @@
       "size": 3364
     },
     "projects/rix/app/src/main/java/com/rix/vpn/core/RixOptions.kt": {
-      "sha256": "6525658f381c81ecd0763dcfe1299a953d5ac910fa4a3b55b49f0642b3a9b2b3",
-      "size": 9994
+      "sha256": "03ae7022836d722ba1bdeea393075e8edd3877caeb347d626739d7dc15a2cc9e",
+      "size": 11501
     },
     "projects/rix/app/src/main/java/com/rix/vpn/core/RixRuntime.kt": {
       "sha256": "da33ff2a13e966862be2fa5728c6f0d8417cef28e19823ee792c218da4edc8f2",
@@ -66,6 +66,10 @@
     "projects/rix/app/src/main/java/com/rix/vpn/data/Prefs.kt": {
       "sha256": "43df8e15bd0f1362b7e1523f65f7e8bc5e61e09e4014d6dfe162e099612aa21d",
       "size": 1319
+    },
+    "projects/rix/app/src/main/java/com/rix/vpn/data/UiPrefs.kt": {
+      "sha256": "630cf47415482d316419559001464acceb05382a2eab95878e16abbc626d4630",
+      "size": 1608
     },
     "projects/rix/app/src/main/java/com/rix/vpn/service/RixProxyService.kt": {
       "sha256": "32ca45a340ffdea57fd137eec64698bb53a15ce8bbc6e255d3bfbfff1a865d3f",
@@ -80,8 +84,8 @@
       "size": 6701
     },
     "projects/rix/app/src/main/java/com/rix/vpn/ui/Components.kt": {
-      "sha256": "ebf192c9cfb13b277698a52f126d7a4b229a7ae28b5e20bb18db10d4441dea73",
-      "size": 12580
+      "sha256": "3d6b9213d4f0ed40b8468b316d7d5156a8279f8865d853cdbcbf9295f1660bd1",
+      "size": 17210
     },
     "projects/rix/app/src/main/java/com/rix/vpn/ui/HomeScreen.kt": {
       "sha256": "98051804d66a82e0465caba5df50173a29e3c9800cac1982a5034d0c7dbdbea2",
@@ -96,8 +100,8 @@
       "size": 21239
     },
     "projects/rix/app/src/main/java/com/rix/vpn/ui/Theme.kt": {
-      "sha256": "3814fc0641fa1e623a28beca4c37f86e478945e10b466f71fe16415fa558c5fc",
-      "size": 2932
+      "sha256": "431ff1dfd45b7be8384078bea525568d7a780b26ddabc640f35dd81e8ee68bad",
+      "size": 8055
     },
     "projects/rix/app/src/main/res/drawable/ic_launcher_foreground.xml": {
       "sha256": "197c9498a1374ba2cf2a978c396846245ba5701d4bb4ca80d8451cf1001d75ce",
@@ -184,16 +188,8 @@
       "size": 10155
     },
     "state/cron/jobs.json": {
-      "sha256": "5b52608e81bb5511df89f96c74a216a3e09c0733964b3bc441b3b97e37a66dc5",
+      "sha256": "e6727ded3bd3e11a95f981281164077047333756399a2057c3645a68be8d9f02",
       "size": 3868
-    },
-    "state/cron/output/9a1f44193ab7/2026-10-28_17-35-52.md": {
-      "sha256": "1465643c01f59b1cd33891626ee00e243e52db5cdb96c7599459e811c3d76c1f",
-      "size": 163
-    },
-    "state/cron/output/9a1f44193ab7/2026-10-28_17-40-52.md": {
-      "sha256": "40ab1df28e7f1045376d9572c5d6e1299749181dac79c528c5bb2b669c0fb73a",
-      "size": 163
     },
     "state/cron/output/9a1f44193ab7/2026-10-28_17-45-52.md": {
       "sha256": "5c7b33c2ae7b0373acddcd49a79b60c600ff7afded6ca2f54995f53ae7ce86cb",
@@ -345,6 +341,14 @@
     },
     "state/cron/output/9a1f44193ab7/2026-10-28_20-50-26.md": {
       "sha256": "3de4a6302fee1a5b98577524276c17d734c05a05852a109c72e8f11950cd9691",
+      "size": 163
+    },
+    "state/cron/output/9a1f44193ab7/2026-10-28_20-55-26.md": {
+      "sha256": "09b42e00f8649a5a399d2c99fb57c4d32c9a10d719bd4329ab047e90f0df66c8",
+      "size": 163
+    },
+    "state/cron/output/9a1f44193ab7/2026-10-28_21-00-26.md": {
+      "sha256": "b62595a7ff3237ec7ed6b8629c17ce45a3ee1ea5909cf4adbbbb35784d66ee48",
       "size": 163
     },
     "state/lsp/package-lock.json": {
@@ -2708,7 +2712,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-28T20:51:28.357574Z",
+  "generated_at": "2026-10-28T21:00:30.635637Z",
   "host": "sandbox-b1e0eab0",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
@@ -2731,5 +2735,5 @@
   "skipped_count": 0,
   "tool": "ghstore",
   "tool_version": "1.0.0",
-  "total_bytes": 7026715
+  "total_bytes": 7039583
 }

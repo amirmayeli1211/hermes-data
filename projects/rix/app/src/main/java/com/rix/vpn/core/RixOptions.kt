@@ -3,22 +3,65 @@ package com.rix.vpn.core
 import org.json.JSONObject
 
 /** How the app delivers the tunnel to the rest of the phone. */
-enum class RixMode(val label: String) {
+enum class RixMode(val label: String, val short: String, val desc: String) {
     /** VpnService captures every packet; hev turns the TUN into SOCKS5. */
-    TUNNEL("تونل کامل"),
+    TUNNEL(
+        "تونل کامل",
+        "همهٔ برنامه‌ها",
+        "VpnService کل ترافیک گوشی را می‌گیرد و به هسته می‌دهد؛ هیچ برنامه‌ای نمی‌تواند دور بزند."
+    ),
 
     /** No capture at all: the core just serves a local SOCKS5 proxy. */
-    PROXY("پروکسی (SOCKS5)")
+    PROXY(
+        "پروکسی (SOCKS5)",
+        "فقط برنامه‌های انتخابی",
+        "هیچ بسته‌ای گرفته نمی‌شود؛ فقط یک SOCKS5 محلی روی 127.0.0.1 باز می‌شود تا خودت به برنامه‌ها بدهی."
+    )
 }
 
 /** The core's transport, mapped to the real CLI selectors (aether/src/cli.rs). */
-enum class Transport(val label: String, val args: List<String>) {
-    MASQUE_H3("MASQUE / HTTP-3", listOf("--masque")),
-    MASQUE_H2("MASQUE / HTTP-2", listOf("--masque", "--h2")),
-    WIREGUARD("WireGuard", listOf("--wg")),
-    GOOL("Gool (WG داخل MASQUE)", listOf("--gool")),
-    GOOL_CLASSIC("Gool کلاسیک (WG در WG)", listOf("--gool-classic")),
-    MIM("MASQUE در MASQUE", listOf("--mim"))
+enum class Transport(
+    val label: String,
+    val args: List<String>,
+    val desc: String,
+    val badge: String?
+) {
+    MASQUE_H3(
+        "MASQUE / HTTP-3",
+        listOf("--masque"),
+        "HTTP/3 روی QUIC؛ کمترین تأخیر و بهترین سرعت روی موبایل.",
+        "پیشنهادی"
+    ),
+    MASQUE_H2(
+        "MASQUE / HTTP-2",
+        listOf("--masque", "--h2"),
+        "HTTP/2 روی TLS؛ روی شبکه‌هایی که UDP را می‌بندند بیشتر دوام می‌آورد.",
+        "سازگار"
+    ),
+    WIREGUARD(
+        "WireGuard",
+        listOf("--wg"),
+        "WireGuard خالص؛ سبک‌ترین حالت و کم‌ترین مصرف باتری.",
+        "کم‌مصرف"
+    ),
+    GOOL(
+        "Gool (WG داخل MASQUE)",
+        listOf("--gool"),
+        "WireGuard پیچیده در MASQUE؛ تعادل بین پایداری و استتار.",
+        "متعادل"
+    ),
+    GOOL_CLASSIC(
+        "Gool کلاسیک (WG در WG)",
+        listOf("--gool-classic"),
+        "تونل تودرتو با دو لایهٔ WireGuard؛ برای شبکه‌های بسیار سخت‌گیر.",
+        null
+    ),
+    MIM(
+        "MASQUE در MASQUE",
+        listOf("--mim"),
+        "دو لایه MASQUE؛ حداکثر مقاومت به DPI به قیمت کمی تأخیر بیشتر.",
+        "حداکثر استتار"
+    )
 }
 
 /** `--scan <mode>`: how hard the core looks for a reachable edge. */

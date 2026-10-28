@@ -25,7 +25,12 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.BrightnessAuto
+import androidx.compose.material.icons.rounded.CheckCircle
+import androidx.compose.material.icons.rounded.DarkMode
+import androidx.compose.material.icons.rounded.LightMode
 import androidx.compose.material.icons.rounded.PowerSettingsNew
+import androidx.compose.material.icons.rounded.RadioButtonUnchecked
 import androidx.compose.material.icons.rounded.Security
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Switch
@@ -47,18 +52,19 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-/** Near-black canvas with two soft colour wells so the UI is not flat. */
+/** Canvas with two soft colour wells so the UI is not flat. */
 @Composable
 fun RixSurface(content: @Composable () -> Unit) {
+    val palette = LocalRixPalette.current
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(RixColors.Background)
+            .background(palette.background)
     ) {
         Canvas(modifier = Modifier.fillMaxSize()) {
             drawCircle(
                 brush = Brush.radialGradient(
-                    colors = listOf(RixColors.Violet.copy(alpha = 0.16f), Color.Transparent),
+                    colors = listOf(palette.violet.copy(alpha = palette.wellViolet), Color.Transparent),
                     center = Offset(size.width * 0.16f, size.height * 0.10f),
                     radius = size.minDimension * 0.75f
                 ),
@@ -67,7 +73,7 @@ fun RixSurface(content: @Composable () -> Unit) {
             )
             drawCircle(
                 brush = Brush.radialGradient(
-                    colors = listOf(RixColors.Teal.copy(alpha = 0.10f), Color.Transparent),
+                    colors = listOf(palette.teal.copy(alpha = palette.wellTeal), Color.Transparent),
                     center = Offset(size.width * 0.92f, size.height * 0.88f),
                     radius = size.minDimension * 0.65f
                 ),
@@ -362,5 +368,128 @@ fun PowerOrb(
                 )
             }
         }
+    }
+}
+
+/** Small pill used for "پیشنهادی" style hints on [SelectCard]. */
+@Composable
+fun RixBadge(text: String, color: Color) {
+    Box(
+        modifier = Modifier
+            .clip(CircleShape)
+            .background(color.copy(alpha = if (RixColors.isDark) 0.18f else 0.12f))
+            .border(1.dp, color.copy(alpha = 0.45f), CircleShape)
+            .padding(horizontal = 7.dp, vertical = 2.dp)
+    ) {
+        Text(text, color = color, fontSize = 9.5.sp, fontWeight = FontWeight.Medium)
+    }
+}
+
+/**
+ * One row of a chooser: icon, title, explanation and a radio mark.
+ *
+ * Used for both "نوع اتصال" and "پروتکل" so the two lists read as one design
+ * instead of two different widget styles.
+ */
+@Composable
+fun SelectCard(
+    icon: ImageVector,
+    title: String,
+    subtitle: String,
+    selected: Boolean,
+    onClick: () -> Unit,
+    accent: Color = RixColors.Violet,
+    badge: String? = null,
+    modifier: Modifier = Modifier
+) {
+    val borderColor by animateColorAsState(
+        targetValue = if (selected) accent.copy(alpha = 0.8f) else RixColors.Stroke,
+        animationSpec = tween(180),
+        label = "sel-border"
+    )
+    val background by animateColorAsState(
+        targetValue = if (selected) {
+            accent.copy(alpha = if (RixColors.isDark) 0.15f else 0.09f)
+        } else {
+            RixColors.Surface
+        },
+        animationSpec = tween(180),
+        label = "sel-bg"
+    )
+
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(18.dp))
+            .background(background)
+            .border(1.dp, borderColor, RoundedCornerShape(18.dp))
+            .clickable(onClick = onClick)
+            .padding(horizontal = 13.dp, vertical = 12.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Box(
+            modifier = Modifier
+                .size(42.dp)
+                .clip(RoundedCornerShape(13.dp))
+                .background(accent.copy(alpha = if (RixColors.isDark) 0.16f else 0.11f))
+                .border(1.dp, accent.copy(alpha = 0.3f), RoundedCornerShape(13.dp)),
+            contentAlignment = Alignment.Center
+        ) {
+            Icon(icon, contentDescription = null, tint = accent, modifier = Modifier.size(21.dp))
+        }
+
+        Spacer(Modifier.width(11.dp))
+
+        Column(modifier = Modifier.weight(1f)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    text = title,
+                    color = RixColors.Text,
+                    fontSize = 13.5.sp,
+                    fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Medium
+                )
+                if (badge != null) {
+                    Spacer(Modifier.width(7.dp))
+                    RixBadge(badge, accent)
+                }
+            }
+            Spacer(Modifier.height(3.dp))
+            Text(
+                text = subtitle,
+                color = RixColors.TextMuted,
+                fontSize = 11.sp,
+                lineHeight = 16.sp
+            )
+        }
+
+        Spacer(Modifier.width(8.dp))
+
+        Icon(
+            imageVector = if (selected) Icons.Rounded.CheckCircle else Icons.Rounded.RadioButtonUnchecked,
+            contentDescription = null,
+            tint = if (selected) accent else RixColors.TextMuted.copy(alpha = 0.45f),
+            modifier = Modifier.size(20.dp)
+        )
+    }
+}
+
+/** Header control that cycles خودکار → روشن → تاریک. */
+@Composable
+fun ThemeIconButton(mode: com.rix.vpn.data.ThemeMode, onClick: () -> Unit) {
+    val icon = when (mode) {
+        com.rix.vpn.data.ThemeMode.SYSTEM -> Icons.Rounded.BrightnessAuto
+        com.rix.vpn.data.ThemeMode.LIGHT -> Icons.Rounded.LightMode
+        com.rix.vpn.data.ThemeMode.DARK -> Icons.Rounded.DarkMode
+    }
+    Box(
+        modifier = Modifier
+            .size(36.dp)
+            .clip(CircleShape)
+            .background(RixColors.Surface.copy(alpha = 0.8f))
+            .border(1.dp, RixColors.Stroke, CircleShape)
+            .clickable(onClick = onClick),
+        contentAlignment = Alignment.Center
+    ) {
+        Icon(icon, contentDescription = "تغییر پوسته", tint = RixColors.TextMuted, modifier = Modifier.size(18.dp))
     }
 }
