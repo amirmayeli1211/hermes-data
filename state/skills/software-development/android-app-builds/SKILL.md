@@ -88,8 +88,35 @@ Reclaim only things you can reinstall, and say what you removed:
 
 Never reclaim the SDK platforms/build-tools the build itself needs.
 
-Low-memory settings that keep it alive: `org.gradle.jvmargs=-Xmx1024m` in
-`gradle.properties` and `--no-daemon` on every invocation.
+**Measured on this host: no memory setting makes this build fit.** A Compose +
+Room (KSP) app needs roughly 2 GB on its own:
+
+- `-Xmx1024m` with a separate Kotlin daemon → the kernel **OOM-killed** the
+  Gradle daemon (`oom-kill: task=java`, while a second Kotlin JVM held 750 MB).
+- `-Xmx640m/-Xmx768m` with `kotlin.compiler.execution.strategy=in-process` →
+  died in **Metaspace** (256 MB and even 512 MB were not enough for the Kotlin
+  compiler's class metadata).
+
+So: **do not spend attempts on the local build; dispatch the CI build.** Check
+the RAM wall once (`free -m`) and go to the workflow. Keep `--no-daemon` and a
+modest `-Xmx` anyway so a stray attempt fails fast instead of eating the host.
+
+**Split the Gradle settings by owner.** `${GRADLE_USER_HOME}/gradle.properties`
+is read *after* the project's `gradle.properties`, so:
+
+- project file → portable, CI-sized (`-Xmx2g -XX:MaxMetaspaceSize=1g`,
+  `parallel=true`); committed, so the runner uses it.
+- `${GRADLE_USER_HOME}/gradle.properties` → this host's small values, *never*
+  committed. This is the only way the committed file can stay CI-tuned.
+
+**Kill orphaned Kotlin daemons before retrying.** They start with
+`--daemon-autoshutdownIdleSeconds=7200` and survive their Gradle launcher, so a
+failed attempt leaves a JVM holding hundreds of MB for two hours:
+
+```bash
+ps -eo pid,etimes,rss,cmd | grep KotlinCompileDaemon | grep -v grep
+# kill only daemons older than the build you are running now
+```
 
 **Pin `GRADLE_USER_HOME` explicitly** (`GRADLE_USER_HOME=/home/<user>/.gradle`).
 A background command may run with a different `HOME`, so caches land somewhere
@@ -122,7 +149,7 @@ instead of attempting a doomed emulator boot.
 
 | Situation | Where it should build |
 | --- | --- |
-| Single/small module, Kotlin+Compose | here, with the disk discipline above |
+| Single/small module, Kotlin+Compose+Room+KSP | **also CI on this host** — verified: the local build cannot fit in 2 GB RAM |
 | Multi-module, NDK/C++, baseline profiles, long test suites | GitHub Actions `ubuntu-latest` |
 | iOS/macOS target (Xcode), Hopper-class tooling | GitHub Actions `macos-latest` |
 | Windows-only toolchain | GitHub Actions `windows-latest` |
@@ -132,6 +159,28 @@ to *trigger* the build and fetch the artifact. A workflow with
 `on: [workflow_dispatch, push]` that uploads the APK (artifact or Release) removes
 the host's CPU/RAM/disk from the equation entirely. Offer this proactively when
 the target is heavy or foreign; do not silently attempt it locally.
+
+### Workflow details that this setup needs (each one bit once)
+
+- **`run: chmod +x gradlew` before the first Gradle step.** A state-store sync
+  writes file *contents* only, so the checked-out wrapper is mode 100644 and the
+  build dies with "Permission denied".
+- **`rm -f local.properties`.** `sdk.dir=` in the committed file overrides the
+  runner's `ANDROID_HOME`, and the runner has no such path. Exclude it from the
+  sync as well.
+- **Path filters on `push`.** If the repository is also a periodic state mirror,
+  every sync touches the tree; without
+  `on.push.paths: ["projects/<app>/**", ".github/workflows/<wf>.yml"]` the
+  workflow fires every 30 minutes and burns Actions minutes.
+- **Artifact download needs the redirect followed by hand, without the token.**
+  `GET /actions/artifacts/{id}/zip` answers `302` to signed blob storage; reusing
+  the `Authorization` header there returns `401 InvalidAuthenticationInfo`.
+  Disable redirect following, then fetch `Location` with a plain request.
+- `workflow_dispatch` needs the workflow file **on the dispatched ref**, and a
+  push made with a personal token does trigger workflows (one made with the
+  default `GITHUB_TOKEN` does not).
+- Helper that wraps the whole loop (dispatch → wait → download → sha256):
+  `~/.hermes/scripts/ci_android_build.py`, with `--status` and `--fetch-latest`.
 
 ## Pitfalls
 
@@ -149,3 +198,7 @@ the target is heavy or foreign; do not silently attempt it locally.
 - Cleartext HTTP is blocked from API 28: an HTTPS probe (or a network security
   config) avoids a runtime failure that no unit test would catch.
 - Never leave a Gradle daemon running on a 2 GB host; `--no-daemon` every time.
+- Verify the built APK before claiming it works: `aapt2 dump badging` for package
+  / minSdk / targetSdk / label and `apksigner verify --print-certs` for the
+  debug signature — a debug APK installs on a real phone, which is the only
+  "run" this class of host can offer.

@@ -69,12 +69,53 @@ def latest_run(branch: str | None = None) -> dict | None:
     return runs[0] if runs else None
 
 
+class _NoRedirect(urllib.request.HTTPRedirectHandler):
+    """Artifact zips are served from blob storage behind a 302."""
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):  # noqa: ANN001
+        return None
+
+
+def download_artifact(artifact_id: int) -> bytes:
+    """Fetch an artifact zip, dropping the Authorization header on the redirect.
+
+    GitHub answers the API URL with a 302 to signed blob storage. Re-sending the
+    token to that host fails with HTTP 401 InvalidAuthenticationInfo, so the
+    redirect is followed by hand and the signed URL is fetched without it.
+    """
+    opener = urllib.request.build_opener(_NoRedirect)
+    req = urllib.request.Request(
+        f"https://api.github.com/repos/{REPO}/actions/artifacts/{artifact_id}/zip",
+        headers={"Authorization": f"Bearer {token()}",
+                 "Accept": "application/vnd.github+json", "User-Agent": "netcheck-ci"},
+    )
+    try:
+        with opener.open(req, timeout=90) as resp:
+            return resp.read()
+    except urllib.error.HTTPError as exc:
+        if exc.code not in (301, 302, 303, 307, 308):
+            raise SystemExit(f"artifact download -> HTTP {exc.code}")
+        location = exc.headers["Location"]
+    plain = urllib.request.Request(location, headers={"User-Agent": "netcheck-ci"})
+    with urllib.request.urlopen(plain, timeout=300) as resp:
+        return resp.read()
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--branch", default="main")
     ap.add_argument("--status", action="store_true", help="only report the latest run")
+    ap.add_argument("--fetch-latest", action="store_true",
+                    help="do not dispatch; download the APK of the latest successful run")
     ap.add_argument("--no-wait", action="store_true", help="dispatch and exit immediately")
     args = ap.parse_args()
+
+    if args.fetch_latest:
+        latest = latest_run(args.branch)
+        if not latest or latest["conclusion"] != "success":
+            print("latest run is not a success; nothing to fetch")
+            return 1
+        return fetch_apk(latest)
 
     if args.status:
         run = latest_run(args.branch)
@@ -123,6 +164,11 @@ def main() -> int:
                         print("   ", line[:200])
         return 1
 
+    return fetch_apk(run)
+
+
+def fetch_apk(run: dict) -> int:
+    """Download the debug APK of a finished run into the offload area."""
     artifacts = api(f"/repos/{REPO}/actions/runs/{run['id']}/artifacts").get("artifacts", [])
     apk_art = next((a for a in artifacts if a["name"] == "netcheck-debug-apk"), None)
     if not apk_art:
@@ -130,7 +176,7 @@ def main() -> int:
         return 1
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    blob = api(f"/repos/{REPO}/actions/artifacts/{apk_art['id']}/zip", raw=True)
+    blob = download_artifact(apk_art["id"])
     with zipfile.ZipFile(io.BytesIO(blob)) as zf:
         for member in zf.namelist():
             if member.endswith(".apk"):
