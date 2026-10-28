@@ -453,7 +453,8 @@ mcp_servers:
       REA_CAPINFOS_COMMAND: /usr/bin/capinfos
       REA_TSHARK_PRLIMIT_COMMAND: /usr/bin/prlimit
       REA_SIGROK_COMMAND: /usr/bin/sigrok-cli
-      REA_APKTOOL_COMMAND: /usr/bin/apktool
+      REA_APKTOOL_COMMAND: /opt/apktool/apktool
+      REA_UNBLOB_COMMAND: /usr/local/bin/unblob
       REA_ADB_PATH: /opt/android-sdk/platform-tools/adb
       REA_OBJDUMP_COMMAND: /usr/bin/objdump
       REA_GDB_COMMAND: /usr/bin/gdb

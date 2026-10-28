@@ -80,6 +80,42 @@ before writing.
    Blanking every file that merely *mentions* a key is wrong: it mangles skill
    docs and examples. Scope the redaction to gate-flagged files.
 
+## Extending the store — a new top-level path needs TWO edits
+
+Adding a directory (`.github/` for Actions workflows, a new `projects/<app>`, …)
+takes **two** edits in the tool, not one:
+
+1. the sync map (local dir → repo path), so the files are collected and `audit`
+   can classify them;
+2. the **repo-roots allowlist** that filters the remote tree. If the prefix is
+   missing there, the push *succeeds* and then the read-back dies with
+   `KeyError: '<new path>'` because verification only ever sees paths under a
+   known root. That happened for real with `.github/workflows/*.yml`.
+
+Rule of thumb: **any list that asks "is this path ours?" must be updated
+together** — the allowlist, the sync map, the audit mapping. They are one
+decision in three places. The read-back should also *skip* a sampled path that is
+absent from the fetched tree (report it as the mismatch it already recorded)
+rather than raising — a crash inside verify hides the very report it exists to
+produce. Recipe and evidence: `references/extending-the-store.md`.
+
+## Syncing real product code (projects/)
+
+Once `projects/` holds software rather than notes, add exclusions for what the
+build machine generates, or the store grows on every sync and CI breaks:
+
+- `build/`, `.gradle/`, `.kotlin/`, `.idea/`, `.cxx/`, `captures/` — rebuildable
+  megabytes, and a committed `build/` tree is re-committed as new blobs each time;
+- `local.properties` (Android `sdk.dir=<host path>`) — machine-specific, and it
+  **overrides** a CI runner's `ANDROID_HOME`, so the cloud build fails on a path
+  that only exists on the host.
+
+A store that also drives CI interacts with it: **advancing the safety ref counts
+as a push**, so a workflow with `on.push.paths` filters builds the same change
+twice (once on the default branch, once when the safety branch is moved). List
+only the default branch in `on.push.branches` and dispatch the safety branch by
+hand when it is actually needed.
+
 ## When another instance shares the repository
 
 Two hosts pushing the same branch collide: the second push dies with
@@ -141,3 +177,14 @@ Then re-enter credentials (they were never stored) and re-run the guarded
   multi-GB toolchains belong in a re-install script, not in the store.
 - After adding new scripts under `$HERMES_HOME/scripts`, they only appear in the
   repo on the next successful sync — run the sync once and confirm the commit.
+- **A red verify after a green push is usually a false alarm** — GitHub's git-data
+  reads are briefly eventually consistent, so re-read the tree a couple of times
+  before calling it a failure. A *traceback* out of verify is different: that is a
+  tool bug (an unhandled path), not a flaky read.
+- **Token hygiene.** These repos are private but the credential is the whole
+  security boundary. If the user pastes a PAT into a chat, tell them plainly to
+  revoke and reissue it (it lives in the transcript forever), keep the working copy
+  only in the never-synced sidecar / env file, and never echo it into a log, a
+  commit message or a command line (`--token` lands in the process list).
+- Restore order matters: pull the state first, then re-enter credentials last, so a
+  half-restored home is never used to serve traffic.

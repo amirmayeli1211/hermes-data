@@ -1,0 +1,101 @@
+# Android CI workflow — verified template
+#
+# Copy to .github/workflows/android.yml in the repository that holds the app.
+# Verified end to end: unit tests ran, assembleDebug produced app-debug.apk, and
+# the artifact downloaded with a matching sha256 (run 40728384237).
+#
+# Every non-obvious line here exists because it bit once:
+#   * chmod +x gradlew          — a state-store sync writes file contents only,
+#                                 so the wrapper arrives as mode 100644
+#   * rm -f local.properties    — a committed sdk.dir overrides the runner's
+#                                 ANDROID_HOME and points at a host-only path
+#   * on.push.paths + branches  — the repo is also a periodic state mirror; without
+#                                 filters this fires every sync (and twice, if a
+#                                 safety branch ref is moved to the same commit)
+#   * the download note at the bottom — artifact zips 302 to blob storage, and
+#                                 reusing the Authorization header there is a 401
+#
+name: Android build
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "projects/<app>/**"
+      - ".github/workflows/android.yml"
+
+concurrency:
+  group: android-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Test and assemble debug APK
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    defaults:
+      run:
+        working-directory: projects/<app>
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Set up Gradle with caching
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Make the wrapper executable
+        run: chmod +x gradlew
+
+      - name: Remove a host-specific SDK path if present
+        run: rm -f local.properties
+
+      - name: Unit tests
+        run: ./gradlew test --console=plain
+
+      - name: Assemble debug APK
+        run: ./gradlew assembleDebug --console=plain
+
+      - name: Show APK identity
+        run: |
+          ls -l app/build/outputs/apk/debug/
+          sha256sum app/build/outputs/apk/debug/*.apk
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-apk
+          path: projects/<app>/app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload test report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-report
+          path: |
+            projects/<app>/app/build/reports/tests/**
+            projects/<app>/app/build/test-results/**
+          if-no-files-found: ignore
+
+# Fetching the artifact from a host (the download step, not the build):
+#   GET /repos/{owner}/{repo}/actions/artifacts/{id}/zip  ->  302 to signed storage
+# Follow that redirect WITHOUT the Authorization header. Reusing the token there
+# returns 401 InvalidAuthenticationInfo. Disable redirect-following, then fetch
+# `Location` with a plain request. Working helper:
+#   ~/.hermes/scripts/ci_android_build.py [--status|--fetch-latest]
+#
+# Kept in the project's gradle.properties (committed, portable):  -Xmx2g,
+# MaxMetaspaceSize=1g, parallel=true. Host-specific small values belong in
+# ${GRADLE_USER_HOME}/gradle.properties, which Gradle reads afterwards.

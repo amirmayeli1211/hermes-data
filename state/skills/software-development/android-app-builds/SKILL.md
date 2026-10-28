@@ -46,7 +46,9 @@ wrapper in the project. Prefer the project's wrapper over any system Gradle.
 - `compileSdk`/`targetSdk` 34 with platform **android-34** + build-tools 34.0.0
 - JDK 21 running the build, `jvmTarget = "17"` + `sourceCompatibility 17`
 
-Copy-ready files: `templates/gradle-config-kotlin2-compose.md`.
+Copy-ready files: `templates/gradle-config-kotlin2-compose.md` (Gradle/AGP/KSP
+wiring) and `templates/android-ci-workflow.yml` (the verified cloud workflow,
+with the four non-obvious steps already in place).
 
 ## Create the wrapper — the step that always trips
 
@@ -181,6 +183,17 @@ the target is heavy or foreign; do not silently attempt it locally.
   default `GITHUB_TOKEN` does not).
 - Helper that wraps the whole loop (dispatch → wait → download → sha256):
   `~/.hermes/scripts/ci_android_build.py`, with `--status` and `--fetch-latest`.
+
+## Reporting (this user)
+
+One structured summary at the end, in Persian, not a running commentary — and it
+must close with an explicit **"what you need to do"** list: install the APK,
+decide which branch owns the repo, rotate the token, run the manual device
+checklist, plus anything that was deleted and how to restore it. State the
+verified facts (package, minSdk/targetSdk, size, sha256, the CI run URL) and say
+plainly which parts of the spec are *not* covered yet, instead of implying
+completeness. When the user joins a task mid-flight, restate the current state
+and the plan before acting.
 
 ## Pitfalls
 

@@ -69,6 +69,12 @@ toolchain through `env`", plus its worked example
    - session-side: one real call, reading the provider out of the result
      (`analysis_profile.provider = ghidra 12.1.4`, plus counts). A non-empty
      reply is not evidence the engine was found.
+   - **`doctor` does not check the helper CLIs.** Its checks cover Node, the
+     engines and the skill copy; tshark, capinfos, sigrok-cli, rizin, WABT,
+     wakaru, unblob, pwntools and apktool are never inspected. `environment_healthy:
+     true` therefore says nothing about them — prove those separately with a
+     version table (`<tool> --version`) or by calling the tool once, and report
+     both kinds of evidence.
 
 ## What can and cannot be installed
 

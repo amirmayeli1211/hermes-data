@@ -12,10 +12,10 @@ RAM / 7.8 GB disk), REA `rea-agents@6.8.0`, Node 24.22.1. Result:
 | JDK | `openjdk-21-jdk-headless` → `/usr/lib/jvm/java-21-openjdk-amd64` | distro `java` was still 17 — set `JAVA_HOME` explicitly |
 | jadx bridge | `jadx-headless-mcp-0.7.1-all.jar` | exact version the JADX provider expects |
 | jadx CLI | 1.5.6 | optional convenience |
-| apktool | 2.7.0 (apt) | resource decode/rebuild |
+| apktool | **3.0.3** (upstream JAR → `/opt/apktool/apktool`) | the apt 2.7.0 package predates the CVE-2024-21633 path-escape fix (2.9.2); REA flags it as a limitation. Replace the launcher and point `REA_APKTOOL_COMMAND` at it |
 | tshark / capinfos | 4.2.2 (apt) | packet captures |
 | sigrok-cli | 0.7.2 (apt) | signal decoding |
-| rizin | 0.9.1 (`rizin-v0.9.1-static-x86_64.tar.xz` → extract `bin/` only) | static libs alone are ~600 MB |
+| rizin | 0.9.1 (`rizin-v0.9.1-static-x86_64.tar.xz`) | extract **only** `bin/rizin` + `share/` (≈114 MB); the archive also carries `lib/librz_*.a` and `include/` totalling ~600 MB, and each `rz-*` binary is ~59 MB. See the layout trap below |
 | gdb / binutils | 15.1 / 2.42 (apt) | MI sessions + objdump |
 | WABT | 1.0.42 (`wabt-1.0.42-linux-x64.tar.gz`) | point `REA_WABT_BIN_DIRECTORY` at `.../bin` |
 | wakaru | 1.14.0 (`wakaru-linux-x64.tar.gz`) | JS recovery |
@@ -25,14 +25,27 @@ RAM / 7.8 GB disk), REA `rea-agents@6.8.0`, Node 24.22.1. Result:
 | frida bindings | 17.23.2 via npm `--allow-scripts=frida` | ships inside the rea package |
 
 Unavailable by design: Hopper (macOS), IDA, JEB, Kuna (licensed/proprietary),
-Binwalk 3.x (Rust build; no release assets).
+Binwalk 3.x (Rust build; `ReFirmLabs/binwalk` publishes **no release assets** —
+`v3.1.0` is source-only, pip only ships the unsupported 2.1.0, and `cargo` is not
+installed, so `inspect_firmware_regions` stays `capability_unavailable`; use
+`extract_firmware`/unblob instead).
+
+**unblob needs an absolute-path env var.** `extract_firmware` fails with
+`This integration requires Linux and an absolute REA_UNBLOB_COMMAND path to the
+caller-supplied tool` even when `unblob` is on `PATH`. Set
+`REA_UNBLOB_COMMAND=/usr/local/bin/unblob` (the pip shim is fine — it `import`s
+`unblob.cli` from system python3).
+
+**CLI quirk:** these subcommands take their required arguments **positionally**,
+not as flags — `rea extract-firmware <path> <outputDirectory>`. Passing
+`--outputDirectory` (or `--output-directory`) returns `Unknown flag`.
 
 ## API package that does the heavy lifting
 
 ```bash
 apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get install -y \
   --no-install-recommends python3 python3-pip python3-venv python3-dev \
-  openjdk-21-jdk-headless gdb binutils tshark apktool sigrok-cli \
+  openjdk-21-jdk-headless gdb binutils tshark sigrok-cli \
   xz-utils unzip wget ca-certificates jq cabextract p7zip-full libmagic1
 ```
 
@@ -100,7 +113,8 @@ mcp_servers:
       REA_CAPINFOS_COMMAND: /usr/bin/capinfos
       REA_TSHARK_PRLIMIT_COMMAND: /usr/bin/prlimit
       REA_SIGROK_COMMAND: /usr/bin/sigrok-cli
-      REA_APKTOOL_COMMAND: /usr/bin/apktool
+      REA_APKTOOL_COMMAND: /opt/apktool/apktool
+      REA_UNBLOB_COMMAND: /usr/local/bin/unblob
       REA_ADB_PATH: /opt/android-sdk/platform-tools/adb
       REA_OBJDUMP_COMMAND: /usr/bin/objdump
       REA_GDB_COMMAND: /usr/bin/gdb
@@ -151,5 +165,82 @@ failure.
   `rea setup --client hermes --skill-client hermes --skill --dry-run` then
   `… --yes` (silent success; prints `appliedActions[1]: installed_skill`).
 - Replacing the package directory while the MCP server was live produced
-  "REA could not start … ask them to restart the MCP client" on the next call.
+  "REA could not start ... ask them to restart the MCP client" on the next call.
   Only a client restart cleared it; repeating the call never would have.
+
+## apktool: replacing the distro package with the patched upstream JAR
+
+The apt package is 2.7.0, which REA reports as
+`Reported apktool version "2.7.0-dirty" predates the upstream 2.9.2 fix for
+CVE-2024-21633`. Upgrade with the upstream JAR and a tiny launcher:
+
+```bash
+LATEST=$(curl -sSL https://api.github.com/repos/iBotPeaches/Apktool/releases/latest \
+  | python3 -c "import sys,json;print(json.load(sys.stdin)['tag_name'])")   # e.g. v3.0.3
+VER=${LATEST#v}
+mkdir -p /opt/apktool
+curl -sSL -o /opt/apktool/apktool.jar \
+  "https://github.com/iBotPeaches/Apktool/releases/download/$LATEST/apktool_${VER}.jar"
+printf '#!/bin/sh\nJAVA_HOME="${JAVA_HOME:-/usr/lib/jvm/java-21-openjdk-amd64}"\nexec "$JAVA_HOME/bin/java" -jar /opt/apktool/apktool.jar "$@"\n' \
+  > /opt/apktool/apktool
+chmod +x /opt/apktool/apktool
+/opt/apktool/apktool --version     # → 3.0.3
+```
+
+Then set `REA_APKTOOL_COMMAND: /opt/apktool/apktool` (config.yaml + `/root/rea-tools.sh`)
+and re-run doctor; `environment_healthy: true` confirms the CVE limitation is gone.
+
+**Pitfall — env changes need a client restart.** The REA MCP server inherits
+`mcp_servers.rea.env` at launch, so `inspect_apktool_client` keeps reporting the
+old launcher until the MCP client restarts. Verify env edits from the CLI
+(`source /root/rea-tools.sh && rea doctor --client hermes`) instead of by
+re-calling the MCP tool.
+
+## rizin: the 600 MB / missing-binary layout trap
+
+The static tarball is **not** what `--strip-components=1` suggests. Its real
+layout is `bin/rizin`, `bin/rz-*` (11 executables, ~59 MB each), `lib/librz_*.a`
+(~600 MB), `include/`, `share/`. Extracting the whole archive costs ~712 MB and
+`--strip-components=1` *silently loses the main binary*: `share/rizin/…` becomes
+`/opt/rizin/rizin/` (a directory), which then collides with the `bin/rizin` file,
+so only the `rz-*` helpers survive and `/usr/local/bin/rizin` dangles. REA's
+symptom is `Could not launch the selected rizin executable … (ENOENT)` even
+though `ls -la /usr/local/bin/rizin` looks fine — check with
+`readlink -f` / `[ -x … ]`, never with `ls` alone.
+
+Extract only what REA needs, keeping the standard layout:
+
+```bash
+cd /root/dl
+curl -fL -O https://github.com/rizinorg/rizin/releases/download/v0.9.1/rizin-v0.9.1-static-x86_64.tar.xz
+rm -rf /opt/rizin && mkdir -p /opt/rizin
+tar -xJf rizin-v0.9.1-static-x86_64.tar.xz -C /opt/rizin --no-same-owner bin/rizin share
+# → /opt/rizin/bin/rizin (59 MB) + /opt/rizin/share/rizin (56 MB) = ~114 MB
+ln -sfn /opt/rizin/bin/rizin /usr/local/bin/rizin
+/opt/rizin/bin/rizin -v        # rizin 0.9.1 @ linux-x86-64
+```
+
+Confirm from the client with `execute_rizin_command(command="ij", path=<any ELF>)`
+— a valid `bin`/`core` JSON means the provider launch path is healthy.
+
+## Verify each external tool from inside REA
+
+`rea doctor` only proves configuration. These calls prove the *wiring*:
+
+| Tool | Call | Healthy result |
+|---|---|---|
+| adb | `inspect_adb_client` | `version: 37.0.1-…`, `path_source: environment` |
+| apktool | `inspect_apktool_client` | version ≥ 2.9.2 and **no** CVE-2024-21633 limitation |
+| tshark/capinfos | `inspect_pcap_client` | `tshark_identity_status: verified` + sha256 |
+| frida | `list_frida_devices` | local/socket/barebone devices (bindings ship inside the npm package) |
+| objdump | `inspect_with_objdump(operation="architectures")` | BFD target table |
+| sigrok | `inspect_signal_decoders(limit=1)` | decoder catalog (`examined: 111`) |
+| rizin | `execute_rizin_command("ij", …)` | `bin`/`core` JSON |
+| jadx | `inspect_android_package(<apk>)` | package/SDK declarations |
+| Ghidra | `open_binary(…)` + `binary_overview()` | provider `ghidra`, segment/procedure counts |
+
+Hopper, IDA, JEB and Kuna report `missing_analysis_engine` **by design**
+(macOS-only or licensed/proprietary) — on a Linux container that is the expected
+final state, not an incomplete install.
+
+

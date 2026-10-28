@@ -273,6 +273,16 @@ habits keep it away:
   the cleaner itself failed; anything else prints nothing so the cron stays quiet.
   See `~/.hermes/scripts/disk_guard_watch.sh` (wrapper) and `offload.sh
   status|verify` (proves where temp actually lands) on this host.
+- **A guard ported from another host watches the wrong filesystem.** A cleaner
+  written for a small dedicated volume (e.g. `/data`) hard-codes its mount and its
+  warn/crit percentages; on a single-root sandbox it must be re-pointed at `/`
+  with thresholds for a disk that already runs near 85%, or it reports on a path
+  that does not exist while the real disk fills. Re-read every hard-coded path
+  (`grep -n "/data\|/var/tmp" disk-guard.sh`) before trusting the numbers.
+- **The guard only knows `$HERMES_HOME`.** Anything parked in the offload area
+  (scratch, downloads, clones) grows outside its view, so the wrapper must sweep
+  that tree too — otherwise the disk fills from the one directory the guard
+  never looks at.
 
 ## Verify
 
