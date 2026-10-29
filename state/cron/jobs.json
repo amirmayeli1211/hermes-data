@@ -20,15 +20,15 @@
       "schedule_display": "*/5 * * * *",
       "repeat": {
         "times": null,
-        "completed": 386
+        "completed": 392
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-10-28T14:50:46.666568+00:00",
-      "next_run_at": "2026-10-29T23:05:00+00:00",
-      "last_run_at": "2026-10-29T23:00:06.970740+00:00",
+      "next_run_at": "2026-10-29T23:35:00+00:00",
+      "last_run_at": "2026-10-29T23:30:20.905148+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -62,17 +62,17 @@
       "schedule_display": "*/30 * * * *",
       "repeat": {
         "times": null,
-        "completed": 62
+        "completed": 63
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-10-28T15:38:41.407749+00:00",
-      "next_run_at": "2026-10-29T23:30:00+00:00",
-      "last_run_at": "2026-10-29T22:31:06.741725+00:00",
+      "next_run_at": "2026-10-30T00:00:00+00:00",
+      "last_run_at": "2026-10-29T23:00:20.671195+00:00",
       "last_status": "error",
-      "last_error": "Script exited with code 6\nstdout:\nhermes-data sync FAILED (exit 6)\n  up state/cron/output/9a1f44193ab7/2026-10-29_22-05-42.md\n  up state/cron/output/9a1f44193ab7/2026-10-29_22-10-42.md\n  up state/cron/output/9a1f44193ab7/2026-10-29_22-15-42.md\n  up state/cron/output/9a1f44193ab7/2026-10-29_22-20-42.md\n  up state/cron/output/9a1f44193ab7/2026-10-29_22-25-42.md\n  up state/cron/output/9a1f44193ab7/2026-10-29_22-30-42.md\nVERIFY FAILED (2 problems)\n  ! .github/workflows/android-rix.yml: content sha256 mismatch after read-back\n  ! projects/rix/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml: content sha256 mismatch after read-back\nVERIFY FAILED (2 problems)\n  ! .github/workflows/android-rix.yml: content sha256 mismatch after read-back\n  ! projects/rix/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml: content sha256 mismatch after read-back",
+      "last_error": "Script exited with code 6\nstdout:\nhermes-data sync FAILED (exit 6)\n  up .gitignore\n  up README.md\n  up state/cron/jobs.json\n  up state/cron/output/9a1f44193ab7/2026-10-29_22-35-06.md\n  up state/cron/output/9a1f44193ab7/2026-10-29_22-40-06.md\n  up state/cron/output/9a1f44193ab7/2026-10-29_22-45-06.md\n  up state/cron/output/9a1f44193ab7/2026-10-29_22-50-06.md\n  up state/cron/output/9a1f44193ab7/2026-10-29_22-55-06.md\n  up state/cron/output/9a1f44193ab7/2026-10-29_23-00-06.md\nVERIFY FAILED (2 problems)\n  ! .github/workflows/android-rix.yml: content sha256 mismatch after read-back\n  ! projects/rix/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml: content sha256 mismatch after read-back",
       "last_delivery_error": null,
       "deliver": "origin",
       "origin": {
@@ -104,15 +104,15 @@
       "schedule_display": "*/15 * * * *",
       "repeat": {
         "times": null,
-        "completed": 125
+        "completed": 127
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-10-28T15:54:09.945961+00:00",
-      "next_run_at": "2026-10-29T23:15:00+00:00",
-      "last_run_at": "2026-10-29T23:00:07.076988+00:00",
+      "next_run_at": "2026-10-29T23:45:00+00:00",
+      "last_run_at": "2026-10-29T23:30:21.007519+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -127,5 +127,5 @@
       "workdir": null
     }
   ],
-  "updated_at": "2026-10-29T23:00:07.077366+00:00"
+  "updated_at": "2026-10-29T23:30:21.007801+00:00"
 }
