@@ -1,6 +1,6 @@
 {
   "commit": null,
-  "excluded_count": 403,
+  "excluded_count": 412,
   "file_count": 678,
   "files": {
     ".github/workflows/android-rix.yml": {
@@ -188,32 +188,8 @@
       "size": 10241
     },
     "state/cron/jobs.json": {
-      "sha256": "bd22d1accb1c12841ea7185e936835888abb701bb347b628c704d1a58bf256a4",
+      "sha256": "213751ca9137b9535d2f69fd0a349d607a500814424f54d97c30a2eb4e943475",
       "size": 4576
-    },
-    "state/cron/output/9a1f44193ab7/2026-10-29_12-15-08.md": {
-      "sha256": "69568663aee994a0cee047bb4919299993e879beda03642dd23eaea7250dd1ba",
-      "size": 163
-    },
-    "state/cron/output/9a1f44193ab7/2026-10-29_12-20-08.md": {
-      "sha256": "1a2e7883947842694421339b15947a7a18284a51560169aba74010559a80338c",
-      "size": 163
-    },
-    "state/cron/output/9a1f44193ab7/2026-10-29_12-25-08.md": {
-      "sha256": "8d6aabe8e4b222ea480be00016e8a2a94e1099c52577c1072451e6c34eb6c2f5",
-      "size": 163
-    },
-    "state/cron/output/9a1f44193ab7/2026-10-29_12-30-08.md": {
-      "sha256": "b2a91327cfdcc2ee86ac69f7e06da0a4ddf70862b087aacfc572972a114ade30",
-      "size": 163
-    },
-    "state/cron/output/9a1f44193ab7/2026-10-29_12-35-24.md": {
-      "sha256": "abf3a48fbc5c1f0900d765638ad6ce15fd7a4cbf01263202e40a5d1e5f9de7c6",
-      "size": 163
-    },
-    "state/cron/output/9a1f44193ab7/2026-10-29_12-40-24.md": {
-      "sha256": "8a7cb430acac0a6ffc1c7e2d9bb9d345c25f66b5dc6710fc9cfdf7183d841de1",
-      "size": 163
     },
     "state/cron/output/9a1f44193ab7/2026-10-29_12-45-24.md": {
       "sha256": "c31115336dd57c7dcdc326193d84e509d678524be1063b81c61d8fa259efb90c",
@@ -349,6 +325,30 @@
     },
     "state/cron/output/9a1f44193ab7/2026-10-29_15-30-50.md": {
       "sha256": "a7f2540481546db19d2bf7806d08249f3b7d5bd43d9a7f130f305e5d9ad52672",
+      "size": 163
+    },
+    "state/cron/output/9a1f44193ab7/2026-10-29_15-35-07.md": {
+      "sha256": "94411019e3158d45ae9ca973d6e566e708ab3734cb7e499f1390770616f72a54",
+      "size": 163
+    },
+    "state/cron/output/9a1f44193ab7/2026-10-29_15-40-07.md": {
+      "sha256": "386cfceeda58222a1272e505773e4dc897451e770bb6e2beb2d85ffccc941ef0",
+      "size": 163
+    },
+    "state/cron/output/9a1f44193ab7/2026-10-29_15-45-07.md": {
+      "sha256": "e20ff239626583eb4bbe559711768c0f80ed8cb7cbb1aa1ae0a7714d808395bf",
+      "size": 163
+    },
+    "state/cron/output/9a1f44193ab7/2026-10-29_15-50-07.md": {
+      "sha256": "c32c9e7fdd52e2522018c5cb58a352d1a18fea90f7c600f51228e917637bb298",
+      "size": 163
+    },
+    "state/cron/output/9a1f44193ab7/2026-10-29_15-55-07.md": {
+      "sha256": "39459bcabb8b7b11d000057ea2802a9a13ecdef0c44a4e8e15dfb0b320285ae9",
+      "size": 163
+    },
+    "state/cron/output/9a1f44193ab7/2026-10-29_16-00-07.md": {
+      "sha256": "65b4506f74939ef3306b36ebfac2b424933e0b05c04e69556bdc8797417bbd2b",
       "size": 163
     },
     "state/lsp/package-lock.json": {
@@ -2716,7 +2716,7 @@
       "size": 2400
     }
   },
-  "generated_at": "2026-10-29T15:30:54.375736Z",
+  "generated_at": "2026-10-29T16:00:11.703864Z",
   "host": "sandbox-b1e0eab0",
   "notes": [
     "Secrets (.env, auth.json, tokens, private keys) are never stored here.",
