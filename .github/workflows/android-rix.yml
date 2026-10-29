@@ -279,6 +279,23 @@ jobs:
         with:
           gradle-version: "8.9"
 
+      - name: Restore signing key
+        # Optional. The repository ships a fixed key so every build carries the
+        # same signature and installs over the previous version. If a
+        # RIX_KEYSTORE_B64 secret exists it replaces that key here, which is how
+        # to move to a private key without touching the build script.
+        env:
+          RIX_KEYSTORE_B64: ${{ secrets.RIX_KEYSTORE_B64 }}
+        run: |
+          set -euo pipefail
+          if [ -n "${RIX_KEYSTORE_B64:-}" ]; then
+            printf '%s' "$RIX_KEYSTORE_B64" | base64 -d > projects/rix/keystore/rix.p12
+            echo "signing key restored from RIX_KEYSTORE_B64"
+          else
+            echo "using the committed signing key"
+          fi
+          ls -l projects/rix/keystore/
+
       - name: Assemble debug APK
         working-directory: projects/rix
         run: |
@@ -293,6 +310,11 @@ jobs:
           for need in libaether.so libhev-socks5-tunnel.so librixjni.so; do
             unzip -l "$apk" | grep -q "$need" || { echo "ERROR: $need missing from APK"; exit 1; }
           done
+
+          # The signature is what lets an update install over the previous
+          # version; print it so a key change shows up in the build log.
+          apksigner=$(find "${ANDROID_HOME}/build-tools" -name apksigner | sort | tail -1)
+          "$apksigner" verify --print-certs "$apk" | head -6
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
