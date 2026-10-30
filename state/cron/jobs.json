@@ -20,15 +20,15 @@
       "schedule_display": "*/5 * * * *",
       "repeat": {
         "times": null,
-        "completed": 398
+        "completed": 404
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-10-28T14:50:46.666568+00:00",
-      "next_run_at": "2026-10-30T00:05:00+00:00",
-      "last_run_at": "2026-10-30T00:00:34.913683+00:00",
+      "next_run_at": "2026-10-30T00:35:00+00:00",
+      "last_run_at": "2026-10-30T00:30:48.514978+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -62,17 +62,17 @@
       "schedule_display": "*/30 * * * *",
       "repeat": {
         "times": null,
-        "completed": 64
+        "completed": 65
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-10-28T15:38:41.407749+00:00",
-      "next_run_at": "2026-10-30T00:30:00+00:00",
-      "last_run_at": "2026-10-29T23:30:34.671079+00:00",
+      "next_run_at": "2026-10-30T01:00:00+00:00",
+      "last_run_at": "2026-10-30T00:00:48.283189+00:00",
       "last_status": "error",
-      "last_error": "Script exited with code 6\nstdout:\nhermes-data sync FAILED (exit 6)\n  up .gitignore\n  up README.md\n  up state/cron/jobs.json\n  up state/cron/output/9a1f44193ab7/2026-10-29_23-05-20.md\n  up state/cron/output/9a1f44193ab7/2026-10-29_23-10-20.md\n  up state/cron/output/9a1f44193ab7/2026-10-29_23-15-20.md\n  up state/cron/output/9a1f44193ab7/2026-10-29_23-20-20.md\n  up state/cron/output/9a1f44193ab7/2026-10-29_23-25-20.md\n  up state/cron/output/9a1f44193ab7/2026-10-29_23-30-20.md\nVERIFY FAILED (2 problems)\n  ! .github/workflows/android-rix.yml: content sha256 mismatch after read-back\n  ! projects/rix/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml: content sha256 mismatch after read-back",
+      "last_error": "Script exited with code 6\nstdout:\nhermes-data sync FAILED (exit 6)\n  up .gitignore\n  up README.md\n  up state/cron/jobs.json\n  up state/cron/output/9a1f44193ab7/2026-10-29_23-35-34.md\n  up state/cron/output/9a1f44193ab7/2026-10-29_23-40-34.md\n  up state/cron/output/9a1f44193ab7/2026-10-29_23-45-34.md\n  up state/cron/output/9a1f44193ab7/2026-10-29_23-50-34.md\n  up state/cron/output/9a1f44193ab7/2026-10-29_23-55-34.md\n  up state/cron/output/9a1f44193ab7/2026-10-30_00-00-34.md\nVERIFY FAILED (2 problems)\n  ! .github/workflows/android-rix.yml: content sha256 mismatch after read-back\n  ! projects/rix/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml: content sha256 mismatch after read-back",
       "last_delivery_error": null,
       "deliver": "origin",
       "origin": {
@@ -104,15 +104,15 @@
       "schedule_display": "*/15 * * * *",
       "repeat": {
         "times": null,
-        "completed": 129
+        "completed": 131
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-10-28T15:54:09.945961+00:00",
-      "next_run_at": "2026-10-30T00:15:00+00:00",
-      "last_run_at": "2026-10-30T00:00:35.014787+00:00",
+      "next_run_at": "2026-10-30T00:45:00+00:00",
+      "last_run_at": "2026-10-30T00:30:48.678695+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -127,5 +127,5 @@
       "workdir": null
     }
   ],
-  "updated_at": "2026-10-30T00:00:35.015072+00:00"
+  "updated_at": "2026-10-30T00:30:48.679212+00:00"
 }
